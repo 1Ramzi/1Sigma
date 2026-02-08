@@ -38,34 +38,34 @@ const Statistics = ({}) => {
                     />
                 </div>
                 <div className="grow">
-                    <div className="mb-2 label label-yellow">In progress</div>
+                    <div className="mb-2 label label-yellow">En cours</div>
                     <div className="text-h5 max-2xl:text-h6">
                         Dynamic UI Design Kit
                     </div>
                 </div>
             </div>
             <div className="bg-shade-09/30 max-lg:flex max-lg:flex-wrap max-md:block dark:bg-shade-02">
-                <Paramenter label="Request send" content="Aug 20, 2025" />
-                <Paramenter label="Reason" content="Download link is broken" />
+                <Paramenter label="Demande envoyée" content="20 Août, 2025" />
+                <Paramenter label="Raison" content="Lien de téléchargement cassé" />
                 <Paramenter
-                    label="Product downloaded"
-                    content={<div className="label label-green">Yes</div>}
+                    label="Produit téléchargé"
+                    content={<div className="label label-green">Oui</div>}
                 />
-                <Paramenter label="Purchase date" content="July 01, 2025" />
+                <Paramenter label="Date d'achat" content="01 Juil, 2025" />
                 <Paramenter
-                    label="Purchase code"
+                    label="Code d'achat"
                     content="6373ads-hd73h-8373DS"
                 />
-                <Paramenter label="Request ID" content="8975ads-hd73h-8974DS" />
+                <Paramenter label="ID Demande" content="8975ads-hd73h-8974DS" />
                 <Paramenter
-                    label="Market fee"
+                    label="Frais de marché"
                     content="$7.28"
-                    tooltip="Maximum 100 characters. No HTML or emoji allowed"
+                    tooltip="Maximum 100 caractères. Pas de HTML ou d'emoji autorisé"
                 />
                 <Paramenter
-                    label="Price"
+                    label="Prix"
                     content="$72.88"
-                    tooltip="Maximum 100 characters. No HTML or emoji allowed"
+                    tooltip="Maximum 100 caractères. Pas de HTML ou d'emoji autorisé"
                 />
             </div>
         </div>

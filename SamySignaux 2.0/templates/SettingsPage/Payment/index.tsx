@@ -18,12 +18,12 @@ const Payment = ({}) => {
     }, [user]);
 
     return (
-        <Card title={language === 'fr' ? "Paiement" : "Payment"}>
+        <Card title="Paiement">
             <div className="p-5 pt-0 max-lg:px-3">
                 <Field
                     classInput="pl-14"
-                    label={language === 'fr' ? "Email PayPal" : "Paypal email"}
-                    placeholder={language === 'fr' ? "Entrez votre email PayPal" : "Enter paypal email"}
+                    label="Email PayPal"
+                    placeholder="Entrez votre email PayPal"
                     value={paypalEmail}
                     onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setPaypalEmail(e.target.value)}
                     required
@@ -45,7 +45,7 @@ const Payment = ({}) => {
                         height={28}
                         alt="Stripe"
                     />
-                    {language === 'fr' ? "Connecter compte Stripe" : "Connect Stripe account"}
+                    Connecter compte Stripe
                 </Button>
             </div>
         </Card>

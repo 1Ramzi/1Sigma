@@ -12,12 +12,12 @@ import { SelectOption } from "@/types/select";
 import { transactions } from "@/mocks/statements";
 
 const durations: SelectOption[] = [
-    { id: 1, name: "Last 7 days" },
-    { id: 2, name: "Last 14 days" },
-    { id: 3, name: "Last 30 days" },
+    { id: 1, name: "7 derniers jours" },
+    { id: 2, name: "14 derniers jours" },
+    { id: 3, name: "30 derniers jours" },
 ];
 
-const tableHead = ["Item", "Type", "Date", "Order ID", "Price", "Amount"];
+const tableHead = ["Article", "Type", "Date", "ID Commande", "Prix", "Montant"];
 
 const Transactions = () => {
     const [search, setSearch] = useState("");
@@ -33,7 +33,7 @@ const Transactions = () => {
                     className="w-70 ml-6 mr-auto max-lg:hidden"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    placeholder="Search..."
+                    placeholder="Rechercher..."
                     isGray
                 />
                 {search === "" && (
@@ -44,12 +44,12 @@ const Transactions = () => {
                             value={duration}
                             onChange={setDuration}
                         />
-                        <Button isBlack>Download SCV</Button>
+                        <Button isBlack>Télécharger CSV</Button>
                     </>
                 )}
             </div>
             {search !== "" ? (
-                <NoFound title="No transactions found" />
+                <NoFound title="Aucune transaction trouvée" />
             ) : (
                 <div className="p-1 pt-6 max-lg:px-0 max-md:pt-3">
                     <Table
@@ -86,7 +86,7 @@ const Transactions = () => {
                                             <div
                                                 className={`label !hidden capitalize mt-2 max-md:!inline-flex ${
                                                     transaction.type ===
-                                                    "refund"
+                                                    "remboursé"
                                                         ? "label-yellow"
                                                         : "label-green"
                                                 }`}
@@ -99,7 +99,7 @@ const Transactions = () => {
                                 <td className="max-md:hidden">
                                     <div
                                         className={`label capitalize ${
-                                            transaction.type === "refund"
+                                            transaction.type === "remboursé"
                                                 ? "label-yellow"
                                                 : "label-green"
                                         }`}

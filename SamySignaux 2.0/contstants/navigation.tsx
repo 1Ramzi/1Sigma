@@ -1,26 +1,26 @@
 export const navigation = [
     {
-        title: "Dashboard",
+        title: "Tableau de bord",
         icon: "dashboard",
         href: "/dashboard",
     },
     {
-        title: "Signals",
+        title: "Signaux",
         icon: "chart",
         list: [
             {
-                title: "Live Signals",
+                title: "Signaux en cours",
                 href: "/signals",
                 counter: 4,
             },
             {
-                title: "History",
+                title: "Historique",
                 href: "/signals/history",
             },
         ],
     },
     {
-        title: "Academy",
+        title: "Académie",
         icon: "desktop", // Closest to educational content in available icons
         href: "/academy",
     },
@@ -30,7 +30,7 @@ export const navigation = [
         href: "/broker",
     },
     {
-        title: "Community",
+        title: "Communauté",
         icon: "chat-think",
         href: "/community",
     },
@@ -38,12 +38,12 @@ export const navigation = [
 
 export const navigationUser = [
     {
-        title: "Settings",
+        title: "Paramètres",
         icon: "edit-profile",
         href: "/settings",
     },
     {
-        title: "Logout",
+        title: "Déconnexion",
         icon: "logout",
         href: "/logout", 
     },

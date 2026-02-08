@@ -46,7 +46,7 @@ const ProfileInformation = ({}) => {
     };
 
     return (
-        <Card title={language === 'fr' ? "Informations du profil" : "Profile information"}>
+        <Card title="Informations du profil">
             <div className="flex flex-col gap-8 p-5 pt-0 max-lg:px-3">
                 <div className="flex items-center">
                     <div className="relative flex justify-center items-center shrink-0 w-20 h-20 rounded-full overflow-hidden bg-b-surface1">
@@ -74,14 +74,12 @@ const ProfileInformation = ({}) => {
                         />
                     </div>
                     <div className="grow max-w-88 pl-4 text-caption text-t-secondary">
-                        {language === 'fr' 
-                            ? "Mettez à jour votre avatar en cliquant sur l'image. JPG ou PNG recommandé." 
-                            : "Update your avatar by clicking the image beside. JPG or PNG recommended."}
+                        Mettez à jour votre avatar en cliquant sur l'image. JPG ou PNG recommandé.
                     </div>
                 </div>
                 <Field
-                    label={language === 'fr' ? "Nom d'affichage" : "Display name"}
-                    placeholder={language === 'fr' ? "Entrez votre nom" : "Enter display name"}
+                    label="Nom d'affichage"
+                    placeholder="Entrez votre nom"
                     value={displayName}
                     onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setDisplayName(e.target.value)}
                     required
@@ -89,7 +87,7 @@ const ProfileInformation = ({}) => {
                 />
                 <Field
                     label="Email"
-                    placeholder="Enter email"
+                    placeholder="Entrez votre email"
                     type="email"
                     value={email}
                     onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setEmail(e.target.value)}
@@ -98,7 +96,7 @@ const ProfileInformation = ({}) => {
                     readOnly // Email usually not changeable directly or requires verification
                 />
                 <Select
-                    label={language === 'fr' ? "Localisation" : "Location"}
+                    label="Localisation"
                     value={location}
                     onChange={setLocation}
                     options={locations}

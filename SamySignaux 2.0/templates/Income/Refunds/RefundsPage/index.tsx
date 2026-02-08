@@ -16,8 +16,8 @@ import List from "./List";
 import { refunds } from "@/mocks/refunds";
 
 const views: TabsOption[] = [
-    { id: 1, name: "Open requests" },
-    { id: 2, name: "Closed request" },
+    { id: 1, name: "Demandes ouvertes" },
+    { id: 2, name: "Demandes fermées" },
 ];
 
 const RefundsPage = () => {
@@ -32,19 +32,18 @@ const RefundsPage = () => {
     } = useSelection<Refund>(refunds);
 
     return (
-        <Layout title="Refunds">
+        <Layout title="Remboursements">
             <div className="max-w-[1200px] mx-auto card">
                 {selectedRows.length === 0 ? (
                     <div className="flex items-center max-md:h-12">
                         <div className="pl-5 text-h6 max-lg:mr-auto max-lg:pl-3">
-                            {refunds.length} open request
-                            {refunds.length !== 1 ? "s" : ""}
+                            {refunds.length} demande{refunds.length !== 1 ? "s" : ""} ouverte{refunds.length !== 1 ? "s" : ""}
                         </div>
                         <Search
                             className="w-70 ml-6 mr-auto max-lg:hidden"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            placeholder="Search requests"
+                            placeholder="Rechercher des demandes"
                             isGray
                         />
                         {search === "" && (
@@ -67,30 +66,29 @@ const RefundsPage = () => {
                 ) : (
                     <div className="flex items-center">
                         <div className="mr-6 pl-5 text-h6">
-                            {selectedRows.length} refund
-                            {selectedRows.length !== 1 ? "s" : ""} selected
+                            {selectedRows.length} remboursement{selectedRows.length !== 1 ? "s" : ""} sélectionné{selectedRows.length !== 1 ? "s" : ""}
                         </div>
                         <Button
                             className="mr-auto"
                             isStroke
                             onClick={handleDeselect}
                         >
-                            Deselect
+                            Désélectionner
                         </Button>
                         <DeleteItems
                             counter={selectedRows.length}
-                            content={`This will definitely delete ${
+                            content={`Cela supprimera définitivement ${
                                 selectedRows.length > 1
-                                    ? `${selectedRows.length} refunds`
-                                    : "this refund"
-                            }, and all data will be removed. This action cannot be undone.`}
+                                    ? `${selectedRows.length} remboursements`
+                                    : "ce remboursement"
+                            }, et toutes les données seront supprimées. Cette action est irréversible.`}
                             onDelete={() => {}}
                             isLargeButton
                         />
                     </div>
                 )}
                 {search !== "" ? (
-                    <NoFound title="No requests found" />
+                    <NoFound title="Aucune demande trouvée" />
                 ) : (
                     <div className="p-1 pt-3 max-lg:px-0">
                         <List

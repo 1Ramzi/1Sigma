@@ -30,16 +30,14 @@ const VideoWidget = () => {
             <div className="absolute bottom-0 left-0 right-0 p-6 text-shade-10 bg-linear-to-t from-shade-01 to-transparent">
                 <div className="flex items-center gap-2 mb-2">
                     <span className="px-2 py-1 rounded bg-primary-04 text-[10px] font-bold uppercase tracking-wider">
-                        {language === 'fr' ? 'Tutoriel' : 'Tutorial'}
+                        Tutoriel
                     </span>
                 </div>
                 <h3 className="text-h5 font-bold mb-1">
-                    {language === 'fr' ? 'Découvrir la plateforme SamySignaux' : 'Discover SamySignaux Platform'}
+                    Découvrir la plateforme SamySignaux
                 </h3>
                 <p className="text-shade-10/80 text-body-2 line-clamp-1">
-                    {language === 'fr' 
-                        ? 'Comment utiliser les signaux, connecter votre broker et maximiser vos gains.' 
-                        : 'How to use signals, connect your broker and maximize your profits.'}
+                    Comment utiliser les signaux, connecter votre broker et maximiser vos gains.
                 </p>
             </div>
         </motion.div>

@@ -31,33 +31,33 @@ const ElementWithOffset = ({
 const SettingsPage = () => {
     const navigation = [
         {
-            title: "Profile",
+            title: "Profil",
             icon: "profile",
-            description: "Manage your profile information",
+            description: "Gérer vos informations personnelles",
             to: "profile-information",
         },
         {
-            title: "Security",
+            title: "Sécurité",
             icon: "lock",
-            description: "Change password",
+            description: "Modifier votre mot de passe",
             to: "security",
         },
         {
             title: "Notifications",
             icon: "bell",
-            description: "Manage notification preferences",
+            description: "Gérer vos préférences de notifications",
             to: "notifications",
         },
         {
-            title: "Payment",
+            title: "Paiement",
             icon: "wallet",
-            description: "Manage payment methods",
+            description: "Gérer vos méthodes de paiement",
             to: "payment",
         },
     ];
 
     return (
-        <Layout title="Settings">
+        <Layout title="Paramètres">
             <div className="max-w-[1200px] mx-auto flex items-start max-lg:block">
                 <Menu
                     profileInformationTo="profile-information"

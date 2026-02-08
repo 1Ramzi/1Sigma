@@ -15,7 +15,7 @@ const Statistics = ({}) => (
                     <div className="flex items-center justify-center w-16 h-16 mb-8 rounded-full bg-b-surface1 max-md:mb-4">
                         <Icon
                             className={`fill-t-primary ${
-                                item.title === "Future payouts"
+                                item.title === "Paiements futurs"
                                     ? "-rotate-45"
                                     : ""
                             }`}

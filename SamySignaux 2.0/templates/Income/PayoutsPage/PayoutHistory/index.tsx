@@ -14,18 +14,18 @@ import { TabsOption } from "@/types/tabs";
 import { payoutHistory } from "@/mocks/payouts";
 
 const sortOptions: TabsOption[] = [
-    { id: 1, name: "All" },
-    { id: 2, name: "Pending" },
-    { id: 3, name: "Paid" },
+    { id: 1, name: "Tout" },
+    { id: 2, name: "En attente" },
+    { id: 3, name: "Payé" },
 ];
 
 const tableHead = [
     "Date",
-    "Status",
-    "Method",
-    "Transaction ID",
-    "Amount",
-    "Fees",
+    "Statut",
+    "Méthode",
+    "ID Transaction",
+    "Montant",
+    "Frais",
     "Net",
 ];
 
@@ -37,13 +37,13 @@ const PayoutHistory = () => {
         <div className="card">
             <div className="flex items-center max-md:h-12">
                 <div className="pl-5 text-h6 max-lg:pl-3 max-md:mr-auto">
-                    Payout history
+                    Historique des paiements
                 </div>
                 <Search
                     className="w-70 ml-6 mr-auto max-lg:w-64 max-lg:ml-4 max-md:hidden"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    placeholder="Search..."
+                    placeholder="Rechercher..."
                     isGray
                 />
                 {search === "" && (
@@ -64,7 +64,7 @@ const PayoutHistory = () => {
                 )}
             </div>
             {search !== "" ? (
-                <NoFound title="No payouts found" />
+                <NoFound title="Aucun paiement trouvé" />
             ) : (
                 <div className="p-1 pt-6 max-md:pt-3 max-lg:px-0">
                     <Table
@@ -86,7 +86,7 @@ const PayoutHistory = () => {
                                 <td>
                                     <div
                                         className={`label whitespace-nowrap ${
-                                            transaction.status === "in progress"
+                                            transaction.status === "en cours"
                                                 ? "label-yellow"
                                                 : "label-green"
                                         }`}

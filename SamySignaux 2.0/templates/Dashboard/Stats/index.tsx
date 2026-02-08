@@ -23,12 +23,12 @@ const StatsWidget = () => {
                         <Icon name="trending-up" className="fill-shade-10" />
                     </div>
                     <span className="text-shade-10/80 text-body-2 font-medium">
-                        {language === 'fr' ? 'Signaux Actifs' : 'Active Signals'}
+                        Signaux Actifs
                     </span>
                 </div>
                 <div className="flex items-baseline gap-2">
                     <span className="text-h3 font-bold">{activeSignals.length}</span>
-                    <span className="text-body-2 text-secondary-04 font-medium">+2 today</span>
+                    <span className="text-body-2 text-secondary-04 font-medium">+2 aujourd'hui</span>
                 </div>
             </motion.div>
 
@@ -43,7 +43,7 @@ const StatsWidget = () => {
                         <Icon name="activity" className="fill-primary-02" />
                     </div>
                     <span className="text-t-secondary text-body-2 font-medium">
-                        {language === 'fr' ? 'Taux de réussite' : 'Win Rate'}
+                        Taux de réussite
                     </span>
                 </div>
                 <div className="flex items-baseline gap-2">
@@ -65,12 +65,12 @@ const StatsWidget = () => {
                         <Icon name="bar-chart-3" className="fill-primary-05" />
                     </div>
                     <span className="text-t-secondary text-body-2 font-medium">
-                        {language === 'fr' ? 'Profit Mensuel' : 'Monthly Profit'}
+                        Profit Mensuel
                     </span>
                 </div>
                 <div className="flex items-baseline gap-2">
                     <span className="text-h3 font-bold text-t-primary">+12.4%</span>
-                    <span className="text-body-2 text-primary-02 font-medium">Target 15%</span>
+                    <span className="text-body-2 text-primary-02 font-medium">Objectif 15%</span>
                 </div>
             </motion.div>
         </div>

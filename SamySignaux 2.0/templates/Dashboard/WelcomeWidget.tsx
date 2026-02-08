@@ -13,12 +13,10 @@ const WelcomeWidget = () => {
             className="mb-6"
         >
             <h1 className="text-h3 font-bold text-t-primary">
-                {language === 'fr' ? `Bonjour, ${user?.username || 'Trader'} 👋` : `Hello, ${user?.username || 'Trader'} 👋`}
+                Bonjour, {user?.username || 'Trader'} 👋
             </h1>
             <p className="text-body-1 text-t-secondary mt-2">
-                {language === 'fr' 
-                    ? 'Prêt pour une nouvelle session de trading ?' 
-                    : 'Ready for a new trading session?'}
+                Prêt pour une nouvelle session de trading ?
             </p>
         </motion.div>
     );

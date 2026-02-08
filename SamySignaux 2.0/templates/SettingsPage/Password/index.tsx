@@ -16,7 +16,7 @@ const Password = ({}) => {
     const handleUpdate = async () => {
         if (!password || !newPassword || !confirmNewPassword) return;
         if (newPassword !== confirmNewPassword) {
-            alert(language === 'fr' ? "Les mots de passe ne correspondent pas" : "Passwords do not match");
+            alert("Les mots de passe ne correspondent pas");
             return;
         }
         
@@ -25,7 +25,7 @@ const Password = ({}) => {
         setLoading(false);
         
         if (success) {
-            alert(language === 'fr' ? "Mot de passe mis à jour" : "Password updated");
+            alert("Mot de passe mis à jour");
             setPassword("");
             setNewPassword("");
             setConfirmNewPassword("");
@@ -33,11 +33,11 @@ const Password = ({}) => {
     };
 
     return (
-        <Card title={language === 'fr' ? "Sécurité" : "Security"}>
+        <Card title="Sécurité">
             <div className="flex flex-col gap-8 p-5 pt-0 max-lg:px-3 max-md:gap-4">
                 <Field
-                    innerLabel={language === 'fr' ? "Mot de passe actuel" : "Current password"}
-                    placeholder={language === 'fr' ? "Entrez votre mot de passe" : "Enter password"}
+                    innerLabel="Mot de passe actuel"
+                    placeholder="Entrez votre mot de passe"
                     type="password"
                     value={password}
                     onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setPassword(e.target.value)}
@@ -47,8 +47,8 @@ const Password = ({}) => {
                 <div className="flex gap-4 max-md:flex-col">
                     <Field
                         className="flex-1"
-                        innerLabel={language === 'fr' ? "Nouveau mot de passe" : "New password"}
-                        placeholder={language === 'fr' ? "Entrez le nouveau mot de passe" : "Enter new password"}
+                        innerLabel="Nouveau mot de passe"
+                        placeholder="Entrez le nouveau mot de passe"
                         type="password"
                         value={newPassword}
                         onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setNewPassword(e.target.value)}
@@ -56,8 +56,8 @@ const Password = ({}) => {
                     />
                     <Field
                         className="flex-1"
-                        innerLabel={language === 'fr' ? "Confirmer le mot de passe" : "Confirm new password"}
-                        placeholder={language === 'fr' ? "Confirmez le nouveau mot de passe" : "Confirm new password"}
+                        innerLabel="Confirmer le mot de passe"
+                        placeholder="Confirmez le nouveau mot de passe"
                         type="password"
                         value={confirmNewPassword}
                         onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setConfirmNewPassword(e.target.value)}
@@ -71,8 +71,8 @@ const Password = ({}) => {
                     disabled={loading}
                 >
                     {loading 
-                        ? (language === 'fr' ? "Mise à jour..." : "Updating...") 
-                        : (language === 'fr' ? "Mettre à jour le mot de passe" : "Update password")
+                        ? "Mise à jour..." 
+                        : "Mettre à jour le mot de passe"
                     }
                 </Button>
             </div>

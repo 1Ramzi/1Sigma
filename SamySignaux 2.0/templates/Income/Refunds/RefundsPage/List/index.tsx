@@ -7,7 +7,7 @@ import Icon from "@/components/Icon";
 import Image from "@/components/Image";
 import { Refund } from "@/types/refund";
 
-const tableHead = ["Product", "Status", "Price", "Time", "Customer"];
+const tableHead = ["Produit", "Statut", "Prix", "Date", "Client"];
 
 type ListProps = {
     items: Refund[];
@@ -50,23 +50,23 @@ const List = ({
                     >
                         <Link className="action" href="/income/refunds/details">
                             <Icon name="edit" />
-                            Detail
+                            Détail
                         </Link>
                         <button className="action">
                             <Icon name="trash" />
-                            Refund
+                            Rembourser
                         </button>
                         <button className="action">
                             <Icon name="chain" />
-                            Decline
+                            Refuser
                         </button>
                     </TableProductCell>
                     <td className="max-md:hidden">
                         <div
                             className={`label ${
-                                item.status === "in progress"
+                                item.status === "en cours"
                                     ? "label-yellow"
-                                    : item.status === "closed"
+                                    : item.status === "fermé"
                                     ? "label-gray"
                                     : "label-green"
                             }`}
