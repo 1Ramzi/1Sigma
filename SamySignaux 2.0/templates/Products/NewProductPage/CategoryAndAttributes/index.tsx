@@ -10,7 +10,7 @@ import "react-tagsinput/react-tagsinput.css";
 
 const categories: SelectOption[] = [
     { id: 1, name: "Illustrations" },
-    { id: 2, name: "Icons" },
+    { id: 2, name: "Icônes" },
     { id: 3, name: "Logos" },
 ];
 
@@ -19,12 +19,12 @@ const CategoryAndAttributes = () => {
     const [tags, setTags] = useState<string[]>([]);
 
     return (
-        <Card title="Category & attributes">
+        <Card title="Catégorie & attributs">
             <div className="flex flex-col gap-8 px-5 pb-5 max-lg:px-3 max-lg:pb-3">
                 <Select
-                    label="Category"
-                    tooltip="Maximum 100 characters. No HTML or emoji allowed"
-                    placeholder="Select category"
+                    label="Catégorie"
+                    tooltip="Maximum 100 caractères. Pas de HTML ou d'emoji autorisé"
+                    placeholder="Sélectionner une catégorie"
                     value={category}
                     onChange={setCategory}
                     options={categories}
@@ -35,7 +35,7 @@ const CategoryAndAttributes = () => {
                         <div className="text-button">Tags</div>
                         <Tooltip
                             className="ml-1.5"
-                            content="Maximum 100 characters. No HTML or emoji allowed"
+                            content="Maximum 100 caractères. Pas de HTML ou d'emoji autorisé"
                         />
                     </div>
                     <div className="">
@@ -44,7 +44,7 @@ const CategoryAndAttributes = () => {
                             inputProps={{
                                 className:
                                     "mt-1.5 h-8 pl-4.5 text-body-2 outline-none placeholder:text-t-secondary/50",
-                                placeholder: "i.e. Dashboard, Light",
+                                placeholder: "ex. Dashboard, Light",
                             }}
                             tagProps={{
                                 className:

@@ -8,19 +8,19 @@ const ProductDetails = () => {
     const [content, setContent] = useState("");
 
     return (
-        <Card title="Product details">
+        <Card title="Détails du produit">
             <div className="flex flex-col gap-8 px-5 pb-5 max-lg:px-3 max-lg:pb-3">
                 <Field
-                    label="Product title"
-                    placeholder="ie. Bento Cards: User Interface"
-                    tooltip="Maximum 100 characters. No HTML or emoji allowed"
+                    label="Titre du produit"
+                    placeholder="ex. Bento Cards : Interface Utilisateur"
+                    tooltip="Maximum 100 caractères. Pas de HTML ou d'emoji autorisé"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     required
                 />
                 <Editor
                     label="Description"
-                    tooltip="Maximum 100 characters. No HTML or emoji allowed"
+                    tooltip="Maximum 100 caractères. Pas de HTML ou d'emoji autorisé"
                     content={content}
                     onChange={setContent}
                 />

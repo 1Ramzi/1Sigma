@@ -14,7 +14,7 @@ const CoverImage = () => {
     return (
         <Card
             classHead="!px-3"
-            title="Cover image"
+            title="Image de couverture"
             headContent={
                 <button className="group text-0">
                     <Icon
@@ -29,7 +29,7 @@ const CoverImage = () => {
                 <div className="flex items-start mt-5">
                     <div className="grow">
                         <div className="mb-2 text-sub-title-1">
-                            Bento Pro v 2.0 – Illustration Kit
+                            Bento Pro v 2.0 – Kit d'illustration
                         </div>
                         <div className="flex items-center">
                             <div className="mr-2">
@@ -42,7 +42,7 @@ const CoverImage = () => {
                                 />
                             </div>
                             <div className="text-body-2 text-t-secondary">
-                                by&nbsp;
+                                par&nbsp;
                                 <span className="text-button text-t-primary">
                                     Hortense
                                 </span>

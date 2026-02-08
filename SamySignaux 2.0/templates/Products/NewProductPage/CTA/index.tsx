@@ -4,16 +4,16 @@ import Select from "@/components/Select";
 import { SelectOption } from "@/types/select";
 
 const ctaButtons: SelectOption[] = [
-    { id: 1, name: "Purchase now" },
-    { id: 2, name: "Purchase to get 50% off" },
-    { id: 3, name: "Purchase to get 25% off" },
+    { id: 1, name: "Acheter maintenant" },
+    { id: 2, name: "Acheter pour obtenir 50% de réduction" },
+    { id: 3, name: "Acheter pour obtenir 25% de réduction" },
 ];
 
 const Cta = () => {
     const [ctaButton, setCtaButton] = useState<SelectOption>(ctaButtons[0]);
 
     return (
-        <Card classHead="!pl-3" title="CTA button">
+        <Card classHead="!pl-3" title="Bouton CTA">
             <div className="p-3">
                 <Select
                     value={ctaButton}

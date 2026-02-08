@@ -10,7 +10,7 @@ const UploadProductFiles = () => {
     };
 
     return (
-        <Card classHead="!pl-3" title="Upload product files">
+        <Card classHead="!pl-3" title="Télécharger les fichiers du produit">
             <div className="p-3 pt-0">
                 <FieldFiles onChange={handleFileChange} />
             </div>

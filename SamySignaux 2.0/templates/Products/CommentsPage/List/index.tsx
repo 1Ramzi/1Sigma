@@ -9,7 +9,7 @@ import Message from "@/components/Message";
 import Answer from "./Answer";
 import { Comment } from "@/types/comment";
 
-const tableHead = ["Comment", "Product"];
+const tableHead = ["Commentaire", "Produit"];
 
 type ListProps = {
     items: Comment[];
@@ -114,7 +114,7 @@ const List = ({
                             }}
                         >
                             <Icon name="edit" />
-                            Reply
+                            Répondre
                         </button>
                         {item.mark && (
                             <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-primary-02 max-lg:top-3 max-lg:right-3"></div>
@@ -147,13 +147,13 @@ const List = ({
                                     onClick={() => handleReplyClick(item.id)}
                                 >
                                     <Icon name="edit" />
-                                    Reply
+                                    Répondre
                                 </button>
                                 <LikeButton />
                                 <DeleteItems
                                     counter={1}
                                     onDelete={() => {}}
-                                    content="This will definitely delete this comment, and all data will be removed. This action cannot be undone."
+                                    content="Cela supprimera définitivement ce commentaire, et toutes les données seront supprimées. Cette action est irréversible."
                                 />
                             </div>
                         </div>

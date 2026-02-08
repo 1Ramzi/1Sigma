@@ -25,7 +25,7 @@ const Grid = ({ selectedRows, onRowSelect, items }: GridProps) => {
                         <>
                             <button className="action">
                                 <Icon name="edit" />
-                                Edit
+                                Modifier
                             </button>
                             <DeleteItems onDelete={() => {}} />
                             <ScheduleProduct

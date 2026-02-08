@@ -9,7 +9,7 @@ import UnpublishItems from "@/components/UnpublishItems";
 import Percentage from "@/components/Percentage";
 import { ProductReleased } from "@/types/product";
 
-const tableHead = ["Product", "Status", "Price", "Sales", "Rating", "Views"];
+const tableHead = ["Produit", "Statut", "Prix", "Ventes", "Note", "Vues"];
 
 type ListProps = {
     items: ProductReleased[];
@@ -52,7 +52,7 @@ const List = ({
                     >
                         <button className="action">
                             <Icon name="edit" />
-                            Edit
+                            Modifier
                         </button>
                         <DeleteItems onDelete={() => {}} />
                         <UnpublishItems onClick={() => {}} image={item.image} />
@@ -63,7 +63,7 @@ const List = ({
                                 item.active ? "label-green" : "label-red"
                             }`}
                         >
-                            {item.active ? "Active" : "Offline"}
+                            {item.active ? "Actif" : "Hors ligne"}
                         </div>
                     </td>
                     <td className="max-md:hidden">

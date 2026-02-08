@@ -18,15 +18,15 @@ const Price = () => {
     const [promoToggle, setPromoToggle] = useState(true);
 
     return (
-        <Card classHead="!pl-3" title="Price">
+        <Card classHead="!pl-3" title="Prix">
             <div className="p-3">
                 <div className="flex gap-3">
                     <div className="flex-1">
                         <Field
                             classInput="pl-12.5"
-                            label="Price (USD)"
+                            label="Prix (USD)"
                             placeholder="98"
-                            tooltip="Maximum 100 characters. No HTML or emoji allowed"
+                            tooltip="Maximum 100 caractères. Pas de HTML ou d'emoji autorisé"
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}
                             required
@@ -47,8 +47,8 @@ const Price = () => {
                         />
                         <Select
                             label="Promo"
-                            tooltip="Maximum 100 characters. No HTML or emoji allowed"
-                            placeholder="Select category"
+                            tooltip="Maximum 100 caractères. Pas de HTML ou d'emoji autorisé"
+                            placeholder="Sélectionner une catégorie"
                             value={promo}
                             onChange={setPromo}
                             options={promos}

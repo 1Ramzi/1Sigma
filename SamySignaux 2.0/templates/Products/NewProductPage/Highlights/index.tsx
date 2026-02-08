@@ -10,30 +10,30 @@ const Highlights = () => {
     const [value5, setValue5] = useState("");
 
     return (
-        <Card classHead="!pl-3" title="Highlights">
+        <Card classHead="!pl-3" title="Points forts">
             <div className="flex flex-wrap gap-3 p-3">
                 <Item
-                    placeholder="ie. 400+ components"
+                    placeholder="ex. 400+ composants"
                     value={value1}
                     onChange={(e) => setValue1(e.target.value)}
                 />
                 <Item
-                    placeholder="ie. Free Google Fonts"
+                    placeholder="ex. Polices Google gratuites"
                     value={value2}
                     onChange={(e) => setValue2(e.target.value)}
                 />
                 <Item
-                    placeholder="ie. 300+ custom icons"
+                    placeholder="ex. 300+ icônes personnalisées"
                     value={value3}
                     onChange={(e) => setValue3(e.target.value)}
                 />
                 <Item
-                    placeholder="ie. 800 premade templates"
+                    placeholder="ex. 800 modèles préfabriqués"
                     value={value4}
                     onChange={(e) => setValue4(e.target.value)}
                 />
                 <Item
-                    placeholder="ie. 256+ illustrations"
+                    placeholder="ex. 256+ illustrations"
                     value={value5}
                     onChange={(e) => setValue5(e.target.value)}
                 />

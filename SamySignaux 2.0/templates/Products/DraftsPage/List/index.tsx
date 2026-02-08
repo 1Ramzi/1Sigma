@@ -6,7 +6,7 @@ import DeleteItems from "@/components/DeleteItems";
 import ScheduleProduct from "@/components/ScheduleProduct";
 import { ProductDraft } from "@/types/product";
 
-const tableHead = ["Product", "Category", "Price", "Last edited"];
+const tableHead = ["Produit", "Catégorie", "Prix", "Dernière modif."];
 
 type ListProps = {
     items: ProductDraft[];
@@ -55,7 +55,7 @@ const List = ({
                     >
                         <button className="action">
                             <Icon name="edit" />
-                            Edit
+                            Modifier
                         </button>
                         <DeleteItems onDelete={() => {}} />
                         <ScheduleProduct
