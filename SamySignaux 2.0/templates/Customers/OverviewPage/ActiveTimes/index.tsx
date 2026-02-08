@@ -3,7 +3,7 @@ import Card from "@/components/Card";
 
 import { timeSlots } from "@/mocks/activeTimes";
 
-const days = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
+const days = ["Lu", "Ma", "Me", "Je", "Ve", "Sa", "Di"];
 
 const ActiveTimes = () => {
     const getEngagementClass = (level: number) => {
@@ -20,7 +20,7 @@ const ActiveTimes = () => {
     };
 
     return (
-        <Card title="Active times">
+        <Card title="Horaires d'activité">
             <div className="p-5 max-lg:p-3">
                 <div className="flex">
                     <div className="flex flex-col shrink-0 w-20 gap-0.5 max-md:w-16">
@@ -60,7 +60,7 @@ const ActiveTimes = () => {
                 </div>
                 <div className="flex items-center justify-center gap-4 mt-5">
                     <div className="text-caption text-t-primary/80">
-                        Least engaged
+                        Moins engagé
                     </div>
                     <div className="flex gap-0.5">
                         <div className="w-12 h-2 rounded-[2px] bg-shade-04 opacity-5 max-md:w-6 dark:bg-shade-05 dark:opacity-20"></div>
@@ -68,7 +68,7 @@ const ActiveTimes = () => {
                         <div className="w-12 h-2 rounded-[2px] bg-shade-04 opacity-15 max-md:w-6 dark:bg-shade-05 dark:opacity-50"></div>
                     </div>
                     <div className="text-caption text-t-primary/80">
-                        Most engaged
+                        Plus engagé
                     </div>
                 </div>
             </div>

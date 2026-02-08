@@ -9,9 +9,9 @@ import { SelectOption } from "@/types/select";
 import { overview } from "@/mocks/customers";
 
 const durations: SelectOption[] = [
-    { id: 1, name: "Last 7 days" },
-    { id: 2, name: "Last 14 days" },
-    { id: 3, name: "Last 28 days" },
+    { id: 1, name: "7 derniers jours" },
+    { id: 2, name: "14 derniers jours" },
+    { id: 3, name: "28 derniers jours" },
 ];
 
 const Overview = ({}) => {
@@ -19,7 +19,7 @@ const Overview = ({}) => {
 
     return (
         <Card
-            title="Overview"
+            title="Aperçu"
             selectValue={duration}
             selectOnChange={setDuration}
             selectOptions={durations}

@@ -16,9 +16,9 @@ import { SelectOption } from "@/types/select";
 import { trafficСhannelChartData } from "@/mocks/charts";
 
 const durations: SelectOption[] = [
-    { id: 1, name: "Last 7 days" },
-    { id: 2, name: "Last month" },
-    { id: 3, name: "Last year" },
+    { id: 1, name: "7 derniers jours" },
+    { id: 2, name: "Dernier mois" },
+    { id: 3, name: "Dernière année" },
 ];
 
 const TrafficСhannel = ({}) => {
@@ -70,8 +70,8 @@ const TrafficСhannel = ({}) => {
                     <div className="mb-1 text-caption opacity-80">{label}</div>
                     <div className="flex flex-col gap-0.5">
                         <LabelTooltip label="Direct" value={payload[0].value} />
-                        <LabelTooltip label="Search" value={payload[1].value} />
-                        <LabelTooltip label="Other" value={payload[2].value} />
+                        <LabelTooltip label="Recherche" value={payload[1].value} />
+                        <LabelTooltip label="Autre" value={payload[2].value} />
                     </div>
                 </div>
             );
@@ -81,7 +81,7 @@ const TrafficСhannel = ({}) => {
 
     return (
         <Card
-            title="Traffic channel"
+            title="Canal de trafic"
             selectValue={duration}
             selectOnChange={setDuration}
             selectOptions={durations}
@@ -260,7 +260,7 @@ const TrafficСhannel = ({}) => {
                                 />
                             </svg>
                         </div>
-                        <div className="text-caption opacity-80">Search</div>
+                        <div className="text-caption opacity-80">Recherche</div>
                     </div>
                     <div className="flex items-center gap-1.5">
                         <div className="shrink-0 w-3.5 h-3.5 rounded overflow-hidden">
@@ -290,7 +290,7 @@ const TrafficСhannel = ({}) => {
                                 />
                             </svg>
                         </div>
-                        <div className="text-caption opacity-80">Other</div>
+                        <div className="text-caption opacity-80">Autre</div>
                     </div>
                 </div>
             </div>

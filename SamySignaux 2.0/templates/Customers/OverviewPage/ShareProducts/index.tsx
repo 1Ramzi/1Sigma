@@ -25,7 +25,7 @@ const socials = [
 
 const ShareProducts = ({}) => {
     return (
-        <Card title="Share products">
+        <Card title="Partager les produits">
             <div className="relative -mx-3 mb-6 before:absolute before:left-0 before:top-0 before:bottom-0 before:z-3 before:w-6 before:bg-linear-to-r before:from-b-surface2 before:to-transparent before:pointer-events-none after:absolute after:right-0 after:top-0 after:bottom-0 after:z-3 after:w-6 after:bg-linear-to-l after:from-b-surface2 after:to-transparent after:pointer-events-none">
                 <div className="flex before:shrink-0 before:w-5 after:shrink-0 after:w-5 overflow-x-auto scroll-smooth scrollbar-none">
                     {productsShare.map((product) => (
@@ -61,9 +61,7 @@ const ShareProducts = ({}) => {
                 </div>
             </div>
             <div className="mb-6 px-5 text-body-2 text-t-secondary max-lg:px-3 max-md:text-caption">
-                Fifty percent of new customers explore products because the
-                author shares their work on social media. <br></br>Start earning
-                now! 🔥
+                Cinquante pour cent des nouveaux clients explorent les produits car l'auteur partage son travail sur les réseaux sociaux. <br></br>Commencez à gagner maintenant ! 🔥
             </div>
             <div className="flex gap-3">
                 {socials.map((social, index) => (

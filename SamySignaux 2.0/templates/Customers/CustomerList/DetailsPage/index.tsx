@@ -28,7 +28,7 @@ const CustomerDetailsPage = () => {
     if (!mounted) return null;
 
     return (
-        <Layout title="Customer list">
+        <Layout title="Liste des clients">
             <div className="max-w-[1200px] mx-auto card p-0 overflow-hidden">
                 <div className="flex max-md:block max-md:p-3">
                     <div
@@ -50,7 +50,7 @@ const CustomerDetailsPage = () => {
                                 className="max-md:grow"
                                 value={search}
                                 onChange={(e) => setSearch(e.target.value)}
-                                placeholder="Search by name of email"
+                                placeholder="Rechercher par nom ou email"
                                 isGray
                             />
                         </div>
@@ -71,7 +71,7 @@ const CustomerDetailsPage = () => {
                             </div>
                         ) : (
                             <div className="pt-16 text-center text-h5 max-md:pb-22">
-                                No results found
+                                Aucun résultat trouvé
                             </div>
                         )}
                     </div>

@@ -10,12 +10,12 @@ import Button from "@/components/Button";
 import { Customer } from "@/types/customer";
 
 const tableHead = [
-    "Customer",
+    "Client",
     "Email",
-    "Lifetime",
-    "Purchased",
-    "Comments",
-    "Likes",
+    "Durée de vie",
+    "Acheté",
+    "Commentaires",
+    "J'aime",
 ];
 
 type ListProps = {
@@ -81,13 +81,13 @@ const List = ({
                                             @{item.login}
                                             <div className="hidden items-center gap-3 mt-1 text-t-primary max-md:flex">
                                                 <div className="w-20 text-caption text-t-tertiary/80">
-                                                    Purchased
+                                                    Acheté
                                                 </div>
                                                 {item.purchased}
                                             </div>
                                             <div className="hidden items-center gap-3 mt-0.5 text-t-primary max-md:flex">
                                                 <div className="w-20 text-caption text-t-tertiary/80">
-                                                    Lifetime
+                                                    Durée de vie
                                                 </div>
                                                 <NumericFormat
                                                     className="min-w-20"
@@ -119,11 +119,11 @@ const List = ({
                                                 href="/customers/customer-list/details"
                                             >
                                                 <Icon name="arrow-up-right" />
-                                                Detail
+                                                Détail
                                             </Link>
                                             <button className="action">
                                                 <Icon name="block" />
-                                                Ban
+                                                Bannir
                                             </button>
                                         </div>
                                     </div>

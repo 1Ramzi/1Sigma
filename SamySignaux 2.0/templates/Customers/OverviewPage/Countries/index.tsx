@@ -5,7 +5,7 @@ import { countries } from "@/mocks/countries";
 
 const Countries = ({}) => {
     return (
-        <Card classHead="!pl-3" title="Countries">
+        <Card classHead="!pl-3" title="Pays">
             <div className="flex flex-col gap-5 pt-1 px-3 pb-5">
                 {countries.map((country) => (
                     <CountryItem key={country.id} value={country} />

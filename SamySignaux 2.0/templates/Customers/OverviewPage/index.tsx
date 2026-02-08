@@ -24,10 +24,10 @@ const OverviewPage = () => {
                     </div>
                     <div className="col-right">
                         <RefundRequests />
-                        <CardChartPie title="Devices" data={devicesChartData} />
+                        <CardChartPie title="Appareils" data={devicesChartData} />
                         <Countries />
                         <Messages />
-                        <CardChartPie title="Gender" data={devicesGenderData} />
+                        <CardChartPie title="Genre" data={devicesGenderData} />
                     </div>
                 </div>
             </div>
