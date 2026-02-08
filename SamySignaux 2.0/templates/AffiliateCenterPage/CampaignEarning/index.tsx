@@ -10,12 +10,12 @@ import { SelectOption } from "@/types/select";
 import { campaignEarningItems } from "@/mocks/affiliate-center";
 
 const durations: SelectOption[] = [
-    { id: 1, name: "Last 7 days" },
-    { id: 2, name: "Last 14 days" },
-    { id: 3, name: "Last 28 days" },
+    { id: 1, name: "7 derniers jours" },
+    { id: 2, name: "14 derniers jours" },
+    { id: 3, name: "28 derniers jours" },
 ];
 
-const tableHead = ["Product", "Views", "Orders", "Total earning"];
+const tableHead = ["Produit", "Vues", "Commandes", "Gains totaux"];
 
 type IndicatorProps = {
     value: number;
@@ -43,7 +43,7 @@ const CampaignEarning = ({}) => {
 
     return (
         <Card
-            title="Campaign earning"
+            title="Gains de campagne"
             selectValue={duration}
             selectOnChange={setDuration}
             selectOptions={durations}

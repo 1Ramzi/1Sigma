@@ -54,35 +54,35 @@ const CreateLink = ({}) => {
     };
 
     return (
-        <Card classHead="!pl-3" title="Create a ref link">
+        <Card classHead="!pl-3" title="Créer un lien de parrainage">
             <div className="p-3 pb-6">
                 <div className="flex flex-col gap-4 mb-6">
                     <Select
-                        label="Get ref link"
-                        tooltip="Maximum 100 characters. No HTML or emoji allowed"
+                        label="Obtenir un lien"
+                        tooltip="Maximum 100 caractères. Pas de HTML ou d'emoji autorisé"
                         value={project}
                         onChange={setProject}
                         options={projects}
                     />
                     <Field
                         classInput="truncate"
-                        placeholder="Enter link"
+                        placeholder="Entrer le lien"
                         value={link}
                         onChange={(e) => setLink(e.target.value)}
                         required
                         validated
                     />
                     <Button className="w-full" isBlack>
-                        Link copied!
+                        Lien copié !
                     </Button>
                 </div>
                 <div className="flex flex-col gap-4">
                     <div className="">
                         <div className="flex items-center mb-4">
-                            <div className="text-button">Or post to</div>
+                            <div className="text-button">Ou poster sur</div>
                             <Tooltip
                                 className="ml-1.5"
-                                content="Maximum 100 characters. No HTML or emoji allowed"
+                                content="Maximum 100 caractères. Pas de HTML ou d'emoji autorisé"
                             />
                         </div>
                         <div className="flex flex-wrap -mt-3 -mx-1.5">
@@ -105,7 +105,7 @@ const CreateLink = ({}) => {
                         </div>
                     </div>
                     <Button className="w-full" isBlack>
-                        Create a post
+                        Créer un post
                     </Button>
                 </div>
             </div>

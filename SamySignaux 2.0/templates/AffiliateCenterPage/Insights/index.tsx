@@ -9,9 +9,9 @@ import { SelectOption } from "@/types/select";
 import { insights } from "@/mocks/affiliate-center";
 
 const durations: SelectOption[] = [
-    { id: 1, name: "Last 7 days" },
-    { id: 2, name: "Last 14 days" },
-    { id: 3, name: "Last 28 days" },
+    { id: 1, name: "7 derniers jours" },
+    { id: 2, name: "14 derniers jours" },
+    { id: 3, name: "28 derniers jours" },
 ];
 
 const Insights = ({}) => {
@@ -20,7 +20,7 @@ const Insights = ({}) => {
     return (
         <Card
             className="overflow-hidden"
-            title="Insights"
+            title="Aperçu"
             selectValue={duration}
             selectOnChange={setDuration}
             selectOptions={durations}
@@ -50,7 +50,7 @@ const Insights = ({}) => {
                                     <div className="flex items-center gap-2">
                                         <Percentage value={item.percentage} />
                                         <div className="text-body-2 text-t-tertiary">
-                                            vs last year
+                                            vs l'année dernière
                                         </div>
                                     </div>
                                 </div>

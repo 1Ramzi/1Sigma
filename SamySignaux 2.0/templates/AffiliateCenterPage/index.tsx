@@ -12,7 +12,7 @@ import { popularProducts } from "@/mocks/products";
 
 const AffiliateCenterPage = () => {
     return (
-        <Layout title="Affiliate center">
+        <Layout title="Centre d'affiliation">
             <div className="max-w-[1200px] mx-auto space-y-6">
                 <Insights />
                 <div className="flex max-lg:block">
@@ -23,7 +23,7 @@ const AffiliateCenterPage = () => {
                     <div className="col-right">
                         <CreateLink />
                         <PopularProducts
-                            title="Popular products"
+                            title="Produits populaires"
                             items={popularProducts}
                         />
                         <ProductView />

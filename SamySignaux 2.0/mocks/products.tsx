@@ -56,30 +56,30 @@ export const bestMatch = [
 export const overview = [
     {
         id: 1,
-        title: "Earning",
+        title: "Gains",
         icon: "wallet",
-        tooltip: "Maximum 100 characters. No HTML or emoji allowed",
+        tooltip: "Maximum 100 caractères. Pas de HTML ou d'emoji autorisé",
         counter: "128k",
         percentage: 36.8,
         dataChart: [
             {
-                name: "Apr",
+                name: "Avr",
                 amt: 2000,
             },
             {
-                name: "May",
+                name: "Mai",
                 amt: 3300,
             },
             {
-                name: "Jun",
+                name: "Juin",
                 amt: 6100,
             },
             {
-                name: "Jul",
+                name: "Juil",
                 amt: 4300,
             },
             {
-                name: "Aug",
+                name: "Août",
                 amt: 6400,
             },
             {
@@ -94,30 +94,30 @@ export const overview = [
     },
     {
         id: 2,
-        title: "Customer",
+        title: "Clients",
         icon: "profile",
-        tooltip: "Maximum 100 characters. No HTML or emoji allowed",
+        tooltip: "Maximum 100 caractères. Pas de HTML ou d'emoji autorisé",
         counter: "512",
         percentage: -24.2,
         dataChart: [
             {
-                name: "Apr",
+                name: "Avr",
                 amt: 2000,
             },
             {
-                name: "May",
+                name: "Mai",
                 amt: 4300,
             },
             {
-                name: "Jun",
+                name: "Juin",
                 amt: 6100,
             },
             {
-                name: "Jul",
+                name: "Juil",
                 amt: 4400,
             },
             {
-                name: "Aug",
+                name: "Août",
                 amt: 2200,
             },
             {
@@ -132,30 +132,30 @@ export const overview = [
     },
     {
         id: 3,
-        title: "Sales",
+        title: "Ventes",
         icon: "product-think",
-        tooltip: "Maximum 100 characters. No HTML or emoji allowed",
+        tooltip: "Maximum 100 caractères. Pas de HTML ou d'emoji autorisé",
         counter: "6812",
         percentage: 12.5,
         dataChart: [
             {
-                name: "Apr",
+                name: "Avr",
                 amt: 4300,
             },
             {
-                name: "May",
+                name: "Mai",
                 amt: 2300,
             },
             {
-                name: "Jun",
+                name: "Juin",
                 amt: 5100,
             },
             {
-                name: "Jul",
+                name: "Juil",
                 amt: 2500,
             },
             {
-                name: "Aug",
+                name: "Août",
                 amt: 4400,
             },
             {
@@ -170,30 +170,30 @@ export const overview = [
     },
     {
         id: 4,
-        title: "Payout",
+        title: "Paiements",
         icon: "arrow",
-        tooltip: "Maximum 100 characters. No HTML or emoji allowed",
+        tooltip: "Maximum 100 caractères. Pas de HTML ou d'emoji autorisé",
         counter: "256k",
         percentage: 41.5,
         dataChart: [
             {
-                name: "Apr",
+                name: "Avr",
                 amt: 2300,
             },
             {
-                name: "May",
+                name: "Mai",
                 amt: 4300,
             },
             {
-                name: "Jun",
+                name: "Juin",
                 amt: 3100,
             },
             {
-                name: "Jul",
+                name: "Juil",
                 amt: 3500,
             },
             {
-                name: "Aug",
+                name: "Août",
                 amt: 2400,
             },
             {
@@ -211,7 +211,7 @@ export const overview = [
 export const productActivity = [
     {
         id: 1,
-        week: "27 Jan - 03 Feb",
+        week: "27 Jan - 03 Fév",
         products: {
             counter: "24k",
             percentage: 36.8,
@@ -231,7 +231,7 @@ export const productActivity = [
     },
     {
         id: 2,
-        week: "03 Feb - 10 Feb",
+        week: "03 Fév - 10 Fév",
         products: {
             counter: "40k",
         },
@@ -254,7 +254,7 @@ export const products = [
         id: 1,
         title: "Bento Matte 3D Illustration",
         image: "/images/products/1.png",
-        details: "UI Design Kit",
+        details: "Kit UI Design",
         active: true,
         price: 98,
         sales: {
@@ -294,7 +294,7 @@ export const products = [
         id: 3,
         title: "Fleet - travel shopping kit",
         image: "/images/products/3.png",
-        details: "3D assets",
+        details: "Assets 3D",
         active: true,
         price: 59.5,
         sales: {
@@ -314,7 +314,7 @@ export const products = [
         id: 4,
         title: "Bento Matte 3D Illustration",
         image: "/images/products/4.png",
-        details: "UI Design Kit",
+        details: "Kit UI Design",
         active: false,
         price: 98,
         sales: {
@@ -334,7 +334,7 @@ export const products = [
         id: 5,
         title: "Cryper – NFT UI Design Kit",
         image: "/images/products/5.png",
-        details: "UI Design Kit",
+        details: "Kit UI Design",
         active: true,
         price: 98,
         sales: {
@@ -354,7 +354,7 @@ export const products = [
         id: 6,
         title: "Fleet - travel shopping kit",
         image: "/images/products/6.png",
-        details: "3D assets",
+        details: "Assets 3D",
         active: true,
         price: 59.5,
         sales: {
@@ -374,7 +374,7 @@ export const products = [
         id: 7,
         title: "Bento Matte 3D Illustration",
         image: "/images/products/7.png",
-        details: "UI Design Kit",
+        details: "Kit UI Design",
         active: false,
         price: 98,
         sales: {
@@ -414,7 +414,7 @@ export const products = [
         id: 9,
         title: "Fleet - travel shopping kit",
         image: "/images/products/9.png",
-        details: "UI Design Kit",
+        details: "Kit UI Design",
         active: true,
         price: 59.5,
         sales: {
@@ -434,7 +434,7 @@ export const products = [
         id: 10,
         title: "Bento Matte 3D Illustration",
         image: "/images/products/1.png",
-        details: "UI Design Kit",
+        details: "Kit UI Design",
         active: false,
         price: 98,
         sales: {
@@ -463,7 +463,7 @@ export const productsTrafficSources = [
         traffic: 85,
         trafficSource: [
             {
-                title: "Social media",
+                title: "Réseaux sociaux",
                 value: 340123,
             },
             {
@@ -471,7 +471,7 @@ export const productsTrafficSources = [
                 value: 232132,
             },
             {
-                title: "Others",
+                title: "Autres",
                 value: 640128,
             },
         ],
@@ -486,7 +486,7 @@ export const productsTrafficSources = [
         traffic: 75,
         trafficSource: [
             {
-                title: "Social media",
+                title: "Réseaux sociaux",
                 value: 240123,
             },
             {
@@ -494,7 +494,7 @@ export const productsTrafficSources = [
                 value: 332132,
             },
             {
-                title: "Others",
+                title: "Autres",
                 value: 640128,
             },
         ],
@@ -509,7 +509,7 @@ export const productsTrafficSources = [
         traffic: 95,
         trafficSource: [
             {
-                title: "Social media",
+                title: "Réseaux sociaux",
                 value: 340123,
             },
             {
@@ -517,7 +517,7 @@ export const productsTrafficSources = [
                 value: 432132,
             },
             {
-                title: "Others",
+                title: "Autres",
                 value: 240128,
             },
         ],
@@ -532,7 +532,7 @@ export const productsTrafficSources = [
         traffic: 65,
         trafficSource: [
             {
-                title: "Social media",
+                title: "Réseaux sociaux",
                 value: 440123,
             },
             {
@@ -540,7 +540,7 @@ export const productsTrafficSources = [
                 value: 532132,
             },
             {
-                title: "Others",
+                title: "Autres",
                 value: 640128,
             },
         ],
@@ -555,7 +555,7 @@ export const productsTrafficSources = [
         traffic: 85,
         trafficSource: [
             {
-                title: "Social media",
+                title: "Réseaux sociaux",
                 value: 340123,
             },
             {
@@ -563,7 +563,7 @@ export const productsTrafficSources = [
                 value: 232132,
             },
             {
-                title: "Others",
+                title: "Autres",
                 value: 640128,
             },
         ],
@@ -578,7 +578,7 @@ export const productsTrafficSources = [
         traffic: 60,
         trafficSource: [
             {
-                title: "Social media",
+                title: "Réseaux sociaux",
                 value: 140123,
             },
             {
@@ -586,7 +586,7 @@ export const productsTrafficSources = [
                 value: 232132,
             },
             {
-                title: "Others",
+                title: "Autres",
                 value: 640128,
             },
         ],
@@ -601,7 +601,7 @@ export const productsTrafficSources = [
         traffic: 95,
         trafficSource: [
             {
-                title: "Social media",
+                title: "Réseaux sociaux",
                 value: 340123,
             },
             {
@@ -609,7 +609,7 @@ export const productsTrafficSources = [
                 value: 232132,
             },
             {
-                title: "Others",
+                title: "Autres",
                 value: 340128,
             },
         ],
@@ -624,7 +624,7 @@ export const productsTrafficSources = [
         traffic: 65,
         trafficSource: [
             {
-                title: "Social media",
+                title: "Réseaux sociaux",
                 value: 240123,
             },
             {
@@ -632,7 +632,7 @@ export const productsTrafficSources = [
                 value: 332132,
             },
             {
-                title: "Others",
+                title: "Autres",
                 value: 640128,
             },
         ],
@@ -647,7 +647,7 @@ export const productsTrafficSources = [
         traffic: 85,
         trafficSource: [
             {
-                title: "Social media",
+                title: "Réseaux sociaux",
                 value: 340123,
             },
             {
@@ -655,7 +655,7 @@ export const productsTrafficSources = [
                 value: 232132,
             },
             {
-                title: "Others",
+                title: "Autres",
                 value: 640128,
             },
         ],
@@ -670,7 +670,7 @@ export const productsTrafficSources = [
         traffic: 70,
         trafficSource: [
             {
-                title: "Social media",
+                title: "Réseaux sociaux",
                 value: 240123,
             },
             {
@@ -678,7 +678,7 @@ export const productsTrafficSources = [
                 value: 332132,
             },
             {
-                title: "Others",
+                title: "Autres",
                 value: 640128,
             },
         ],
@@ -696,11 +696,11 @@ export const productsViewers = [
         traffic: 75,
         trafficSource: [
             {
-                title: "Followers",
+                title: "Abonnés",
                 value: 232132,
             },
             {
-                title: "Others",
+                title: "Autres",
                 value: 640128,
             },
         ],
@@ -715,11 +715,11 @@ export const productsViewers = [
         traffic: 65,
         trafficSource: [
             {
-                title: "Followers",
+                title: "Abonnés",
                 value: 332132,
             },
             {
-                title: "Others",
+                title: "Autres",
                 value: 640128,
             },
         ],
@@ -734,11 +734,11 @@ export const productsViewers = [
         traffic: 95,
         trafficSource: [
             {
-                title: "Followers",
+                title: "Abonnés",
                 value: 432132,
             },
             {
-                title: "Others",
+                title: "Autres",
                 value: 240128,
             },
         ],
@@ -753,11 +753,11 @@ export const productsViewers = [
         traffic: 75,
         trafficSource: [
             {
-                title: "Followers",
+                title: "Abonnés",
                 value: 532132,
             },
             {
-                title: "Others",
+                title: "Autres",
                 value: 640128,
             },
         ],
@@ -772,11 +772,11 @@ export const productsViewers = [
         traffic: 55,
         trafficSource: [
             {
-                title: "Followers",
+                title: "Abonnés",
                 value: 232132,
             },
             {
-                title: "Others",
+                title: "Autres",
                 value: 640128,
             },
         ],
@@ -791,11 +791,11 @@ export const productsViewers = [
         traffic: 90,
         trafficSource: [
             {
-                title: "Followers",
+                title: "Abonnés",
                 value: 232132,
             },
             {
-                title: "Others",
+                title: "Autres",
                 value: 640128,
             },
         ],
@@ -810,11 +810,11 @@ export const productsViewers = [
         traffic: 95,
         trafficSource: [
             {
-                title: "Followers",
+                title: "Abonnés",
                 value: 232132,
             },
             {
-                title: "Others",
+                title: "Autres",
                 value: 340128,
             },
         ],
@@ -829,11 +829,11 @@ export const productsViewers = [
         traffic: 75,
         trafficSource: [
             {
-                title: "Followers",
+                title: "Abonnés",
                 value: 332132,
             },
             {
-                title: "Others",
+                title: "Autres",
                 value: 640128,
             },
         ],
@@ -848,11 +848,11 @@ export const productsViewers = [
         traffic: 85,
         trafficSource: [
             {
-                title: "Followers",
+                title: "Abonnés",
                 value: 232132,
             },
             {
-                title: "Others",
+                title: "Autres",
                 value: 640128,
             },
         ],
@@ -867,11 +867,11 @@ export const productsViewers = [
         traffic: 70,
         trafficSource: [
             {
-                title: "Followers",
+                title: "Abonnés",
                 value: 332132,
             },
             {
-                title: "Others",
+                title: "Autres",
                 value: 640128,
             },
         ],
@@ -884,18 +884,18 @@ export const draftsProducts = [
         title: "Bento Matte 3D Illustration",
         image: "/images/products/lg-1.png",
         details: "samysignaux.com/product/product-link",
-        category: "Fonts",
+        category: "Polices",
         price: 98,
-        date: "Apr 29, 2025 at 3:55 PM",
+        date: "29 Avr, 2025 à 15:55",
     },
     {
         id: 2,
         title: "Bento Design System",
         image: "/images/products/lg-2.png",
         details: "samysignaux.com/product/product-link",
-        category: "Coded templates",
+        category: "Templates codés",
         price: 122,
-        date: "Apr 27, 2025 at 2:44 PM",
+        date: "27 Avr, 2025 à 14:44",
     },
     {
         id: 3,
@@ -904,61 +904,61 @@ export const draftsProducts = [
         details: "samysignaux.com/product/product-link",
         category: "Illustrations",
         price: 0,
-        date: "Apr 25, 2025 at 3:12 PM",
+        date: "25 Avr, 2025 à 15:12",
     },
     {
         id: 4,
         title: "Fleet – Travel UI Kit",
         image: "/images/products/lg-4.png",
         details: "samysignaux.com/product/product-link",
-        category: "3D Assets",
+        category: "Assets 3D",
         price: 55,
-        date: "Apr 22, 2025 at 5:01 PM",
+        date: "22 Avr, 2025 à 17:01",
     },
     {
         id: 5,
         title: "SamySignaux 1.0",
         image: "/images/products/lg-5.png",
         details: "samysignaux.com/product/product-link",
-        category: "UI Design Kit",
+        category: "Kit UI Design",
         price: 108,
-        date: "Apr 19, 2025 at 6:25 PM",
+        date: "19 Avr, 2025 à 18:25",
     },
     {
         id: 6,
         title: "Bento Matte 3D Illustration",
         image: "/images/products/lg-6.png",
         details: "samysignaux.com/product/product-link",
-        category: "Fonts",
+        category: "Polices",
         price: 0,
-        date: "Apr 14, 2025 at 3:55 PM",
+        date: "14 Avr, 2025 à 15:55",
     },
     {
         id: 7,
         title: "Bento Design System",
         image: "/images/products/lg-7.png",
         details: "samysignaux.com/product/product-link",
-        category: "Coded templates",
+        category: "Templates codés",
         price: 155,
-        date: "Apr 10, 2025 at 5:44 PM",
+        date: "10 Avr, 2025 à 17:44",
     },
     {
         id: 8,
         title: "Bento Matte 3D Illustration",
         image: "/images/products/lg-8.png",
         details: "samysignaux.com/product/product-link",
-        category: "Fonts",
+        category: "Polices",
         price: 98,
-        date: "Mar 9, 2025 at 3:55 PM",
+        date: "9 Mar, 2025 à 15:55",
     },
     {
         id: 9,
         title: "Bento Design System",
         image: "/images/products/lg-9.png",
         details: "samysignaux.com/product/product-link",
-        category: "Coded templates",
+        category: "Templates codés",
         price: 122,
-        date: "Mar 7, 2025 at 3:55 PM",
+        date: "7 Mar, 2025 à 15:55",
     },
     {
         id: 10,
@@ -967,7 +967,7 @@ export const draftsProducts = [
         details: "samysignaux.com/product/product-link",
         category: "Illustrations",
         price: 0,
-        date: "Mar 2, 2025 at 3:55 PM",
+        date: "2 Mar, 2025 à 15:55",
     },
 ];
 
@@ -976,7 +976,7 @@ export const releasedProducts = [
         id: 1,
         title: "Bento Pro v.2",
         image: "/images/products/lg-10.png",
-        details: "UI Design Kit",
+        details: "Kit UI Design",
         active: true,
         price: 98,
         sales: {
@@ -1016,7 +1016,7 @@ export const releasedProducts = [
         id: 3,
         title: "Bento Pro - Vol. 2",
         image: "/images/products/lg-8.png",
-        details: "3D assets",
+        details: "Assets 3D",
         active: true,
         price: 54,
         sales: {
@@ -1036,7 +1036,7 @@ export const releasedProducts = [
         id: 4,
         title: "SamySignaux v.1",
         image: "/images/products/lg-7.png",
-        details: "UI Design Kit",
+        details: "Kit UI Design",
         active: false,
         price: 156,
         sales: {
@@ -1056,7 +1056,7 @@ export const releasedProducts = [
         id: 5,
         title: "Paradox - Coded Template",
         image: "/images/products/lg-6.png",
-        details: "UI Design Kit",
+        details: "Kit UI Design",
         active: true,
         price: 98,
         sales: {
@@ -1076,7 +1076,7 @@ export const releasedProducts = [
         id: 6,
         title: "Bloom - 3D Illustrations",
         image: "/images/products/lg-5.png",
-        details: "UI Design Kit",
+        details: "Kit UI Design",
         active: true,
         price: 138,
         sales: {
@@ -1116,7 +1116,7 @@ export const releasedProducts = [
         id: 8,
         title: "SamySignaux v.1",
         image: "/images/products/lg-3.png",
-        details: "3D assets",
+        details: "Assets 3D",
         active: false,
         price: 156,
         sales: {
@@ -1136,7 +1136,7 @@ export const releasedProducts = [
         id: 9,
         title: "Bento Pro v.2",
         image: "/images/products/lg-2.png",
-        details: "UI Design Kit",
+        details: "Kit UI Design",
         active: true,
         price: 98,
         sales: {
@@ -1156,7 +1156,7 @@ export const releasedProducts = [
         id: 10,
         title: "Fleet – Travel UI Kit",
         image: "/images/products/lg-1.png",
-        details: "UI Design Kit",
+        details: "Kit UI Design",
         active: false,
         price: 138,
         sales: {
@@ -1179,7 +1179,7 @@ export const productsShare = [
         id: 1,
         title: "Bento Pro v.2",
         image: "/images/products/4.png",
-        category: "UI Design Kit",
+        category: "Kit UI Design",
         price: 98,
     },
     {
@@ -1193,7 +1193,7 @@ export const productsShare = [
         id: 3,
         title: "Fleet - travel shopping kit",
         image: "/images/products/5.png",
-        category: "3D Assets",
+        category: "Assets 3D",
         price: 54,
     },
 ];
@@ -1202,10 +1202,10 @@ export const productsPurchaseHistory = [
     {
         id: 1,
         title: "Bento Matte 3D Illustration",
-        category: "UI Design Kit",
+        category: "Kit UI Design",
         image: "/images/products/4.png",
         sales: 98,
-        time: "Apr 09, 2025",
+        time: "09 Avr, 2025",
     },
     {
         id: 2,
@@ -1213,14 +1213,14 @@ export const productsPurchaseHistory = [
         category: "Illustrations",
         image: "/images/products/2.png",
         sales: 134,
-        time: "Apr 10, 2025",
+        time: "10 Avr, 2025",
     },
     {
         id: 3,
         title: "Fleet - travel shopping kit",
-        category: "3D Assets",
+        category: "Assets 3D",
         image: "/images/products/5.png",
         sales: 54,
-        time: "Apr 11, 2025",
+        time: "11 Avr, 2025",
     },
 ];
