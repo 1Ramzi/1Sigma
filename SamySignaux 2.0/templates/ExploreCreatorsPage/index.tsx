@@ -13,8 +13,8 @@ import { SelectOption } from "@/types/select";
 import { creators } from "@/mocks/creators";
 
 const types: TabsOption[] = [
-    { id: 1, name: "All" },
-    { id: 2, name: "Product design" },
+    { id: 1, name: "Tous" },
+    { id: 2, name: "Design produit" },
     { id: 3, name: "UI design" },
     { id: 4, name: "Illustration" },
     { id: 5, name: "Branding" },
@@ -22,9 +22,9 @@ const types: TabsOption[] = [
 ];
 
 const sortOptions: SelectOption[] = [
-    { id: 1, name: "Popular" },
-    { id: 2, name: "Newest" },
-    { id: 3, name: "Oldest" },
+    { id: 1, name: "Populaire" },
+    { id: 2, name: "Plus récent" },
+    { id: 3, name: "Plus ancien" },
 ];
 
 const ShopPage = () => {
@@ -36,12 +36,12 @@ const ShopPage = () => {
             <div className="relative z-2 max-w-[1200px] mx-auto pt-25 pb-15 max-xl:pt-13 max-xl:pb-8 max-md:pt-5 max-md:pb-0">
                 <div className="max-w-226 mx-auto mb-30 text-center max-xl:mb-18 max-lg:mb-13 max-md:mb-8">
                     <div className="mb-4 text-h1 max-3xl:text-h2 max-lg:text-h3 max-md:mb-2 max-md:text-h4">
-                        8,356 Creators online
+                        8,356 Créateurs en ligne
                     </div>
                     <div className="text-h5 text-t-secondary max-xl:max-w-180 max-xl:mx-auto max-lg:max-w-130 max-lg:text-sub-title-1 max-md:font-normal">
-                        Explore thousands of premium UI kits, illustrations, and
-                        digital resources crafted by the top designers in the
-                        world.
+                        Explorez des milliers de kits UI premium, d'illustrations et de
+                        ressources numériques conçus par les meilleurs designers du
+                        monde.
                     </div>
                 </div>
                 <div className="flex gap-3 mb-10 max-lg:block max-lg:mb-6">

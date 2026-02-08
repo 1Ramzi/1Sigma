@@ -8,8 +8,8 @@ import { TabsOption } from "@/types/tabs";
 import { comments } from "@/mocks/comments";
 
 const sortOptions: TabsOption[] = [
-    { id: 1, name: "Newest" },
-    { id: 2, name: "Top comment" },
+    { id: 1, name: "Plus récent" },
+    { id: 2, name: "Meilleurs" },
 ];
 
 const Comments = ({}) => {
@@ -19,7 +19,7 @@ const Comments = ({}) => {
     return (
         <div className="card px-15 py-12 max-lg:p-8 max-md:px-4 max-md:py-6">
             <div className="flex items-center mb-10">
-                <div className="mr-auto text-h4 max-md:text-h5">Comments</div>
+                <div className="mr-auto text-h4 max-md:text-h5">Commentaires</div>
                 <Tabs
                     className="max-md:hidden"
                     items={sortOptions}

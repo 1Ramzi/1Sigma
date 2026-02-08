@@ -53,7 +53,7 @@ const Creator = ({ value }: CreatorProps) => {
                             @{value.login}
                         </div>
                         <div className="label label-green absolute top-0 right-0 transition-all group-hover:invisible group-hover:opacity-0 max-md:static">
-                            Top #1 creator
+                            Top #1 créateur
                         </div>
                     </div>
                     <div className="text-t-secondary max-lg:text-body-2 max-md:text-caption">
@@ -80,7 +80,7 @@ const Creator = ({ value }: CreatorProps) => {
                         ))}
                     </div>
                     <Button as="link" href="/shop" isBlack>
-                        View shop
+                        Voir la boutique
                     </Button>
                 </div>
             </div>
@@ -126,7 +126,7 @@ const Creator = ({ value }: CreatorProps) => {
                         ))}
                     </div>
                     <div className="text-caption text-t-secondary">
-                        Average response time in {value.time}
+                        Temps de réponse moyen : {value.time}
                     </div>
                 </div>
             </div>

@@ -38,10 +38,10 @@ const ShopPage = () => {
                                 className="max-lg:hidden max-md:flex max-md:flex-1"
                                 isStroke
                             >
-                                Preview
+                                Aperçu
                             </Button>
                             <Button className="max-md:flex-1" isBlack>
-                                Purchase<span className="ml-2">$98</span>
+                                Acheter<span className="ml-2">$98</span>
                             </Button>
                         </div>
                     </div>

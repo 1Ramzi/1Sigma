@@ -18,15 +18,15 @@ import { followers } from "@/mocks/followers";
 import { followings } from "@/mocks/followings";
 
 const types: TabsOption[] = [
-    { id: 1, name: "Products" },
-    { id: 2, name: "Followers" },
-    { id: 3, name: "Followings" },
+    { id: 1, name: "Produits" },
+    { id: 2, name: "Abonnés" },
+    { id: 3, name: "Abonnements" },
 ];
 
 const sortOptions: SelectOption[] = [
-    { id: 1, name: "Most recent" },
-    { id: 2, name: "Oldest" },
-    { id: 3, name: "Most popular" },
+    { id: 1, name: "Plus récent" },
+    { id: 2, name: "Plus ancien" },
+    { id: 3, name: "Plus populaire" },
 ];
 
 const ShopPage = () => {

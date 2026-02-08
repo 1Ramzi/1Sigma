@@ -41,7 +41,7 @@ const Messages = ({}) => {
             </div>
             <div className="pt-6 px-3 pb-3">
                 <Button className="w-full" href="/messages" as="link" isStroke>
-                    View all message
+                    Voir tous les messages
                 </Button>
             </div>
         </Card>

@@ -3,63 +3,60 @@ import Image from "@/components/Image";
 
 const highlights = [
     "36 Compositions",
-    "Lightning-fast creation",
-    "Beautiful light and dark mode",
-    "Fully customizable",
-    "Minimal & thoughtful designs",
+    "Création ultra-rapide",
+    "Magnifique mode clair et sombre",
+    "Entièrement personnalisable",
+    "Designs minimalistes et réfléchis",
 ];
 
 const Description = ({}) => (
     <div className="flex text-[1.125rem] font-medium leading-[1.75rem] max-lg:block">
         <div className="grow pr-16 max-xl:pr-10 max-lg:pr-0">
             <div className="mb-8 text-h4 max-md:mb-6 max-md:text-h5">
-                Overview
+                Aperçu
             </div>
             <div className="[&_p,&_ul]:mb-7 [&_ul]:list-disc [&_ul]:pl-5 [&_a]:underline [&_a]:hover:no-underline [&_p:last-child,&_ul:last-child]:mb-0">
                 <p>
-                    Introducing the next evolution of our premium{" "}
+                    Découvrez la prochaine évolution de notre premium{" "}
                     <a href="#">
-                        <strong>UI system</strong>
+                        <strong>système UI</strong>
                     </a>
-                    . Bento Pro Vol.2 builds upon our foundation of minimal
-                    design principles while{" "}
-                    <strong>introducing advanced compositions</strong> for
-                    modern digital experiences. This expanded collection
-                    maintains our signature clean aesthetic with seamless light
-                    and dark mode support, elevated by new, thoughtfully crafted
-                    components.
+                    . Bento Pro Vol.2 s'appuie sur nos principes de design minimaliste tout en{" "}
+                    <strong>introduisant des compositions avancées</strong> pour
+                    des expériences numériques modernes. Cette collection étendue
+                    conserve notre esthétique épurée avec un support fluide des modes clair
+                    et sombre, enrichie par de nouveaux composants soigneusement conçus.
                 </p>
                 <p>
-                    We&apos;ve refined every detail to perfection, from enhanced
-                    gradient treatments to more sophisticated interactions. New
-                    dashboard layouts, expanded messaging interfaces, and
-                    innovative data visualizations provide even more tools for
-                    creating exceptional user experiences 🚀
+                    Nous avons peaufiné chaque détail, des traitements de dégradés améliorés aux interactions plus sophistiquées. De nouvelles
+                    dispositions de tableau de bord, des interfaces de messagerie étendues et des
+                    visualisations de données innovantes offrent encore plus d'outils pour
+                    créer des expériences utilisateur exceptionnelles 🚀
                 </p>
                 <p className="!mb-0">
-                    <strong>🚀 Perfect for:</strong>
+                    <strong>🚀 Parfait pour :</strong>
                 </p>
                 <ul>
-                    <li>Analytics Platforms</li>
-                    <li>Crypto Dashboards</li>
-                    <li>Team Collaboration Tools</li>
-                    <li>Client Portals</li>
-                    <li>Marketing Websites</li>
-                    <li>Product Management Systems</li>
+                    <li>Plateformes d'analyse</li>
+                    <li>Tableaux de bord Crypto</li>
+                    <li>Outils de collaboration d'équipe</li>
+                    <li>Portails clients</li>
+                    <li>Sites Web marketing</li>
+                    <li>Systèmes de gestion de produits</li>
                 </ul>
                 <p>
-                    Transform your design workflow with our most comprehensive
-                    release yet. Whether you&apos;re crafting fintech solutions,
-                    social platforms, or enterprise applications, Bento Pro
-                    Vol.2 delivers unmatched versatility with professional
-                    polish. 😎
+                    Transformez votre flux de travail de conception avec notre version la plus complète
+                    à ce jour. Que vous créiez des solutions fintech, des
+                    plateformes sociales ou des applications d'entreprise, Bento Pro
+                    Vol.2 offre une polyvalence inégalée avec une finition
+                    professionnelle. 😎
                 </p>
             </div>
         </div>
         <div className="shrink-0 w-91 max-lg:flex max-lg:gap-15 max-lg:w-full max-lg:mt-16 max-md:flex-col max-md:gap-8 max-md:mt-8">
             <div className="max-lg:flex-1">
                 <div className="mb-8 text-h4 max-lg:mb-3 max-lg:text-h5">
-                    Highlights
+                    Points forts
                 </div>
                 <ul>
                     {highlights.map((highlight) => (
@@ -101,11 +98,11 @@ const Description = ({}) => (
                                 name="star-fill"
                             />
                         </div>
-                        <div>Ratings</div>
+                        <div>Notes</div>
                     </div>
                     <div className="flex-1 pt-8 pl-8 max-md:pt-6">
                         <div className="text-h4">8+</div>
-                        <div>Years selling</div>
+                        <div>Années de vente</div>
                     </div>
                 </div>
             </div>
