@@ -28,7 +28,7 @@ const Menu = ({ profileInformationTo, items }: MenuProps) => {
                 className="mb-3"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder={language === 'fr' ? "Rechercher..." : "Search settings"}
+                placeholder="Rechercher..."
                 isGray
             />
             <div className="flex flex-col gap-1">

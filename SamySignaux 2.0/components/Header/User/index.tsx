@@ -79,7 +79,7 @@ const User = ({}) => {
                                 className="mr-4 fill-t-secondary transition-colors group-[[data-focus]]/item:fill-t-primary"
                                 name="logout"
                             />
-                            Log out
+                            Déconnexion
                         </button>
                     </MenuItem>
                 </MenuItems>
