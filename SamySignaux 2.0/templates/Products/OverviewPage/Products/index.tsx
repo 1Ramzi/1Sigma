@@ -19,9 +19,9 @@ import {
 } from "@/mocks/products";
 
 const categories: TabsOption[] = [
-    { id: 1, name: "Market" },
-    { id: 2, name: "Traffic sources" },
-    { id: 3, name: "Viewers" },
+    { id: 1, name: "Marché" },
+    { id: 2, name: "Sources de trafic" },
+    { id: 3, name: "Spectateurs" },
 ];
 
 const Products = ({}) => {
@@ -41,7 +41,7 @@ const Products = ({}) => {
             {selectedRows.length === 0 ? (
                 <div className="flex items-center max-lg:flex-wrap">
                     <div className="flex items-center min-h-12 pl-5 text-h6 max-lg:mr-6 max-lg:pl-3 max-md:mr-auto">
-                        Products
+                        Produits
                     </div>
                     <Button
                         className="!hidden mr-auto max-lg:!flex max-md:mr-4 max-md:size-6 max-md:border-none"
@@ -56,7 +56,7 @@ const Products = ({}) => {
                         }`}
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
-                        placeholder="Search products"
+                        placeholder="Rechercher des produits"
                         isGray
                     />
                     <Dropdown
@@ -77,15 +77,15 @@ const Products = ({}) => {
             ) : (
                 <div className="flex items-center max-md:hidden">
                     <div className="mr-6 pl-5 text-h6">
-                        {selectedRows.length} product
-                        {selectedRows.length !== 1 ? "s" : ""} selected
+                        {selectedRows.length} produit
+                        {selectedRows.length !== 1 ? "s" : ""} sélectionné{selectedRows.length !== 1 ? "s" : ""}
                     </div>
                     <Button
                         className="mr-auto"
                         isStroke
                         onClick={handleDeselect}
                     >
-                        Deselect
+                        Désélectionner
                     </Button>
                     <DeleteItems
                         counter={selectedRows.length}
@@ -96,7 +96,7 @@ const Products = ({}) => {
                 </div>
             )}
             {search !== "" ? (
-                <NoFound title="No products found" />
+                <NoFound title="Aucun produit trouvé" />
             ) : (
                 <div className="pt-3 px-1 pb-5 max-lg:px-0 max-lg:pb-0">
                     {category.id === 1 && (

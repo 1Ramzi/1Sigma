@@ -16,8 +16,8 @@ import { useSelection } from "@/hooks/useSelection";
 import { draftsProducts } from "@/mocks/products";
 
 const timeCreateOptions: SelectOption[] = [
-    { id: 1, name: "Newest first" },
-    { id: 2, name: "Oldest first" },
+    { id: 1, name: "Plus récent d'abord" },
+    { id: 2, name: "Plus ancien d'abord" },
     { id: 3, name: "A-Z" },
     { id: 4, name: "Z-A" },
 ];
@@ -34,19 +34,18 @@ const ScheduledPage = () => {
     } = useSelection<ProductDraft>(draftsProducts);
 
     return (
-        <Layout title="Scheduled">
+        <Layout title="Programmés">
             <div className="max-w-[1200px] mx-auto card">
                 {selectedRows.length === 0 ? (
                     <div className="flex items-center max-md:h-12">
                         <div className="pl-5 text-h6 max-md:mr-auto max-lg:pl-3">
-                            {draftsProducts.length} scheduled product
-                            {draftsProducts.length !== 1 ? "s" : ""}
+                            {draftsProducts.length} produit{draftsProducts.length !== 1 ? "s" : ""} programmé{draftsProducts.length !== 1 ? "s" : ""}
                         </div>
                         <Search
                             className="w-70 ml-6 mr-auto max-lg:w-60 max-lg:ml-3 max-md:hidden"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            placeholder="Search products"
+                            placeholder="Rechercher des produits"
                             isGray
                         />
                         {search === "" && (
@@ -69,15 +68,14 @@ const ScheduledPage = () => {
                 ) : (
                     <div className="flex items-center">
                         <div className="mr-6 pl-5 text-h6">
-                            {selectedRows.length} product
-                            {selectedRows.length !== 1 ? "s" : ""} selected
+                            {selectedRows.length} produit{selectedRows.length !== 1 ? "s" : ""} sélectionné{selectedRows.length !== 1 ? "s" : ""}
                         </div>
                         <Button
                             className="mr-auto"
                             isStroke
                             onClick={handleDeselect}
                         >
-                            Deselect
+                            Désélectionner
                         </Button>
                         <DeleteItems
                             counter={selectedRows.length}
@@ -85,12 +83,12 @@ const ScheduledPage = () => {
                             isLargeButton
                         />
                         <Button className="ml-2" isBlack>
-                            Reschedule
+                            Reprogrammer
                         </Button>
                     </div>
                 )}
                 {search !== "" ? (
-                    <NoFound title="No products found" />
+                    <NoFound title="Aucun produit trouvé" />
                 ) : (
                     <div className="p-1 pt-3 max-lg:px-0">
                         <List

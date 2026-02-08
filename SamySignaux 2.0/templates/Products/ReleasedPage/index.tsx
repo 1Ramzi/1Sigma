@@ -17,8 +17,8 @@ import { useSelection } from "@/hooks/useSelection";
 import { releasedProducts } from "@/mocks/products";
 
 const views: TabsOption[] = [
-    { id: 1, name: "grid" },
-    { id: 2, name: "list" },
+    { id: 1, name: "grille" },
+    { id: 2, name: "liste" },
 ];
 
 const ReleasedPage = () => {
@@ -33,18 +33,18 @@ const ReleasedPage = () => {
     } = useSelection<ProductReleased>(releasedProducts);
 
     return (
-        <Layout title="Released">
+        <Layout title="Publiés">
             <div className="max-w-[1200px] mx-auto card">
                 {selectedRows.length === 0 ? (
                     <div className="flex items-center">
                         <div className="pl-5 text-h6 max-lg:pl-3 max-md:mr-auto">
-                            Products
+                            Produits
                         </div>
                         <Search
                             className="w-70 ml-6 mr-auto max-md:hidden"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            placeholder="Search products"
+                            placeholder="Rechercher des produits"
                             isGray
                         />
                         {search === "" && (
@@ -59,15 +59,14 @@ const ReleasedPage = () => {
                 ) : (
                     <div className="flex items-center">
                         <div className="mr-6 pl-5 text-h6">
-                            {selectedRows.length} product
-                            {selectedRows.length !== 1 ? "s" : ""} selected
+                            {selectedRows.length} produit{selectedRows.length !== 1 ? "s" : ""} sélectionné{selectedRows.length !== 1 ? "s" : ""}
                         </div>
                         <Button
                             className="mr-auto"
                             isStroke
                             onClick={handleDeselect}
                         >
-                            Deselect
+                            Désélectionner
                         </Button>
                         <DeleteItems
                             counter={selectedRows.length}
@@ -82,7 +81,7 @@ const ReleasedPage = () => {
                     </div>
                 )}
                 {search !== "" ? (
-                    <NoFound title="No products found" />
+                    <NoFound title="Aucun produit trouvé" />
                 ) : (
                     <div className="p-1 pt-3 max-lg:px-0">
                         {view.id === 1 ? (

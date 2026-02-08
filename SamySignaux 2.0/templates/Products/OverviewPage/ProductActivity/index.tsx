@@ -8,15 +8,15 @@ import { TabsOption } from "@/types/tabs";
 import { productActivity } from "@/mocks/products";
 
 const durations: SelectOption[] = [
-    { id: 1, name: "Last 2 weeks" },
-    { id: 2, name: "Last month" },
-    { id: 3, name: "Last year" },
+    { id: 1, name: "2 dernières semaines" },
+    { id: 2, name: "Dernier mois" },
+    { id: 3, name: "Dernière année" },
 ];
 
 const categories: TabsOption[] = [
-    { id: 1, name: "Product" },
-    { id: 2, name: "Views" },
-    { id: 3, name: "Likes" },
+    { id: 1, name: "Produit" },
+    { id: 2, name: "Vues" },
+    { id: 3, name: "J'aime" },
 ];
 
 const ProductActivity = ({}) => {
@@ -26,7 +26,7 @@ const ProductActivity = ({}) => {
     return (
         <Card
             className="col-left mb-0 max-lg:mb-3"
-            title="Product activity"
+            title="Activité du produit"
             selectValue={duration}
             selectOnChange={setDuration}
             selectOptions={durations}
@@ -40,29 +40,29 @@ const ProductActivity = ({}) => {
             />
             <div className="p-5 pb-0 max-md:pt-4 max-lg:px-3">
                 <div className="flex items-center gap-6 h-14 text-caption text-t-tertiary/80">
-                    <div className="flex-1">Week</div>
+                    <div className="flex-1">Semaine</div>
                     <div
                         className={`flex-1 ${
                             category.id === 1 ? "max-md:block" : "max-md:hidden"
                         }`}
                     >
-                        Products
+                        Produits
                     </div>
                     <div
                         className={`flex-1 ${
                             category.id === 2 ? "max-md:block" : "max-md:hidden"
                         }`}
                     >
-                        Views
+                        Vues
                     </div>
                     <div
                         className={`flex-1 ${
                             category.id === 3 ? "max-md:block" : "max-md:hidden"
                         }`}
                     >
-                        Likes
+                        J'aime
                     </div>
-                    <div className="flex-1 max-2xl:hidden">Comments</div>
+                    <div className="flex-1 max-2xl:hidden">Commentaires</div>
                 </div>
                 {productActivity.map((item) => (
                     <div

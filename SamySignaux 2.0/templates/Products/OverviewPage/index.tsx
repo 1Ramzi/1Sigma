@@ -8,7 +8,7 @@ import Products from "./Products";
 
 const OverviewPage = () => {
     return (
-        <Layout title="Product overview">
+        <Layout title="Aperçu des produits">
             <div className="max-w-[1200px] mx-auto space-y-6">
                 <Overview />
                 <div className="flex mb-3 max-lg:flex-col">

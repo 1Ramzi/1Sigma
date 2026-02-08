@@ -17,11 +17,11 @@ const timeOptionsShort: TabsOption[] = [
 ];
 
 const timeOptionsLong: SelectOption[] = [
-    { id: 1, name: "1 day" },
-    { id: 2, name: "7 days" },
-    { id: 3, name: "1 month" },
-    { id: 4, name: "6 months" },
-    { id: 5, name: "1 year" },
+    { id: 1, name: "1 jour" },
+    { id: 2, name: "7 jours" },
+    { id: 3, name: "1 mois" },
+    { id: 4, name: "6 mois" },
+    { id: 5, name: "1 an" },
 ];
 
 const Overview = ({}) => {
@@ -31,7 +31,7 @@ const Overview = ({}) => {
     return (
         <Card
             className="max-lg:overflow-hidden"
-            title="Overview"
+            title="Aperçu"
             headContent={
                 <>
                     <Tabs

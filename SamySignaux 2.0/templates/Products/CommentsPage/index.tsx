@@ -16,8 +16,8 @@ import { useSelection } from "@/hooks/useSelection";
 import { comments } from "@/mocks/comments";
 
 const timeCreateOptions: SelectOption[] = [
-    { id: 1, name: "Newest first" },
-    { id: 2, name: "Oldest first" },
+    { id: 1, name: "Plus récent d'abord" },
+    { id: 2, name: "Plus ancien d'abord" },
     { id: 3, name: "A-Z" },
     { id: 4, name: "Z-A" },
 ];
@@ -34,19 +34,18 @@ const CommentsPage = () => {
     } = useSelection<Comment>(comments);
 
     return (
-        <Layout title="Comments">
+        <Layout title="Commentaires">
             <div className="max-w-[1200px] mx-auto card">
                 {selectedRows.length === 0 ? (
                     <div className="flex items-center min-h-12">
                         <div className="pl-5 text-h6 max-lg:pl-3 max-md:mr-auto">
-                            {comments.length} new comment
-                            {comments.length !== 1 ? "s" : ""}
+                            {comments.length} nouveau{comments.length !== 1 ? "x" : ""} commentaire{comments.length !== 1 ? "s" : ""}
                         </div>
                         <Search
                             className="w-70 ml-6 mr-auto max-lg:w-60 max-md:hidden"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            placeholder="Search comments"
+                            placeholder="Rechercher des commentaires"
                             isGray
                         />
                         {search === "" && (
@@ -69,33 +68,32 @@ const CommentsPage = () => {
                 ) : (
                     <div className="flex items-center">
                         <div className="mr-6 pl-5 text-h6">
-                            {selectedRows.length} comment
-                            {selectedRows.length !== 1 ? "s" : ""} selected
+                            {selectedRows.length} commentaire{selectedRows.length !== 1 ? "s" : ""} sélectionné{selectedRows.length !== 1 ? "s" : ""}
                         </div>
                         <Button
                             className="mr-auto"
                             isStroke
                             onClick={handleDeselect}
                         >
-                            Deselect
+                            Désélectionner
                         </Button>
                         <DeleteItems
                             counter={selectedRows.length}
-                            content={`This will definitely delete ${
+                            content={`Cela supprimera définitivement ${
                                 selectedRows.length > 1
-                                    ? `${selectedRows.length} comments`
-                                    : "this comment"
-                            }, and all data will be removed. This action cannot be undone.`}
+                                    ? `${selectedRows.length} commentaires`
+                                    : "ce commentaire"
+                            }, et toutes les données seront supprimées. Cette action est irréversible.`}
                             onDelete={() => {}}
                             isLargeButton
                         />
                         <Button className="ml-2" isBlack>
-                            Mark as read
+                            Marquer comme lu
                         </Button>
                     </div>
                 )}
                 {search !== "" ? (
-                    <NoFound title="No comments found" />
+                    <NoFound title="Aucun commentaire trouvé" />
                 ) : (
                     <div className="p-1 pt-3 max-lg:px-0">
                         <List
