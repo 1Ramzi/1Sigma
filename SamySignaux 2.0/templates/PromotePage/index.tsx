@@ -1,0 +1,30 @@
+"use client";
+
+import Layout from "@/components/Layout";
+import ProductView from "@/components/ProductView";
+import Insights from "./Insights";
+import List from "./List";
+import Engagement from "./Engagement";
+import Interactions from "./Interactions";
+
+const PromotePage = () => {
+    return (
+        <Layout title="Promote">
+            <div className="max-w-[1200px] mx-auto space-y-6">
+                <Insights />
+                <div className="flex max-lg:block">
+                    <div className="col-left">
+                        <List />
+                    </div>
+                    <div className="col-right">
+                        <Engagement />
+                        <Interactions />
+                        <ProductView />
+                    </div>
+                </div>
+            </div>
+        </Layout>
+    );
+};
+
+export default PromotePage;
