@@ -18,7 +18,7 @@ const CreateAccount = ({ handleSignIn }: CreateAccountProps) => {
     const [loading, setLoading] = useState(false);
     const { register } = useUserStore();
     const router = useRouter();
-    const { language } = useLanguage();
+    const { t } = useLanguage();
 
     const handleSubmit = async () => {
         if (!email || !password || !username) return;
@@ -28,7 +28,7 @@ const CreateAccount = ({ handleSignIn }: CreateAccountProps) => {
             router.push('/onboarding');
         } else {
             setLoading(false);
-            alert(language === 'fr' ? "Échec de l'inscription" : "Registration failed");
+            alert(t.registrationFailed);
         }
     };
 
@@ -36,8 +36,8 @@ const CreateAccount = ({ handleSignIn }: CreateAccountProps) => {
         <>
             <Field
                 className="mt-6"
-                innerLabel={language === 'fr' ? "Nom d'utilisateur" : "Username"}
-                placeholder={language === 'fr' ? "Votre nom d'utilisateur" : "Your username"}
+                innerLabel={t.username}
+                placeholder={t.usernamePlaceholder}
                 type="text"
                 value={username}
                 onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setUsername(e.target.value)}
@@ -45,8 +45,8 @@ const CreateAccount = ({ handleSignIn }: CreateAccountProps) => {
             />
             <Field
                 className="mt-6"
-                innerLabel={language === 'fr' ? "Email" : "Email"}
-                placeholder={language === 'fr' ? "Entrez votre email" : "Enter email"}
+                innerLabel={t.email}
+                placeholder={t.emailPlaceholder}
                 type="email"
                 value={email}
                 onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setEmail(e.target.value)}
@@ -54,8 +54,8 @@ const CreateAccount = ({ handleSignIn }: CreateAccountProps) => {
             />
             <Field
                 className="mt-6"
-                innerLabel={language === 'fr' ? "Mot de passe" : "Password"}
-                placeholder={language === 'fr' ? "Entrez votre mot de passe" : "Enter password"}
+                innerLabel={t.password}
+                placeholder={t.passwordPlaceholder}
                 type="password"
                 value={password}
                 onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setPassword(e.target.value)}
@@ -68,17 +68,17 @@ const CreateAccount = ({ handleSignIn }: CreateAccountProps) => {
                 disabled={loading}
             >
                 {loading 
-                    ? (language === 'fr' ? "Création..." : "Creating...") 
-                    : (language === 'fr' ? "Créer un compte" : "Create an account")
+                    ? t.creatingAccount
+                    : t.createAccount
                 }
             </Button>
             <div className="mt-4 text-center text-body-2 text-t-secondary">
-                {language === 'fr' ? "Déjà un compte ?" : "Already have an account?"}&nbsp;
+                {t.haveAccount}&nbsp;
                 <button
                     className="text-t-primary font-bold transition-colors hover:text-primary-01"
                     onClick={handleSignIn}
                 >
-                    {language === 'fr' ? "Se connecter" : "Sign in"}
+                    {t.signIn}
                 </button>
             </div>
         </>

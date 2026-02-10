@@ -1,27 +1,27 @@
 export const navigation = [
     {
-        title: "Tableau de bord",
+        title: "dashboard",
         icon: "dashboard",
         href: "/dashboard",
     },
     {
-        title: "Signaux",
+        title: "tradingSignals",
         icon: "chart",
         href: "/signals",
         counter: 4,
     },
     {
-        title: "Académie",
+        title: "academy",
         icon: "desktop", // Closest to educational content in available icons
         href: "/academy",
     },
     {
-        title: "Broker",
+        title: "broker",
         icon: "wallet",
         href: "/broker",
     },
     {
-        title: "Communauté",
+        title: "community",
         icon: "chat-think",
         href: "/community",
     },
@@ -29,12 +29,12 @@ export const navigation = [
 
 export const navigationUser = [
     {
-        title: "Paramètres",
+        title: "settings",
         icon: "edit-profile",
         href: "/settings",
     },
     {
-        title: "Déconnexion",
+        title: "logout",
         icon: "logout",
         href: "/logout", 
     },

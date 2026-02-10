@@ -3,7 +3,7 @@ import Icon from "@/components/Icon";
 import { useLanguage } from "@/context/LanguageContext";
 
 const VideoWidget = () => {
-    const { language } = useLanguage();
+    const { t } = useLanguage();
 
     return (
         <motion.div
@@ -30,14 +30,14 @@ const VideoWidget = () => {
             <div className="absolute bottom-0 left-0 right-0 p-6 text-shade-10 bg-linear-to-t from-shade-01 to-transparent">
                 <div className="flex items-center gap-2 mb-2">
                     <span className="px-2 py-1 rounded bg-primary-04 text-[10px] font-bold uppercase tracking-wider">
-                        Tutoriel
+                        {t.tutorial}
                     </span>
                 </div>
                 <h3 className="text-h5 font-bold mb-1">
-                    Découvrir la plateforme SamySignaux
+                    {t.discoverPlatform}
                 </h3>
                 <p className="text-shade-10/80 text-body-2 line-clamp-1">
-                    Comment utiliser les signaux, connecter votre broker et maximiser vos gains.
+                    {t.videoDesc}
                 </p>
             </div>
         </motion.div>

@@ -6,6 +6,7 @@ import Search from "@/components/Search";
 import Product from "@/components/Product";
 import Icon from "@/components/Icon";
 import Image from "@/components/Image";
+import { useLanguage } from "@/context/LanguageContext";
 
 import { bestMatch } from "@/mocks/products";
 
@@ -33,6 +34,7 @@ type SearchGlobalProps = {
 const SearchGlobal = ({ className, onClose, visible }: SearchGlobalProps) => {
     const [search, setSearch] = useState("");
     const visibleResult = search !== "";
+    const { t } = useLanguage();
 
     const ref = useRef(null);
     useClickAway(ref, () => {
@@ -60,7 +62,7 @@ const SearchGlobal = ({ className, onClose, visible }: SearchGlobalProps) => {
                     }`}
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    placeholder="Search anything..."
+                    placeholder={t.searchAnything}
                     onClear={onClose}
                 />
                 <div
@@ -72,7 +74,7 @@ const SearchGlobal = ({ className, onClose, visible }: SearchGlobalProps) => {
                 >
                     <div className="mb-3">
                         <div className="p-3 text-body-2 text-t-secondary">
-                            Best match
+                            {t.bestMatch}
                         </div>
                         <div className="">
                             {bestMatch.map((product) => (
@@ -82,7 +84,7 @@ const SearchGlobal = ({ className, onClose, visible }: SearchGlobalProps) => {
                     </div>
                     <div className="">
                         <div className="p-3 text-body-2 text-t-secondary">
-                            Suggestions
+                            {t.suggestions}
                         </div>
                         <div className="">
                             {suggestions.map((suggestion) => (

@@ -5,11 +5,13 @@ import Button from "@/components/Button";
 import Icon from "@/components/Icon";
 import Modal from "@/components/Modal";
 import Image from "@/components/Image";
+import { useLanguage } from "@/context/LanguageContext";
 
 import { messages } from "@/mocks/messages";
 
 const Messages = ({}) => {
     const [isOpen, setIsOpen] = useState(false);
+    const { t } = useLanguage();
 
     return (
         <>
@@ -18,7 +20,7 @@ const Messages = ({}) => {
             </Button>
             <Modal open={isOpen} onClose={() => setIsOpen(false)} isSlidePanel>
                 <div className="flex items-center h-20 pl-10 pr-20 pt-5 pb-3 text-h5 max-md:h-18 max-md:pt-3 max-md:pl-9">
-                    Messages
+                    {t.messages}
                 </div>
                 <div className="flex flex-col gap-1 h-[calc(100svh-5rem)] px-5 pb-5 overflow-y-auto max-md:h-[calc(100svh-4.5rem)] max-md:px-6">
                     {messages.map((message) => (
@@ -67,7 +69,7 @@ const Messages = ({}) => {
                     as="link"
                     href="/messages"
                 >
-                    View all messages
+                    {t.viewAllMessages}
                 </Button>
             </Modal>
         </>

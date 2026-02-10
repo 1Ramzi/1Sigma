@@ -160,7 +160,12 @@ export const translations = {
     indicesTab: 'Indices',
     commoditiesTab: 'Matières 1ères',
 
-    // Sidebar
+    // SideNotification
+    newSignalDetected: 'Nouveau signal détecté',
+    takeProfitHit: 'Take Profit touché',
+    now: 'Maintenant',
+
+    // Sidebar & Navigation
     mainMenu: 'Menu principal',
     trading: 'Trading',
     other: 'Autre',
@@ -170,7 +175,16 @@ export const translations = {
     settings: 'Paramètres',
     subscription: 'Abonnement',
     orders: 'Ordres',
+    academy: 'Académie',
+    logout: 'Déconnexion',
+    connectBroker: 'Connecter Broker',
     
+    // Header
+    publishNow: 'Publier maintenant',
+    publishTomorrow: 'Publier demain',
+    publishLater: 'Publier plus tard',
+    saveDraft: 'Enregistrer brouillon',
+
     // General
     language: 'Langue',
     french: 'Français',
@@ -178,6 +192,37 @@ export const translations = {
     save: 'Enregistrer',
     cancel: 'Annuler',
     close: 'Fermer',
+    
+    // Notifications & Messages
+    loginFailed: 'Échec de la connexion',
+    registrationFailed: 'Échec de l\'inscription',
+    emailSent: 'Envoi...',
+    checkInbox: 'Vérifiez votre boîte de réception',
+    resetEmailSent: 'Si un compte existe avec cet email, vous recevrez un lien de réinitialisation.',
+    havePassword: 'Vous avez votre mot de passe ?',
+    
+    // Dashboard Widgets
+    hello: 'Bonjour',
+    readyForTrading: 'Prêt pour une nouvelle session de trading ?',
+    today: "aujourd'hui",
+    goal: 'Objectif',
+    quickAccess: 'Accès Rapide',
+    viewSignals: 'Voir les signaux',
+    myPositions: 'Mes positions',
+    brokerConnected: 'Broker Connecté',
+    connected: 'Connecté',
+    signalsReceived: 'Signaux Reçus',
+    pnlToday: 'PnL (Auj.)',
+    openTrades: 'Trades Ouverts',
+    activeTrades: 'Actifs',
+    manageAccount: 'Gérer mon compte',
+    tutorial: 'Tutoriel',
+    discoverPlatform: 'Découvrir la plateforme SamySignaux',
+    videoDesc: 'Comment utiliser les signaux, connecter votre broker et maximiser vos gains.',
+    notifications: 'Notifications',
+    allNotifications: 'Toutes les notifications',
+    messages: 'Messages',
+    viewAllMessages: 'Voir tous les messages',
   },
   
   en: {
@@ -286,12 +331,13 @@ export const translations = {
     forexTab: 'Forex',
     indicesTab: 'Indices',
     commoditiesTab: 'Commodities',
-takeProfit: 'Take Profit',
-    stopLoss: 'Stop Loss',
-    confidence: 'Confidence',
-    followers: 'followers',
-    
-    // Performance
+
+    // SideNotification
+    newSignalDetected: 'New signal detected',
+    takeProfitHit: 'Take Profit hit',
+    now: 'Now',
+
+    // Sidebar & Navigation
     performance: 'Performance',
     performanceSubtitle: 'Track your trading performance over time',
     last30Days: 'Last 30 Days',
@@ -339,7 +385,7 @@ takeProfit: 'Take Profit',
     security: 'Security',
     securityDesc: 'Your funds remain on your broker account. We never have access to your money.',
     
-    // Sidebar
+    // Sidebar & Navigation
     mainMenu: 'Main Menu',
     trading: 'Trading',
     other: 'Other',
@@ -349,7 +395,16 @@ takeProfit: 'Take Profit',
     settings: 'Settings',
     subscription: 'Subscription',
     orders: 'Orders',
+    academy: 'Academy',
+    logout: 'Log out',
+    connectBroker: 'Connect Broker',
     
+    // Header
+    publishNow: 'Publish now',
+    publishTomorrow: 'Publish tomorrow',
+    publishLater: 'Publish later',
+    saveDraft: 'Save draft',
+
     // General
     language: 'Language',
     french: 'French',
@@ -357,6 +412,42 @@ takeProfit: 'Take Profit',
     save: 'Save',
     cancel: 'Cancel',
     close: 'Close',
+
+    // Notifications & Messages
+    loginFailed: 'Login failed',
+    registrationFailed: 'Registration failed',
+    emailSent: 'Sending...',
+    checkInbox: 'Check your inbox',
+    resetEmailSent: 'If an account exists with this email, you will receive a reset link.',
+    brokerConnected: 'Broker Connected',
+    connected: 'Connected',
+    signalsReceived: 'Signals Received',
+    pnlToday: 'PnL (Today)',
+    openTrades: 'Open Trades',
+    activeTrades: 'Active Trades',
+    manageAccount: 'Manage account',
+    tutorial: 'Tutorial',
+    discoverPlatform: 'Discover the SamySignaux platform',
+    videoDesc: 'How to use signals, connect your broker and maximize your gains.',
+    notifications: 'Notifications',
+    allNotifications: 'All notifications',
+    messages: 'Messages',
+    viewAllMessages: 'View all messages',
+    havePassword: 'Have your password?',
+
+    // Search
+    searchAnything: 'Search anything...',
+    bestMatch: 'Best match',
+    suggestions: 'Suggestions',
+
+    // Dashboard Widgets
+    hello: 'Hello',
+    readyForTrading: 'Ready for a new trading session?',
+    today: 'today',
+    goal: 'Goal',
+    quickAccess: 'Quick Access',
+    viewSignals: 'View signals',
+    myPositions: 'My positions',
   }
 };
 

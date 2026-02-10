@@ -5,7 +5,7 @@ import Link from "next/link";
 import Card from "@/components/Card";
 
 const QuickActions = () => {
-    const { language } = useLanguage();
+    const { t } = useLanguage();
 
     return (
         <motion.div
@@ -13,7 +13,7 @@ const QuickActions = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
         >
-            <Card title="Accès Rapide">
+            <Card title={t.quickAccess}>
                 <div className="flex flex-col gap-3">
                     <Link href="/signals" className="flex items-center justify-between p-3 rounded-xl bg-b-surface1 hover:bg-primary-04/10 group transition-colors border border-transparent dark:border-s-border">
                         <div className="flex items-center gap-3">
@@ -21,7 +21,7 @@ const QuickActions = () => {
                                 <Icon name="activity" className="fill-primary-04 !size-4" />
                             </div>
                             <span className="text-body-2 font-medium text-t-primary group-hover:text-primary-04">
-                                Voir les signaux
+                                {t.viewSignals}
                             </span>
                         </div>
                         <Icon name="arrow" className="fill-t-tertiary group-hover:fill-primary-04 !size-4" />
@@ -33,7 +33,7 @@ const QuickActions = () => {
                                 <Icon name="bar-chart-3" className="fill-primary-05 !size-4" />
                             </div>
                             <span className="text-body-2 font-medium text-t-primary group-hover:text-primary-05">
-                                Mes positions
+                                {t.myPositions}
                             </span>
                         </div>
                         <Icon name="arrow" className="fill-t-tertiary group-hover:fill-primary-05 !size-4" />

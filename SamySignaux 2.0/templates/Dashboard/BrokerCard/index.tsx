@@ -5,7 +5,7 @@ import Link from "next/link";
 import { stats } from "@/mocks/stats";
 
 const BrokerCard = () => {
-    const { language } = useLanguage();
+    const { t } = useLanguage();
 
     return (
         <motion.div
@@ -24,32 +24,32 @@ const BrokerCard = () => {
                         </div>
                         <div>
                             <p className="text-shade-10/60 text-caption font-medium uppercase tracking-wider">
-                                Broker Connecté
+                                {t.brokerConnected}
                             </p>
                             <p className="font-bold text-h6">PuPrime</p>
                         </div>
                     </div>
                     <div className="px-2 py-1 rounded bg-primary-02/20 text-primary-02 text-caption font-bold flex items-center gap-1.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-primary-02 animate-pulse" />
-                        Connecté
+                        {t.connected}
                     </div>
                 </div>
 
                 <div className="space-y-4 mb-6">
                     <div>
                         <p className="text-shade-10/60 text-body-2 mb-1">
-                            Signaux Reçus
+                            {t.signalsReceived}
                         </p>
                         <p className="text-h3 font-bold font-mono">{stats.totalSignals}</p>
                     </div>
                     <div className="grid grid-cols-2 gap-4 pt-4 border-t border-shade-10/10">
                         <div>
-                            <p className="text-shade-10/60 text-caption">PnL (Auj.)</p>
+                            <p className="text-shade-10/60 text-caption">{t.pnlToday}</p>
                             <p className="text-secondary-04 font-mono font-medium text-body-2">+$450.20</p>
                         </div>
                         <div>
-                            <p className="text-shade-10/60 text-caption">Trades Ouverts</p>
-                            <p className="text-shade-10 font-mono font-medium text-body-2">3 Actifs</p>
+                            <p className="text-shade-10/60 text-caption">{t.openTrades}</p>
+                            <p className="text-shade-10 font-mono font-medium text-body-2">3 {t.activeTrades}</p>
                         </div>
                     </div>
                 </div>
@@ -58,7 +58,7 @@ const BrokerCard = () => {
                     href="/broker"
                     className="w-full py-3 bg-shade-10 text-shade-01 rounded-xl font-semibold text-body-2 flex items-center justify-center gap-2 hover:bg-shade-09 transition-colors"
                 >
-                    Gérer mon compte
+                    {t.manageAccount}
                     <Icon name="arrow" className="fill-shade-01 !size-4" />
                 </Link>
             </div>

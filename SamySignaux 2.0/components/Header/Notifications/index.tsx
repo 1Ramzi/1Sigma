@@ -6,11 +6,13 @@ import Button from "@/components/Button";
 import Icon from "@/components/Icon";
 import Modal from "@/components/Modal";
 import Image from "@/components/Image";
+import { useLanguage } from "@/context/LanguageContext";
 
 import { newNotifications } from "@/mocks/notifications";
 
 const Notifications = ({}) => {
     const [isOpen, setIsOpen] = useState(false);
+    const { t } = useLanguage();
 
     return (
         <>
@@ -22,7 +24,7 @@ const Notifications = ({}) => {
             </div>
             <Modal open={isOpen} onClose={() => setIsOpen(false)} isSlidePanel>
                 <div className="flex items-center h-20 pl-10 pr-20 pt-5 pb-3 text-h5 max-md:h-18 max-md:pt-3 max-md:pl-9">
-                    Notifications
+                    {t.notifications}
                 </div>
                 <div className="h-[calc(100svh-5rem)] px-5 pb-5 overflow-y-auto max-md:h-[calc(100svh-4.5rem)] max-md:px-4">
                     {newNotifications.map((notification) => (
@@ -66,7 +68,7 @@ const Notifications = ({}) => {
                     as="link"
                     href="/notifications"
                 >
-                    All notifications
+                    {t.allNotifications}
                 </Button>
             </Modal>
         </>

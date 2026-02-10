@@ -6,6 +6,8 @@ import Link from "next/link";
 import AnimateHeight from "react-animate-height";
 import Icon from "@/components/Icon";
 import NavLink from "@/components/NavLink";
+import { useLanguage } from "@/context/LanguageContext";
+import { Translations } from "@/lib/i18n";
 
 type DropdownProps = {
     value: {
@@ -22,12 +24,15 @@ type DropdownProps = {
 
 const Dropdown = ({ value }: DropdownProps) => {
     const pathname = usePathname();
+    const { t } = useLanguage();
     const isActive = value.list?.some((item) => pathname.includes(item.href));
     const isActiveNewProduct =
         pathname === "/products/new" && value.title === "Products";
     const [height, setHeight] = useState<number | "auto">(
         isActive ? "auto" : 0
     );
+
+    const title = t[value.title as keyof Translations] || value.title;
 
     return (
         <div className="relative">
@@ -56,7 +61,7 @@ const Dropdown = ({ value }: DropdownProps) => {
                     } ${isActiveNewProduct ? "!fill-t-primary" : ""}`}
                     name={value.icon}
                 />
-                <div className="relative z-2">{value.title}</div>
+                <div className="relative z-2">{title}</div>
                 <Icon
                     className={`relative z-2 ml-auto transition-all group-hover:fill-t-primary ${
                         height === 0

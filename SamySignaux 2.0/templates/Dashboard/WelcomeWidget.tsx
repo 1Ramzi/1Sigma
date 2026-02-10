@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const WelcomeWidget = () => {
     const { user } = useUserStore();
-    const { language } = useLanguage();
+    const { t } = useLanguage();
 
     return (
         <motion.div
@@ -13,10 +13,10 @@ const WelcomeWidget = () => {
             className="mb-6"
         >
             <h1 className="text-h3 font-bold text-t-primary">
-                Bonjour, {user?.username || 'Trader'} 👋
+                {t.hello}, {user?.username || 'Trader'} 👋
             </h1>
             <p className="text-body-1 text-t-secondary mt-2">
-                Prêt pour une nouvelle session de trading ?
+                {t.readyForTrading}
             </p>
         </motion.div>
     );

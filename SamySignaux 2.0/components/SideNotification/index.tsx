@@ -14,7 +14,7 @@ export interface NotificationSignal {
 }
 
 const SideNotification = () => {
-    const { language } = useLanguage();
+    const { t } = useLanguage();
     const [notifications, setNotifications] = useState<NotificationSignal[]>([]);
 
     useEffect(() => {
@@ -68,12 +68,12 @@ const SideNotification = () => {
                             <div className="flex-1">
                                 <div className="flex items-center justify-between mb-1">
                                     <h4 className="font-bold text-t-primary">{notif.pair}</h4>
-                                    <span className="text-caption text-t-secondary">Now</span>
+                                    <span className="text-caption text-t-secondary">{t.now}</span>
                                 </div>
                                 <p className="text-body-2 text-t-secondary">
                                     {notif.type === 'new' 
-                                        ? (language === 'fr' ? 'Nouveau signal détecté' : 'New signal detected')
-                                        : (language === 'fr' ? 'Take Profit touché' : 'Take Profit hit')
+                                        ? t.newSignalDetected
+                                        : t.takeProfitHit
                                     }
                                 </p>
                                 <p className={`font-mono font-semibold mt-1 ${

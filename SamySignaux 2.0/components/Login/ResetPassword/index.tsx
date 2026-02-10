@@ -12,7 +12,7 @@ type ResetPasswordProps = {
 const ResetPassword = ({ handleSignIn }: ResetPasswordProps) => {
     const [email, setEmail] = useState("");
     const [loading, setLoading] = useState(false);
-    const { language } = useLanguage();
+    const { t } = useLanguage();
 
     const handleSubmit = async () => {
         if (!email) return;
@@ -20,10 +20,7 @@ const ResetPassword = ({ handleSignIn }: ResetPasswordProps) => {
         // Simulate API call
         await new Promise(resolve => setTimeout(resolve, 1000));
         setLoading(false);
-        alert(language === 'fr' 
-            ? "Si un compte existe avec cet email, vous recevrez un lien de réinitialisation." 
-            : "If an account exists with this email, you will receive a reset link."
-        );
+        alert(t.resetEmailSent);
         handleSignIn();
     };
 
@@ -31,8 +28,8 @@ const ResetPassword = ({ handleSignIn }: ResetPasswordProps) => {
         <>
             <Field
                 className="mt-6"
-                innerLabel={language === 'fr' ? "Email" : "Email"}
-                placeholder={language === 'fr' ? "Entrez votre email" : "Enter email"}
+                innerLabel={t.email}
+                placeholder={t.emailPlaceholder}
                 type="email"
                 value={email}
                 onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setEmail(e.target.value)}
@@ -45,17 +42,17 @@ const ResetPassword = ({ handleSignIn }: ResetPasswordProps) => {
                 disabled={loading}
             >
                 {loading 
-                    ? (language === 'fr' ? "Envoi..." : "Sending...") 
-                    : (language === 'fr' ? "Vérifiez votre boîte de réception" : "Check your inbox")
+                    ? t.emailSent 
+                    : t.checkInbox
                 }
             </Button>
             <div className="mt-4 text-center text-body-2 text-t-secondary">
-                {language === 'fr' ? "Vous avez votre mot de passe ?" : "Have your password?"}&nbsp;
+                {t.havePassword}&nbsp;
                 <button
                     className="text-t-primary font-bold transition-colors hover:text-primary-01"
                     onClick={handleSignIn}
                 >
-                    {language === 'fr' ? "Se connecter" : "Login"}
+                    {t.signIn}
                 </button>
             </div>
         </>

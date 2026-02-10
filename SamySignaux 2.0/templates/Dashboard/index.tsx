@@ -7,12 +7,14 @@ import StatsWidget from "./Stats";
 import BrokerCard from "./BrokerCard";
 import QuickActions from "./QuickActions";
 import { useDemoActivity } from "@/hooks/useDemoActivity";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Dashboard = () => {
     useDemoActivity(); // Start demo activity (signals, messages)
+    const { t } = useLanguage();
 
     return (
-        <Layout title="Dashboard">
+        <Layout title={t.dashboard}>
             <div className="max-w-[1200px] mx-auto">
                 <WelcomeWidget />
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

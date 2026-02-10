@@ -4,6 +4,7 @@ import ThemeButton from "@/components/ThemeButton";
 import NavLink from "@/components/NavLink";
 import Button from "@/components/Button";
 import Dropdown from "./Dropdown";
+import { useLanguage } from "@/context/LanguageContext";
 
 import { navigation } from "@/contstants/navigation";
 
@@ -17,7 +18,10 @@ const Sidebar = ({
     visibleSidebar,
     hideSidebar,
     onCloseSidebar,
-}: SidebarProps) => (
+}: SidebarProps) => {
+    const { t } = useLanguage();
+
+    return (
     <div
         className={`fixed top-0 left-0 bottom-0 flex flex-col w-85 p-5 bg-b-surface1 border-r border-transparent dark:border-s-border transition-transform duration-300 max-4xl:w-70 max-3xl:w-60 max-xl:w-74 max-md:p-3 ${
             visibleSidebar
@@ -70,7 +74,7 @@ const Sidebar = ({
                             <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                     </div>
-                    {!hideSidebar && <span>Connect Broker</span>}
+                    {!hideSidebar && <span>{t.connectBroker}</span>}
                 </div>
             </Button>
             
@@ -79,6 +83,6 @@ const Sidebar = ({
             />
         </div>
     </div>
-);
+)};
 
 export default Sidebar;

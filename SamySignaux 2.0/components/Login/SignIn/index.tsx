@@ -18,7 +18,7 @@ const SignIn = ({ handleSignUp, handleForgotPassword }: SignInProps) => {
     const [loading, setLoading] = useState(false);
     const { login } = useUserStore();
     const router = useRouter();
-    const { language } = useLanguage();
+    const { t } = useLanguage();
 
     const handleSubmit = async () => {
         if (!email || !password) return;
@@ -28,7 +28,7 @@ const SignIn = ({ handleSignUp, handleForgotPassword }: SignInProps) => {
             router.push('/dashboard');
         } else {
             setLoading(false);
-            alert(language === 'fr' ? "Échec de la connexion" : "Login failed");
+            alert(t.loginFailed);
         }
     };
 
@@ -36,8 +36,8 @@ const SignIn = ({ handleSignUp, handleForgotPassword }: SignInProps) => {
         <>
             <Field
                 className="mt-6"
-                innerLabel={language === 'fr' ? "Email" : "Email"}
-                placeholder={language === 'fr' ? "Entrez votre email" : "Enter email"}
+                innerLabel={t.email}
+                placeholder={t.emailPlaceholder}
                 type="email"
                 value={email}
                 onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setEmail(e.target.value)}
@@ -45,8 +45,8 @@ const SignIn = ({ handleSignUp, handleForgotPassword }: SignInProps) => {
             />
             <Field
                 className="mt-6"
-                innerLabel={language === 'fr' ? "Mot de passe" : "Password"}
-                placeholder={language === 'fr' ? "Entrez votre mot de passe" : "Enter password"}
+                innerLabel={t.password}
+                placeholder={t.passwordPlaceholder}
                 type="password"
                 value={password}
                 onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setPassword(e.target.value)}
@@ -59,18 +59,15 @@ const SignIn = ({ handleSignUp, handleForgotPassword }: SignInProps) => {
                 onClick={handleSubmit}
                 disabled={loading}
             >
-                {loading 
-                    ? (language === 'fr' ? "Connexion..." : "Signing in...") 
-                    : (language === 'fr' ? "Se connecter" : "Sign in")
-                }
+                {loading ? t.signingIn : t.signIn}
             </Button>
             <div className="mt-4 text-center text-body-2 text-t-secondary">
-                {language === 'fr' ? "Pas de compte ?" : "Need an account?"}&nbsp;
+                {t.noAccount}&nbsp;
                 <button
                     className="text-t-primary font-bold transition-colors hover:text-primary-01"
                     onClick={handleSignUp}
                 >
-                    {language === 'fr' ? "S'inscrire" : "Sign up"}
+                    {t.signUp}
                 </button>
             </div>
         </>

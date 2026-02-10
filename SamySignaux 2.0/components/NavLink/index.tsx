@@ -4,6 +4,8 @@ import { useMemo } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Icon from "@/components/Icon";
+import { useLanguage } from "@/context/LanguageContext";
+import { Translations } from "@/lib/i18n";
 
 type NavLinkProps = {
     value: {
@@ -17,6 +19,7 @@ type NavLinkProps = {
 
 const NavLink = ({ value, onClick }: NavLinkProps) => {
     const pathname = usePathname();
+    const { t } = useLanguage();
 
     const isActive = useMemo(() => {
         if (pathname === value.href) return true;
@@ -32,6 +35,9 @@ const NavLink = ({ value, onClick }: NavLinkProps) => {
                 return false;
         }
     }, [pathname, value.href, value.title]);
+
+    // Helper to get translation or fallback
+    const title = t[value.title as keyof Translations] || value.title;
 
     return (
         <Link
@@ -55,7 +61,7 @@ const NavLink = ({ value, onClick }: NavLinkProps) => {
                     name={value.icon}
                 />
             )}
-            <div className="relative z-2 mr-3">{value.title}</div>
+            <div className="relative z-2 mr-3">{title}</div>
             {value.counter && (
                 <div
                     className={`relative z-2 flex justify-center items-center w-6 h-6 ml-auto rounded-lg bg-secondary-01 text-button text-shade-01 ${

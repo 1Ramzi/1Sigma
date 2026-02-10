@@ -15,10 +15,13 @@ import Icon from "@/components/Icon";
 import Modal from "@/components/Modal";
 import Login from "@/components/Login";
 import { navigationUser } from "@/contstants/navigation";
+import { useLanguage } from "@/context/LanguageContext";
+import { Translations } from "@/lib/i18n";
 
 const User = ({}) => {
     const [isOpen, setIsOpen] = useState(false);
     const pathname = usePathname();
+    const { t } = useLanguage();
     const isActive = (href: string) => pathname === href;
 
     return (
@@ -67,7 +70,9 @@ const User = ({}) => {
                                     }`}
                                     name={link.icon}
                                 />
-                                <div className="relative z-2">{link.title}</div>
+                                <div className="relative z-2">
+                                    {t[link.title as keyof Translations] || link.title}
+                                </div>
                             </Link>
                         </MenuItem>
                     ))}
@@ -81,7 +86,7 @@ const User = ({}) => {
                                 className="mr-4 fill-t-secondary transition-colors group-[[data-focus]]/item:fill-t-primary"
                                 name="logout"
                             />
-                            Déconnexion
+                            {t.logout}
                         </button>
                     </MenuItem>
                 </MenuItems>

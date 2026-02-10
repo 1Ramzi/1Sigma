@@ -10,12 +10,7 @@ import User from "./User";
 import Notifications from "./Notifications";
 import Messages from "./Messages";
 import { SelectOption } from "@/types/select";
-
-const times: SelectOption[] = [
-    { id: 1, name: "Publish now" },
-    { id: 2, name: "Publish tomorrow" },
-    { id: 3, name: "Publish later" },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 type HeaderProps = {
     className?: string;
@@ -32,6 +27,14 @@ const Header = ({
     hideSidebar,
     onToggleSidebar,
 }: HeaderProps) => {
+    const { t } = useLanguage();
+    
+    const times: SelectOption[] = [
+        { id: 1, name: t.publishNow },
+        { id: 2, name: t.publishTomorrow },
+        { id: 3, name: t.publishLater },
+    ];
+
     const [time, setTime] = useState(times[0]);
     const [hasOverflowHidden, setHasOverflowHidden] = useState(false);
     const [visibleSearch, setVisibleSearch] = useState(false);
@@ -136,7 +139,7 @@ const Header = ({
                                     <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                                 </svg>
                             </div>
-                            <span>Broker</span>
+                            <span>{t.broker}</span>
                         </Button>
                     </div>
                     <Notifications />
@@ -149,7 +152,7 @@ const Header = ({
                             className="max-md:w-[calc(50%-0.75rem)] max-md:mx-1.5"
                             isWhite
                         >
-                            Save draft
+                            {t.saveDraft}
                         </Button>
                         <Select
                             className="min-w-36 max-md:w-[calc(50%-0.75rem)] max-md:mx-1.5"
