@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Icon from "@/components/Icon";
 import { useLanguage } from "@/context/LanguageContext";
 
-const ONBOARDING_KEY = "samy_onboarding_v2";
+const ONBOARDING_KEY = "samy_onboarding_v3";
 const TOOLTIP_W = 340;
 const TOOLTIP_H_EST = 260;
 const EDGE_MARGIN = 16;
@@ -141,8 +141,8 @@ const Onboarding = () => {
                 top: "50%",
                 left: "50%",
                 transform: "translate(-50%, -50%)",
+                width: Math.min(420, window.innerWidth - EDGE_MARGIN * 2),
                 zIndex: 10002,
-                maxWidth: `calc(100vw - ${EDGE_MARGIN * 2}px)`,
             };
         }
 
@@ -246,13 +246,13 @@ const Onboarding = () => {
                     <motion.div
                         ref={tooltipRef}
                         key={currentStep.id}
-                        initial={{ opacity: 0, y: 8, scale: 0.97 }}
+                        initial={{ opacity: 0, y: 12, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 8, scale: 0.97 }}
-                        transition={{ duration: 0.2 }}
+                        exit={{ opacity: 0, y: 12, scale: 0.95 }}
+                        transition={{ duration: 0.25, ease: "easeOut" }}
                         style={getTooltipStyle()}
                     >
-                        <div className="bg-b-surface1 border border-s-border rounded-2xl shadow-depth p-5 space-y-3">
+                        <div className={`bg-b-surface1 border border-s-border rounded-2xl shadow-depth space-y-3 ${isCenter ? 'p-7' : 'p-5'}`}>
                             {/* Step indicator */}
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-2">
