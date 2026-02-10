@@ -10,7 +10,6 @@ import {
     ResponsiveContainer,
     CartesianGrid,
 } from "recharts";
-import { NumericFormat } from "react-number-format";
 import Card from "@/components/Card";
 import Button from "@/components/Button";
 import Percentage from "@/components/Percentage";
@@ -29,26 +28,29 @@ const RecentEarnings = ({}) => {
 
     const [duration, setDuration] = useState<SelectOption>(durations[0]);
 
+    const totalWins = recentEarningsChartData.reduce((s, d) => s + d.amt, 0);
+    const totalLosses = recentEarningsChartData.reduce((s, d) => s + d.amt2, 0);
+    const winRate = totalWins + totalLosses > 0 ? ((totalWins / (totalWins + totalLosses)) * 100).toFixed(1) : '0';
+
     const CustomTooltip = ({
         payload,
         label,
     }: {
-        payload: { value: number }[];
+        payload: { value: number; dataKey: string }[];
         label: string;
     }) => {
         if (payload && payload.length) {
             return (
                 <div className="chart-tooltip text-caption">
-                    <div className="mb-0.5 opacity-80">{label}</div>
-                    <NumericFormat
-                        className="text-caption"
-                        value={payload[0].value}
-                        thousandSeparator=","
-                        decimalScale={0}
-                        fixedDecimalScale
-                        displayType="text"
-                        prefix="$"
-                    />
+                    <div className="mb-1 font-semibold">{label}</div>
+                    {payload.map((p, i) => (
+                        <div key={i} className="flex items-center gap-2">
+                            <span className={p.dataKey === 'amt' ? 'text-primary-02' : p.dataKey === 'amt2' ? 'text-primary-03' : 'text-t-secondary'}>
+                                {p.dataKey === 'amt' ? t.won : p.dataKey === 'amt2' ? t.lost : 'Net'}:
+                            </span>
+                            <span className="font-bold">{p.value}</span>
+                        </div>
+                    ))}
                 </div>
             );
         }
@@ -57,7 +59,7 @@ const RecentEarnings = ({}) => {
 
     return (
         <Card
-            title={t.recentEarnings}
+            title={t.tradeHistory7d}
             selectValue={duration}
             selectOnChange={setDuration}
             selectOptions={durations}
@@ -77,7 +79,6 @@ const RecentEarnings = ({}) => {
                             width={500}
                             height={280}
                             data={recentEarningsChartData}
-                            // barCategoryGap={16}
                             barSize={28}
                             margin={{
                                 top: 0,
@@ -86,36 +87,6 @@ const RecentEarnings = ({}) => {
                                 bottom: 0,
                             }}
                         >
-                            <defs>
-                                <pattern
-                                    id="pattern-diagonal"
-                                    patternUnits="userSpaceOnUse"
-                                    width="4"
-                                    height="4"
-                                    patternTransform="rotate(-45)"
-                                >
-                                    <path
-                                        d="M 0 2 H 4"
-                                        stroke="var(--shade-07)"
-                                        strokeWidth="2"
-                                        fill="none"
-                                    />
-                                </pattern>
-                                <pattern
-                                    id="pattern-diagonal-hover"
-                                    patternUnits="userSpaceOnUse"
-                                    width="4"
-                                    height="4"
-                                    patternTransform="rotate(-45)"
-                                >
-                                    <path
-                                        d="M 0 2 H 4"
-                                        stroke="var(--chart-green)"
-                                        strokeWidth="2"
-                                        fill="none"
-                                    />
-                                </pattern>
-                            </defs>
                             <CartesianGrid
                                 strokeDasharray="5 7"
                                 vertical={false}
@@ -142,6 +113,7 @@ const RecentEarnings = ({}) => {
                                     fill: "var(--text-tertiary)",
                                     fillOpacity: 0.8,
                                 }}
+                                allowDecimals={false}
                             />
                             <Tooltip
                                 content={
@@ -151,29 +123,31 @@ const RecentEarnings = ({}) => {
                             />
                             <Bar
                                 dataKey="amt"
-                                fill="var(--shade-07)"
-                                fillOpacity={0.4}
+                                name={t.won}
+                                fill="var(--chart-green)"
+                                fillOpacity={0.6}
                                 activeBar={{
                                     fill: "var(--chart-green)",
                                     fillOpacity: 1,
                                 }}
-                                radius={1}
+                                radius={[4, 4, 0, 0]}
                             />
                             <Bar
                                 dataKey="amt2"
-                                fill="url(#pattern-diagonal)"
-                                fillOpacity={0.3}
+                                name={t.lost}
+                                fill="var(--color-primary-03)"
+                                fillOpacity={0.4}
                                 activeBar={{
-                                    fill: "url(#pattern-diagonal-hover)",
-                                    fillOpacity: 0.4,
+                                    fill: "var(--color-primary-03)",
+                                    fillOpacity: 0.7,
                                 }}
-                                radius={1}
+                                radius={[4, 4, 0, 0]}
                             />
                             <Line
-                                type="linear"
+                                type="monotone"
                                 dataKey="uv"
                                 stroke="var(--color-shade-07)"
-                                strokeOpacity={0.2}
+                                strokeOpacity={0.3}
                                 strokeWidth={2}
                                 dot={{
                                     r: 4,
@@ -191,20 +165,18 @@ const RecentEarnings = ({}) => {
                         </ComposedChart>
                     </ResponsiveContainer>
                 </div>
-                <div className="flex items-center mt-3">
-                    <div className="flex gap-1 text-h4 max-md:text-h5">
-                        <div className="text-t-tertiary">$</div>
-                        <NumericFormat
-                            value={320}
-                            thousandSeparator=","
-                            decimalScale={2}
-                            fixedDecimalScale
-                            displayType="text"
-                        />
+                <div className="flex items-center gap-6 mt-3">
+                    <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-sm bg-[var(--chart-green)]" />
+                        <span className="text-body-2 text-t-secondary">{t.won}: <strong className="text-t-primary">{totalWins}</strong></span>
                     </div>
-                    <Percentage className="ml-3" value={36.8} />
-                    <div className="ml-2 text-body-2 text-t-tertiary">
-                        {t.vsLastMonth}
+                    <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-sm bg-primary-03/60" />
+                        <span className="text-body-2 text-t-secondary">{t.lost}: <strong className="text-t-primary">{totalLosses}</strong></span>
+                    </div>
+                    <Percentage className="ml-auto" value={parseFloat(winRate)} />
+                    <div className="text-body-2 text-t-tertiary">
+                        {t.winRate}
                     </div>
                 </div>
             </div>

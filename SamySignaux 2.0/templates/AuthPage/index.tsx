@@ -11,7 +11,7 @@ type AuthPageProps = {
 };
 
 const AuthPage = ({ initialView = "signIn" }: AuthPageProps) => {
-    const { t, language } = useLanguage();
+    const { t, language, setLanguage } = useLanguage();
 
     return (
         <div className="min-h-screen flex bg-b-surface1 text-t-primary font-sans">
@@ -26,7 +26,7 @@ const AuthPage = ({ initialView = "signIn" }: AuthPageProps) => {
                     <div className="bg-b-surface1 rounded-xl shadow-lg border border-s-stroke2 p-5">
                         <div className="flex items-center justify-between mb-3">
                             <span className="text-button font-semibold text-t-primary">{t.botProfit}, USDT</span>
-                            <Icon name="bar-chart-3" className="size-4 fill-t-tertiary" />
+                            <Icon name="chart" className="size-4 fill-t-tertiary" />
                         </div>
                         <p className="text-caption text-t-secondary mb-1">{t.avgDailyProfit}</p>
                         <p className="text-secondary-04 text-button font-semibold">+12.4%</p>
@@ -73,6 +73,22 @@ const AuthPage = ({ initialView = "signIn" }: AuthPageProps) => {
 
             {/* Right - Login Form */}
             <div className="flex-1 flex items-center justify-center p-6 sm:p-12 bg-b-surface1 relative">
+                {/* Language selector - top right */}
+                <div className="absolute top-5 right-5 flex items-center gap-1 bg-b-surface2 rounded-full p-1">
+                    <button
+                        onClick={() => setLanguage('fr')}
+                        className={`px-3 py-1.5 rounded-full text-caption font-semibold transition-colors ${language === 'fr' ? 'bg-b-surface1 text-t-primary shadow-sm' : 'text-t-tertiary hover:text-t-secondary'}`}
+                    >
+                        FR
+                    </button>
+                    <button
+                        onClick={() => setLanguage('en')}
+                        className={`px-3 py-1.5 rounded-full text-caption font-semibold transition-colors ${language === 'en' ? 'bg-b-surface1 text-t-primary shadow-sm' : 'text-t-tertiary hover:text-t-secondary'}`}
+                    >
+                        EN
+                    </button>
+                </div>
+
                 <div className="w-full max-w-sm">
                     {/* Logo */}
                     <div className="flex justify-center mb-8">

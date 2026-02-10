@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Icon from "@/components/Icon";
-import Image from "@/components/Image";
 
 type NotificationProps = {
     value: {
@@ -14,71 +13,54 @@ type NotificationProps = {
         time: string;
         new: boolean;
     };
+    onDismiss?: (id: number) => void;
 };
 
-const Notification = ({ value }: NotificationProps) => (
-    <div className="relative group flex items-start p-6 max-md:p-3 max-md:border-t max-md:border-s-subtle max-md:first:border-t-0">
-        <div className="box-hover max-md:hidden"></div>
-        <div className="relative z-3 flex justify-center items-center shrink-0 mr-5 mt-3 max-md:absolute max-md:top-10 max-md:left-10 max-md:size-6 max-md:bg-b-surface2 max-md:rounded-full max-md:m-0">
-            <Icon
-                className={`max-md:!size-4  ${
-                    value.new && value.type === "like"
-                        ? "!fill-primary-03"
-                        : value.new && value.type === "purchase"
-                        ? "!fill-primary-02"
-                        : value.new && value.type === "reply"
-                        ? "!fill-t-secondary"
-                        : "fill-t-secondary/50"
-                }`}
-                name={
-                    value.type === "like"
-                        ? "heart-fill"
-                        : value.type === "reply"
-                        ? "reply"
-                        : "cart"
-                }
-            />
-        </div>
-        <Link
-            className="relative z-2 shrink-0 w-12 h-12 mr-5 rounded-full overflow-hidden max-md:mr-4"
-            href="/shop"
-        >
-            <Image
-                className="size-12 opacity-100"
-                src={value.avatar}
-                width={48}
-                height={48}
-                alt=""
-            />
-        </Link>
-        <div className="relative z-2 grow">
-            <div className="text-body-2 text-t-secondary [&_span]:text-button [&_span]:text-t-primary max-md:pr-4">
-                <Link href="/shop">
-                    <span>@{value.login}</span>
-                </Link>
-                &nbsp;{value.action}&nbsp;
-                <span className="max-md:block max-md:mt-1.5">
-                    <Link href="/shop/details">{value.product}</Link>
-                    <span className="hidden ml-1 !text-caption !text-t-tertiary font-normal max-md:inline">
-                        {value.time}
-                    </span>
-                </span>
-            </div>
-            <div className="mt-1 text-body-2 text-t-primary/80 max-md:mt-1.5 max-md:line-clamp-2">
-                {value.content}
+const typeConfig: Record<string, { icon: string; iconClass: string; bg: string }> = {
+    signal: { icon: 'trending-up', iconClass: 'fill-primary-02', bg: 'bg-primary-02/10' },
+    alert: { icon: 'check-circle-fill', iconClass: 'fill-primary-04', bg: 'bg-primary-04/10' },
+    info: { icon: 'info-circle', iconClass: 'fill-primary-01', bg: 'bg-primary-01/10' },
+    sl: { icon: 'alert-triangle', iconClass: 'fill-primary-03', bg: 'bg-primary-03/10' },
+};
+
+const Notification = ({ value, onDismiss }: NotificationProps) => {
+    const config = typeConfig[value.type] || typeConfig.info;
+
+    return (
+        <div className="relative group flex items-center p-5 rounded-xl hover:bg-b-surface2/60 transition-colors">
+            <Link href="/signals?view=active" className="flex items-center flex-1 min-w-0">
+                <div className={`shrink-0 w-10 h-10 rounded-xl ${config.bg} flex items-center justify-center mr-4`}>
+                    <Icon name={config.icon} className={`!size-5 ${config.iconClass}`} />
+                </div>
+                <div className="grow min-w-0">
+                    <div className="flex items-center gap-2 mb-0.5">
+                        <span className="text-body-2 font-semibold text-t-primary truncate">
+                            @{value.login}
+                        </span>
+                        <span className="text-body-2 text-t-secondary">{value.action}</span>
+                        <span className="text-body-2 font-semibold text-primary-01 truncate">
+                            {value.product}
+                        </span>
+                    </div>
+                    <p className="text-caption text-t-secondary line-clamp-1">{value.content}</p>
+                </div>
+            </Link>
+            <div className="flex items-center shrink-0 ml-4 gap-2">
+                <span className="text-caption text-t-tertiary whitespace-nowrap">{value.time}</span>
+                {value.new && (
+                    <div className="w-2.5 h-2.5 rounded-full bg-primary-02 shrink-0 group-hover:hidden" />
+                )}
+                {onDismiss && (
+                    <button
+                        onClick={() => onDismiss(value.id)}
+                        className="p-1.5 rounded-lg opacity-0 group-hover:opacity-100 hover:bg-b-surface2 transition-all"
+                    >
+                        <Icon name="close" className="!size-3.5 fill-t-tertiary" />
+                    </button>
+                )}
             </div>
         </div>
-        <div className="relative z-2 flex items-center shrink-0 ml-8 max-md:absolute max-md:top-3 max-md:right-3 max-md:ml-0">
-            <div className="text-caption text-t-tertiary max-md:hidden">
-                {value.time}
-            </div>
-            <div
-                className={`w-3 h-3 ml-3 rounded-full ${
-                    value.new ? "bg-primary-02" : "bg-t-secondary/50"
-                }`}
-            ></div>
-        </div>
-    </div>
-);
+    );
+};
 
 export default Notification;

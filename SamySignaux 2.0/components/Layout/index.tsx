@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 import ThemeButton from "@/components/ThemeButton";
-import SideNotification from "@/components/SideNotification";
+import LiveAlertStack from "@/components/LiveAlertStack";
 
 type LayoutProps = {
     title?: string;
@@ -37,7 +37,7 @@ const Layout = ({ title, children, newProduct, hideSidebar }: LayoutProps) => {
                     : "pl-85 max-4xl:pl-70 max-3xl:pl-60 max-xl:pl-0"
             }`}
         >
-            <SideNotification />
+            {/* SideNotification removed — replaced by LiveAlertStack */}
             <Sidebar
                 visibleSidebar={visibleSidebar}
                 hideSidebar={hideSidebar}
@@ -81,6 +81,7 @@ const Layout = ({ title, children, newProduct, hideSidebar }: LayoutProps) => {
                     {children}
                 </div>
             </div>
+            <LiveAlertStack />
             {hideSidebar && (
                 <ThemeButton className="fixed left-5 bottom-5 z-10 max-lg:hidden" />
             )}

@@ -1,19 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
 import Card from "@/components/Card";
 import Icon from "@/components/Icon";
 import { useLanguage } from "@/context/LanguageContext";
-import Advancement from "@/templates/Signals/Advancement";
-import Explanation from "@/templates/Signals/Explanation";
+import { setLiveAlertsMuted } from "@/components/LiveAlertStack";
 
 const AcademyPage = () => {
     const { t } = useLanguage();
-    const [expandedModule, setExpandedModule] = useState<number | null>(null);
 
-    const modules = [
+    const modules = useMemo(() => [
       {
         id: 1,
         title: t.introTrading,
@@ -92,9 +90,24 @@ const AcademyPage = () => {
           { name: 'Position Trading', duration: '12 min', status: 'locked' as const, xp: 30 },
         ],
       },
-    ];
+    ], [t]);
 
-    const getVideoStatusIcon = (status: string) => {
+    const [selectedModuleId, setSelectedModuleId] = useState(2);
+    const [selectedVideoIdx, setSelectedVideoIdx] = useState(4);
+    const [muted, setMuted] = useState(false);
+
+    useEffect(() => {
+        setLiveAlertsMuted(muted);
+        return () => { setLiveAlertsMuted(false); };
+    }, [muted]);
+
+    const selectedModule = modules.find(m => m.id === selectedModuleId) || modules[0];
+    const selectedVideo = selectedModule.videos[selectedVideoIdx] || selectedModule.videos[0];
+    const totalXP = 450;
+
+    const allVideos = modules.flatMap(m => m.videos.map(v => ({ ...v, moduleTitle: m.title, moduleLocked: m.locked })));
+
+    const getStatusIcon = (status: string) => {
         switch (status) {
             case 'completed': return <Icon name="check-circle-fill" className="!size-4 fill-primary-02" />;
             case 'required': return <div className="w-4 h-4 rounded-full border-2 border-primary-01" />;
@@ -103,155 +116,148 @@ const AcademyPage = () => {
         }
     };
 
-    const getVideoStatusLabel = (status: string) => {
-        switch (status) {
-            case 'completed': return t.videoCompleted;
-            case 'required': return t.videoRequired;
-            case 'locked': return t.videoLocked;
-            default: return '';
-        }
-    };
-
-    const totalXP = 450; // Mock current XP
-
     return (
         <Layout title={t.academy}>
             <div className="max-w-[1200px] mx-auto space-y-6">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
-                        <h1 className="text-h3 font-bold text-t-primary">
-                            {t.academyTitle}
-                        </h1>
-                        <p className="text-body-1 text-t-secondary mt-1">
-                            {t.academySubtitle}
-                        </p>
+                        <h1 className="text-h3 font-bold text-t-primary">{t.academyTitle}</h1>
+                        <p className="text-body-1 text-t-secondary mt-1">{t.academySubtitle}</p>
                     </div>
                     <div className="flex items-center gap-3">
                         <div className="flex items-center gap-2 px-4 py-2 bg-primary-01/10 text-primary-01 rounded-lg">
-                            <Icon name="graduation-cap" className="!size-5 fill-primary-01" />
-                            <span className="font-semibold text-button">
-                                {t.levelBeginner}
-                            </span>
+                            <Icon name="book-open" className="!size-5 fill-primary-01" />
+                            <span className="font-semibold text-button">{t.levelBeginner}</span>
                         </div>
                         <div className="flex items-center gap-2 px-4 py-2 bg-primary-02/10 text-primary-02 rounded-lg">
                             <span className="font-bold text-button">{totalXP} XP</span>
                         </div>
+                        <button
+                            onClick={() => setMuted(!muted)}
+                            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-button font-semibold transition-colors ${muted ? 'bg-primary-03/10 text-primary-03' : 'bg-b-surface2 text-t-secondary hover:text-t-primary'}`}
+                            title={muted ? t.unmute : t.muteNotifications}
+                        >
+                            <Icon name={muted ? 'volume-x' : 'volume-2'} className={`!size-5 ${muted ? 'fill-primary-03' : 'fill-t-secondary'}`} />
+                            <span className="hidden sm:inline">{muted ? t.unmute : t.muteNotifications}</span>
+                        </button>
                     </div>
                 </div>
 
-                {/* Advancement & Explanation (moved from Signals) */}
-                <Advancement />
-                <Explanation />
-
-                {/* Course Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {modules.map((module, i) => (
-                        <motion.div
-                            key={module.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.1 }}
-                        >
-                            <Card className="!p-0 h-full flex flex-col overflow-hidden group hover:shadow-depth transition-all duration-300 border border-transparent dark:border-s-border" title="">
-                                <div className="h-40 bg-shade-01 relative">
-                                    <div className="absolute inset-0 bg-linear-to-br from-primary-04/20 to-accent/20" />
-                                    <div className="absolute inset-0 flex items-center justify-center">
-                                        {module.locked ? (
-                                            <div className="w-12 h-12 rounded-full bg-shade-02 flex items-center justify-center">
-                                                <Icon name="lock" className="!size-5 fill-t-secondary" />
-                                            </div>
-                                        ) : (
-                                            <div className="w-12 h-12 rounded-full bg-shade-10/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
-                                                <Icon name="play-circle" className="!size-6 fill-shade-10" />
-                                            </div>
-                                        )}
-                                    </div>
-                                    {module.progress > 0 && (
-                                        <div className="absolute bottom-0 left-0 right-0 h-1 bg-shade-02">
-                                            <div 
-                                                className="h-full bg-primary-02" 
-                                                style={{ width: `${module.progress}%` }}
-                                            />
-                                        </div>
-                                    )}
+                {/* Video Player + Module Selector Side-by-Side */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    {/* Video Player — 2/3 */}
+                    <div className="lg:col-span-2 space-y-4">
+                        <Card className="!p-0 overflow-hidden" title="">
+                            <div className="aspect-video bg-shade-01 flex items-center justify-center relative">
+                                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-shade-01/80" />
+                                <button className="relative z-2 w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/30 transition-colors">
+                                    <Icon name="play" className="!size-8 fill-white ml-1" />
+                                </button>
+                                <div className="absolute bottom-4 left-5 right-5 z-2">
+                                    <p className="text-caption text-white/60">{selectedModule.title}</p>
+                                    <p className="text-body-2 font-semibold text-white">{selectedVideo.name}</p>
                                 </div>
-                                
-                                <div className="p-5 flex-1 flex flex-col">
-                                    <div className="flex items-start justify-between mb-2">
-                                        <h3 className="text-h6 font-bold text-t-primary line-clamp-1">{module.title}</h3>
-                                        {module.progress === 100 && (
-                                            <Icon name="check-circle-fill" className="!size-5 fill-primary-02 flex-shrink-0" />
-                                        )}
-                                    </div>
-                                    
-                                    <p className="text-body-2 text-t-secondary mb-3 line-clamp-2">{module.desc}</p>
+                            </div>
+                        </Card>
+                        <div className="flex items-center gap-4 text-caption text-t-secondary">
+                            <span className="flex items-center gap-1.5"><Icon name="clock" className="!size-4 fill-t-tertiary" /> {selectedVideo.duration}</span>
+                            <span className="flex items-center gap-1.5 text-primary-02 font-semibold">+{selectedVideo.xp} XP</span>
+                            {selectedVideo.status === 'completed' && <span className="flex items-center gap-1.5 text-primary-02"><Icon name="check-circle-fill" className="!size-4 fill-primary-02" /> {t.videoCompleted}</span>}
+                        </div>
+                    </div>
 
-                                    {/* Meta info row */}
-                                    <div className="flex items-center gap-4 mb-3 text-caption text-t-tertiary font-medium">
-                                        <span className="flex items-center gap-1">
-                                            <Icon name="book-open" className="!size-3.5 fill-t-tertiary" />
-                                            {module.lessons} {t.lessons}
-                                        </span>
-                                        <span>{module.duration}</span>
-                                        <span className="ml-auto text-primary-02 font-bold">+{module.xp} XP</span>
-                                    </div>
-
-                                    {/* Locked info */}
-                                    {module.locked && module.unlockXp && (
-                                        <div className="flex items-center gap-2 px-3 py-2 bg-b-surface2 rounded-lg mb-3 text-caption">
-                                            <Icon name="lock" className="!size-3.5 fill-t-tertiary" />
-                                            <span className="text-t-secondary">{t.unlockIn} <strong className="text-t-primary">{module.unlockXp} XP</strong></span>
+                    {/* Module Selector Sidebar — 1/3 */}
+                    <div className="space-y-2 lg:max-h-[520px] lg:overflow-y-auto pr-1">
+                        {modules.map((module, mi) => {
+                            const isActive = module.id === selectedModuleId;
+                            return (
+                                <div key={module.id}>
+                                    <button
+                                        onClick={() => { if (!module.locked) { setSelectedModuleId(module.id); setSelectedVideoIdx(0); } }}
+                                        className={`w-full text-left p-4 rounded-xl transition-colors ${isActive ? 'bg-b-surface2 border border-primary-01/30' : module.locked ? 'opacity-50 cursor-not-allowed bg-b-surface1' : 'bg-b-surface1 hover:bg-b-surface2 border border-transparent'}`}
+                                    >
+                                        <div className="flex items-center gap-3">
+                                            <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${module.locked ? 'bg-b-surface2' : module.progress === 100 ? 'bg-primary-02/10' : 'bg-primary-01/10'}`}>
+                                                {module.locked ? <Icon name="lock" className="!size-4 fill-t-tertiary" /> : module.progress === 100 ? <Icon name="check-circle-fill" className="!size-4 fill-primary-02" /> : <span className="text-caption font-bold text-primary-01">{mi + 1}</span>}
+                                            </div>
+                                            <div className="flex-1 min-w-0">
+                                                <p className="text-caption font-semibold text-t-primary truncate">{module.title}</p>
+                                                <p className="text-[11px] text-t-tertiary">{module.lessons} {t.lessons} · {module.duration} · +{module.xp} XP</p>
+                                            </div>
                                         </div>
-                                    )}
+                                        {!module.locked && (
+                                            <div className="mt-2 h-1 bg-b-surface2 rounded-full overflow-hidden">
+                                                <div className="h-full rounded-full bg-primary-02 transition-all" style={{ width: `${module.progress}%` }} />
+                                            </div>
+                                        )}
+                                    </button>
 
-                                    {/* Action button */}
-                                    <div className="mt-auto">
-                                        {module.progress === 100 ? (
-                                            <button
-                                                onClick={() => setExpandedModule(expandedModule === module.id ? null : module.id)}
-                                                className="w-full text-center py-2 text-caption font-semibold text-primary-02 bg-primary-02/10 rounded-lg hover:bg-primary-02/20 transition-colors"
-                                            >
-                                                {t.moduleCompleted} ✓
-                                            </button>
-                                        ) : !module.locked ? (
-                                            <button
-                                                onClick={() => setExpandedModule(expandedModule === module.id ? null : module.id)}
-                                                className="w-full text-center py-2 text-caption font-semibold text-primary-01 bg-primary-01/10 rounded-lg hover:bg-primary-01/20 transition-colors"
-                                            >
-                                                {module.progress > 0 ? t.continueModule : t.startModule}
-                                            </button>
-                                        ) : null}
-                                    </div>
-
-                                    {/* Expanded video list */}
-                                    {expandedModule === module.id && (
-                                        <motion.div
-                                            initial={{ opacity: 0, height: 0 }}
-                                            animate={{ opacity: 1, height: 'auto' }}
-                                            className="mt-4 border-t border-s-border pt-4 space-y-2"
-                                        >
+                                    {isActive && (
+                                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="pl-4 space-y-0.5 mt-1 mb-2">
                                             {module.videos.map((video, vi) => (
-                                                <div key={vi} className="flex items-center gap-3 py-2 px-3 rounded-lg hover:bg-b-surface2 transition-colors">
-                                                    {getVideoStatusIcon(video.status)}
-                                                    <div className="flex-1 min-w-0">
-                                                        <p className={`text-body-2 truncate ${video.status === 'locked' ? 'text-t-tertiary' : 'text-t-primary'}`}>
-                                                            {video.name}
-                                                        </p>
-                                                    </div>
-                                                    <span className="text-caption text-t-tertiary shrink-0">{video.duration}</span>
-                                                    <span className={`text-caption font-medium shrink-0 ${video.status === 'completed' ? 'text-primary-02' : 'text-t-tertiary'}`}>
-                                                        {getVideoStatusLabel(video.status)}
+                                                <button
+                                                    key={vi}
+                                                    onClick={() => setSelectedVideoIdx(vi)}
+                                                    className={`w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-left transition-colors ${vi === selectedVideoIdx ? 'bg-primary-01/10' : 'hover:bg-b-surface2'}`}
+                                                >
+                                                    {getStatusIcon(video.status)}
+                                                    <span className={`text-[12px] truncate flex-1 ${vi === selectedVideoIdx ? 'text-primary-01 font-semibold' : video.status === 'locked' ? 'text-t-tertiary' : 'text-t-secondary'}`}>
+                                                        {video.name}
                                                     </span>
-                                                </div>
+                                                    <span className="text-[10px] text-t-tertiary shrink-0">{video.duration}</span>
+                                                </button>
                                             ))}
                                         </motion.div>
                                     )}
                                 </div>
-                            </Card>
-                        </motion.div>
-                    ))}
+                            );
+                        })}
+                    </div>
                 </div>
+
+                {/* Video Registry Table */}
+                <Card title={t.allVideos || 'Toutes les vidéos'} className="!p-0 overflow-hidden">
+                    <div className="overflow-x-auto">
+                        <table className="w-full text-left">
+                            <thead>
+                                <tr className="border-b border-s-border">
+                                    <th className="px-5 py-3 text-caption font-semibold text-t-tertiary">{t.videoName}</th>
+                                    <th className="px-5 py-3 text-caption font-semibold text-t-tertiary">{t.module}</th>
+                                    <th className="px-5 py-3 text-caption font-semibold text-t-tertiary text-center">{t.videoDuration}</th>
+                                    <th className="px-5 py-3 text-caption font-semibold text-t-tertiary text-center">XP</th>
+                                    <th className="px-5 py-3 text-caption font-semibold text-t-tertiary text-center">{t.status}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {allVideos.map((video, i) => (
+                                    <tr key={i} className="border-b border-s-border/50 last:border-0 hover:bg-b-surface2/40 transition-colors">
+                                        <td className="px-5 py-3 flex items-center gap-2.5">
+                                            {getStatusIcon(video.status)}
+                                            <span className={`text-body-2 ${video.status === 'locked' ? 'text-t-tertiary' : 'text-t-primary'}`}>{video.name}</span>
+                                        </td>
+                                        <td className="px-5 py-3 text-caption text-t-secondary">{video.moduleTitle}</td>
+                                        <td className="px-5 py-3 text-caption text-t-secondary text-center">{video.duration}</td>
+                                        <td className="px-5 py-3 text-center">
+                                            <span className="text-caption font-semibold text-primary-02">+{video.xp}</span>
+                                        </td>
+                                        <td className="px-5 py-3 text-center">
+                                            <span className={`inline-flex text-[11px] font-medium px-2 py-0.5 rounded-md ${
+                                                video.status === 'completed' ? 'text-primary-02 bg-primary-02/10' :
+                                                video.status === 'required' ? 'text-primary-01 bg-primary-01/10' :
+                                                'text-t-tertiary bg-b-surface2'
+                                            }`}>
+                                                {video.status === 'completed' ? (t.videoCompleted || 'Terminé') :
+                                                 video.status === 'required' ? (t.videoRequired || 'À faire') :
+                                                 (t.videoLocked || 'Verrouillé')}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </Card>
             </div>
         </Layout>
     );

@@ -1,23 +1,21 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Layout from "@/components/Layout";
 import Search from "@/components/Search";
 import Tabs from "@/components/Tabs";
 import SignalCard from "@/components/SignalCard";
-import Card from "@/components/Card";
 import Icon from "@/components/Icon";
 import { useSignalStore } from "@/stores/signalStore";
 import { useLanguage } from "@/context/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { TabsOption } from "@/types/tabs";
-import { mockSignals } from "@/data/mockData";
 import RecentEarnings from "@/templates/Income/EarningPage/RecentEarnings";
 
 const SignalsPage = () => {
     const { filteredSignals, setFilter, vote } = useSignalStore();
-    const { language, t } = useLanguage();
+    const { t } = useLanguage();
     const searchParams = useSearchParams();
     
     const marketOptions: TabsOption[] = [
@@ -27,25 +25,13 @@ const SignalsPage = () => {
         { id: 'Indices', name: t.indicesTab },
         { id: 'Commodities', name: t.commoditiesTab },
     ];
-    
-    const viewOptions = [
-        { id: 'active', name: t.signalsActive },
-        { id: 'history', name: t.signalsHistory },
-    ];
 
     const [search, setSearch] = useState('');
-    const [view, setView] = useState(viewOptions[0]);
     const [market, setMarket] = useState<TabsOption>(marketOptions[0]);
 
-    // Sync view with URL params
-    useEffect(() => {
-        const viewParam = searchParams.get('view');
-        if (viewParam === 'history') {
-            setView(viewOptions[1]);
-        } else {
-            setView(viewOptions[0]);
-        }
-    }, [searchParams]);
+    // Determine view from URL (active or history)
+    const viewParam = searchParams.get('view');
+    const isHistory = viewParam === 'history';
 
     // Handle Search
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -59,84 +45,37 @@ const SignalsPage = () => {
         setFilter('market', String(item.id));
     };
 
-    // Handle View Change
-    const handleViewChange = (item: { id: string, name: string }) => {
-        setView(item);
-        // Optional: Update URL without reload if needed, but the navigation links handle the main switching
-    };
-
     const signals = filteredSignals().filter(s => {
-        if (view.id === 'active') return s.status === 'active';
-        return s.status === 'won' || s.status === 'lost';
+        if (isHistory) return s.status === 'won' || s.status === 'lost';
+        return s.status === 'active';
     });
 
-    const totalWon = mockSignals.filter(s => s.status === 'won').length;
-    const totalLost = mockSignals.filter(s => s.status === 'lost').length;
-    const winRate = totalWon + totalLost > 0 ? (totalWon / (totalWon + totalLost) * 100).toFixed(1) : 0;
-
     return (
-        <Layout title={t.tradingSignals}>
+        <Layout title={isHistory ? t.signalsHistory : t.tradingSignals}>
             <div className="max-w-[1200px] mx-auto space-y-8">
-                {/* Compact Recap Stats */}
-                <div className="flex flex-wrap items-center gap-3">
-                    <div className="flex items-center gap-2 px-4 py-2 bg-b-surface2 rounded-xl border border-transparent dark:border-s-border">
-                        <Icon name="check-circle-fill" className="!size-4 fill-primary-02" />
-                        <span className="text-body-2 text-t-secondary">{t.wonTotal}</span>
-                        <span className="text-h6 font-bold text-t-primary">{totalWon}</span>
-                    </div>
-                    <div className="flex items-center gap-2 px-4 py-2 bg-b-surface2 rounded-xl border border-transparent dark:border-s-border">
-                        <Icon name="close-circle-fill" className="!size-4 fill-primary-03" />
-                        <span className="text-body-2 text-t-secondary">{t.lostTotal}</span>
-                        <span className="text-h6 font-bold text-t-primary">{totalLost}</span>
-                    </div>
-                    <div className="flex items-center gap-2 px-4 py-2 bg-b-surface2 rounded-xl border border-transparent dark:border-s-border">
-                        <Icon name="chart" className="!size-4 fill-primary-04" />
-                        <span className="text-body-2 text-t-secondary">{t.winRate}</span>
-                        <span className="text-h6 font-bold text-t-primary">{winRate}%</span>
-                    </div>
-                </div>
-
                 {/* Filters Stripe */}
                 <div className="sticky top-22 z-10 bg-b-surface1/95 backdrop-blur-sm border-y border-s-border py-4 -mx-4 px-4 md:mx-0 md:px-0 md:border-y-0 md:bg-transparent md:static">
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                        <div className="flex bg-b-surface2 p-1 rounded-xl self-start">
-                            {viewOptions.map((option) => (
-                                <button
-                                    key={option.id}
-                                    onClick={() => handleViewChange(option)}
-                                    className={`px-6 py-2.5 rounded-lg text-button font-medium transition-all ${
-                                        view.id === option.id
-                                            ? 'bg-b-surface1 text-t-primary shadow-sm'
-                                            : 'text-t-secondary hover:text-t-primary'
-                                    }`}
-                                >
-                                    {option.name}
-                                </button>
-                            ))}
+                        <div className="overflow-x-auto pb-2 md:pb-0 scrollbar-none">
+                            <Tabs 
+                                items={marketOptions}
+                                value={market}
+                                setValue={handleMarketChange}
+                            />
                         </div>
-
-                        <div className="flex flex-col md:flex-row gap-4 flex-1 justify-end">
-                            <div className="overflow-x-auto pb-2 md:pb-0 scrollbar-none">
-                                <Tabs 
-                                    items={marketOptions}
-                                    value={market}
-                                    setValue={handleMarketChange}
-                                />
-                            </div>
-                            <div className="w-full md:w-64">
-                                <Search 
-                                    value={search}
-                                    onChange={handleSearch}
-                                    placeholder={t.searchPair}
-                                    isGray
-                                />
-                            </div>
+                        <div className="w-full md:w-64">
+                            <Search 
+                                value={search}
+                                onChange={handleSearch}
+                                placeholder={t.searchPair}
+                                isGray
+                            />
                         </div>
                     </div>
                 </div>
 
                 {/* Recent Earnings chart - shown only in History view */}
-                {view.id === 'history' && (
+                {isHistory && (
                     <RecentEarnings />
                 )}
 

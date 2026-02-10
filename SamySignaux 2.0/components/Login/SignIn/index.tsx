@@ -52,6 +52,7 @@ const SignIn = ({ handleSignUp, handleForgotPassword }: SignInProps) => {
                 onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setPassword(e.target.value)}
                 required
                 handleForgotPassword={handleForgotPassword}
+                forgotPasswordLabel={t.forgotPasswordLabel}
             />
             <Button 
                 className="mt-6 w-full" 

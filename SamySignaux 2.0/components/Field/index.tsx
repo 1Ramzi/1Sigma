@@ -12,6 +12,7 @@ type FieldProps = {
     type?: string;
     validated?: boolean;
     handleForgotPassword?: () => void;
+    forgotPasswordLabel?: string;
 };
 
 const Field = ({
@@ -25,6 +26,7 @@ const Field = ({
     type,
     validated,
     handleForgotPassword,
+    forgotPasswordLabel,
     ...inputProps
 }: FieldProps &
     React.InputHTMLAttributes<HTMLInputElement> &
@@ -41,16 +43,16 @@ const Field = ({
             )}
             <div className={`relative ${textarea ? "text-0" : ""}`}>
                 {innerLabel && !label && (
-                    <div className="absolute -top-2.5 left-6 px-1 bg-b-surface2 text-caption pointer-events-none">
+                    <div className="absolute -top-2.5 left-6 px-1 bg-b-surface1 text-caption text-t-secondary pointer-events-none">
                         {innerLabel}
                     </div>
                 )}
                 {handleForgotPassword && (
                     <button
-                        className="absolute -top-2.5 right-6 px-1 bg-b-surface2 text-caption text-t-secondary transition-colors hover:text-t-primary"
+                        className="absolute -top-2.5 right-6 px-1 bg-b-surface1 text-caption text-t-secondary transition-colors hover:text-t-primary"
                         onClick={handleForgotPassword}
                     >
-                        Forgot password?
+                        {forgotPasswordLabel || 'Forgot password?'}
                     </button>
                 )}
                 {children}
