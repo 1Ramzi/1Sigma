@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import useScroll from "../../Hooks/useScroll";
 import Logo from "./Component/Logo";
 
@@ -19,9 +18,7 @@ export default function HeaderHomeOne() {
 					</div>
 
 					<div className="header-btn header-btn-l1 ms-auto d-inline-flex">
-						<Link href={"/login"} legacyBehavior>
-							<a className="zuzu-btn zuzu-header-btn rounded-pill black">Get Started</a>
-						</Link>
+						<a href="/login" className="zuzu-btn zuzu-header-btn rounded-pill black">Get Started</a>
 					</div>
 				</nav>
 			</div>

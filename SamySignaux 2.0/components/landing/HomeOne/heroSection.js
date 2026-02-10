@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 const ModalVideo = dynamic(() => import("react-modal-video"), { ssr: false });
@@ -25,20 +24,16 @@ export default function HeroSection() {
 									broker.
 								</p>
 								<div className="zuzu-hero-btn-wrap">
-									<Link href={"/login"} legacyBehavior>
-										<a className="zuzu-btn btn-white pill wow fadeInUpX" data-wow-delay="0.40s">
-											Join the Community
-										</a>
-									</Link>
-									<Link href={"#"} legacyBehavior>
-										<a className="zuzu-popup zuzu-popup-hero" onClick={() => setOpen(true)}>
-											<img src="/images/all-img/v1/play-button.png" alt="" />
-											<div className="waves wave-1" />
-											<div className="waves wave-2" />
-											<div className="waves wave-3" />
-											Our Philosophy
-										</a>
-									</Link>
+									<a href="/login" className="zuzu-btn btn-white pill wow fadeInUpX" data-wow-delay="0.40s">
+										Join the Community
+									</a>
+									<a href="#" className="zuzu-popup zuzu-popup-hero" onClick={(e) => { e.preventDefault(); setOpen(true); }}>
+										<img src="/images/all-img/v1/play-button.png" alt="" />
+										<div className="waves wave-1" />
+										<div className="waves wave-2" />
+										<div className="waves wave-3" />
+										Our Philosophy
+									</a>
 								</div>
 							</div>
 						</div>

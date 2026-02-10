@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 
 export default function CtaSection() {
 	return (
@@ -15,11 +14,9 @@ export default function CtaSection() {
 									Access all our premium content for free today.
 								</p>
 								<div className="zuzu-cta-btn-wrap">
-									<Link href={"/login"} legacyBehavior>
-										<a className="zuzu-btn btn-white pill">
-											Join Academy Now
-										</a>
-									</Link>
+									<a href="/login" className="zuzu-btn btn-white pill">
+										Join Academy Now
+									</a>
 								</div>
 							</div>
 						</div>

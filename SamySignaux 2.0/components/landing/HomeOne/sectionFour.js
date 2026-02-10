@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 
 export default function SectionFour() {
 	return (
@@ -23,9 +22,7 @@ export default function SectionFour() {
 								trading on a level playing field, while supporting our community to keep it free for everyone.
 							</p>
 							<div className="zuzu-btn-wrap">
-								<Link href={"/login"} legacyBehavior>
-									<a className="zuzu-btn pill btn-blue">Join Broker Now</a>
-								</Link>
+								<a href="/login" className="zuzu-btn pill btn-blue">Join Broker Now</a>
 							</div>
 						</div>
 					</div>
