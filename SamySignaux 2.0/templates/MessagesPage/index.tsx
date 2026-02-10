@@ -40,7 +40,7 @@ const MessagesPage = () => {
                             className="mb-3"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            placeholder="Search message"
+                            placeholder="Rechercher un message"
                             isGray
                         />
                         {search === "" ? (
@@ -59,14 +59,14 @@ const MessagesPage = () => {
                         ) : (
                             <div className="pt-16 text-center max-md:pb-24">
                                 <div className="mb-6 text-h5">
-                                    No results found
+                                    Aucun résultat trouvé
                                 </div>
                                 <Button
                                     isStroke
                                     as="link"
                                     href="/explore-creators"
                                 >
-                                    Explore creators
+                                    Explorer les créateurs
                                 </Button>
                             </div>
                         )}

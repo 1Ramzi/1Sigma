@@ -21,32 +21,19 @@ const testimonials = [
 ];
 
 const LandingPage = () => {
-    const { language, setLanguage } = useLanguage();
+    const { language } = useLanguage();
 
-    const toggleLanguage = () => {
-        setLanguage(language === 'fr' ? 'en' : 'fr');
-    };
-
-    const featureTexts = language === 'fr' ? [
+    const featureTexts = [
         { title: 'Signaux IA en temps réel', desc: 'Recevez des signaux de trading précis alimentés par notre intelligence artificielle avancée.' },
         { title: 'Taux de réussite de 78%+', desc: 'Nos signaux affichent un taux de réussite supérieur à 78% sur les 12 derniers mois.' },
         { title: 'Sécurité maximale', desc: 'Vos fonds restent sur votre broker. Nous n\'avons jamais accès à votre argent.' },
         { title: 'Communauté active', desc: 'Rejoignez +3000 traders qui partagent analyses, stratégies et résultats.' },
-    ] : [
-        { title: 'Real-time AI Signals', desc: 'Receive precise trading signals powered by our advanced artificial intelligence.' },
-        { title: '78%+ Win Rate', desc: 'Our signals show a win rate above 78% over the last 12 months.' },
-        { title: 'Maximum Security', desc: 'Your funds stay on your broker. We never have access to your money.' },
-        { title: 'Active Community', desc: 'Join 3000+ traders sharing analyses, strategies and results.' },
     ];
 
-    const testimonialTexts = language === 'fr' ? [
+    const testimonialTexts = [
         'Les signaux sont incroyablement précis. J\'ai doublé mon compte en 3 mois.',
         'La communauté est top, on apprend vraiment beaucoup. Les alertes flash sont un game changer.',
         'Interface propre, signaux fiables. Exactement ce que je cherchais pour du copy trading.',
-    ] : [
-        'The signals are incredibly accurate. I doubled my account in 3 months.',
-        'The community is great, you really learn a lot. Flash alerts are a game changer.',
-        'Clean interface, reliable signals. Exactly what I was looking for in copy trading.',
     ];
 
     return (
@@ -62,25 +49,21 @@ const LandingPage = () => {
                     </div>
                     <div className="hidden md:flex items-center gap-8">
                         <a href="#features" className="text-sm font-medium text-t-secondary hover:text-t-primary transition-colors">
-                            {language === 'fr' ? 'Fonctionnalités' : 'Features'}
+                            Fonctionnalités
                         </a>
                         <a href="#stats" className="text-sm font-medium text-t-secondary hover:text-t-primary transition-colors">
-                            {language === 'fr' ? 'Résultats' : 'Results'}
+                            Résultats
                         </a>
                         <a href="#testimonials" className="text-sm font-medium text-t-secondary hover:text-t-primary transition-colors">
-                            {language === 'fr' ? 'Avis' : 'Reviews'}
+                            Avis
                         </a>
                     </div>
                     <div className="flex items-center gap-3">
-                        <button onClick={toggleLanguage} className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-sm text-t-secondary hover:bg-b-surface2 transition-colors">
-                            <Icon name="globe" className="w-4 h-4 fill-current" />
-                            <span>{language.toUpperCase()}</span>
-                        </button>
                         <Link href="/login" className="text-sm font-medium text-t-primary hover:text-primary-01 transition-colors">
-                            {language === 'fr' ? 'Se connecter' : 'Sign In'}
+                            Se connecter
                         </Link>
                         <Link href="/register" className="text-sm font-medium bg-primary-01 text-white px-4 py-2 rounded-lg hover:bg-primary-02 transition-colors">
-                            {language === 'fr' ? "S'inscrire" : 'Sign Up'}
+                            S'inscrire
                         </Link>
                     </div>
                 </div>
@@ -97,31 +80,25 @@ const LandingPage = () => {
                         <div className="inline-flex items-center gap-2 bg-primary-01/10 border border-primary-01/20 rounded-full px-4 py-1.5 mb-6">
                             <span className="w-2 h-2 bg-secondary-01 rounded-full animate-pulse" />
                             <span className="text-sm font-medium text-primary-01">
-                                {language === 'fr' ? 'Signaux en direct maintenant' : 'Live signals now'}
+                                Signaux en direct maintenant
                             </span>
                         </div>
 
                         <h1 className="text-4xl md:text-6xl font-extrabold text-t-primary leading-tight tracking-tight">
-                            {language === 'fr' ? (
-                                <>Tradez avec les <span className="text-primary-01">meilleurs signaux</span> du marché</>
-                            ) : (
-                                <>Trade with the <span className="text-primary-01">best signals</span> on the market</>
-                            )}
+                            Tradez avec les <span className="text-primary-01">meilleurs signaux</span> du marché
                         </h1>
 
                         <p className="mt-6 text-lg text-t-secondary max-w-2xl mx-auto leading-relaxed">
-                            {language === 'fr'
-                                ? 'Recevez des signaux de trading en temps réel, alimentés par l\'IA. Rejoignez une communauté de traders qui gagnent ensemble.'
-                                : 'Receive real-time trading signals, powered by AI. Join a community of traders winning together.'}
+                            Recevez des signaux de trading en temps réel, alimentés par l'IA. Rejoignez une communauté de traders qui gagnent ensemble.
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
                             <Link href="/register" className="flex items-center gap-2 bg-primary-01 text-white px-8 py-3.5 rounded-xl font-semibold text-base hover:bg-primary-02 transition-colors shadow-lg shadow-primary-01/25">
-                                {language === 'fr' ? 'S\'inscrire maintenant' : 'Sign up now'}
+                                S'inscrire maintenant
                                 <Icon name="arrow-right" className="w-5 h-5 fill-current" />
                             </Link>
                             <a href="#features" className="flex items-center gap-2 text-t-primary font-medium hover:text-primary-01 transition-colors">
-                                {language === 'fr' ? 'Découvrir les fonctionnalités' : 'Discover features'}
+                                Découvrir les fonctionnalités
                                 <Icon name="chevron-right" className="w-4 h-4 fill-current" />
                             </a>
                         </div>
@@ -137,8 +114,8 @@ const LandingPage = () => {
                         {/* Placeholder for video/image */}
                         <div className="w-full h-full bg-shade-02 opacity-60"></div> 
                         <div className="absolute bottom-6 left-6 text-white text-left">
-                            <p className="font-bold text-lg">{language === 'fr' ? 'Démo de la plateforme' : 'Platform Demo'}</p>
-                            <p className="text-sm text-white/80">{language === 'fr' ? 'Regardez comment suivre nos signaux' : 'Watch how to follow our signals'}</p>
+                            <p className="font-bold text-lg">Démo de la plateforme</p>
+                            <p className="text-sm text-white/80">Regardez comment suivre nos signaux</p>
                         </div>
                     </div>
 
@@ -157,15 +134,15 @@ const LandingPage = () => {
                                 </div>
                                 <span className="text-xs font-bold text-primary-01">87%</span>
                             </div>
-                            <p className="text-[10px] text-t-tertiary mt-1">{language === 'fr' ? 'Confiance IA' : 'AI Confidence'}</p>
+                            <p className="text-[10px] text-t-tertiary mt-1">Confiance IA</p>
                         </div>
 
                         <div className="bg-b-surface1 rounded-xl shadow-lg border border-s-stroke2 p-5">
                             <p className="text-xs font-semibold text-t-tertiary uppercase tracking-wider mb-2">
-                                {language === 'fr' ? 'Performance' : 'Performance'}
+                                Performance
                             </p>
                             <p className="text-3xl font-extrabold text-secondary-01 font-mono">+78.5%</p>
-                            <p className="text-sm text-t-secondary mt-1">{language === 'fr' ? 'Taux de réussite' : 'Win Rate'}</p>
+                            <p className="text-sm text-t-secondary mt-1">Taux de réussite</p>
                             <div className="mt-3 h-12 flex items-end gap-0.5">
                                 {[40, 55, 35, 65, 50, 75, 60, 80, 70, 85, 75, 90].map((h, i) => (
                                     <div key={i} className="flex-1 bg-secondary-01/20 rounded-t-sm" style={{ height: `${h}%` }} />
@@ -175,10 +152,10 @@ const LandingPage = () => {
 
                         <div className="bg-b-surface1 rounded-xl shadow-lg border border-s-stroke2 p-5">
                             <p className="text-xs font-semibold text-t-tertiary uppercase tracking-wider mb-2">
-                                {language === 'fr' ? 'Communauté' : 'Community'}
+                                Communauté
                             </p>
                             <p className="text-3xl font-extrabold text-t-primary">{stats.members.toLocaleString()}+</p>
-                            <p className="text-sm text-t-secondary mt-1">{language === 'fr' ? 'Traders actifs' : 'Active traders'}</p>
+                            <p className="text-sm text-t-secondary mt-1">Traders actifs</p>
                             <div className="flex -space-x-2 mt-3">
                                 {['samy', 'marie', 'luc', 'sophie', 'thomas'].map((s, i) => (
                                     <img key={i} src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${s}`} alt="" className="w-8 h-8 rounded-full border-2 border-b-surface1" />
@@ -194,10 +171,10 @@ const LandingPage = () => {
             <section id="stats" className="bg-shade-01 py-12">
                 <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                     {[
-                        { value: `${stats.totalSignals}+`, label: language === 'fr' ? 'Signaux envoyés' : 'Signals sent' },
-                        { value: `${stats.winRate}%`, label: language === 'fr' ? 'Taux de réussite' : 'Win Rate' },
-                        { value: `${stats.members}+`, label: language === 'fr' ? 'Membres actifs' : 'Active members' },
-                        { value: `+${stats.avgProfit}%`, label: language === 'fr' ? 'Profit moyen/mois' : 'Avg profit/month' },
+                        { value: `${stats.totalSignals}+`, label: 'Signaux envoyés' },
+                        { value: `${stats.winRate}%`, label: 'Taux de réussite' },
+                        { value: `${stats.members}+`, label: 'Membres actifs' },
+                        { value: `+${stats.avgProfit}%`, label: 'Profit moyen/mois' },
                     ].map((s, i) => (
                         <div key={i}>
                             <p className="text-3xl md:text-4xl font-extrabold text-white">{s.value}</p>
@@ -212,12 +189,10 @@ const LandingPage = () => {
                 <div className="max-w-6xl mx-auto px-6">
                     <div className="text-center mb-14">
                         <h2 className="text-3xl md:text-4xl font-extrabold text-t-primary">
-                            {language === 'fr' ? 'Tout ce dont vous avez besoin' : 'Everything you need'}
+                            Tout ce dont vous avez besoin
                         </h2>
                         <p className="text-t-secondary mt-3 max-w-xl mx-auto">
-                            {language === 'fr'
-                                ? 'Une plateforme complète pour trader avec confiance et intelligence.'
-                                : 'A complete platform to trade with confidence and intelligence.'}
+                            Une plateforme complète pour trader avec confiance et intelligence.
                         </p>
                     </div>
 
@@ -244,20 +219,16 @@ const LandingPage = () => {
                 <div className="max-w-6xl mx-auto px-6">
                     <div className="text-center mb-14">
                         <h2 className="text-3xl md:text-4xl font-extrabold text-t-primary">
-                            {language === 'fr' ? 'Comment ça marche ?' : 'How does it work?'}
+                            Comment ça marche ?
                         </h2>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {(language === 'fr' ? [
+                        {[
                             { step: '01', title: 'Créez votre compte', desc: 'Inscription gratuite en 30 secondes. Aucune carte bancaire requise.' },
                             { step: '02', title: 'Connectez votre broker', desc: 'Liez votre compte PuPrime pour exécuter les signaux automatiquement.' },
                             { step: '03', title: 'Recevez les signaux', desc: 'Recevez des alertes flash et suivez les signaux en temps réel.' },
-                        ] : [
-                            { step: '01', title: 'Create your account', desc: 'Free signup in 30 seconds. No credit card required.' },
-                            { step: '02', title: 'Connect your broker', desc: 'Link your PuPrime account to execute signals automatically.' },
-                            { step: '03', title: 'Receive signals', desc: 'Get flash alerts and follow signals in real time.' },
-                        ]).map((item, i) => (
+                        ].map((item, i) => (
                             <div key={i} className="text-center">
                                 <div className="w-16 h-16 mx-auto rounded-2xl bg-primary-01 flex items-center justify-center mb-4">
                                     <span className="text-xl font-bold text-white">{item.step}</span>
@@ -275,7 +246,7 @@ const LandingPage = () => {
                 <div className="max-w-6xl mx-auto px-6">
                     <div className="text-center mb-14">
                         <h2 className="text-3xl md:text-4xl font-extrabold text-t-primary">
-                            {language === 'fr' ? 'Ce que disent nos traders' : 'What our traders say'}
+                            Ce que disent nos traders
                         </h2>
                     </div>
 
@@ -305,26 +276,24 @@ const LandingPage = () => {
             <section className="py-20 bg-linear-to-br from-primary-01 to-primary-02">
                 <div className="max-w-3xl mx-auto px-6 text-center">
                     <h2 className="text-3xl md:text-4xl font-extrabold text-white">
-                        {language === 'fr' ? 'Prêt à trader comme un pro ?' : 'Ready to trade like a pro?'}
+                        Prêt à trader comme un pro ?
                     </h2>
                     <p className="text-white/80 mt-4 text-lg">
-                        {language === 'fr'
-                            ? 'Rejoignez des milliers de traders et commencez à recevoir des signaux dès maintenant.'
-                            : 'Join thousands of traders and start receiving signals now.'}
+                        Rejoignez des milliers de traders et commencez à recevoir des signaux dès maintenant.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
                         <Link href="/register" className="flex items-center gap-2 bg-white text-primary-01 px-8 py-3.5 rounded-xl font-semibold text-base hover:bg-white/90 transition-colors">
-                            {language === 'fr' ? 'Créer un compte gratuit' : 'Create free account'}
+                            Créer un compte gratuit
                             <Icon name="arrow-right" className="w-5 h-5 fill-current" />
                         </Link>
                         <Link href="/login" className="text-white/80 font-medium hover:text-white transition-colors">
-                            {language === 'fr' ? 'Déjà membre ? Se connecter' : 'Already a member? Sign in'}
+                            Déjà membre ? Se connecter
                         </Link>
                     </div>
                     <div className="flex items-center justify-center gap-6 mt-8 text-sm text-white/70">
-                        <span className="flex items-center gap-1.5"><Icon name="check-circle" className="w-4 h-4 fill-current" /> {language === 'fr' ? 'Gratuit' : 'Free'}</span>
-                        <span className="flex items-center gap-1.5"><Icon name="check-circle" className="w-4 h-4 fill-current" /> {language === 'fr' ? 'Sans engagement' : 'No commitment'}</span>
-                        <span className="flex items-center gap-1.5"><Icon name="check-circle" className="w-4 h-4 fill-current" /> {language === 'fr' ? 'Signaux IA' : 'AI Signals'}</span>
+                        <span className="flex items-center gap-1.5"><Icon name="check-circle" className="w-4 h-4 fill-current" /> Gratuit</span>
+                        <span className="flex items-center gap-1.5"><Icon name="check-circle" className="w-4 h-4 fill-current" /> Sans engagement</span>
+                        <span className="flex items-center gap-1.5"><Icon name="check-circle" className="w-4 h-4 fill-current" /> Signaux IA</span>
                     </div>
                 </div>
             </section>
@@ -340,16 +309,16 @@ const LandingPage = () => {
                             <span className="font-bold text-white">SamySignaux</span>
                         </div>
                         <div className="flex items-center gap-6 text-sm text-shade-03">
-                            <a href="#features" className="hover:text-white transition-colors">{language === 'fr' ? 'Fonctionnalités' : 'Features'}</a>
-                            <a href="#stats" className="hover:text-white transition-colors">{language === 'fr' ? 'Résultats' : 'Results'}</a>
-                            <a href="#testimonials" className="hover:text-white transition-colors">{language === 'fr' ? 'Avis' : 'Reviews'}</a>
+                            <a href="#features" className="hover:text-white transition-colors">Fonctionnalités</a>
+                            <a href="#stats" className="hover:text-white transition-colors">Résultats</a>
+                            <a href="#testimonials" className="hover:text-white transition-colors">Avis</a>
                             <Link href="/login" className="hover:text-white transition-colors">
-                                {language === 'fr' ? 'Se connecter' : 'Sign in'}
+                                Se connecter
                             </Link>
                         </div>
                     </div>
                     <div className="border-t border-shade-02 mt-8 pt-8 text-center text-xs text-shade-03">
-                        © 2026 SamySignaux. {language === 'fr' ? 'Tous droits réservés.' : 'All rights reserved.'}
+                        © 2026 SamySignaux. Tous droits réservés.
                     </div>
                 </div>
             </footer>

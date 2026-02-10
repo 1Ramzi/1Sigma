@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import Search from "@/components/Search";
 import Tabs from "@/components/Tabs";

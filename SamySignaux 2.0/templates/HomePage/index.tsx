@@ -13,7 +13,7 @@ import { popularProducts } from "@/mocks/products";
 
 const HomePage = () => {
     return (
-        <Layout title="Dashboard">
+        <Layout title="Tableau de bord">
             <div className="max-w-[1200px] mx-auto flex max-lg:block">
                 <div className="col-left">
                     <Overview />
@@ -23,7 +23,7 @@ const HomePage = () => {
                 </div>
                 <div className="col-right">
                     <PopularProducts
-                        title="Popular products"
+                        title="Produits populaires"
                         items={popularProducts}
                     />
                     <Comments />

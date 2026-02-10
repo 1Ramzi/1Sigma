@@ -22,11 +22,11 @@ const socials = [
 
 const GetMoreCustomers = ({}) => {
     return (
-        <Card title="Get more customers">
+        <Card title="Obtenez plus de clients">
             <div className="mb-6 px-5 text-body-2 text-t-secondary max-lg:px-3">
-                Fifty percent of new customers explore products because the
-                author shares their work on social media. <br></br>Start earning
-                now! 🔥
+                Cinquante pour cent des nouveaux clients explorent les produits car
+                l'auteur partage son travail sur les réseaux sociaux. <br></br>Commencez à gagner
+                maintenant ! 🔥
             </div>
             <div className="flex gap-3">
                 {socials.map((social, index) => (

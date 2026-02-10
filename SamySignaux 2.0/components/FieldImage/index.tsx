@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useRef } from "react";
 import Tooltip from "@/components/Tooltip";
 import Icon from "@/components/Icon";

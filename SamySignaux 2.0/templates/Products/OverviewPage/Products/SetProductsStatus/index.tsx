@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { Field, Radio, RadioGroup } from "@headlessui/react";
 import Modal from "@/components/Modal";

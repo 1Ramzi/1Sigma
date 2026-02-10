@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useMemo } from "react";
 import { NumericFormat } from "react-number-format";
 import Card from "@/components/Card";
@@ -8,9 +10,9 @@ import { TabsOption } from "@/types/tabs";
 import { interactions } from "@/mocks/promote";
 
 const sortOptions: TabsOption[] = [
-    { id: 1, name: "All" },
-    { id: 2, name: "Followers" },
-    { id: 3, name: "Non-followers" },
+    { id: 1, name: "Tous" },
+    { id: 2, name: "Abonnés" },
+    { id: 3, name: "Non-abonnés" },
 ];
 
 type InteractionItemProps = {

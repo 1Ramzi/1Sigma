@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { NumericFormat } from "react-number-format";
 import { Line, LineChart, ResponsiveContainer } from "recharts";

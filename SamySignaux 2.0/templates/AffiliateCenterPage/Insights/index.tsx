@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { BarChart, Bar, ResponsiveContainer } from "recharts";
 import Card from "@/components/Card";

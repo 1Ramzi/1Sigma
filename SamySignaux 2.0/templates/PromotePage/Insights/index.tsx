@@ -9,9 +9,9 @@ import { SelectOption } from "@/types/select";
 import { insights } from "@/mocks/promote";
 
 const durations: SelectOption[] = [
-    { id: 1, name: "Last 7 days" },
-    { id: 2, name: "Last 14 days" },
-    { id: 3, name: "Last 28 days" },
+    { id: 1, name: "7 derniers jours" },
+    { id: 2, name: "14 derniers jours" },
+    { id: 3, name: "28 derniers jours" },
 ];
 
 const Insights = ({}) => {
@@ -20,7 +20,7 @@ const Insights = ({}) => {
     return (
         <Card
             className="max-2xl:overflow-hidden"
-            title="Insights"
+            title="Aperçu"
             selectValue={duration}
             selectOnChange={setDuration}
             selectOptions={durations}
@@ -50,14 +50,14 @@ const Insights = ({}) => {
                                     <div className="flex items-center gap-2">
                                         <Percentage value={item.percentage} />
                                         <div className="text-body-2 text-t-tertiary">
-                                            vs last year
+                                            vs l'année dernière
                                         </div>
                                     </div>
                                 </div>
                                 <div className="flex flex-col gap-2">
                                     <div className="text-right">
                                         <div className="text-caption text-t-tertiary">
-                                            New customers
+                                            Nouveaux clients
                                         </div>
                                         <div className="inline-flex items-center gap-1">
                                             <Icon
@@ -75,7 +75,7 @@ const Insights = ({}) => {
                                     </div>
                                     <div className="text-right">
                                         <div className="text-caption text-t-tertiary">
-                                            Product reached
+                                            Produit atteint
                                         </div>
                                         <NumericFormat
                                             className="text-h6"
@@ -84,6 +84,7 @@ const Insights = ({}) => {
                                             decimalScale={0}
                                             fixedDecimalScale
                                             displayType="text"
+                                            prefix="$"
                                         />
                                     </div>
                                 </div>

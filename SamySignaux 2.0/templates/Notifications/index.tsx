@@ -1,5 +1,7 @@
 "use client";
 
+"use client";
+
 import { useState } from "react";
 import Layout from "@/components/Layout";
 import Tabs from "@/components/Tabs";
@@ -12,8 +14,8 @@ import { TabsOption } from "@/types/tabs";
 import { allNotifications } from "@/mocks/notifications";
 
 const categories: TabsOption[] = [
-    { id: 1, name: "Recent" },
-    { id: 2, name: "Earlier" },
+    { id: 1, name: "Récent" },
+    { id: 2, name: "Plus tôt" },
 ];
 
 const NotificationsPage = () => {
@@ -31,7 +33,7 @@ const NotificationsPage = () => {
                                 setValue={setCategory}
                             />
                             <Button className="ml-auto max-md:!hidden" isBlack>
-                                Mark all as read
+                                Tout marquer comme lu
                             </Button>
                             <Button
                                 className="!hidden ml-3 max-lg:!flex max-md:ml-auto"

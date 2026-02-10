@@ -27,7 +27,7 @@ const Balance = ({}) => {
             return (
                 <div className="chart-tooltip">
                     <div className="mb-0.5 text-[0.6875rem] leading-[1rem] opacity-80">
-                        Earning
+                        Gains
                     </div>
                     <div className="text-caption">
                         <NumericFormat

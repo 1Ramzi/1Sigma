@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import { format, getYear, getMonth } from "date-fns";

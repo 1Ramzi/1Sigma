@@ -1,5 +1,7 @@
 "use client";
 
+"use client";
+
 import { useState } from "react";
 import { NumericFormat } from "react-number-format";
 import Search from "@/components/Search";

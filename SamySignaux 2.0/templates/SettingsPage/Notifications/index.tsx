@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import Card from "@/components/Card";
 import Switch from "@/components/Switch";

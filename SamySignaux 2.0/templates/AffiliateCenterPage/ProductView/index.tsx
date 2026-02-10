@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from "recharts";
 import millify from "millify";

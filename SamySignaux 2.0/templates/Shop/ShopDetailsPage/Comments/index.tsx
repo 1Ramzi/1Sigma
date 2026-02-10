@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import Tabs from "@/components/Tabs";
 import Image from "@/components/Image";

@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { NumericFormat } from "react-number-format";
 import Icon from "@/components/Icon";

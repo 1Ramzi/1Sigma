@@ -19,14 +19,14 @@ const NewCustomers = ({ className, percentage }: NewCustomersProps) => (
                 }`}
             >
                 <div className="text-[1.125rem] font-medium tracking-[-0.01em]">
-                    857 new customers today!
+                    857 nouveaux clients aujourd'hui !
                 </div>
                 {percentage && (
                     <Percentage className="max-md:hidden" value={percentage} />
                 )}
             </div>
             <div className="text-body-2 text-t-secondary">
-                Send a welcome message to all new customers.
+                Envoyez un message de bienvenue à tous les nouveaux clients.
             </div>
         </div>
         <div className="relative before:hidden after:hidden before:absolute before:-left-6 before:top-0 before:bottom-0 before:z-3 before:w-10 before:bg-linear-to-r before:from-b-surface2 before:to-transparent before:pointer-events-none after:absolute after:-right-6 after:top-0 after:bottom-0 after:z-3 after:w-10 after:bg-linear-to-l after:from-b-surface2 after:to-transparent after:pointer-events-none max-md:before:block max-md:after:block">
@@ -62,7 +62,7 @@ const NewCustomers = ({ className, percentage }: NewCustomersProps) => (
                             />
                         </div>
                         <div className="mt-4 text-button text-t-secondary transition-colors group-hover:text-t-primary">
-                            View all
+                            Voir tout
                         </div>
                     </Link>
                 </div>

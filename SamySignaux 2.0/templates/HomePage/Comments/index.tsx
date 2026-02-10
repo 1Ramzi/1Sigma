@@ -7,7 +7,7 @@ import { commentsDashboard } from "@/mocks/comments";
 
 const Comments = ({}) => {
     return (
-        <Card classHead="!pl-3" title="Comments">
+        <Card classHead="!pl-3" title="Commentaires">
             <div className="flex flex-col gap-1">
                 {commentsDashboard.map((comment) => (
                     <div
@@ -27,7 +27,7 @@ const Comments = ({}) => {
                         <div className="relative z-2 grow pl-5">
                             <div className="mb-1 text-sub-title-1">
                                 {comment.name}&nbsp;
-                                <span className="text-t-secondary">on</span>
+                                <span className="text-t-secondary">sur</span>
                                 &nbsp;
                                 <Link
                                     className="transition-colors hover:text-shade-05 dark:hover:text-shade-08/90"
@@ -51,7 +51,7 @@ const Comments = ({}) => {
                     as="link"
                     isStroke
                 >
-                    All comments
+                    Tous les commentaires
                 </Button>
             </div>
         </Card>

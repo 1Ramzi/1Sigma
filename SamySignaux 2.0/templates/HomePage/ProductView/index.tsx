@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useMemo } from "react";
 import {
     BarChart,
@@ -15,9 +17,9 @@ import { SelectOption } from "@/types/select";
 import { homeProductViewChartData } from "@/mocks/charts";
 
 const durations: SelectOption[] = [
-    { id: 1, name: "Last 7 days" },
-    { id: 2, name: "Last month" },
-    { id: 3, name: "Last year" },
+    { id: 1, name: "7 derniers jours" },
+    { id: 2, name: "Dernier mois" },
+    { id: 3, name: "Dernière année" },
 ];
 
 const ProductView = ({}) => {
@@ -47,7 +49,7 @@ const ProductView = ({}) => {
 
     return (
         <Card
-            title="Product view"
+            title="Vues produit"
             selectValue={duration}
             selectOnChange={setDuration}
             selectOptions={durations}
@@ -59,10 +61,10 @@ const ProductView = ({}) => {
                             <div className="text-h3 text-t-tertiary">$</div>
                             <div className="text-h2">10.2m</div>
                         </div>
-                        <div className="flex items-center gap-2 max-md:flex-col max-md:items-stretch max-md:gap-1">
-                            <Percentage value={36.8} />
+                        <div className="flex items-center gap-2 max-md:mb-1">
+                            <Percentage value={36.8} large />
                             <div className="text-caption text-t-tertiary">
-                                vs last month
+                                vs le mois dernier
                             </div>
                         </div>
                     </div>

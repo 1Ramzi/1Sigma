@@ -12,8 +12,8 @@ import Scheduled from "./Scheduled";
 import { publishedItems, scheduledItems } from "@/mocks/promote";
 
 const sortOptions: TabsOption[] = [
-    { id: 1, name: "Published" },
-    { id: 2, name: "Scheduled" },
+    { id: 1, name: "Publié" },
+    { id: 2, name: "Programmé" },
 ];
 
 const List = ({}) => {
@@ -41,15 +41,14 @@ const List = ({}) => {
             ) : (
                 <div className="flex items-center">
                     <div className="mr-6 pl-5 text-h6">
-                        {selectedRows.length} product
-                        {selectedRows.length !== 1 ? "s" : ""} selected
+                        {selectedRows.length} produit{selectedRows.length !== 1 ? "s" : ""} sélectionné{selectedRows.length !== 1 ? "s" : ""}
                     </div>
                     <Button
                         className="mr-auto"
                         isStroke
                         onClick={handleDeselect}
                     >
-                        Deselect
+                        Désélectionner
                     </Button>
                     <DeleteItems
                         counter={selectedRows.length}

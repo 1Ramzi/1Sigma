@@ -1,3 +1,5 @@
+"use client";
+
 import { useMemo } from "react";
 import {
     BarChart,
@@ -56,7 +58,7 @@ const ProductView = ({ className }: ProductViewProps) => {
         <Card
             className={`${className || ""}`}
             classHead="!pl-3"
-            title="Product views"
+            title="Vues produit"
         >
             <div className="px-2 pb-3">
                 <div className="h-52">

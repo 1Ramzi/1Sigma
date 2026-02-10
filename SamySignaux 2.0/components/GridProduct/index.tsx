@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import Checkbox from "@/components/Checkbox";
 import Image from "@/components/Image";

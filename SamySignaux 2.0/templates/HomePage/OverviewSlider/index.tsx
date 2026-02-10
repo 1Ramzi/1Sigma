@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -24,7 +26,7 @@ const OverviewSlider = ({}) => {
     return (
         <Card
             className="overflow-hidden"
-            title="Overview"
+            title="Aperçu"
             headContent={
                 <div className="flex items-center gap-1">
                     <Button

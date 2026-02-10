@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useRef } from "react";
 import { useClickAway } from "react-use";
 import Search from "@/components/Search";

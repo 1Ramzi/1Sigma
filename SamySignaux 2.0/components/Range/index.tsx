@@ -1,3 +1,5 @@
+"use client";
+
 import { useCallback } from "react";
 import ReactSlider from "react-slider";
 import { NumericFormat } from "react-number-format";

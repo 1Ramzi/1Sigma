@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import Card from "@/components/Card";
 import Icon from "@/components/Icon";
@@ -7,23 +9,23 @@ import Balance from "./Balance";
 import { SelectOption } from "@/types/select";
 
 const durations: SelectOption[] = [
-    { id: 1, name: "Last 7 days" },
-    { id: 2, name: "Last month" },
-    { id: 3, name: "Last year" },
+    { id: 1, name: "7 derniers jours" },
+    { id: 2, name: "Dernier mois" },
+    { id: 3, name: "Dernière année" },
 ];
 
 const tabs = [
     {
         id: 1,
         icon: "profile",
-        label: "Customers",
+        label: "Clients",
         value: "1,293",
         percent: -36.8,
     },
     {
         id: 2,
         icon: "wallet",
-        label: "Balance",
+        label: "Solde",
         value: "256k",
         percent: 36.8,
     },
@@ -35,7 +37,7 @@ const Overview = ({}) => {
 
     return (
         <Card
-            title="Overview"
+            title="Aperçu"
             selectValue={duration}
             selectOnChange={setDuration}
             selectOptions={durations}
@@ -76,7 +78,7 @@ const Overview = ({}) => {
                                 <div>
                                     <Percentage value={tab.percent} />
                                     <div className="mt-1 text-body-2 text-t-secondary max-md:text-caption">
-                                        vs last month
+                                        vs le mois dernier
                                     </div>
                                 </div>
                             </div>

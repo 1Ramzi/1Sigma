@@ -23,7 +23,7 @@ const PopularProducts = ({ title, items }: PopularProductsProps) => {
             </div>
             <div className="pt-6 px-3 pb-3">
                 <Button className="w-full" href="/products" as="link" isStroke>
-                    All products
+                    Tous les produits
                 </Button>
             </div>
         </Card>

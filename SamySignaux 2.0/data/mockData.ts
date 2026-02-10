@@ -5,7 +5,7 @@ export type UserRole = 'member' | 'vip' | 'moderator' | 'trader' | 'admin';
 export interface Signal {
   id: string; pair: string; market: string; direction: SignalDirection;
   entryPrice: number; stopLoss: number; takeProfit: number; currentPrice: number;
-  tp1: number; tp2: number; tp3: number;
+  tp1: number; tp2: number; tp3: number; tp4?: number; tp5?: number;
   confidence: number; status: SignalStatus; result?: number;
   createdAt: Date; closedAt?: Date; followers: number;
   votes: { up: number; down: number }; performance?: number;
@@ -36,14 +36,14 @@ export const mockUsers: User[] = [
 ];
 
 export const mockSignals: Signal[] = [
-  { id:'s1', pair:'BTC/USD', market:'Crypto', direction:'BUY', entryPrice:25536.67, stopLoss:24800, takeProfit:27000, currentPrice:26200, tp1:1.56, tp2:1.78, tp3:1.96, confidence:87, status:'active', createdAt:ago(2), followers:342, votes:{up:156,down:12}, performance: 2.6 },
-  { id:'s2', pair:'ETH/USD', market:'Crypto', direction:'BUY', entryPrice:3124.50, stopLoss:2980, takeProfit:3400, currentPrice:3250, tp1:2.1, tp2:3.4, tp3:4.2, confidence:82, status:'active', createdAt:ago(5), followers:289, votes:{up:201,down:34}, performance: 4.0 },
-  { id:'s3', pair:'EUR/USD', market:'Forex', direction:'SELL', entryPrice:1.0845, stopLoss:1.0920, takeProfit:1.0720, currentPrice:1.0790, tp1:0.8, tp2:1.2, tp3:1.5, confidence:91, status:'won', result:55, createdAt:ago(24), closedAt:ago(6), followers:467, votes:{up:312,down:15}, performance: 1.2 },
-  { id:'s4', pair:'SOL/USD', market:'Crypto', direction:'BUY', entryPrice:98.50, stopLoss:92.00, takeProfit:115.00, currentPrice:108.30, tp1:3.2, tp2:5.1, tp3:7.8, confidence:78, status:'won', result:98, createdAt:ago(48), closedAt:ago(12), followers:523, votes:{up:278,down:22}, performance: 9.9 },
-  { id:'s5', pair:'GOLD', market:'Commodities', direction:'BUY', entryPrice:2030, stopLoss:2010, takeProfit:2080, currentPrice:2055, tp1:0.5, tp2:1.0, tp3:1.8, confidence:85, status:'active', createdAt:ago(3), followers:411, votes:{up:245,down:18}, performance: 1.2 },
-  { id:'s6', pair:'GBP/JPY', market:'Forex', direction:'SELL', entryPrice:188.50, stopLoss:189.80, takeProfit:186.00, currentPrice:189.10, tp1:-0.3, tp2:-0.1, tp3:0.5, confidence:65, status:'lost', result:-70, createdAt:ago(72), closedAt:ago(24), followers:198, votes:{up:89,down:45}, performance: -0.3 },
-  { id:'s7', pair:'ADA/USD', market:'Crypto', direction:'BUY', entryPrice:0.45, stopLoss:0.42, takeProfit:0.52, currentPrice:0.48, tp1:2.5, tp2:4.3, tp3:6.7, confidence:74, status:'active', createdAt:ago(7), followers:356, votes:{up:167,down:28}, performance: 6.7 },
-  { id:'s8', pair:'NAS100', market:'Indices', direction:'BUY', entryPrice:17850, stopLoss:17700, takeProfit:18100, currentPrice:17960, tp1:0.4, tp2:0.8, tp3:1.2, confidence:80, status:'active', createdAt:ago(1), followers:234, votes:{up:156,down:11}, performance: 0.6 },
+  { id:'s1', pair:'BTC/USD', market:'Crypto', direction:'BUY', entryPrice:25536.67, stopLoss:24800, takeProfit:27000, currentPrice:26200, tp1:25800, tp2:26200, tp3:26600, tp4:26800, tp5:27000, confidence:87, status:'active', createdAt:ago(2), followers:342, votes:{up:156,down:12}, performance: 2.6 },
+  { id:'s2', pair:'ETH/USD', market:'Crypto', direction:'BUY', entryPrice:3124.50, stopLoss:2980, takeProfit:3400, currentPrice:3250, tp1:3180, tp2:3250, tp3:3320, tp4:3380, tp5:3400, confidence:82, status:'active', createdAt:ago(5), followers:289, votes:{up:201,down:34}, performance: 4.0 },
+  { id:'s3', pair:'EUR/USD', market:'Forex', direction:'SELL', entryPrice:1.0845, stopLoss:1.0920, takeProfit:1.0720, currentPrice:1.0790, tp1:1.0820, tp2:1.0800, tp3:1.0780, tp4:1.0750, tp5:1.0720, confidence:91, status:'won', result:55, createdAt:ago(24), closedAt:ago(6), followers:467, votes:{up:312,down:15}, performance: 1.2 },
+  { id:'s4', pair:'SOL/USD', market:'Crypto', direction:'BUY', entryPrice:98.50, stopLoss:92.00, takeProfit:115.00, currentPrice:108.30, tp1:102.00, tp2:105.00, tp3:108.00, tp4:112.00, tp5:115.00, confidence:78, status:'won', result:98, createdAt:ago(48), closedAt:ago(12), followers:523, votes:{up:278,down:22}, performance: 9.9 },
+  { id:'s5', pair:'GOLD', market:'Commodities', direction:'BUY', entryPrice:2030, stopLoss:2010, takeProfit:2080, currentPrice:2055, tp1:2040, tp2:2050, tp3:2060, tp4:2070, tp5:2080, confidence:85, status:'active', createdAt:ago(3), followers:411, votes:{up:245,down:18}, performance: 1.2 },
+  { id:'s6', pair:'GBP/JPY', market:'Forex', direction:'SELL', entryPrice:188.50, stopLoss:189.80, takeProfit:186.00, currentPrice:189.10, tp1:188.00, tp2:187.50, tp3:187.00, tp4:186.50, tp5:186.00, confidence:65, status:'lost', result:-70, createdAt:ago(72), closedAt:ago(24), followers:198, votes:{up:89,down:45}, performance: -0.3 },
+  { id:'s7', pair:'ADA/USD', market:'Crypto', direction:'BUY', entryPrice:0.45, stopLoss:0.42, takeProfit:0.52, currentPrice:0.48, tp1:0.47, tp2:0.48, tp3:0.49, tp4:0.50, tp5:0.52, confidence:74, status:'active', createdAt:ago(7), followers:356, votes:{up:167,down:28}, performance: 6.7 },
+  { id:'s8', pair:'NAS100', market:'Indices', direction:'BUY', entryPrice:17850, stopLoss:17700, takeProfit:18100, currentPrice:17960, tp1:17900, tp2:17950, tp3:18000, tp4:18050, tp5:18100, confidence:80, status:'active', createdAt:ago(1), followers:234, votes:{up:156,down:11}, performance: 0.6 },
 ];
 
 export const portfolioAssets = [
