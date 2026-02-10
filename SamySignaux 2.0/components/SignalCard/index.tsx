@@ -13,7 +13,7 @@ type SignalCardProps = {
 };
 
 const SignalCard = ({ signal, vote }: SignalCardProps) => {
-    const { language } = useLanguage();
+    const { language, t } = useLanguage();
     const isWin = signal.currentPrice >= signal.entryPrice === (signal.direction === 'BUY');
     const pnlClass = isWin ? "text-primary-02" : "text-primary-03";
 
@@ -28,9 +28,9 @@ const SignalCard = ({ signal, vote }: SignalCardProps) => {
 
     const getStatusLabel = (status: string) => {
         switch(status) {
-            case 'active': return language === 'fr' ? 'Active' : 'Active';
-            case 'won': return language === 'fr' ? 'Take-profit' : 'Take-Profit';
-            case 'lost': return language === 'fr' ? 'Passed' : 'Passed';
+            case 'active': return t.active;
+            case 'won': return t.won;
+            case 'lost': return t.lost;
             default: return status.toUpperCase();
         }
     };
@@ -73,7 +73,7 @@ const SignalCard = ({ signal, vote }: SignalCardProps) => {
                     
                     <div className="text-right">
                         <div className="flex items-center justify-end gap-1 mb-1">
-                            <span className="text-body-2 font-medium text-t-secondary">Confiance</span>
+                            <span className="text-body-2 font-medium text-t-secondary">{t.confidence}</span>
                             <span className="text-body-2 font-bold text-primary-04">{signal.confidence}%</span>
                         </div>
                         <div className="w-24 h-1.5 bg-b-surface1 rounded-full overflow-hidden ml-auto">
@@ -105,11 +105,11 @@ const SignalCard = ({ signal, vote }: SignalCardProps) => {
                 {/* Main Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
                     <div>
-                        <p className="text-caption font-medium text-t-secondary mb-1">PRIX ENTRÉE</p>
+                        <p className="text-caption font-medium text-t-secondary mb-1">{t.entryPrice}</p>
                         <p className="font-mono font-semibold text-t-primary">{formatPrice(signal.entryPrice)}</p>
                     </div>
                     <div className="md:col-span-2">
-                        <p className="text-caption font-medium text-t-secondary mb-1">ACTUEL</p>
+                        <p className="text-caption font-medium text-t-secondary mb-1">{t.currentPrice}</p>
                         <div className="flex items-center gap-4">
                             <p className={`font-mono font-semibold ${pnlClass} text-h6`}>
                                 {formatPrice(signal.currentPrice)}
@@ -125,7 +125,7 @@ const SignalCard = ({ signal, vote }: SignalCardProps) => {
                         </div>
                     </div>
                     <div>
-                        <p className="text-caption font-medium text-t-secondary mb-1">STOP LOSS</p>
+                        <p className="text-caption font-medium text-t-secondary mb-1">{t.stopLoss}</p>
                         <div className="flex items-center gap-1.5">
                             <Icon name="alert-triangle" className="!size-3.5 fill-primary-03" />
                             <p className="font-mono font-semibold text-primary-03">{formatPrice(signal.stopLoss)}</p>
@@ -159,7 +159,7 @@ const SignalCard = ({ signal, vote }: SignalCardProps) => {
                     className="w-full !h-10 justify-center text-button"
                     isStroke
                 >
-                    {language === 'fr' ? 'Voir l\'analyse complète' : 'View Full Analysis'}
+                    {t.viewFullAnalysis}
                     <Icon name="arrow" className="!size-4 fill-inherit" />
                 </Button>
             </div>

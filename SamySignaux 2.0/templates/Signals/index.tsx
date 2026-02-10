@@ -13,22 +13,23 @@ import { motion, AnimatePresence } from "framer-motion";
 import { TabsOption } from "@/types/tabs";
 import { mockSignals } from "@/data/mockData";
 
-const marketOptions: TabsOption[] = [
-    { id: 'all', name: 'Tous les marchés' },
-    { id: 'Crypto', name: 'Crypto' },
-    { id: 'Forex', name: 'Forex' },
-    { id: 'Indices', name: 'Indices' },
-    { id: 'Commodities', name: 'Matières 1ères' },
-];
-
-const viewOptions = [
-    { id: 'active', name: 'En cours' },
-    { id: 'history', name: 'Historique' },
-];
-
 const SignalsPage = () => {
     const { filteredSignals, setFilter, vote } = useSignalStore();
-    const { language } = useLanguage();
+    const { language, t } = useLanguage();
+    
+    const marketOptions: TabsOption[] = [
+        { id: 'all', name: t.allMarketsTab },
+        { id: 'Crypto', name: t.cryptoTab },
+        { id: 'Forex', name: t.forexTab },
+        { id: 'Indices', name: t.indicesTab },
+        { id: 'Commodities', name: t.commoditiesTab },
+    ];
+    
+    const viewOptions = [
+        { id: 'active', name: t.activeView },
+        { id: 'history', name: t.historyView },
+    ];
+
     const [search, setSearch] = useState('');
     const [view, setView] = useState(viewOptions[0]);
     const [market, setMarket] = useState<TabsOption>(marketOptions[0]);
@@ -60,7 +61,7 @@ const SignalsPage = () => {
     const winRate = totalWon + totalLost > 0 ? (totalWon / (totalWon + totalLost) * 100).toFixed(1) : 0;
 
     return (
-        <Layout title="Signaux">
+        <Layout title={t.tradingSignals}>
             <div className="max-w-[1200px] mx-auto space-y-8">
                 {/* Top Recap Stats */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -70,7 +71,7 @@ const SignalsPage = () => {
                                 <Icon name="check-circle-fill" className="!size-6 fill-primary-02" />
                             </div>
                             <div>
-                                <p className="text-body-2 text-t-secondary">Gagnés (Total)</p>
+                                <p className="text-body-2 text-t-secondary">{t.wonTotal}</p>
                                 <p className="text-h4 font-bold text-t-primary">{totalWon}</p>
                             </div>
                         </div>
@@ -81,7 +82,7 @@ const SignalsPage = () => {
                                 <Icon name="close-circle-fill" className="!size-6 fill-primary-03" />
                             </div>
                             <div>
-                                <p className="text-body-2 text-t-secondary">Perdus (Total)</p>
+                                <p className="text-body-2 text-t-secondary">{t.lostTotal}</p>
                                 <p className="text-h4 font-bold text-t-primary">{totalLost}</p>
                             </div>
                         </div>
@@ -92,7 +93,7 @@ const SignalsPage = () => {
                                 <Icon name="chart" className="!size-6 fill-primary-04" />
                             </div>
                             <div>
-                                <p className="text-body-2 text-t-secondary">Taux de réussite</p>
+                                <p className="text-body-2 text-t-secondary">{t.winRate}</p>
                                 <p className="text-h4 font-bold text-t-primary">{winRate}%</p>
                             </div>
                         </div>
@@ -130,7 +131,7 @@ const SignalsPage = () => {
                                 <Search 
                                     value={search}
                                     onChange={handleSearch}
-                                    placeholder="Rechercher une paire..."
+                                    placeholder={t.searchPair}
                                     isGray
                                 />
                             </div>
@@ -160,10 +161,10 @@ const SignalsPage = () => {
                                 <Icon name="search" className="w-10 h-10 fill-t-tertiary" />
                             </div>
                             <h3 className="text-h5 font-medium text-t-primary mb-2">
-                                Aucun signal trouvé
+                                {t.noSignalsFound}
                             </h3>
                             <p className="text-t-secondary max-w-md mx-auto">
-                                Essayez de modifier vos filtres ou revenez plus tard pour de nouvelles opportunités de trading.
+                                {t.noSignalsDesc}
                             </p>
                         </div>
                     )}
