@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Icon from "@/components/Icon";
 import { useLanguage } from "@/context/LanguageContext";
 
-const ONBOARDING_KEY = "samy_onboarding_done";
+const ONBOARDING_KEY = "samy_onboarding_v2";
 const TOOLTIP_W = 340;
 const TOOLTIP_H_EST = 260;
 const EDGE_MARGIN = 16;
@@ -65,10 +65,14 @@ const Onboarding = () => {
     ];
 
     useEffect(() => {
-        const done = localStorage.getItem(ONBOARDING_KEY);
-        if (!done) {
-            const timer = setTimeout(() => setActive(true), 1500);
-            return () => clearTimeout(timer);
+        try {
+            const done = localStorage.getItem(ONBOARDING_KEY);
+            if (!done) {
+                const timer = setTimeout(() => setActive(true), 1500);
+                return () => clearTimeout(timer);
+            }
+        } catch {
+            // localStorage unavailable (SSR)
         }
     }, []);
 

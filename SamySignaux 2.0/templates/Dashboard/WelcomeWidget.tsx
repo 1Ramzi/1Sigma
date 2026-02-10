@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useState, useEffect } from "react";
 import { useUserStore } from "@/stores/userStore";
 import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
@@ -60,9 +60,11 @@ const WelcomeWidget = () => {
     const { user } = useUserStore();
     const { t } = useLanguage();
 
-    const message = useMemo(() => {
+    const [message, setMessage] = useState(welcomeMessages[0]);
+
+    useEffect(() => {
         const idx = Math.floor(Math.random() * welcomeMessages.length);
-        return welcomeMessages[idx];
+        setMessage(welcomeMessages[idx]);
     }, []);
 
     return (
