@@ -7,7 +7,6 @@ import Tabs from "@/components/Tabs";
 import SignalCard from "@/components/SignalCard";
 import Card from "@/components/Card";
 import Icon from "@/components/Icon";
-import SideNotification from "@/components/SideNotification";
 import { useSignalStore } from "@/stores/signalStore";
 import { useLanguage } from "@/context/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
@@ -62,9 +61,7 @@ const SignalsPage = () => {
 
     return (
         <Layout title="Signaux">
-            <SideNotification />
             <div className="max-w-[1200px] mx-auto space-y-8">
-                
                 {/* Top Recap Stats */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <Card title="" className="!p-5 border border-transparent dark:border-s-border">

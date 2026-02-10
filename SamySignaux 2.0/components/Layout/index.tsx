@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 import ThemeButton from "@/components/ThemeButton";
+import SideNotification from "@/components/SideNotification";
+
 type LayoutProps = {
     title?: string;
     children: React.ReactNode;
@@ -35,6 +37,7 @@ const Layout = ({ title, children, newProduct, hideSidebar }: LayoutProps) => {
                     : "pl-85 max-4xl:pl-70 max-3xl:pl-60 max-xl:pl-0"
             }`}
         >
+            <SideNotification />
             <Sidebar
                 visibleSidebar={visibleSidebar}
                 hideSidebar={hideSidebar}
