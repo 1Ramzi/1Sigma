@@ -1,20 +1,22 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Icon from "@/components/Icon";
 import { useLanguage } from "@/context/LanguageContext";
 
 const ONBOARDING_KEY = "samy_onboarding_done";
+const TOOLTIP_W = 340;
+const TOOLTIP_H_EST = 260;
+const EDGE_MARGIN = 16;
+const GAP = 14;
 
 interface OnboardingStep {
     id: string;
     title: string;
     description: string;
     targetSelector: string;
-    position: "bottom" | "top" | "left" | "right";
     icon?: string;
-    action?: { label: string; onClick?: () => void };
 }
 
 const Onboarding = () => {
@@ -22,6 +24,7 @@ const Onboarding = () => {
     const [active, setActive] = useState(false);
     const [step, setStep] = useState(0);
     const [highlight, setHighlight] = useState<DOMRect | null>(null);
+    const tooltipRef = useRef<HTMLDivElement>(null);
 
     const steps: OnboardingStep[] = [
         {
@@ -29,7 +32,6 @@ const Onboarding = () => {
             title: t.onboardingWelcome,
             description: t.onboardingWelcomeDesc,
             targetSelector: "",
-            position: "bottom",
             icon: "star-fill",
         },
         {
@@ -37,16 +39,13 @@ const Onboarding = () => {
             title: t.onboardingVideo,
             description: t.onboardingVideoDesc,
             targetSelector: "[data-onboarding='video']",
-            position: "bottom",
             icon: "play",
-            action: { label: t.watchVideo },
         },
         {
             id: "stats",
             title: t.onboardingStats,
             description: t.onboardingStatsDesc,
             targetSelector: "[data-onboarding='stats']",
-            position: "bottom",
             icon: "chart",
         },
         {
@@ -54,7 +53,6 @@ const Onboarding = () => {
             title: t.onboardingBroker,
             description: t.onboardingBrokerDesc,
             targetSelector: "[data-onboarding='broker']",
-            position: "left",
             icon: "wallet",
         },
         {
@@ -62,7 +60,6 @@ const Onboarding = () => {
             title: t.onboardingQuickAccess,
             description: t.onboardingQuickAccessDesc,
             targetSelector: "[data-onboarding='quickaccess']",
-            position: "left",
             icon: "zap",
         },
     ];
@@ -83,23 +80,35 @@ const Onboarding = () => {
         }
         const el = document.querySelector(currentStep.targetSelector);
         if (el) {
-            const rect = el.getBoundingClientRect();
-            setHighlight(rect);
+            el.scrollIntoView({ behavior: "smooth", block: "center" });
+            // Small delay to let scroll finish before reading rect
+            requestAnimationFrame(() => {
+                const rect = el.getBoundingClientRect();
+                setHighlight(rect);
+            });
         } else {
             setHighlight(null);
         }
-    }, [step, steps]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [step]);
 
     useEffect(() => {
         if (!active) return;
         updateHighlight();
-        window.addEventListener("resize", updateHighlight);
-        window.addEventListener("scroll", updateHighlight, true);
-        return () => {
-            window.removeEventListener("resize", updateHighlight);
-            window.removeEventListener("scroll", updateHighlight, true);
+        const onLayout = () => {
+            const currentStep = steps[step];
+            if (!currentStep?.targetSelector) return;
+            const el = document.querySelector(currentStep.targetSelector);
+            if (el) setHighlight(el.getBoundingClientRect());
         };
-    }, [active, step, updateHighlight]);
+        window.addEventListener("resize", onLayout);
+        window.addEventListener("scroll", onLayout, true);
+        return () => {
+            window.removeEventListener("resize", onLayout);
+            window.removeEventListener("scroll", onLayout, true);
+        };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [active, step]);
 
     const finish = () => {
         setActive(false);
@@ -107,11 +116,8 @@ const Onboarding = () => {
     };
 
     const next = () => {
-        if (step < steps.length - 1) {
-            setStep(step + 1);
-        } else {
-            finish();
-        }
+        if (step < steps.length - 1) setStep(step + 1);
+        else finish();
     };
 
     const prev = () => {
@@ -122,9 +128,8 @@ const Onboarding = () => {
 
     const currentStep = steps[step];
     const isCenter = !currentStep.targetSelector;
-    const pad = 12;
 
-    // Tooltip position calculation
+    // Smart tooltip positioning: always stays within viewport
     const getTooltipStyle = (): React.CSSProperties => {
         if (isCenter || !highlight) {
             return {
@@ -133,28 +138,52 @@ const Onboarding = () => {
                 left: "50%",
                 transform: "translate(-50%, -50%)",
                 zIndex: 10002,
+                maxWidth: `calc(100vw - ${EDGE_MARGIN * 2}px)`,
             };
         }
-        const pos = currentStep.position;
-        const style: React.CSSProperties = { position: "fixed", zIndex: 10002 };
-        if (pos === "bottom") {
-            style.top = highlight.bottom + pad;
-            style.left = highlight.left + highlight.width / 2;
-            style.transform = "translateX(-50%)";
-        } else if (pos === "top") {
-            style.bottom = window.innerHeight - highlight.top + pad;
-            style.left = highlight.left + highlight.width / 2;
-            style.transform = "translateX(-50%)";
-        } else if (pos === "left") {
-            style.top = highlight.top + highlight.height / 2;
-            style.right = window.innerWidth - highlight.left + pad;
-            style.transform = "translateY(-50%)";
-        } else if (pos === "right") {
-            style.top = highlight.top + highlight.height / 2;
-            style.left = highlight.right + pad;
-            style.transform = "translateY(-50%)";
+
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        const tw = Math.min(TOOLTIP_W, vw - EDGE_MARGIN * 2);
+        const th = tooltipRef.current?.offsetHeight || TOOLTIP_H_EST;
+
+        // Try bottom first
+        const bottomSpace = vh - highlight.bottom - GAP;
+        const topSpace = highlight.top - GAP;
+        const leftSpace = highlight.left - GAP;
+
+        let top: number;
+        let left: number;
+
+        if (bottomSpace >= th) {
+            // Place below
+            top = highlight.bottom + GAP;
+            left = highlight.left + highlight.width / 2 - tw / 2;
+        } else if (topSpace >= th) {
+            // Place above
+            top = highlight.top - GAP - th;
+            left = highlight.left + highlight.width / 2 - tw / 2;
+        } else if (leftSpace >= tw) {
+            // Place to the left
+            top = highlight.top + highlight.height / 2 - th / 2;
+            left = highlight.left - GAP - tw;
+        } else {
+            // Place to the right
+            top = highlight.top + highlight.height / 2 - th / 2;
+            left = highlight.right + GAP;
         }
-        return style;
+
+        // Clamp within viewport
+        left = Math.max(EDGE_MARGIN, Math.min(left, vw - tw - EDGE_MARGIN));
+        top = Math.max(EDGE_MARGIN, Math.min(top, vh - th - EDGE_MARGIN));
+
+        return {
+            position: "fixed",
+            top,
+            left,
+            width: tw,
+            zIndex: 10002,
+        };
     };
 
     return (
@@ -175,8 +204,8 @@ const Onboarding = () => {
                                     <rect width="100%" height="100%" fill="white" />
                                     {highlight && (
                                         <rect
-                                            x={highlight.left - 8}
-                                            y={highlight.top - 8}
+                                            x={Math.max(0, highlight.left - 8)}
+                                            y={Math.max(0, highlight.top - 8)}
                                             width={highlight.width + 16}
                                             height={highlight.height + 16}
                                             rx={16}
@@ -199,8 +228,8 @@ const Onboarding = () => {
                                 layoutId="onboarding-ring"
                                 className="absolute rounded-2xl border-2 border-primary-01 pointer-events-none"
                                 style={{
-                                    left: highlight.left - 8,
-                                    top: highlight.top - 8,
+                                    left: Math.max(0, highlight.left - 8),
+                                    top: Math.max(0, highlight.top - 8),
                                     width: highlight.width + 16,
                                     height: highlight.height + 16,
                                 }}
@@ -211,13 +240,13 @@ const Onboarding = () => {
 
                     {/* Tooltip card */}
                     <motion.div
+                        ref={tooltipRef}
                         key={currentStep.id}
-                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                        initial={{ opacity: 0, y: 8, scale: 0.97 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                        transition={{ duration: 0.25 }}
+                        exit={{ opacity: 0, y: 8, scale: 0.97 }}
+                        transition={{ duration: 0.2 }}
                         style={getTooltipStyle()}
-                        className="w-[340px] max-w-[90vw]"
                     >
                         <div className="bg-b-surface1 border border-s-border rounded-2xl shadow-depth p-5 space-y-3">
                             {/* Step indicator */}
