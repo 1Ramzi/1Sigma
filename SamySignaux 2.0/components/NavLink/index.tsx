@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import Icon from "@/components/Icon";
 import { useLanguage } from "@/context/LanguageContext";
 import { Translations } from "@/lib/i18n";
@@ -19,10 +19,24 @@ type NavLinkProps = {
 
 const NavLink = ({ value, onClick }: NavLinkProps) => {
     const pathname = usePathname();
+    const searchParams = useSearchParams();
     const { t } = useLanguage();
 
     const isActive = useMemo(() => {
         if (pathname === value.href) return true;
+
+        // Handle query params matching (e.g. /signals?view=active)
+        if (value.href.includes('?')) {
+            const [path, query] = value.href.split('?');
+            if (pathname === path) {
+                const params = new URLSearchParams(query);
+                let allMatch = true;
+                params.forEach((val, key) => {
+                    if (searchParams.get(key) !== val) allMatch = false;
+                });
+                if (allMatch) return true;
+            }
+        }
 
         switch (value.title) {
             case "Customer list":
@@ -34,7 +48,7 @@ const NavLink = ({ value, onClick }: NavLinkProps) => {
             default:
                 return false;
         }
-    }, [pathname, value.href, value.title]);
+    }, [pathname, searchParams, value.href, value.title]);
 
     // Helper to get translation or fallback
     const title = t[value.title as keyof Translations] || value.title;

@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import Layout from "@/components/Layout";
 import Search from "@/components/Search";
 import Tabs from "@/components/Tabs";
@@ -12,10 +13,13 @@ import { useLanguage } from "@/context/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { TabsOption } from "@/types/tabs";
 import { mockSignals } from "@/data/mockData";
+import Advancement from "./Advancement";
+import Explanation from "./Explanation";
 
 const SignalsPage = () => {
     const { filteredSignals, setFilter, vote } = useSignalStore();
     const { language, t } = useLanguage();
+    const searchParams = useSearchParams();
     
     const marketOptions: TabsOption[] = [
         { id: 'all', name: t.allMarketsTab },
@@ -26,13 +30,23 @@ const SignalsPage = () => {
     ];
     
     const viewOptions = [
-        { id: 'active', name: t.activeView },
-        { id: 'history', name: t.historyView },
+        { id: 'active', name: t.signalsActive },
+        { id: 'history', name: t.signalsHistory },
     ];
 
     const [search, setSearch] = useState('');
     const [view, setView] = useState(viewOptions[0]);
     const [market, setMarket] = useState<TabsOption>(marketOptions[0]);
+
+    // Sync view with URL params
+    useEffect(() => {
+        const viewParam = searchParams.get('view');
+        if (viewParam === 'history') {
+            setView(viewOptions[1]);
+        } else {
+            setView(viewOptions[0]);
+        }
+    }, [searchParams]);
 
     // Handle Search
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,6 +63,7 @@ const SignalsPage = () => {
     // Handle View Change
     const handleViewChange = (item: { id: string, name: string }) => {
         setView(item);
+        // Optional: Update URL without reload if needed, but the navigation links handle the main switching
     };
 
     const signals = filteredSignals().filter(s => {
@@ -63,6 +78,10 @@ const SignalsPage = () => {
     return (
         <Layout title={t.tradingSignals}>
             <div className="max-w-[1200px] mx-auto space-y-8">
+                {/* New Modules: Advancement & Explanation */}
+                <Advancement />
+                <Explanation />
+
                 {/* Top Recap Stats */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <Card title="" className="!p-5 border border-transparent dark:border-s-border">

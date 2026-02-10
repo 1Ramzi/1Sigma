@@ -25,7 +25,13 @@ type DropdownProps = {
 const Dropdown = ({ value }: DropdownProps) => {
     const pathname = usePathname();
     const { t } = useLanguage();
-    const isActive = value.list?.some((item) => pathname.includes(item.href));
+    
+    const isActive = value.list?.some((item) => {
+        if (pathname === item.href) return true;
+        if (item.href.includes('?') && pathname === item.href.split('?')[0]) return true;
+        return pathname.includes(item.href);
+    });
+
     const isActiveNewProduct =
         pathname === "/products/new" && value.title === "Products";
     const [height, setHeight] = useState<number | "auto">(

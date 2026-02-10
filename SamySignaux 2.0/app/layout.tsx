@@ -1,38 +1,9 @@
 import { headers } from "next/headers";
 import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local";
-import Providers from "./providers";
-import "./globals.css";
-
-const interDisplay = localFont({
-    src: [
-        {
-            path: "../public/fonts/InterDisplay-Light.woff2",
-            weight: "300",
-        },
-        {
-            path: "../public/fonts/InterDisplay-Regular.woff2",
-            weight: "400",
-        },
-        {
-            path: "../public/fonts/InterDisplay-Medium.woff2",
-            weight: "500",
-        },
-        {
-            path: "../public/fonts/InterDisplay-SemiBold.woff2",
-            weight: "600",
-        },
-        {
-            path: "../public/fonts/InterDisplay-Bold.woff2",
-            weight: "700",
-        },
-    ],
-    variable: "--font-inter-display",
-});
 
 export const metadata: Metadata = {
-    title: "SamySignaux 2.0",
-    description: "SamySignaux 2.0",
+    title: "SamySignaux",
+    description: "SamySignaux",
 };
 
 export default function RootLayout({
@@ -41,97 +12,8 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" suppressHydrationWarning>
-            <head>
-                {/* Description no longer than 155 characters */}
-                <meta
-                    name="description"
-                    content="SamySignaux 2.0"
-                />
-                {/* Product Name */}
-                <meta
-                    name="product-name"
-                    content="SamySignaux 2.0"
-                />
-                {/* Twitter Card data */}
-                <meta name="twitter:card" content="summary" />
-                <meta name="twitter:site" content="@samysignaux" />
-                <meta
-                    name="twitter:title"
-                    content="SamySignaux 2.0"
-                />
-                <meta
-                    name="twitter:description"
-                    content="Minimal & Ready-to-Build Dashboard UI Design Kit + Code 🔥"
-                />
-                <meta name="twitter:creator" content="@samysignaux" />
-                <meta
-                    name="twitter:image"
-                    content="%PUBLIC_URL%/twitter-card.png"
-                />
-                {/* Open Graph data for Facebook */}
-                <meta
-                    property="og:title"
-                    content="SamySignaux 2.0"
-                />
-                <meta property="og:type" content="Article" />
-                <meta
-                    property="og:url"
-                    content="https://samysignaux.com"
-                />
-                <meta
-                    property="og:image"
-                    content="%PUBLIC_URL%/fb-og-image.png"
-                />
-                <meta
-                    property="og:description"
-                    content="Minimal & Ready-to-Build Dashboard UI Design Kit + Code 🔥"
-                />
-                <meta
-                    property="og:site_name"
-                    content="SamySignaux 2.0"
-                />
-                <meta property="fb:admins" content="132951670226590" />
-                {/* Open Graph data for LinkedIn */}
-                <meta
-                    property="og:title"
-                    content="SamySignaux 2.0"
-                />
-                <meta
-                    property="og:url"
-                    content="https://samysignaux.com"
-                />
-                <meta
-                    property="og:image"
-                    content="%PUBLIC_URL%/linkedin-og-image.png"
-                />
-                <meta
-                    property="og:description"
-                    content="Minimal & Ready-to-Build Dashboard UI Design Kit + Code 🔥"
-                />
-                {/* Open Graph data for Pinterest */}
-                <meta
-                    property="og:title"
-                    content="SamySignaux 2.0"
-                />
-                <meta
-                    property="og:url"
-                    content="https://samysignaux.com"
-                />
-                <meta
-                    property="og:image"
-                    content="%PUBLIC_URL%/pinterest-og-image.png"
-                />
-                <meta
-                    property="og:description"
-                    content="Minimal & Ready-to-Build Dashboard UI Design Kit + Code 🔥"
-                />
-            </head>
-            <body
-                className={`${interDisplay.variable} bg-b-surface1 font-inter text-body-1 text-t-primary antialiased`}
-            >
-                <Providers>{children}</Providers>
-            </body>
+        <html lang="fr" suppressHydrationWarning>
+            <body>{children}</body>
         </html>
     );
 }

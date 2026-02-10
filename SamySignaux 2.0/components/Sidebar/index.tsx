@@ -1,5 +1,6 @@
 import Logo from "@/components/Logo";
 import { RemoveScroll } from "react-remove-scroll";
+import { useTheme } from "next-themes";
 import ThemeButton from "@/components/ThemeButton";
 import NavLink from "@/components/NavLink";
 import Button from "@/components/Button";
@@ -22,6 +23,7 @@ const Sidebar = ({
     onCloseSidebar,
 }: SidebarProps) => {
     const { t, language, setLanguage } = useLanguage();
+    const { theme, setTheme } = useTheme();
 
     const languageOptions: SelectOption[] = [
         { id: 'fr', name: 'Français' },
@@ -92,16 +94,22 @@ const Sidebar = ({
             </Button>
             
             {!hideSidebar && (
-                <div className="flex flex-col gap-3 p-3 bg-b-surface2 rounded-xl border border-s-border">
+                <div className="p-3 bg-b-surface2 rounded-xl border border-s-border space-y-3">
+                    {/* Language Selector */}
                     <Select
                         value={currentLanguage}
                         onChange={handleLanguageChange}
                         options={languageOptions}
-                        classButton="!h-10 !bg-b-surface1 !border-s-border !text-body-2"
+                        classButton="!h-10 !bg-b-surface1 !border-s-border !text-body-2 hover:!border-primary-01/50 transition-colors"
                     />
-                    <div className="flex items-center justify-between px-1">
-                        <span className="text-body-2 font-medium text-t-secondary">{t.theme}</span>
-                        <ThemeButton />
+                    
+                    {/* Theme Toggle - Full Width Button Style */}
+                    <div 
+                        className="flex items-center justify-between h-10 px-3 bg-b-surface1 rounded-lg border border-s-border cursor-pointer hover:border-primary-01/50 transition-all group"
+                        onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+                    >
+                        <span className="text-body-2 font-medium text-t-secondary group-hover:text-t-primary transition-colors">{t.theme}</span>
+                        <ThemeButton className="!bg-transparent !p-0 !w-auto !shadow-none pointer-events-none" />
                     </div>
                 </div>
             )}

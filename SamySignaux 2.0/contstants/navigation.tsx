@@ -7,8 +7,17 @@ export const navigation = [
     {
         title: "tradingSignals",
         icon: "chart",
-        href: "/signals",
-        counter: 4,
+        list: [
+            {
+                title: "signalsActive",
+                href: "/signals?view=active",
+                counter: 4,
+            },
+            {
+                title: "signalsHistory",
+                href: "/signals?view=history",
+            },
+        ],
     },
     {
         title: "academy",

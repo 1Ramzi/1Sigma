@@ -165,6 +165,16 @@ export const translations = {
     takeProfitHit: 'Take Profit touché',
     now: 'Maintenant',
 
+    // Signals Page Enhanced
+    signalsActive: 'En cours',
+    signalsHistory: 'Historique',
+    advancementTitle: 'Votre progression',
+    advancementDesc: 'Complétez les thèmes pour débloquer des niveaux supérieurs.',
+    themeExplanationTitle: 'Pourquoi suivre les thèmes ?',
+    themeExplanationDesc: 'Les thèmes sont conçus pour vous guider étape par étape. Regardez la vidéo pour comprendre comment maximiser vos gains en suivant notre méthodologie.',
+    watchVideo: 'Regarder la vidéo',
+    themePresentation: 'Thématiques',
+
     // Sidebar & Navigation
     mainMenu: 'Menu principal',
     trading: 'Trading',
@@ -640,6 +650,16 @@ export const translations = {
     newSignalDetected: 'New signal detected',
     takeProfitHit: 'Take Profit hit',
     now: 'Now',
+
+    // Signals Page Enhanced
+    signalsActive: 'Active',
+    signalsHistory: 'History',
+    advancementTitle: 'Your Progress',
+    advancementDesc: 'Complete themes to unlock higher levels.',
+    themeExplanationTitle: 'Why follow themes?',
+    themeExplanationDesc: 'Themes are designed to guide you step by step. Watch the video to understand how to maximize your gains by following our methodology.',
+    watchVideo: 'Watch Video',
+    themePresentation: 'Thematics',
 
     // Sidebar & Navigation
     performance: 'Performance',
