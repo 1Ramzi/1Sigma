@@ -3,10 +3,10 @@ import { RemoveScroll } from "react-remove-scroll";
 import { useTheme } from "next-themes";
 import NavLink from "@/components/NavLink";
 import Button from "@/components/Button";
-import Select from "@/components/Select";
+import Icon from "@/components/Icon";
+import Link from "next/link";
 import Dropdown from "./Dropdown";
 import { useLanguage } from "@/context/LanguageContext";
-import { SelectOption } from "@/types/select";
 import { useUserStore } from "@/stores/userStore";
 
 import { navigation } from "@/contstants/navigation";
@@ -26,17 +26,6 @@ const Sidebar = ({
     const { theme, setTheme } = useTheme();
     const { user } = useUserStore();
 
-    const themeOptions: SelectOption[] = [
-        { id: 'light', name: t.light },
-        { id: 'dark', name: t.dark },
-    ];
-
-    const currentTheme = themeOptions.find(opt => opt.id === theme) || themeOptions[0];
-
-    const handleThemeChange = (option: SelectOption) => {
-        setTheme(option.id as string);
-    };
-
     const getUserStatusBadge = () => {
         const role = user?.role || 'member';
         if (role === 'vip' || role === 'trader' || role === 'admin' || role === 'moderator') {
@@ -45,16 +34,8 @@ const Sidebar = ({
         return { label: t.statusBadgeFree, color: 'text-t-secondary bg-b-surface2' };
     };
 
-    const languageOptions: SelectOption[] = [
-        { id: 'fr', name: 'Français' },
-        { id: 'en', name: 'English' },
-    ];
-
-    const currentLanguage = languageOptions.find(opt => opt.id === language) || languageOptions[0];
-
-    const handleLanguageChange = (option: SelectOption) => {
-        setLanguage(option.id as any);
-    };
+    const toggleLanguage = () => setLanguage(language === 'fr' ? 'en' : 'fr' as any);
+    const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
 
     return (
     <div
@@ -113,22 +94,28 @@ const Sidebar = ({
             })()}
             
             {!hideSidebar && (
-                <div className="p-3 bg-b-surface2 rounded-xl border border-s-border space-y-3">
-                    {/* Language Selector */}
-                    <Select
-                        value={currentLanguage}
-                        onChange={handleLanguageChange}
-                        options={languageOptions}
-                        classButton="!h-10 !bg-b-surface1 !border-s-border !text-body-2 hover:!border-primary-01/50 transition-colors"
-                    />
-                    
-                    {/* Theme Selector */}
-                    <Select
-                        value={currentTheme}
-                        onChange={handleThemeChange}
-                        options={themeOptions}
-                        classButton="!h-10 !bg-b-surface1 !border-s-border !text-body-2 hover:!border-primary-01/50 transition-colors"
-                    />
+                <div className="flex items-center gap-2">
+                    <button
+                        onClick={toggleLanguage}
+                        className="w-9 h-9 flex items-center justify-center rounded-xl bg-b-surface2 border border-s-border text-[16px] hover:border-primary-01/40 transition-colors"
+                        title={language === 'fr' ? 'Switch to English' : 'Passer en Français'}
+                    >
+                        {language === 'fr' ? '🇫🇷' : '🇬🇧'}
+                    </button>
+                    <button
+                        onClick={toggleTheme}
+                        className="w-9 h-9 flex items-center justify-center rounded-xl bg-b-surface2 border border-s-border hover:border-primary-01/40 transition-colors"
+                        title={theme === 'dark' ? t.light : t.dark}
+                    >
+                        <Icon name={theme === 'dark' ? 'sun' : 'moon'} className="!size-4 fill-t-secondary" />
+                    </button>
+                    <Link
+                        href="/terms"
+                        className="flex-1 flex items-center justify-center gap-1.5 h-9 rounded-xl bg-b-surface2 border border-s-border text-[12px] font-semibold text-t-secondary hover:text-t-primary hover:border-primary-01/40 transition-colors"
+                    >
+                        <Icon name="lock" className="!size-3.5 fill-t-tertiary" />
+                        Terms
+                    </Link>
                 </div>
             )}
         </div>
