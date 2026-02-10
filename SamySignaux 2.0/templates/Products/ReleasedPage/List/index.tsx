@@ -1,3 +1,4 @@
+import { useLanguage } from "@/context/LanguageContext";
 import { NumericFormat } from "react-number-format";
 import millify from "millify";
 import Table from "@/components/Table";
@@ -8,8 +9,6 @@ import DeleteItems from "@/components/DeleteItems";
 import UnpublishItems from "@/components/UnpublishItems";
 import Percentage from "@/components/Percentage";
 import { ProductReleased } from "@/types/product";
-
-const tableHead = ["Produit", "Statut", "Prix", "Ventes", "Note", "Vues"];
 
 type ListProps = {
     items: ProductReleased[];
@@ -26,6 +25,10 @@ const List = ({
     onSelectAll,
     items,
 }: ListProps) => {
+    const { t } = useLanguage();
+
+    const tableHead = [t.product, t.status, t.price, t.orders, t.rating, t.views];
+
     return (
         <Table
             selectAll={selectAll}

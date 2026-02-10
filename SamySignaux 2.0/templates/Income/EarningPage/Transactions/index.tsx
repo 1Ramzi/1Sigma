@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import Card from "@/components/Card";
 import Search from "@/components/Search";
 import Table from "@/components/Table";
@@ -7,26 +8,27 @@ import NoFound from "@/components/NoFound";
 import { transactions } from "@/mocks/transactions";
 import { NumericFormat } from "react-number-format";
 
-const tableHead = ["Date", "Status", "Earnings", "Fee", "Net"];
-
 const Transactions = ({}) => {
+    const { t } = useLanguage();
     const [search, setSearch] = useState("");
+
+    const tableHead = [t.date, t.status, t.earnings, t.fee, t.net];
 
     return (
         <Card
-            title="Transactions"
+            title={t.transactions}
             headContent={
                 <Search
                     className="w-70 max-md:hidden"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    placeholder="Search..."
+                    placeholder={t.searchAnything}
                     isGray
                 />
             }
         >
             {search !== "" ? (
-                <NoFound title="No transactions found" />
+                <NoFound title={t.noTransactionsFound} />
             ) : (
                 <div className="pt-3 px-1 max-lg:px-0 max-md:pt-0">
                     <Table

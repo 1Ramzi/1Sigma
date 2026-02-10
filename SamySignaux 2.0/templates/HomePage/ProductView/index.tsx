@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import {
     BarChart,
     Bar,
@@ -16,13 +17,15 @@ import { SelectOption } from "@/types/select";
 
 import { homeProductViewChartData } from "@/mocks/charts";
 
-const durations: SelectOption[] = [
-    { id: 1, name: "7 derniers jours" },
-    { id: 2, name: "Dernier mois" },
-    { id: 3, name: "Dernière année" },
-];
-
 const ProductView = ({}) => {
+    const { t } = useLanguage();
+
+    const durations: SelectOption[] = [
+        { id: 1, name: t.last7Days },
+        { id: 2, name: t.lastMonth },
+        { id: 3, name: t.lastYear },
+    ];
+
     const [duration, setDuration] = useState<SelectOption>(durations[0]);
 
     const CustomTooltip = ({ payload }: { payload: { value: number }[] }) => {
@@ -49,7 +52,7 @@ const ProductView = ({}) => {
 
     return (
         <Card
-            title="Vues produit"
+            title={t.productViews}
             selectValue={duration}
             selectOnChange={setDuration}
             selectOptions={durations}
@@ -64,7 +67,7 @@ const ProductView = ({}) => {
                         <div className="flex items-center gap-2 max-md:mb-1">
                             <Percentage value={36.8} large />
                             <div className="text-caption text-t-tertiary">
-                                vs le mois dernier
+                                {t.vsLastMonth}
                             </div>
                         </div>
                     </div>

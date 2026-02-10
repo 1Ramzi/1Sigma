@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useLanguage } from "@/context/LanguageContext";
 import Button from "@/components/Button";
 import Layout from "@/components/Layout";
 import Icon from "@/components/Icon";
@@ -10,11 +11,12 @@ import Editor from "@/components/Editor";
 import Statistics from "./Statistics";
 
 const DetailsPage = () => {
+    const { t } = useLanguage();
     const router = useRouter();
     const [content, setContent] = useState("");
 
     return (
-        <Layout title="Remboursements">
+        <Layout title={t.refunds}>
             <div className="max-w-[1200px] mx-auto card p-0">
                 <div className="flex p-3">
                     <Button
@@ -22,17 +24,17 @@ const DetailsPage = () => {
                         isStroke
                         onClick={() => router.back()}
                     >
-                        Retour
+                        {t.back}
                         <Icon
                             className="!hidden rotate-180 max-md:!block"
                             name="arrow"
                         />
                     </Button>
                     <Button className="mr-3" isStroke>
-                        Refuser
+                        {t.decline}
                     </Button>
                     <Button className="max-md:capitalize" isBlack>
-                        <span className="max-md:hidden">Rembourser </span>
+                        <span className="max-md:hidden">{t.refund} </span>
                         <span className="ml-2">$98</span>
                     </Button>
                 </div>
@@ -40,12 +42,12 @@ const DetailsPage = () => {
                     <Statistics />
                     <div className="grow">
                         <div className="text-h5 max-md:text-h6">
-                            Suggestions
+                            {t.suggestions}
                         </div>
                         <ul className="mt-3">
                             {[
-                                "Parlez au client pour voir si vous pouvez aider.",
-                                "Sinon, approuvez ou refusez la demande.",
+                                t.talkToCustomer,
+                                t.approveOrDecline,
                             ].map((item) => (
                                 <li
                                     className="flex items-center gap-3 py-5 border-b border-s-stroke2 text-sub-title-1"
@@ -61,7 +63,7 @@ const DetailsPage = () => {
                         </ul>
                         <div className="mt-12 max-md:mt-8">
                             <div className="text-h5 max-md:text-h6">
-                                Raison : “Le lien de téléchargement est cassé !!!”
+                                {t.reason} : “Le lien de téléchargement est cassé !!!”
                             </div>
                             <div className="mt-3 text-[1.125rem] leading-[1.75rem] font-medium text-t-secondary">
                                 “ Je ne peux pas télécharger votre article du tout. J'ai même essayé de changer le DNS ou le VPN, ça ne marche toujours pas. 😢”
@@ -88,15 +90,15 @@ const DetailsPage = () => {
                         </div>
                         <div className="mt-12 max-md:mt-8">
                             <div className="mb-5 text-h5 max-md:text-h6">
-                                Message
+                                {t.message}
                             </div>
                             <Editor content={content} onChange={setContent} />
                             <div className="flex items-center gap-5 mt-5 max-md:flex-col max-md:items-stretch max-md:gap-2">
                                 <Button className="shrink-0" isStroke>
-                                    Envoyer
+                                    {t.send}
                                 </Button>
                                 <div className="text-body-2 text-t-secondary max-md:text-center">
-                                    Nous enverrons également un email au client pour annoncer votre message.
+                                    {t.emailToCustomer}
                                 </div>
                             </div>
                         </div>

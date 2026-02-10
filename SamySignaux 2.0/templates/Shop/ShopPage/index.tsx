@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import Layout from "@/components/Layout";
 import Image from "@/components/Image";
 import Tabs from "@/components/Tabs";
@@ -17,19 +18,21 @@ import { shopItems } from "@/mocks/shopItems";
 import { followers } from "@/mocks/followers";
 import { followings } from "@/mocks/followings";
 
-const types: TabsOption[] = [
-    { id: 1, name: "Produits" },
-    { id: 2, name: "Abonnés" },
-    { id: 3, name: "Abonnements" },
-];
-
-const sortOptions: SelectOption[] = [
-    { id: 1, name: "Plus récent" },
-    { id: 2, name: "Plus ancien" },
-    { id: 3, name: "Plus populaire" },
-];
-
 const ShopPage = () => {
+    const { t } = useLanguage();
+
+    const types: TabsOption[] = [
+        { id: 1, name: t.products },
+        { id: 2, name: t.followers },
+        { id: 3, name: t.subscriptions },
+    ];
+
+    const sortOptions: SelectOption[] = [
+        { id: 1, name: t.newest },
+        { id: 2, name: t.oldest },
+        { id: 3, name: t.mostPopular },
+    ];
+
     const [type, setType] = useState<TabsOption>(types[0]);
     const [sort, setSort] = useState<SelectOption>(sortOptions[0]);
 

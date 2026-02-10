@@ -1,3 +1,4 @@
+import { useLanguage } from "@/context/LanguageContext";
 import { NumericFormat } from "react-number-format";
 import Table from "@/components/Table";
 import TableRow from "@/components/TableRow";
@@ -7,8 +8,6 @@ import Icon from "@/components/Icon";
 import DeleteItems from "@/components/DeleteItems";
 import ShareProduct from "@/components/ShareProduct";
 import { ProductMarket } from "@/types/product";
-
-const tableHead = ["Product", "Status", "Price", "Sales", "Views", "Like"];
 
 type MarketProps = {
     items: ProductMarket[];
@@ -41,6 +40,10 @@ const Market = ({
     onSelectAll,
     items,
 }: MarketProps) => {
+    const { t } = useLanguage();
+
+    const tableHead = [t.product, t.status, t.price, t.orders, t.views, t.likes];
+
     return (
         <Table
             selectAll={selectAll}

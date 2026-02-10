@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import Tabs from "@/components/Tabs";
 import Item from "./Item";
 import { TabsOption } from "@/types/tabs";
@@ -8,6 +9,7 @@ import { TabsOption } from "@/types/tabs";
 import { faqs } from "@/mocks/faqs";
 
 const Faq = () => {
+    const { t } = useLanguage();
     const [activeTab, setActiveTab] = useState(faqs[0]);
     const [activeItemId, setActiveItemId] = useState<number | null>(null);
     const handleTabChange = (tab: TabsOption) => {
@@ -24,7 +26,7 @@ const Faq = () => {
     return (
         <div className="">
             <h2 className="mb-10 text-center text-h3 max-lg:mb-6 max-lg:text-h4 max-md:text-left">
-                Frequently asked questions
+                {t.faq}
             </h2>
             <Tabs
                 className="justify-center mb-4 max-md:justify-stretch max-md:-mx-6 max-md:overflow-x-auto max-md:scrollbar-none max-md:before:shrink-0 max-md:before:w-5 max-md:after:shrink-0 max-md:after:w-5"

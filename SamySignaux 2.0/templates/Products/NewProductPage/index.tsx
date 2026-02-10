@@ -1,5 +1,6 @@
 "use client";
 
+import { useLanguage } from "@/context/LanguageContext";
 import Layout from "@/components/Layout";
 import ProductDetails from "./ProductDetails";
 import Images from "./Images";
@@ -13,8 +14,10 @@ import CTA from "./CTA";
 import Demos from "./Demos";
 
 const NewProductPage = () => {
+    const { t } = useLanguage();
+
     return (
-        <Layout title="Nouveau produit" newProduct>
+        <Layout title={t.newProduct} newProduct>
             <div className="max-w-[1200px] mx-auto flex max-lg:block">
                 <div className="w-[calc(100%-33.75rem)] pr-3 max-4xl:w-[calc(100%-27.5rem)] max-2xl:w-[calc(100%-23rem)] max-lg:w-full max-lg:pr-0">
                     <ProductDetails />

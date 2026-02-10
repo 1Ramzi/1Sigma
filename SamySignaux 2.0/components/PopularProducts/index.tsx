@@ -1,3 +1,4 @@
+import { useLanguage } from "@/context/LanguageContext";
 import Card from "@/components/Card";
 import Product from "@/components/Product";
 import Button from "@/components/Button";
@@ -14,6 +15,8 @@ interface PopularProductsProps {
 }
 
 const PopularProducts = ({ title, items }: PopularProductsProps) => {
+    const { t } = useLanguage();
+
     return (
         <Card classHead="!pl-3" title={title}>
             <div className="flex flex-col gap-1">
@@ -23,7 +26,7 @@ const PopularProducts = ({ title, items }: PopularProductsProps) => {
             </div>
             <div className="pt-6 px-3 pb-3">
                 <Button className="w-full" href="/products" as="link" isStroke>
-                    Tous les produits
+                    {t.allProducts}
                 </Button>
             </div>
         </Card>

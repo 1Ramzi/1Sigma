@@ -1,5 +1,6 @@
 "use client";
 
+import { useLanguage } from "@/context/LanguageContext";
 import Layout from "@/components/Layout";
 import PopularProducts from "@/components/PopularProducts";
 import RefundRequests from "@/components/RefundRequests";
@@ -12,8 +13,10 @@ import Comments from "./Comments";
 import { popularProducts } from "@/mocks/products";
 
 const HomePage = () => {
+    const { t } = useLanguage();
+
     return (
-        <Layout title="Tableau de bord">
+        <Layout title={t.dashboard}>
             <div className="max-w-[1200px] mx-auto flex max-lg:block">
                 <div className="col-left">
                     <Overview />
@@ -23,7 +26,7 @@ const HomePage = () => {
                 </div>
                 <div className="col-right">
                     <PopularProducts
-                        title="Produits populaires"
+                        title={t.popularProducts}
                         items={popularProducts}
                     />
                     <Comments />

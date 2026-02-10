@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import Table from "@/components/Table";
 import TableRow from "@/components/TableRow";
 import Image from "@/components/Image";
@@ -10,8 +11,6 @@ import LikeButton from "@/components/LikeButton";
 import Message from "@/components/Message";
 import Answer from "./Answer";
 import { Comment } from "@/types/comment";
-
-const tableHead = ["Commentaire", "Produit"];
 
 type ListProps = {
     items: Comment[];
@@ -28,9 +27,12 @@ const List = ({
     onSelectAll,
     items,
 }: ListProps) => {
+    const { t } = useLanguage();
     const [activeMessageId, setActiveMessageId] = useState<number | null>(null);
     const [message, setMessage] = useState("");
     const [activeId, setActiveId] = useState<number | null>(null);
+
+    const tableHead = [t.comment, t.product];
 
     const handleReplyClick = (commentId: number) => {
         setActiveMessageId(activeMessageId === commentId ? null : commentId);
@@ -116,7 +118,7 @@ const List = ({
                             }}
                         >
                             <Icon name="edit" />
-                            Répondre
+                            {t.reply}
                         </button>
                         {item.mark && (
                             <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-primary-02 max-lg:top-3 max-lg:right-3"></div>
@@ -149,13 +151,13 @@ const List = ({
                                     onClick={() => handleReplyClick(item.id)}
                                 >
                                     <Icon name="edit" />
-                                    Répondre
+                                    {t.reply}
                                 </button>
                                 <LikeButton />
                                 <DeleteItems
                                     counter={1}
                                     onDelete={() => {}}
-                                    content="Cela supprimera définitivement ce commentaire, et toutes les données seront supprimées. Cette action est irréversible."
+                                    content={t.deleteCommentConfirmation}
                                 />
                             </div>
                         </div>

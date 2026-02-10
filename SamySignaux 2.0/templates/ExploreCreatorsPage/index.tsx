@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import Layout from "@/components/Layout";
 import Tabs from "@/components/Tabs";
 import Select from "@/components/Select";
@@ -12,22 +13,24 @@ import { SelectOption } from "@/types/select";
 
 import { creators } from "@/mocks/creators";
 
-const types: TabsOption[] = [
-    { id: 1, name: "Tous" },
-    { id: 2, name: "Design produit" },
-    { id: 3, name: "UI design" },
-    { id: 4, name: "Illustration" },
-    { id: 5, name: "Branding" },
-    { id: 6, name: "Animation" },
-];
-
-const sortOptions: SelectOption[] = [
-    { id: 1, name: "Populaire" },
-    { id: 2, name: "Plus récent" },
-    { id: 3, name: "Plus ancien" },
-];
-
 const ShopPage = () => {
+    const { t } = useLanguage();
+
+    const types: TabsOption[] = [
+        { id: 1, name: t.all },
+        { id: 2, name: t.productDesign },
+        { id: 3, name: t.uiDesign },
+        { id: 4, name: t.illustration },
+        { id: 5, name: t.branding },
+        { id: 6, name: t.animation },
+    ];
+
+    const sortOptions: SelectOption[] = [
+        { id: 1, name: t.popular },
+        { id: 2, name: t.newest },
+        { id: 3, name: t.oldest },
+    ];
+
     const [type, setType] = useState<TabsOption>(types[0]);
     const [sort, setSort] = useState<SelectOption>(sortOptions[0]);
 
@@ -36,12 +39,10 @@ const ShopPage = () => {
             <div className="relative z-2 max-w-[1200px] mx-auto pt-25 pb-15 max-xl:pt-13 max-xl:pb-8 max-md:pt-5 max-md:pb-0">
                 <div className="max-w-226 mx-auto mb-30 text-center max-xl:mb-18 max-lg:mb-13 max-md:mb-8">
                     <div className="mb-4 text-h1 max-3xl:text-h2 max-lg:text-h3 max-md:mb-2 max-md:text-h4">
-                        8,356 Créateurs en ligne
+                        8,356 {t.creatorsOnline}
                     </div>
                     <div className="text-h5 text-t-secondary max-xl:max-w-180 max-xl:mx-auto max-lg:max-w-130 max-lg:text-sub-title-1 max-md:font-normal">
-                        Explorez des milliers de kits UI premium, d'illustrations et de
-                        ressources numériques conçus par les meilleurs designers du
-                        monde.
+                        {t.exploreCreatorsDesc}
                     </div>
                 </div>
                 <div className="flex gap-3 mb-10 max-lg:block max-lg:mb-6">

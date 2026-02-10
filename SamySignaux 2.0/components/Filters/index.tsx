@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import Button from "@/components/Button";
 import Modal from "@/components/Modal";
 import Select from "@/components/Select";
@@ -10,22 +11,24 @@ import Tooltip from "@/components/Tooltip";
 import Switch from "@/components/Switch";
 import { SelectOption } from "@/types/select";
 
-const categories: SelectOption[] = [
-    { id: 1, name: "All categories" },
-    { id: 2, name: "Illustrations" },
-    { id: 3, name: "Icons" },
-];
-
-const ratings: SelectOption[] = [
-    { id: 1, name: "4.0 and up" },
-    { id: 2, name: "3.0 to 4.0" },
-    { id: 3, name: "2.0 to 3.0" },
-    { id: 4, name: "1.0 to 2.0" },
-    { id: 5, name: "1.0 and down" },
-];
-
 const Filters = ({}) => {
+    const { t } = useLanguage();
     const [open, setOpen] = useState(false);
+
+    const categories: SelectOption[] = [
+        { id: 1, name: t.allCategories },
+        { id: 2, name: t.illustrations },
+        { id: 3, name: t.icons },
+    ];
+
+    const ratings: SelectOption[] = [
+        { id: 1, name: t.rating4up },
+        { id: 2, name: t.rating3to4 },
+        { id: 3, name: t.rating2to3 },
+        { id: 4, name: t.rating1to2 },
+        { id: 5, name: t.rating1down },
+    ];
+
     const [category, setCategory] = useState<SelectOption>(categories[0]);
     const [rating, setRating] = useState<SelectOption>(ratings[0]);
     const [featuredProducts, setFeaturedProducts] = useState(true);
@@ -50,8 +53,8 @@ const Filters = ({}) => {
                         <div className="flex-1">
                             <Select
                                 classButton="bg-b-surface2"
-                                label="Category"
-                                tooltip="Maximum 100 characters. No HTML or emoji allowed"
+                                label={t.category}
+                                tooltip={t.filterTooltip}
                                 value={category}
                                 onChange={setCategory}
                                 options={categories}
@@ -60,8 +63,8 @@ const Filters = ({}) => {
                         <div className="flex-1">
                             <Select
                                 classButton="bg-b-surface2"
-                                label="Rating"
-                                tooltip="Maximum 100 characters. No HTML or emoji allowed"
+                                label={t.rating}
+                                tooltip={t.filterTooltip}
                                 value={rating}
                                 onChange={setRating}
                                 options={ratings}
@@ -69,8 +72,8 @@ const Filters = ({}) => {
                         </div>
                     </div>
                     <Range
-                        label="Price range"
-                        tooltip="Maximum 100 characters. No HTML or emoji allowed"
+                        label={t.priceRange}
+                        tooltip={t.filterTooltip}
                         prefix="$"
                         values={priceRange}
                         setValues={setPriceRange}
@@ -83,10 +86,10 @@ const Filters = ({}) => {
                 <div className="flex items-center justify-between mt-13 max-md:block max-md:mt-6">
                     <div className="flex items-center gap-4 max-md:w-full max-md:h-12 max-md:mb-3">
                         <div className="flex items-center max-md:mr-auto">
-                            <div className="text-button">Featured products</div>
+                            <div className="text-button">{t.featuredProducts}</div>
                             <Tooltip
                                 className="ml-1.5"
-                                content="Maximum 100 characters. No HTML or emoji allowed"
+                                content={t.filterTooltip}
                             />
                         </div>
                         <Switch
@@ -98,10 +101,10 @@ const Filters = ({}) => {
                     </div>
                     <div className="flex gap-3">
                         <Button className="max-md:flex-1 max-md:px-2" isStroke>
-                            Reset
+                            {t.reset}
                         </Button>
                         <Button className="max-md:flex-1 max-md:px-2" isBlack>
-                            Show 80 results
+                            {t.showResults.replace('{{count}}', '80')}
                         </Button>
                     </div>
                 </div>

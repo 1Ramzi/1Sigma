@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import Card from "@/components/Card";
 import Field from "@/components/Field";
 import Select from "@/components/Select";
@@ -43,6 +44,7 @@ const projects: SelectOption[] = [
 ];
 
 const CreateLink = ({}) => {
+    const { t } = useLanguage();
     const [project, setProject] = useState<SelectOption>(projects[0]);
     const [link, setLink] = useState("https://samysignaux.com/join");
     const [activeIds, setActiveIds] = useState<number[]>([]);
@@ -56,11 +58,11 @@ const CreateLink = ({}) => {
     };
 
     return (
-        <Card classHead="!pl-3" title="Créer un lien de parrainage">
+        <Card classHead="!pl-3" title={t.createReferralLink}>
             <div className="p-3 pb-6">
                 <div className="flex flex-col gap-4 mb-6">
                     <Select
-                        label="Obtenir un lien"
+                        label={t.getLink}
                         tooltip="Maximum 100 caractères. Pas de HTML ou d'emoji autorisé"
                         value={project}
                         onChange={setProject}
@@ -68,20 +70,20 @@ const CreateLink = ({}) => {
                     />
                     <Field
                         classInput="truncate"
-                        placeholder="Entrer le lien"
+                        placeholder={t.enterLink}
                         value={link}
                         onChange={(e) => setLink(e.target.value)}
                         required
                         validated
                     />
                     <Button className="w-full" isBlack>
-                        Lien copié !
+                        {t.linkCopied}
                     </Button>
                 </div>
                 <div className="flex flex-col gap-4">
                     <div className="">
                         <div className="flex items-center mb-4">
-                            <div className="text-button">Ou poster sur</div>
+                            <div className="text-button">{t.orPostOn}</div>
                             <Tooltip
                                 className="ml-1.5"
                                 content="Maximum 100 caractères. Pas de HTML ou d'emoji autorisé"
@@ -107,7 +109,7 @@ const CreateLink = ({}) => {
                         </div>
                     </div>
                     <Button className="w-full" isBlack>
-                        Créer un post
+                        {t.createPost}
                     </Button>
                 </div>
             </div>

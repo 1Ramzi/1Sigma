@@ -18,7 +18,7 @@ type MenuProps = {
 
 const Menu = ({ profileInformationTo, items }: MenuProps) => {
     const { user } = useUserStore();
-    const { language } = useLanguage();
+    const { t } = useLanguage();
     const isOnline = true;
     const [search, setSearch] = useState("");
 
@@ -28,7 +28,7 @@ const Menu = ({ profileInformationTo, items }: MenuProps) => {
                 className="mb-3"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder="Rechercher..."
+                placeholder={t.searchAnything}
                 isGray
             />
             <div className="flex flex-col gap-1">

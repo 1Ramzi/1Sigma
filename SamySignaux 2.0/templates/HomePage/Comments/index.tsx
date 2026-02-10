@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 import Card from "@/components/Card";
 import Image from "@/components/Image";
 import Button from "@/components/Button";
@@ -6,8 +7,10 @@ import Button from "@/components/Button";
 import { commentsDashboard } from "@/mocks/comments";
 
 const Comments = ({}) => {
+    const { t } = useLanguage();
+
     return (
-        <Card classHead="!pl-3" title="Commentaires">
+        <Card classHead="!pl-3" title={t.comments}>
             <div className="flex flex-col gap-1">
                 {commentsDashboard.map((comment) => (
                     <div
@@ -27,7 +30,7 @@ const Comments = ({}) => {
                         <div className="relative z-2 grow pl-5">
                             <div className="mb-1 text-sub-title-1">
                                 {comment.name}&nbsp;
-                                <span className="text-t-secondary">sur</span>
+                                <span className="text-t-secondary">{t.on}</span>
                                 &nbsp;
                                 <Link
                                     className="transition-colors hover:text-shade-05 dark:hover:text-shade-08/90"
@@ -51,7 +54,7 @@ const Comments = ({}) => {
                     as="link"
                     isStroke
                 >
-                    Tous les commentaires
+                    {t.allComments}
                 </Button>
             </div>
         </Card>

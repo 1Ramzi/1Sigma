@@ -13,12 +13,12 @@ const Password = ({}) => {
     const [confirmNewPassword, setConfirmNewPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const { updatePassword } = useUserStore();
-    const { language } = useLanguage();
+    const { t } = useLanguage();
 
     const handleUpdate = async () => {
         if (!password || !newPassword || !confirmNewPassword) return;
         if (newPassword !== confirmNewPassword) {
-            alert("Les mots de passe ne correspondent pas");
+            alert(t.passwordMismatch);
             return;
         }
         
@@ -27,7 +27,7 @@ const Password = ({}) => {
         setLoading(false);
         
         if (success) {
-            alert("Mot de passe mis à jour");
+            alert(t.passwordUpdated);
             setPassword("");
             setNewPassword("");
             setConfirmNewPassword("");
@@ -35,11 +35,11 @@ const Password = ({}) => {
     };
 
     return (
-        <Card title="Sécurité">
+        <Card title={t.security}>
             <div className="flex flex-col gap-8 p-5 pt-0 max-lg:px-3 max-md:gap-4">
                 <Field
-                    innerLabel="Mot de passe actuel"
-                    placeholder="Entrez votre mot de passe"
+                    innerLabel={t.currentPassword}
+                    placeholder={t.passwordPlaceholder}
                     type="password"
                     value={password}
                     onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setPassword(e.target.value)}
@@ -49,8 +49,8 @@ const Password = ({}) => {
                 <div className="flex gap-4 max-md:flex-col">
                     <Field
                         className="flex-1"
-                        innerLabel="Nouveau mot de passe"
-                        placeholder="Entrez le nouveau mot de passe"
+                        innerLabel={t.newPassword}
+                        placeholder={t.enterNewPassword}
                         type="password"
                         value={newPassword}
                         onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setNewPassword(e.target.value)}
@@ -58,8 +58,8 @@ const Password = ({}) => {
                     />
                     <Field
                         className="flex-1"
-                        innerLabel="Confirmer le mot de passe"
-                        placeholder="Confirmez le nouveau mot de passe"
+                        innerLabel={t.confirmPassword}
+                        placeholder={t.confirmNewPasswordPlaceholder}
                         type="password"
                         value={confirmNewPassword}
                         onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setConfirmNewPassword(e.target.value)}
@@ -73,8 +73,8 @@ const Password = ({}) => {
                     disabled={loading}
                 >
                     {loading 
-                        ? "Mise à jour..." 
-                        : "Mettre à jour le mot de passe"
+                        ? t.updating 
+                        : t.updatePassword
                     }
                 </Button>
             </div>

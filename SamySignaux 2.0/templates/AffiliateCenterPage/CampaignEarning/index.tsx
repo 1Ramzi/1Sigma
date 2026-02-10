@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import { NumericFormat } from "react-number-format";
 import Card from "@/components/Card";
 import Table from "@/components/Table";
@@ -11,41 +12,22 @@ import { SelectOption } from "@/types/select";
 
 import { campaignEarningItems } from "@/mocks/affiliate-center";
 
-const durations: SelectOption[] = [
-    { id: 1, name: "7 derniers jours" },
-    { id: 2, name: "14 derniers jours" },
-    { id: 3, name: "28 derniers jours" },
-];
-
-const tableHead = ["Produit", "Vues", "Commandes", "Gains totaux"];
-
-type IndicatorProps = {
-    value: number;
-    percentage: number;
-};
-
-const Indicator = ({ value, percentage }: IndicatorProps) => {
-    return (
-        <div className="inline-flex items-center gap-2">
-            <div className="min-w-8">{value}</div>
-            <div className="relative w-8 h-1.5 rounded-[2px] bg-shade-07/40">
-                <div
-                    className="absolute top-0 left-0 bottom-0 rounded-[2px] bg-chart-green"
-                    style={{
-                        width: `${percentage}%`,
-                    }}
-                />
-            </div>
-        </div>
-    );
-};
-
 const CampaignEarning = ({}) => {
+    const { t } = useLanguage();
+
+    const durations: SelectOption[] = [
+        { id: 1, name: t.last7Days },
+        { id: 2, name: "14 " + t.last7Days.split(" ")[1] + " " + t.last7Days.split(" ")[2] },
+        { id: 3, name: "28 " + t.last7Days.split(" ")[1] + " " + t.last7Days.split(" ")[2] },
+    ];
+
+    const tableHead = [t.products, t.productViews, t.orders, t.earnings];
+
     const [duration, setDuration] = useState<SelectOption>(durations[0]);
 
     return (
         <Card
-            title="Gains de campagne"
+            title={t.campaignEarnings}
             selectValue={duration}
             selectOnChange={setDuration}
             selectOptions={durations}
@@ -123,6 +105,27 @@ const CampaignEarning = ({}) => {
                 </Table>
             </div>
         </Card>
+    );
+};
+
+type IndicatorProps = {
+    value: number;
+    percentage: number;
+};
+
+const Indicator = ({ value, percentage }: IndicatorProps) => {
+    return (
+        <div className="inline-flex items-center gap-2">
+            <div className="min-w-8">{value}</div>
+            <div className="relative w-8 h-1.5 rounded-[2px] bg-shade-07/40">
+                <div
+                    className="absolute top-0 left-0 bottom-0 rounded-[2px] bg-chart-green"
+                    style={{
+                        width: `${percentage}%`,
+                    }}
+                />
+            </div>
+        </div>
     );
 };
 

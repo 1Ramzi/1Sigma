@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import Icon from "@/components/Icon";
 import Modal from "@/components/Modal";
 import Image from "@/components/Image";
@@ -19,18 +20,19 @@ const DeleteItems = ({
     isLargeButton,
     content,
 }: DeleteItemsProps) => {
+    const { t } = useLanguage();
     const [open, setOpen] = useState(false);
 
     return (
         <>
             {isLargeButton ? (
                 <Button isStroke onClick={() => setOpen(true)}>
-                    Delete
+                    {t.delete}
                 </Button>
             ) : (
                 <button className="action" onClick={() => setOpen(true)}>
                     <Icon name="trash" />
-                    Delete
+                    {t.delete}
                 </button>
             )}
             <Modal open={open} onClose={() => setOpen(false)}>
@@ -43,12 +45,10 @@ const DeleteItems = ({
                         alt=""
                     />
                 </div>
-                <div className="mb-4 text-h4 max-md:text-h5">Are you sure?</div>
+                <div className="mb-4 text-h4 max-md:text-h5">{t.areYouSure}</div>
                 <div className="mb-8 text-body-2 font-medium text-t-tertiary">
                     {content ||
-                        `This will definitely delete ${
-                            counter > 1 ? `${counter} products` : "this product"
-                        }, and all data will be removed. This action cannot be undone.`}
+                        t.deleteConfirmation.replace('{{count}}', counter.toString())}
                 </div>
                 <div className="flex justify-end gap-3 mt-8">
                     <Button
@@ -56,10 +56,10 @@ const DeleteItems = ({
                         isStroke
                         onClick={() => setOpen(false)}
                     >
-                        Cancel
+                        {t.cancel}
                     </Button>
                     <Button className="flex-1" isBlack onClick={onDelete}>
-                        Delete
+                        {t.delete}
                     </Button>
                 </div>
             </Modal>

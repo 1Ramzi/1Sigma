@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import Tabs from "@/components/Tabs";
 import Image from "@/components/Image";
 import Message from "@/components/Message";
@@ -9,19 +10,21 @@ import { TabsOption } from "@/types/tabs";
 
 import { comments } from "@/mocks/comments";
 
-const sortOptions: TabsOption[] = [
-    { id: 1, name: "Plus récent" },
-    { id: 2, name: "Meilleurs" },
-];
-
 const Comments = ({}) => {
+    const { t } = useLanguage();
+
+    const sortOptions: TabsOption[] = [
+        { id: 1, name: t.newest },
+        { id: 2, name: t.best },
+    ];
+
     const [sort, setSort] = useState<TabsOption>(sortOptions[0]);
     const [message, setMessage] = useState("");
 
     return (
         <div className="card px-15 py-12 max-lg:p-8 max-md:px-4 max-md:py-6">
             <div className="flex items-center mb-10">
-                <div className="mr-auto text-h4 max-md:text-h5">Commentaires</div>
+                <div className="mr-auto text-h4 max-md:text-h5">{t.comments}</div>
                 <Tabs
                     className="max-md:hidden"
                     items={sortOptions}

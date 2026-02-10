@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import {
     ResponsiveContainer,
     LineChart,
@@ -17,13 +18,15 @@ import { SelectOption } from "@/types/select";
 
 import { performanceChartData } from "@/mocks/charts";
 
-const durations: SelectOption[] = [
-    { id: 1, name: "7 derniers jours" },
-    { id: 2, name: "14 derniers jours" },
-    { id: 3, name: "28 derniers jours" },
-];
-
 const Performance = ({}) => {
+    const { t } = useLanguage();
+
+    const durations: SelectOption[] = [
+        { id: 1, name: t.last7Days },
+        { id: 2, name: "14 " + t.last7Days.split(" ")[1] + " " + t.last7Days.split(" ")[2] },
+        { id: 3, name: "28 " + t.last7Days.split(" ")[1] + " " + t.last7Days.split(" ")[2] },
+    ];
+
     const [duration, setDuration] = useState<SelectOption>(durations[0]);
 
     const formatterYAxis = (value: number) => {
@@ -39,7 +42,7 @@ const Performance = ({}) => {
         if (payload && payload.length) {
             return (
                 <div className="chart-tooltip">
-                    <div className="text-caption opacity-80">Gains</div>
+                    <div className="text-caption opacity-80">{t.earnings}</div>
                     <NumericFormat
                         className="text-caption"
                         value={payload[0].value}
@@ -57,7 +60,7 @@ const Performance = ({}) => {
 
     return (
         <Card
-            title="Performance"
+            title={t.performance}
             selectValue={duration}
             selectOnChange={setDuration}
             selectOptions={durations}

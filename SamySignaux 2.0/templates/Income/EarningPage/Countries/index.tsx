@@ -1,23 +1,26 @@
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import Card from "@/components/Card";
 import CountryItem from "@/components/CountryItem";
 import { SelectOption } from "@/types/select";
 
 import { countriesEarnings } from "@/mocks/countries";
 
-const durations: SelectOption[] = [
-    { id: 1, name: "Last 7 days" },
-    { id: 2, name: "Last month" },
-    { id: 3, name: "Last 6 month" },
-];
-
 const Countries = ({}) => {
+    const { t } = useLanguage();
+
+    const durations: SelectOption[] = [
+        { id: 1, name: t.last7Days },
+        { id: 2, name: t.lastMonth },
+        { id: 3, name: t.lastYear },
+    ];
+
     const [duration, setDuration] = useState<SelectOption>(durations[2]);
 
     return (
         <Card
             classHead="!pl-3"
-            title="Countries"
+            title={t.countries}
             selectValue={duration}
             selectOnChange={setDuration}
             selectOptions={durations}

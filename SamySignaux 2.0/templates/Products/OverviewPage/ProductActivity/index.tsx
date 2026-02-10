@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import Card from "@/components/Card";
 import Percentage from "@/components/Percentage";
 import Tabs from "@/components/Tabs";
@@ -9,26 +10,28 @@ import { TabsOption } from "@/types/tabs";
 
 import { productActivity } from "@/mocks/products";
 
-const durations: SelectOption[] = [
-    { id: 1, name: "2 dernières semaines" },
-    { id: 2, name: "Dernier mois" },
-    { id: 3, name: "Dernière année" },
-];
-
-const categories: TabsOption[] = [
-    { id: 1, name: "Produit" },
-    { id: 2, name: "Vues" },
-    { id: 3, name: "J'aime" },
-];
-
 const ProductActivity = ({}) => {
+    const { t } = useLanguage();
+
+    const durations: SelectOption[] = [
+        { id: 1, name: t.last2Weeks },
+        { id: 2, name: t.lastMonth },
+        { id: 3, name: t.lastYear },
+    ];
+
+    const categories: TabsOption[] = [
+        { id: 1, name: t.products },
+        { id: 2, name: t.views },
+        { id: 3, name: t.likes },
+    ];
+
     const [duration, setDuration] = useState<SelectOption>(durations[0]);
     const [category, setCategory] = useState<TabsOption>(categories[0]);
 
     return (
         <Card
             className="col-left mb-0 max-lg:mb-3"
-            title="Activité du produit"
+            title={t.productActivity} // Assuming this key exists or I need to add it. "Activité du produit"
             selectValue={duration}
             selectOnChange={setDuration}
             selectOptions={durations}
@@ -42,29 +45,29 @@ const ProductActivity = ({}) => {
             />
             <div className="p-5 pb-0 max-md:pt-4 max-lg:px-3">
                 <div className="flex items-center gap-6 h-14 text-caption text-t-tertiary/80">
-                    <div className="flex-1">Semaine</div>
+                    <div className="flex-1">{t.week}</div>
                     <div
                         className={`flex-1 ${
                             category.id === 1 ? "max-md:block" : "max-md:hidden"
                         }`}
                     >
-                        Produits
+                        {t.products}
                     </div>
                     <div
                         className={`flex-1 ${
                             category.id === 2 ? "max-md:block" : "max-md:hidden"
                         }`}
                     >
-                        Vues
+                        {t.views}
                     </div>
                     <div
                         className={`flex-1 ${
                             category.id === 3 ? "max-md:block" : "max-md:hidden"
                         }`}
                     >
-                        J'aime
+                        {t.likes}
                     </div>
-                    <div className="flex-1 max-2xl:hidden">Commentaires</div>
+                    <div className="flex-1 max-2xl:hidden">{t.comments}</div>
                 </div>
                 {productActivity.map((item) => (
                     <div

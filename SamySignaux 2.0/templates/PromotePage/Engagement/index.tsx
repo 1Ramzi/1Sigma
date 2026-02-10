@@ -1,3 +1,4 @@
+import { useLanguage } from "@/context/LanguageContext";
 import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { NumericFormat } from "react-number-format";
 import Card from "@/components/Card";
@@ -5,6 +6,8 @@ import Card from "@/components/Card";
 import { engagementChartData } from "@/mocks/charts";
 
 const Engagement = ({}) => {
+    const { t } = useLanguage();
+
     const CustomTooltip = ({
         payload,
         label,
@@ -34,7 +37,7 @@ const Engagement = ({}) => {
     };
 
     return (
-        <Card classHead="!pl-3" title="Engagement">
+        <Card classHead="!pl-3" title={t.engagement}>
             <div className="px-3 pb-3">
                 <div className="h-50">
                     <ResponsiveContainer width="100%" height="100%">

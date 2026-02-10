@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import { BarChart, Bar, ResponsiveContainer } from "recharts";
 import Card from "@/components/Card";
 import Icon from "@/components/Icon";
@@ -10,19 +11,21 @@ import { SelectOption } from "@/types/select";
 
 import { insights } from "@/mocks/affiliate-center";
 
-const durations: SelectOption[] = [
-    { id: 1, name: "7 derniers jours" },
-    { id: 2, name: "14 derniers jours" },
-    { id: 3, name: "28 derniers jours" },
-];
-
 const Insights = ({}) => {
+    const { t } = useLanguage();
+
+    const durations: SelectOption[] = [
+        { id: 1, name: t.last7Days },
+        { id: 2, name: "14 " + t.last7Days.split(" ")[1] + " " + t.last7Days.split(" ")[2] }, // Hacky but works for now, or just add new keys
+        { id: 3, name: "28 " + t.last7Days.split(" ")[1] + " " + t.last7Days.split(" ")[2] },
+    ];
+
     const [duration, setDuration] = useState<SelectOption>(durations[0]);
 
     return (
         <Card
             className="overflow-hidden"
-            title="Aperçu"
+            title={t.overview}
             selectValue={duration}
             selectOnChange={setDuration}
             selectOptions={durations}
@@ -44,7 +47,11 @@ const Insights = ({}) => {
                             <div className="flex items-end grow">
                                 <div className="shrink-0 mr-4">
                                     <div className="text-sub-title-1">
-                                        {item.title}
+                                        {/* Translate mock data titles if possible or map them */}
+                                        {item.title === 'Clicks' ? t.clicks : 
+                                         item.title === 'Orders' ? t.orders : 
+                                         item.title === 'Conversion' ? t.conversion : 
+                                         item.title === 'Revenue' ? t.revenue : item.title}
                                     </div>
                                     <div className="mb-3 text-h2">
                                         {item.value}
@@ -52,7 +59,7 @@ const Insights = ({}) => {
                                     <div className="flex items-center gap-2">
                                         <Percentage value={item.percentage} />
                                         <div className="text-body-2 text-t-tertiary">
-                                            vs l'année dernière
+                                            {t.vsLastMonth}
                                         </div>
                                     </div>
                                 </div>

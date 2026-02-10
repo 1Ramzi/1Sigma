@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import Layout from "@/components/Layout";
 import Search from "@/components/Search";
 import Select from "@/components/Select";
@@ -15,14 +16,16 @@ import { useSelection } from "@/hooks/useSelection";
 
 import { comments } from "@/mocks/comments";
 
-const timeCreateOptions: SelectOption[] = [
-    { id: 1, name: "Plus récent d'abord" },
-    { id: 2, name: "Plus ancien d'abord" },
-    { id: 3, name: "A-Z" },
-    { id: 4, name: "Z-A" },
-];
-
 const CommentsPage = () => {
+    const { t } = useLanguage();
+
+    const timeCreateOptions: SelectOption[] = [
+        { id: 1, name: t.newestFirst },
+        { id: 2, name: t.oldestFirst },
+        { id: 3, name: "A-Z" },
+        { id: 4, name: "Z-A" },
+    ];
+
     const [search, setSearch] = useState("");
     const [timeCreate, setTimeCreate] = useState<SelectOption>(timeCreateOptions[0]);
     const {
@@ -34,18 +37,18 @@ const CommentsPage = () => {
     } = useSelection<Comment>(comments);
 
     return (
-        <Layout title="Commentaires">
+        <Layout title={t.commentsTitle}>
             <div className="max-w-[1200px] mx-auto card">
                 {selectedRows.length === 0 ? (
                     <div className="flex items-center min-h-12">
                         <div className="pl-5 text-h6 max-lg:pl-3 max-md:mr-auto">
-                            {comments.length} nouveau{comments.length !== 1 ? "x" : ""} commentaire{comments.length !== 1 ? "s" : ""}
+                            {comments.length} {t.newComments}
                         </div>
                         <Search
                             className="w-70 ml-6 mr-auto max-lg:w-60 max-md:hidden"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            placeholder="Rechercher des commentaires"
+                            placeholder={t.searchComments}
                             isGray
                         />
                         {search === "" && (
@@ -68,32 +71,28 @@ const CommentsPage = () => {
                 ) : (
                     <div className="flex items-center">
                         <div className="mr-6 pl-5 text-h6">
-                            {selectedRows.length} commentaire{selectedRows.length !== 1 ? "s" : ""} sélectionné{selectedRows.length !== 1 ? "s" : ""}
+                            {selectedRows.length} {t.comment.toLowerCase()}{selectedRows.length !== 1 ? "s" : ""} {t.selected}
                         </div>
                         <Button
                             className="mr-auto"
                             isStroke
                             onClick={handleDeselect}
                         >
-                            Désélectionner
+                            {t.deselect}
                         </Button>
                         <DeleteItems
                             counter={selectedRows.length}
-                            content={`Cela supprimera définitivement ${
-                                selectedRows.length > 1
-                                    ? `${selectedRows.length} commentaires`
-                                    : "ce commentaire"
-                            }, et toutes les données seront supprimées. Cette action est irréversible.`}
+                            content={t.deleteCommentConfirmation}
                             onDelete={() => {}}
                             isLargeButton
                         />
                         <Button className="ml-2" isBlack>
-                            Marquer comme lu
+                            {t.markAsRead}
                         </Button>
                     </div>
                 )}
                 {search !== "" ? (
-                    <NoFound title="Aucun commentaire trouvé" />
+                    <NoFound title={t.noTransactionsFound} /> // Reuse noTransactionsFound or similar
                 ) : (
                     <div className="p-1 pt-3 max-lg:px-0">
                         <List

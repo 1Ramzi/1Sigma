@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useMedia } from "react-use";
+import { useLanguage } from "@/context/LanguageContext";
 import Layout from "@/components/Layout";
 import Search from "@/components/Search";
 import Button from "@/components/Button";
@@ -12,6 +13,7 @@ import Details from "./Details";
 import { customers } from "@/mocks/customers";
 
 const CustomerDetailsPage = () => {
+    const { t } = useLanguage();
     const [search, setSearch] = useState("");
     const [mounted, setMounted] = useState(false);
     const isMobile = useMedia("(max-width: 767px)");
@@ -28,7 +30,7 @@ const CustomerDetailsPage = () => {
     if (!mounted) return null;
 
     return (
-        <Layout title="Liste des clients">
+        <Layout title={t.customerList}>
             <div className="max-w-[1200px] mx-auto card p-0 overflow-hidden">
                 <div className="flex max-md:block max-md:p-3">
                     <div
@@ -50,7 +52,7 @@ const CustomerDetailsPage = () => {
                                 className="max-md:grow"
                                 value={search}
                                 onChange={(e) => setSearch(e.target.value)}
-                                placeholder="Rechercher par nom ou email"
+                                placeholder={t.searchCustomer}
                                 isGray
                             />
                         </div>
@@ -71,7 +73,7 @@ const CustomerDetailsPage = () => {
                             </div>
                         ) : (
                             <div className="pt-16 text-center text-h5 max-md:pb-22">
-                                Aucun résultat trouvé
+                                {t.noResultFound}
                             </div>
                         )}
                     </div>

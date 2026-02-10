@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import Icon from "@/components/Icon";
 import Modal from "@/components/Modal";
 import Image from "@/components/Image";
@@ -21,18 +22,19 @@ const UnpublishItems = ({
     onClick,
     isLargeButton,
 }: UnpublishItemsProps) => {
+    const { t } = useLanguage();
     const [open, setOpen] = useState(false);
 
     return (
         <>
             {isLargeButton ? (
                 <Button className="ml-3" isBlack onClick={() => setOpen(true)}>
-                    Unpublish
+                    {t.unpublish}
                 </Button>
             ) : (
                 <button className="action" onClick={() => setOpen(true)}>
                     <Icon name="trash" />
-                    Unpublish
+                    {t.unpublish}
                 </button>
             )}
             <Modal open={open} onClose={() => setOpen(false)}>
@@ -65,15 +67,10 @@ const UnpublishItems = ({
                     )}
                 </div>
                 <div className="mb-4 text-h4 max-md:text-h5">
-                    Unpublish{" "}
-                    {items.length > 1 ? `${items.length} products` : "product"}!
+                    {t.unpublishTitle.replace('{{count}}', items.length.toString())}
                 </div>
                 <div className="mb-8 text-body-2 font-medium text-t-tertiary">
-                    You’re unpublishing{" "}
-                    {items.length > 1 ? `${items.length} products` : "product"}.
-                    The selected product{items.length > 1 ? "s" : ""} will be
-                    removed from your shop, and this action can be undone at any
-                    time.
+                    {t.unpublishDesc.replace('{{count}}', items.length.toString())}
                 </div>
                 <div className="flex justify-end gap-3 mt-8">
                     <Button
@@ -81,10 +78,10 @@ const UnpublishItems = ({
                         isStroke
                         onClick={() => setOpen(false)}
                     >
-                        Cancel
+                        {t.cancel}
                     </Button>
                     <Button className="flex-1" isBlack onClick={onClick}>
-                        Let’s do it
+                        {t.letsDoIt}
                     </Button>
                 </div>
             </Modal>

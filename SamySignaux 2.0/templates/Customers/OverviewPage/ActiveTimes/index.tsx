@@ -1,4 +1,5 @@
 import React from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import Card from "@/components/Card";
 
 import { timeSlots } from "@/mocks/activeTimes";
@@ -6,6 +7,8 @@ import { timeSlots } from "@/mocks/activeTimes";
 const days = ["Lu", "Ma", "Me", "Je", "Ve", "Sa", "Di"];
 
 const ActiveTimes = () => {
+    const { t } = useLanguage();
+
     const getEngagementClass = (level: number) => {
         switch (level) {
             case 0:
@@ -20,7 +23,7 @@ const ActiveTimes = () => {
     };
 
     return (
-        <Card title="Horaires d'activité">
+        <Card title={t.activeTimes}>
             <div className="p-5 max-lg:p-3">
                 <div className="flex">
                     <div className="flex flex-col shrink-0 w-20 gap-0.5 max-md:w-16">
@@ -60,7 +63,7 @@ const ActiveTimes = () => {
                 </div>
                 <div className="flex items-center justify-center gap-4 mt-5">
                     <div className="text-caption text-t-primary/80">
-                        Moins engagé
+                        {t.lessEngaged}
                     </div>
                     <div className="flex gap-0.5">
                         <div className="w-12 h-2 rounded-[2px] bg-shade-04 opacity-5 max-md:w-6 dark:bg-shade-05 dark:opacity-20"></div>
@@ -68,7 +71,7 @@ const ActiveTimes = () => {
                         <div className="w-12 h-2 rounded-[2px] bg-shade-04 opacity-15 max-md:w-6 dark:bg-shade-05 dark:opacity-50"></div>
                     </div>
                     <div className="text-caption text-t-primary/80">
-                        Plus engagé
+                        {t.moreEngaged}
                     </div>
                 </div>
             </div>

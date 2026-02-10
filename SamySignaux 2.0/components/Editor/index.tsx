@@ -4,6 +4,7 @@ import Link from "@tiptap/extension-link";
 import Underline from "@tiptap/extension-underline";
 import TextAlign from "@tiptap/extension-text-align";
 import { EmojiClickData } from "emoji-picker-react";
+import { useLanguage } from "@/context/LanguageContext";
 import Emoji from "@/components/Emoji";
 import Tooltip from "@/components/Tooltip";
 
@@ -34,6 +35,7 @@ const Editor = ({
     label,
     tooltip,
 }: EditorProps) => {
+    const { t } = useLanguage();
     const editor = useEditor({
         extensions: [
             StarterKit,
@@ -56,7 +58,7 @@ const Editor = ({
     });
 
     const setLink = () => {
-        const url = window.prompt("URL:");
+        const url = window.prompt(t.urlPrompt);
         if (url) {
             editor?.chain().focus().setLink({ href: url }).run();
         }

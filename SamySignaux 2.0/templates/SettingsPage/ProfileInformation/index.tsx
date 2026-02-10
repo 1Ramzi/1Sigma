@@ -22,7 +22,7 @@ const locations: SelectOption[] = [
 
 const ProfileInformation = ({}) => {
     const { user, updateProfile } = useUserStore();
-    const { language } = useLanguage();
+    const { t } = useLanguage();
     
     const [preview, setPreview] = useState<string | null>(user?.avatar || "/images/avatar.png");
     const [displayName, setDisplayName] = useState(user?.username || "");
@@ -48,7 +48,7 @@ const ProfileInformation = ({}) => {
     };
 
     return (
-        <Card title="Informations du profil">
+        <Card title={t.profileInfo}>
             <div className="flex flex-col gap-8 p-5 pt-0 max-lg:px-3">
                 <div className="flex items-center">
                     <div className="relative flex justify-center items-center shrink-0 w-20 h-20 rounded-full overflow-hidden bg-b-surface1">
@@ -76,20 +76,20 @@ const ProfileInformation = ({}) => {
                         />
                     </div>
                     <div className="grow max-w-88 pl-4 text-caption text-t-secondary">
-                        Mettez à jour votre avatar en cliquant sur l'image. JPG ou PNG recommandé.
+                        {t.updateAvatar}
                     </div>
                 </div>
                 <Field
-                    label="Nom d'affichage"
-                    placeholder="Entrez votre nom"
+                    label={t.displayName}
+                    placeholder={t.enterName}
                     value={displayName}
                     onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setDisplayName(e.target.value)}
                     required
                     validated
                 />
                 <Field
-                    label="Email"
-                    placeholder="Entrez votre email"
+                    label={t.email}
+                    placeholder={t.emailPlaceholder}
                     type="email"
                     value={email}
                     onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setEmail(e.target.value)}
@@ -98,13 +98,13 @@ const ProfileInformation = ({}) => {
                     readOnly // Email usually not changeable directly or requires verification
                 />
                 <Select
-                    label="Localisation"
+                    label={t.location}
                     value={location}
                     onChange={setLocation}
                     options={locations}
                 />
                 <Editor
-                    label="Bio"
+                    label={t.bio}
                     content={content}
                     onChange={setContent}
                 />

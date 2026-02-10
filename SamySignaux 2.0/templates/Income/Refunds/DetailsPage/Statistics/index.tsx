@@ -1,3 +1,4 @@
+import { useLanguage } from "@/context/LanguageContext";
 import Icon from "@/components/Icon";
 import Image from "@/components/Image";
 import Tooltip from "@/components/Tooltip";
@@ -25,6 +26,8 @@ const Paramenter = ({ label, tooltip, content }: ParamenterProps) => {
 };
 
 const Statistics = ({}) => {
+    const { t } = useLanguage();
+
     return (
         <div className="shrink-0 w-150 border-1 border-s-stroke2 rounded-4xl overflow-hidden max-4xl:w-132 max-3xl:w-120 max-2xl:w-100 max-lg:w-full">
             <div className="flex items-center gap-8 p-8 max-2xl:gap-4 max-2xl:p-5 max-md:p-3">
@@ -38,7 +41,7 @@ const Statistics = ({}) => {
                     />
                 </div>
                 <div className="grow">
-                    <div className="mb-2 label label-yellow">En cours</div>
+                    <div className="mb-2 label label-yellow">{t.pending}</div>
                     <div className="text-h5 max-2xl:text-h6">
                         Dynamic UI Design Kit
                     </div>
@@ -46,10 +49,10 @@ const Statistics = ({}) => {
             </div>
             <div className="bg-shade-09/30 max-lg:flex max-lg:flex-wrap max-md:block dark:bg-shade-02">
                 <Paramenter label="Demande envoyée" content="20 Août, 2025" />
-                <Paramenter label="Raison" content="Lien de téléchargement cassé" />
+                <Paramenter label={t.reason} content="Lien de téléchargement cassé" />
                 <Paramenter
                     label="Produit téléchargé"
-                    content={<div className="label label-green">Oui</div>}
+                    content={<div className="label label-green">{t.yes}</div>}
                 />
                 <Paramenter label="Date d'achat" content="01 Juil, 2025" />
                 <Paramenter
@@ -58,14 +61,14 @@ const Statistics = ({}) => {
                 />
                 <Paramenter label="ID Demande" content="8975ads-hd73h-8974DS" />
                 <Paramenter
-                    label="Frais de marché"
+                    label={t.fees}
                     content="$7.28"
-                    tooltip="Maximum 100 caractères. Pas de HTML ou d'emoji autorisé"
+                    tooltip={t.filterTooltip}
                 />
                 <Paramenter
-                    label="Prix"
+                    label={t.price}
                     content="$72.88"
-                    tooltip="Maximum 100 caractères. Pas de HTML ou d'emoji autorisé"
+                    tooltip={t.filterTooltip}
                 />
             </div>
         </div>

@@ -9,81 +9,62 @@ import Icon from '@/components/Icon';
 import Card from '@/components/Card';
 import Button from '@/components/Button';
 
-const slides = [
-  {
-    id: 'welcome',
-    icon: 'zap',
-    title: { fr: 'Bienvenue sur SamySignaux', en: 'Welcome to SamySignaux' },
-    subtitle: { fr: 'Votre plateforme de signaux de trading IA', en: 'Your AI trading signals platform' },
-    description: { 
-      fr: 'Recevez des signaux de trading en temps réel, générés par intelligence artificielle, avec un taux de réussite de 78%.', 
-      en: 'Get real-time trading signals powered by AI, with a 78% success rate.' 
-    },
-    color: 'from-primary-04 to-accent'
-  },
-  {
-    id: 'presentation',
-    icon: 'play-circle',
-    title: { fr: 'Découvrir la Plateforme', en: 'Discover the Platform' },
-    subtitle: { fr: 'Regardez notre vidéo de présentation', en: 'Watch our presentation video' },
-    description: { 
-      fr: 'Une courte vidéo pour comprendre comment utiliser SamySignaux, suivre les signaux et connecter votre broker.', 
-      en: 'A short video to understand how to use SamySignaux, follow signals and connect your broker.' 
-    },
-    color: 'from-primary-01 to-primary-04'
-  },
-  {
-    id: 'signals',
-    icon: 'bell',
-    title: { fr: 'Signaux en Direct', en: 'Live Signals' },
-    subtitle: { fr: 'Ne manquez aucune opportunité', en: 'Never miss an opportunity' },
-    description: { 
-      fr: 'Accédez à tous nos signaux actifs avec entrée, take profit et stop loss clairement indiqués. Les signaux sont mis à jour en temps réel.', 
-      en: 'Access all our active signals with entry, take profit and stop loss clearly indicated. Signals update in real-time.' 
-    },
-    color: 'from-primary-02 to-secondary-04'
-  },
-  {
-    id: 'broker',
-    icon: 'wallet',
-    title: { fr: 'Connexion Broker', en: 'Broker Connection' },
-    subtitle: { fr: 'Tradez directement', en: 'Trade directly' },
-    description: { 
-      fr: 'Connectez votre compte broker pour trader automatiquement ou manuellement depuis la plateforme. Supporte PuPrime et d\'autres brokers populaires.', 
-      en: 'Connect your broker account to trade automatically or manually from the platform. Supports PuPrime and other popular brokers.' 
-    },
-    color: 'from-primary-05 to-secondary-05'
-  },
-  {
-    id: 'community',
-    icon: 'users-2',
-    title: { fr: 'Communauté', en: 'Community' },
-    subtitle: { fr: 'Échangez avec d\'autres traders', en: 'Chat with other traders' },
-    description: { 
-      fr: 'Rejoignez notre communauté de traders. Discutez des signaux, partagez vos analyses et apprenez des meilleurs.', 
-      en: 'Join our trading community. Discuss signals, share your analysis, and learn from the best.' 
-    },
-    color: 'from-accent to-[#ff4757]'
-  },
-  {
-    id: 'ready',
-    icon: 'check-circle',
-    title: { fr: 'Vous êtes prêt !', en: 'You are ready!' },
-    subtitle: { fr: 'Commencez votre voyage de trading', en: 'Start your trading journey' },
-    description: { 
-      fr: 'Votre tableau de bord personnel vous attend. Consultez vos signaux, votre performance et tradez comme un pro.', 
-      en: 'Your personal dashboard awaits. Check your signals, performance, and trade like a pro.' 
-    },
-    color: 'from-primary-01 to-primary-04'
-  }
-];
-
 const OnboardingPage = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const { completeOnboarding } = useUserStore();
     const router = useRouter();
-    const { language } = useLanguage();
-    const lang = language as 'fr' | 'en';
+    const { t } = useLanguage();
+
+    const slides = [
+        {
+            id: 'welcome',
+            icon: 'zap',
+            title: t.welcomeTitle,
+            subtitle: t.welcomeSubtitle,
+            description: t.welcomeDesc,
+            color: 'from-primary-04 to-accent'
+        },
+        {
+            id: 'presentation',
+            icon: 'play-circle',
+            title: t.discoverTitle,
+            subtitle: t.discoverSubtitle,
+            description: t.discoverDesc,
+            color: 'from-primary-01 to-primary-04'
+        },
+        {
+            id: 'signals',
+            icon: 'bell',
+            title: t.liveSignalsTitle,
+            subtitle: t.liveSignalsSubtitle,
+            description: t.liveSignalsDesc,
+            color: 'from-primary-02 to-secondary-04'
+        },
+        {
+            id: 'broker',
+            icon: 'wallet',
+            title: t.brokerConnectionTitle,
+            subtitle: t.brokerConnectionSubtitle,
+            description: t.brokerConnectionDesc,
+            color: 'from-primary-05 to-secondary-05'
+        },
+        {
+            id: 'community',
+            icon: 'users-2',
+            title: t.communityTitle,
+            subtitle: t.communitySubtitle,
+            description: t.communityDesc,
+            color: 'from-accent to-[#ff4757]'
+        },
+        {
+            id: 'ready',
+            icon: 'check-circle',
+            title: t.readyTitle,
+            subtitle: t.readySubtitle,
+            description: t.readyDesc,
+            color: 'from-primary-01 to-primary-04'
+        }
+    ];
 
     const handleNext = () => {
         if (currentSlide < slides.length - 1) {
@@ -138,10 +119,10 @@ const OnboardingPage = () => {
                                         <Icon name={slide.icon} className="!size-12 md:!size-16 fill-shade-10" />
                                     </motion.div>
                                     <h2 className="text-h4 md:text-h3 font-bold text-center mb-2">
-                                        {slide.title[lang]}
+                                        {slide.title}
                                     </h2>
                                     <p className="text-shade-10/80 text-center text-body-1">
-                                        {slide.subtitle[lang]}
+                                        {slide.subtitle}
                                     </p>
 
                                     {/* Mock UI Elements based on slide */}
@@ -193,7 +174,7 @@ const OnboardingPage = () => {
                                                 <span className="font-semibold text-body-2">PuPrime</span>
                                             </div>
                                             <div className="text-h4 font-bold">124</div>
-                                            <div className="text-shade-10/70 text-caption">{lang === 'fr' ? 'Signaux Reçus' : 'Signals Received'}</div>
+                                            <div className="text-shade-10/70 text-caption">{t.signalsReceived}</div>
                                         </motion.div>
                                     )}
                                 </div>
@@ -203,31 +184,31 @@ const OnboardingPage = () => {
                                     <div>
                                         <div className="flex items-center justify-between mb-8">
                                             <span className="text-body-2 font-medium text-t-tertiary">
-                                                {lang === 'fr' ? 'Étape' : 'Step'} {currentSlide + 1} / {slides.length}
+                                                {t.step} {currentSlide + 1} / {slides.length}
                                             </span>
                                             <button 
                                                 onClick={handleSkip}
                                                 className="text-body-2 text-t-tertiary hover:text-t-primary flex items-center gap-1 transition-colors"
                                             >
                                                 <Icon name="close" className="!size-4 fill-inherit" />
-                                                {lang === 'fr' ? 'Passer' : 'Skip'}
+                                                {t.skip}
                                             </button>
                                         </div>
 
                                         <h3 className="text-h4 font-bold text-t-primary mb-4">
-                                            {slide.title[lang]}
+                                            {slide.title}
                                         </h3>
                                         <p className="text-body-1 text-t-secondary leading-relaxed">
-                                            {slide.description[lang]}
+                                            {slide.description}
                                         </p>
 
                                         {/* Feature bullets for specific slides */}
                                         {slide.id === 'signals' && (
                                             <ul className="mt-6 space-y-3">
                                                 {[
-                                                    lang === 'fr' ? 'Signaux Forex, Crypto, Indices' : 'Forex, Crypto, Indices signals',
-                                                    lang === 'fr' ? 'Mise à jour en temps réel' : 'Real-time updates',
-                                                    lang === 'fr' ? 'Taux de réussite 78%' : '78% win rate'
+                                                    t.forexCryptoIndices,
+                                                    t.realTimeUpdates,
+                                                    t.winRate78
                                                 ].map((item, idx) => (
                                                     <motion.li 
                                                         key={idx}
@@ -246,9 +227,9 @@ const OnboardingPage = () => {
                                         {slide.id === 'broker' && (
                                             <ul className="mt-6 space-y-3">
                                                 {[
-                                                    lang === 'fr' ? 'Connexion sécurisée' : 'Secure connection',
-                                                    lang === 'fr' ? 'Exécution rapide' : 'Fast execution',
-                                                    lang === 'fr' ? 'Support multi-brokers' : 'Multi-broker support'
+                                                    t.secureConnection,
+                                                    t.fastExecution,
+                                                    t.multiBrokerSupport
                                                 ].map((item, idx) => (
                                                     <motion.li 
                                                         key={idx}
@@ -271,8 +252,8 @@ const OnboardingPage = () => {
                                             className={`w-full py-4 px-6 rounded-xl font-semibold text-shade-10 flex items-center justify-center gap-2 transition-all transform hover:scale-[1.02] active:scale-[0.98] bg-linear-to-r ${slide.color} cursor-pointer`}
                                         >
                                             {isLast 
-                                                ? (lang === 'fr' ? 'Commencer maintenant' : 'Get started now')
-                                                : (lang === 'fr' ? 'Continuer' : 'Continue')
+                                                ? t.startNow
+                                                : t.continue
                                             }
                                             <Icon name="arrow" className="!size-5 fill-shade-10 -rotate-90" />
                                         </button>
@@ -282,7 +263,7 @@ const OnboardingPage = () => {
                                                 onClick={handleSkip}
                                                 className="w-full mt-3 py-3 text-t-tertiary hover:text-t-primary text-body-2 font-medium transition-colors cursor-pointer"
                                             >
-                                                {lang === 'fr' ? 'Passer le tutoriel' : 'Skip tutorial'}
+                                                {t.skipTutorial}
                                             </button>
                                         )}
                                     </div>
@@ -300,9 +281,7 @@ const OnboardingPage = () => {
                     className="mt-6 text-center"
                 >
                     <p className="text-shade-10/60 text-body-2">
-                        💡 {lang === 'fr' 
-                            ? 'Vous pouvez revoir ce tutoriel à tout moment depuis les paramètres' 
-                            : 'You can review this tutorial anytime from settings'}
+                        💡 {t.tutorialTip}
                     </p>
                 </motion.div>
             </div>

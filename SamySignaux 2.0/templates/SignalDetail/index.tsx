@@ -37,7 +37,7 @@ type SignalDetailProps = {
 };
 
 const SignalDetail = ({ id }: SignalDetailProps) => {
-    const { language } = useLanguage();
+    const { t, language } = useLanguage();
     const [newComment, setNewComment] = useState('');
     const [newRating, setNewRating] = useState(5);
     const [reviews, setReviews] = useState(mockReviews);
@@ -72,7 +72,7 @@ const SignalDetail = ({ id }: SignalDetailProps) => {
                 {/* Back */}
                 <Link href="/signals" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-body-1 font-medium text-t-secondary hover:text-t-primary hover:bg-b-surface2 transition-all mb-2 -ml-3">
                     <Icon name="arrow" className="!size-5 fill-inherit rotate-180" />
-                    {language === 'fr' ? 'Retour aux signaux' : 'Back to signals'}
+                    {t.backToSignals}
                 </Link>
 
                 {/* Signal Header */}
@@ -109,7 +109,7 @@ const SignalDetail = ({ id }: SignalDetailProps) => {
                                         </span>
                                         <span className="flex items-center gap-1">
                                             <Icon name="users-2" className="!size-3.5 fill-t-secondary" /> 
-                                            {signal.followers} {language === 'fr' ? 'abonnés' : 'followers'}
+                                            {signal.followers} {t.followers}
                                         </span>
                                         <span>{signal.market}</span>
                                     </div>
@@ -121,7 +121,7 @@ const SignalDetail = ({ id }: SignalDetailProps) => {
                                 <p className={`text-h3 font-bold font-mono ${profitPercent >= 0 ? 'text-primary-02' : 'text-primary-03'}`}>
                                     {profitPercent >= 0 ? '+' : ''}{profitPercent.toFixed(2)}%
                                 </p>
-                                <p className="text-body-2 text-t-secondary">{language === 'fr' ? 'Profit actuel' : 'Current profit'}</p>
+                                <p className="text-body-2 text-t-secondary">{t.currentProfit}</p>
                             </div>
                         </div>
                     </Card>
@@ -132,14 +132,14 @@ const SignalDetail = ({ id }: SignalDetailProps) => {
                     <div className="lg:col-span-2 space-y-4">
                         {/* Price Levels */}
                         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
-                            <Card title={language === 'fr' ? 'Niveaux de prix' : 'Price Levels'} className="!p-5 border border-transparent dark:border-s-border">
+                            <Card title={t.priceLevels} className="!p-5 border border-transparent dark:border-s-border">
                                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                                     <div className="bg-b-surface1 rounded-xl p-4 text-center border border-transparent dark:border-s-border">
-                                        <p className="text-caption text-t-secondary mb-1">{language === 'fr' ? 'Entrée' : 'Entry'}</p>
+                                        <p className="text-caption text-t-secondary mb-1">{t.entry}</p>
                                         <p className="font-bold text-t-primary font-mono">${signal.entryPrice.toLocaleString()}</p>
                                     </div>
                                     <div className="bg-b-surface1 rounded-xl p-4 text-center border border-transparent dark:border-s-border">
-                                        <p className="text-caption text-t-secondary mb-1">{language === 'fr' ? 'Prix actuel' : 'Current'}</p>
+                                        <p className="text-caption text-t-secondary mb-1">{t.current}</p>
                                         <p className={`font-bold font-mono ${profitPercent >= 0 ? 'text-primary-02' : 'text-primary-03'}`}>
                                             ${signal.currentPrice.toLocaleString()}
                                         </p>
@@ -186,7 +186,7 @@ const SignalDetail = ({ id }: SignalDetailProps) => {
 
                         {/* Votes */}
                         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}>
-                            <Card title={language === 'fr' ? 'Votes de la communauté' : 'Community Votes'} className="!p-5 border border-transparent dark:border-s-border">
+                            <Card title={t.communityVotes} className="!p-5 border border-transparent dark:border-s-border">
                                 <div className="flex items-center gap-6">
                                     <button
                                         onClick={() => setUserVote(userVote === 'up' ? null : 'up')}
@@ -218,7 +218,7 @@ const SignalDetail = ({ id }: SignalDetailProps) => {
                                             />
                                         </div>
                                         <p className="text-caption text-t-secondary mt-1">
-                                            {Math.round((signal.votes.up / (signal.votes.up + signal.votes.down)) * 100)}% {language === 'fr' ? 'positif' : 'positive'}
+                                            {Math.round((signal.votes.up / (signal.votes.up + signal.votes.down)) * 100)}% {t.positive}
                                         </p>
                                     </div>
                                 </div>
@@ -231,7 +231,7 @@ const SignalDetail = ({ id }: SignalDetailProps) => {
                                 <div className="flex items-center justify-between mb-4">
                                     <div className="flex items-center gap-3">
                                         <h3 className="text-body-1 font-semibold text-t-primary">
-                                            {language === 'fr' ? 'Avis & Commentaires' : 'Reviews & Comments'}
+                                            {t.reviewsAndComments}
                                         </h3>
                                         <span className="text-body-2 text-t-secondary">({reviews.length})</span>
                                     </div>
@@ -247,7 +247,7 @@ const SignalDetail = ({ id }: SignalDetailProps) => {
                                 <form onSubmit={handleSubmitReview} className="mb-6 p-4 bg-b-surface1 rounded-xl">
                                     <div className="flex items-center gap-2 mb-3">
                                         <span className="text-body-2 font-medium text-t-primary">
-                                            {language === 'fr' ? 'Votre note :' : 'Your rating:'}
+                                            {t.yourRating}
                                         </span>
                                         <div className="flex items-center gap-0.5">
                                             {Array.from({ length: 5 }).map((_, i) => (
@@ -268,7 +268,7 @@ const SignalDetail = ({ id }: SignalDetailProps) => {
                                         <Field 
                                             value={newComment}
                                             onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setNewComment(e.target.value)}
-                                            placeholder={language === 'fr' ? 'Donnez votre avis sur ce signal...' : 'Share your opinion on this signal...'}
+                                            placeholder={t.reviewPlaceholder}
                                             className="flex-1"
                                             classInput="!h-10"
                                         />
@@ -309,7 +309,7 @@ const SignalDetail = ({ id }: SignalDetailProps) => {
                                                     </p>
                                                     <button className="flex items-center gap-1 text-caption text-t-tertiary hover:text-t-primary mt-1.5 transition-colors">
                                                         <Icon name="thumbs-up" className="!size-3 fill-current" />
-                                                        <span>{review.helpful} {language === 'fr' ? 'utile' : 'helpful'}</span>
+                                                        <span>{review.helpful} {t.helpful}</span>
                                                     </button>
                                                 </div>
                                             </div>
@@ -323,7 +323,7 @@ const SignalDetail = ({ id }: SignalDetailProps) => {
                     {/* Right Column - Sidebar Info */}
                     <div className="space-y-4">
                         {/* Confidence */}
-                        <Card title={language === 'fr' ? 'Confiance IA' : 'AI Confidence'} className="!p-5 border border-transparent dark:border-s-border">
+                        <Card title={t.aiConfidence} className="!p-5 border border-transparent dark:border-s-border">
                             <div className="relative w-32 h-32 mx-auto">
                                 <svg viewBox="0 0 36 36" className="w-full h-full -rotate-90">
                                     <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="var(--color-s-stroke2)" strokeWidth="3" />
@@ -343,13 +343,13 @@ const SignalDetail = ({ id }: SignalDetailProps) => {
                         </Card>
 
                         {/* Quick Stats */}
-                        <Card title={language === 'fr' ? 'Statistiques' : 'Statistics'} className="!p-5 border border-transparent dark:border-s-border">
+                        <Card title={t.statistics} className="!p-5 border border-transparent dark:border-s-border">
                             <div className="space-y-3">
                                 {[
-                                    { label: language === 'fr' ? 'Marché' : 'Market', value: signal.market },
-                                    { label: language === 'fr' ? 'Abonnés' : 'Followers', value: signal.followers.toString() },
-                                    { label: language === 'fr' ? 'Note moyenne' : 'Avg Rating', value: `${avgRating.toFixed(1)}/5` },
-                                    { label: language === 'fr' ? 'Avis' : 'Reviews', value: reviews.length.toString() },
+                                    { label: t.market, value: signal.market },
+                                    { label: t.followers, value: signal.followers.toString() },
+                                    { label: t.avgRating, value: `${avgRating.toFixed(1)}/5` },
+                                    { label: t.reviews, value: reviews.length.toString() },
                                     { label: 'Risk/Reward', value: `1:${((signal.takeProfit - signal.entryPrice) / (signal.entryPrice - signal.stopLoss)).toFixed(1)}` },
                                 ].map((stat, i) => (
                                     <div key={i} className="flex items-center justify-between py-2 border-b border-s-border last:border-0">
@@ -361,7 +361,7 @@ const SignalDetail = ({ id }: SignalDetailProps) => {
                         </Card>
 
                         {/* Similar Signals CTA */}
-                        <Card title={language === 'fr' ? 'Signaux similaires' : 'Similar signals'} className="!p-5 !bg-b-surface2 border border-transparent dark:border-s-border">
+                        <Card title={t.similarSignals} className="!p-5 !bg-b-surface2 border border-transparent dark:border-s-border">
                             <div className="space-y-2">
                                 {mockSignals.filter(s => s.id !== signal.id && s.market === signal.market).slice(0, 3).map(s => (
                                     <Link

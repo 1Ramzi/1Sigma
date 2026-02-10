@@ -7,6 +7,7 @@ import ProfileInformation from "./ProfileInformation";
 import Password from "./Password";
 import Notifications from "./Notifications";
 import Payment from "./Payment";
+import { useLanguage } from "@/context/LanguageContext";
 
 const ElementWithOffset = ({
     className,
@@ -29,35 +30,37 @@ const ElementWithOffset = ({
 };
 
 const SettingsPage = () => {
+    const { t } = useLanguage();
+
     const navigation = [
         {
-            title: "Profil",
+            title: t.profile,
             icon: "profile",
-            description: "Gérer vos informations personnelles",
+            description: t.manageInfo,
             to: "profile-information",
         },
         {
-            title: "Sécurité",
+            title: t.security,
             icon: "lock",
-            description: "Modifier votre mot de passe",
+            description: t.changePassword,
             to: "security",
         },
         {
-            title: "Notifications",
+            title: t.notifications,
             icon: "bell",
-            description: "Gérer vos préférences de notifications",
+            description: t.manageNotifications,
             to: "notifications",
         },
         {
-            title: "Paiement",
+            title: t.payment,
             icon: "wallet",
-            description: "Gérer vos méthodes de paiement",
+            description: t.managePayment,
             to: "payment",
         },
     ];
 
     return (
-        <Layout title="Paramètres">
+        <Layout title={t.settings}>
             <div className="max-w-[1200px] mx-auto flex items-start max-lg:block">
                 <Menu
                     profileInformationTo="profile-information"

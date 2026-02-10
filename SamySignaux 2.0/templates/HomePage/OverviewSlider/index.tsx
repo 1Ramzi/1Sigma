@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { Swiper as SwiperType } from "swiper";
@@ -15,6 +16,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 const OverviewSlider = ({}) => {
+    const { t } = useLanguage();
     const [isFirstSlide, setIsFirstSlide] = useState(true);
     const [isLastSlide, setIsLastSlide] = useState(false);
 
@@ -26,7 +28,7 @@ const OverviewSlider = ({}) => {
     return (
         <Card
             className="overflow-hidden"
-            title="Aperçu"
+            title={t.overview}
             headContent={
                 <div className="flex items-center gap-1">
                     <Button

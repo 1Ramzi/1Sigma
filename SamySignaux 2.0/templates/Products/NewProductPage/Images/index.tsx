@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import Card from "@/components/Card";
 import FieldImage from "@/components/FieldImage";
 
 const Images = () => {
+    const { t } = useLanguage();
     const [images, setImages] = useState<File[]>([]);
 
     const handleChangePreviews = (file: File) => {
@@ -14,16 +16,16 @@ const Images = () => {
     };
 
     return (
-        <Card title="Images">
+        <Card title={t.images}>
             <div className="flex flex-col gap-8 px-5 pb-5 max-lg:px-3 max-lg:pb-3">
                 <FieldImage
-                    label="Aperçus"
-                    tooltip="Maximum 100 caractères. Pas de HTML ou d'emoji autorisé"
+                    label={t.previews}
+                    tooltip={t.filterTooltip}
                     onChange={handleChangePreviews}
                 />
                 <FieldImage
-                    label="Aperçus complets"
-                    tooltip="Maximum 100 caractères. Pas de HTML ou d'emoji autorisé"
+                    label={t.fullPreviews}
+                    tooltip={t.filterTooltip}
                     onChange={handleChangeFullPreviews}
                 />
             </div>

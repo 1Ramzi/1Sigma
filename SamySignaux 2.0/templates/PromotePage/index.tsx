@@ -1,5 +1,6 @@
 "use client";
 
+import { useLanguage } from "@/context/LanguageContext";
 import Layout from "@/components/Layout";
 import ProductView from "@/components/ProductView";
 import Insights from "./Insights";
@@ -8,8 +9,10 @@ import Engagement from "./Engagement";
 import Interactions from "./Interactions";
 
 const PromotePage = () => {
+    const { t } = useLanguage();
+
     return (
-        <Layout title="Promote">
+        <Layout title={t.promote}>
             <div className="max-w-[1200px] mx-auto space-y-6">
                 <Insights />
                 <div className="flex max-lg:block">

@@ -7,7 +7,7 @@ import Tooltip from "@/components/Tooltip";
 import { useLanguage } from "@/context/LanguageContext";
 
 const Notifications = ({}) => {
-    const { language } = useLanguage();
+    const { t } = useLanguage();
     const [signals, setSignals] = useState(true);
     const [marketUpdates, setMarketUpdates] = useState(true);
     const [community, setCommunity] = useState(true);
@@ -16,36 +16,36 @@ const Notifications = ({}) => {
     const notifications = [
         {
             id: 1,
-            title: "Nouveaux signaux de trading",
-            tooltip: "Recevez une alerte pour chaque nouveau signal",
+            title: t.newSignals,
+            tooltip: t.newSignalsTooltip,
             checked: signals,
             onChange: setSignals,
         },
         {
             id: 2,
-            title: "Analyses de marché",
-            tooltip: "Mises à jour quotidiennes sur le marché",
+            title: t.marketAnalysis,
+            tooltip: t.marketAnalysisTooltip,
             checked: marketUpdates,
             onChange: setMarketUpdates,
         },
         {
             id: 3,
-            title: "Activité communautaire",
-            tooltip: "Réponses à vos commentaires et mentions",
+            title: t.communityActivity,
+            tooltip: t.communityActivityTooltip,
             checked: community,
             onChange: setCommunity,
         },
         {
             id: 4,
-            title: "Mises à jour de la plateforme",
-            tooltip: "Nouvelles fonctionnalités et maintenances",
+            title: t.platformUpdates,
+            tooltip: t.platformUpdatesTooltip,
             checked: platform,
             onChange: setPlatform,
         },
     ];
 
     return (
-        <Card title="Notifications">
+        <Card title={t.notifications}>
             <div className="px-5 max-lg:px-3">
                 {notifications.map((notification) => (
                     <div

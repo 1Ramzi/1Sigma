@@ -1,3 +1,4 @@
+import { useLanguage } from "@/context/LanguageContext";
 import { NumericFormat } from "react-number-format";
 import millify from "millify";
 import Table from "@/components/Table";
@@ -28,6 +29,8 @@ const ProductsStatistics = ({
     items,
     isViewers,
 }: ProductsStatisticsProps) => {
+    const { t } = useLanguage();
+
     return (
         <>
             <Legend
@@ -39,11 +42,11 @@ const ProductsStatistics = ({
                 onSelectAll={onSelectAll}
                 cellsThead={
                     <>
-                        <th>Product</th>
-                        <th>{isViewers ? "Views" : "Impressions"}</th>
+                        <th>{t.product}</th>
+                        <th>{isViewers ? t.views : "Impressions"}</th>
                         <th className="max-lg:hidden">
                             <div className="inline-flex items-center w-full">
-                                {isViewers ? "Viewers" : "Traffic source"}
+                                {isViewers ? t.viewers : t.trafficSources}
                                 <Legend
                                     className="max-lg:hidden"
                                     data={items[0].trafficSource}

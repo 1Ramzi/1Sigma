@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import Layout from "@/components/Layout";
 import Search from "@/components/Search";
 import Tabs from "@/components/Tabs";
@@ -15,12 +16,14 @@ import List from "./List";
 
 import { refunds } from "@/mocks/refunds";
 
-const views: TabsOption[] = [
-    { id: 1, name: "Demandes ouvertes" },
-    { id: 2, name: "Demandes fermées" },
-];
-
 const RefundsPage = () => {
+    const { t } = useLanguage();
+
+    const views: TabsOption[] = [
+        { id: 1, name: t.openRequests },
+        { id: 2, name: t.closedRequests },
+    ];
+
     const [search, setSearch] = useState("");
     const [view, setView] = useState<TabsOption>(views[0]);
     const {
@@ -32,7 +35,7 @@ const RefundsPage = () => {
     } = useSelection<Refund>(refunds);
 
     return (
-        <Layout title="Remboursements">
+        <Layout title={t.refunds}>
             <div className="max-w-[1200px] mx-auto card">
                 {selectedRows.length === 0 ? (
                     <div className="flex items-center max-md:h-12">
@@ -43,7 +46,7 @@ const RefundsPage = () => {
                             className="w-70 ml-6 mr-auto max-lg:hidden"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            placeholder="Rechercher des demandes"
+                            placeholder={t.searchAnything} // Or t.searchRequests if we add it
                             isGray
                         />
                         {search === "" && (
@@ -73,22 +76,18 @@ const RefundsPage = () => {
                             isStroke
                             onClick={handleDeselect}
                         >
-                            Désélectionner
+                            {t.deselect}
                         </Button>
                         <DeleteItems
                             counter={selectedRows.length}
-                            content={`Cela supprimera définitivement ${
-                                selectedRows.length > 1
-                                    ? `${selectedRows.length} remboursements`
-                                    : "ce remboursement"
-                            }, et toutes les données seront supprimées. Cette action est irréversible.`}
+                            content={t.refundDeleteConfirmation.replace('{{count}}', selectedRows.length.toString())}
                             onDelete={() => {}}
                             isLargeButton
                         />
                     </div>
                 )}
                 {search !== "" ? (
-                    <NoFound title="Aucune demande trouvée" />
+                    <NoFound title={t.noResultFound} /> // Or similar key
                 ) : (
                     <div className="p-1 pt-3 max-lg:px-0">
                         <List

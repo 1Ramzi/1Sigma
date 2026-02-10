@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import Card from "@/components/Card";
 import Icon from "@/components/Icon";
 import Percentage from "@/components/Percentage";
@@ -8,36 +9,38 @@ import NewCustomers from "@/components/NewCustomers";
 import Balance from "./Balance";
 import { SelectOption } from "@/types/select";
 
-const durations: SelectOption[] = [
-    { id: 1, name: "7 derniers jours" },
-    { id: 2, name: "Dernier mois" },
-    { id: 3, name: "Dernière année" },
-];
-
-const tabs = [
-    {
-        id: 1,
-        icon: "profile",
-        label: "Clients",
-        value: "1,293",
-        percent: -36.8,
-    },
-    {
-        id: 2,
-        icon: "wallet",
-        label: "Solde",
-        value: "256k",
-        percent: 36.8,
-    },
-];
-
 const Overview = ({}) => {
+    const { t } = useLanguage();
+
+    const durations: SelectOption[] = [
+        { id: 1, name: t.last7Days },
+        { id: 2, name: t.lastMonth },
+        { id: 3, name: t.lastYear },
+    ];
+
+    const tabs = [
+        {
+            id: 1,
+            icon: "profile",
+            label: t.clients,
+            value: "1,293",
+            percent: -36.8,
+        },
+        {
+            id: 2,
+            icon: "wallet",
+            label: t.balance,
+            value: "256k",
+            percent: 36.8,
+        },
+    ];
+
     const [duration, setDuration] = useState<SelectOption>(durations[0]);
     const [activeTab, setActiveTab] = useState(1);
 
     return (
         <Card
-            title="Aperçu"
+            title={t.overview}
             selectValue={duration}
             selectOnChange={setDuration}
             selectOptions={durations}
@@ -78,7 +81,7 @@ const Overview = ({}) => {
                                 <div>
                                     <Percentage value={tab.percent} />
                                     <div className="mt-1 text-body-2 text-t-secondary max-md:text-caption">
-                                        vs le mois dernier
+                                        {t.vsLastMonth}
                                     </div>
                                 </div>
                             </div>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import Tabs from "@/components/Tabs";
 import Button from "@/components/Button";
 import DeleteItems from "@/components/DeleteItems";
@@ -11,12 +12,14 @@ import Scheduled from "./Scheduled";
 
 import { publishedItems, scheduledItems } from "@/mocks/promote";
 
-const sortOptions: TabsOption[] = [
-    { id: 1, name: "Publié" },
-    { id: 2, name: "Programmé" },
-];
-
 const List = ({}) => {
+    const { t } = useLanguage();
+
+    const sortOptions: TabsOption[] = [
+        { id: 1, name: t.published },
+        { id: 2, name: t.scheduled },
+    ];
+
     const [sort, setSort] = useState<TabsOption>(sortOptions[0]);
     const {
         selectedRows,
@@ -41,14 +44,14 @@ const List = ({}) => {
             ) : (
                 <div className="flex items-center">
                     <div className="mr-6 pl-5 text-h6">
-                        {selectedRows.length} produit{selectedRows.length !== 1 ? "s" : ""} sélectionné{selectedRows.length !== 1 ? "s" : ""}
+                        {selectedRows.length} {t.products} {t.selected}
                     </div>
                     <Button
                         className="mr-auto"
                         isStroke
                         onClick={handleDeselect}
                     >
-                        Désélectionner
+                        {t.deselect}
                     </Button>
                     <DeleteItems
                         counter={selectedRows.length}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import Card from "@/components/Card";
 import Field from "@/components/Field";
 import Icon from "@/components/Icon";
@@ -15,20 +16,21 @@ const promos: SelectOption[] = [
 ];
 
 const Price = () => {
+    const { t } = useLanguage();
     const [price, setPrice] = useState("");
     const [promo, setPromo] = useState<SelectOption>(promos[0]);
     const [promoToggle, setPromoToggle] = useState(true);
 
     return (
-        <Card classHead="!pl-3" title="Prix">
+        <Card classHead="!pl-3" title={t.price}>
             <div className="p-3">
                 <div className="flex gap-3">
                     <div className="flex-1">
                         <Field
                             classInput="pl-12.5"
-                            label="Prix (USD)"
+                            label={t.priceUSD}
                             placeholder="98"
-                            tooltip="Maximum 100 caractères. Pas de HTML ou d'emoji autorisé"
+                            tooltip={t.filterTooltip}
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}
                             required
@@ -48,9 +50,9 @@ const Price = () => {
                             onChange={() => setPromoToggle(!promoToggle)}
                         />
                         <Select
-                            label="Promo"
-                            tooltip="Maximum 100 caractères. Pas de HTML ou d'emoji autorisé"
-                            placeholder="Sélectionner une catégorie"
+                            label={t.promo}
+                            tooltip={t.filterTooltip}
+                            placeholder={t.selectCategory}
                             value={promo}
                             onChange={setPromo}
                             options={promos}

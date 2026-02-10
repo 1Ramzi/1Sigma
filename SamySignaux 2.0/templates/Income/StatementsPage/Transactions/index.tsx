@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import { NumericFormat } from "react-number-format";
 import Search from "@/components/Search";
 import Button from "@/components/Button";
@@ -13,15 +14,17 @@ import { SelectOption } from "@/types/select";
 
 import { transactions } from "@/mocks/statements";
 
-const durations: SelectOption[] = [
-    { id: 1, name: "7 derniers jours" },
-    { id: 2, name: "14 derniers jours" },
-    { id: 3, name: "30 derniers jours" },
-];
-
-const tableHead = ["Article", "Type", "Date", "ID Commande", "Prix", "Montant"];
-
 const Transactions = () => {
+    const { t } = useLanguage();
+
+    const durations: SelectOption[] = [
+        { id: 1, name: t.last7Days },
+        { id: 2, name: t.lastMonth },
+        { id: 3, name: "30 derniers jours" }, // Need key for this or use 'Last month'
+    ];
+
+    const tableHead = [t.item, t.type, t.date, t.orderId, t.price, t.amount];
+
     const [search, setSearch] = useState("");
     const [duration, setDuration] = useState<SelectOption>(durations[2]);
 
@@ -29,13 +32,13 @@ const Transactions = () => {
         <div className="card">
             <div className="flex items-center">
                 <div className="pl-5 text-h6 max-lg:mr-auto max-lg:pl-3">
-                    Transactions
+                    {t.transactions}
                 </div>
                 <Search
                     className="w-70 ml-6 mr-auto max-lg:hidden"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    placeholder="Rechercher..."
+                    placeholder={t.searchAnything}
                     isGray
                 />
                 {search === "" && (
@@ -46,12 +49,12 @@ const Transactions = () => {
                             value={duration}
                             onChange={setDuration}
                         />
-                        <Button isBlack>Télécharger CSV</Button>
+                        <Button isBlack>{t.downloadCSV}</Button>
                     </>
                 )}
             </div>
             {search !== "" ? (
-                <NoFound title="Aucune transaction trouvée" />
+                <NoFound title={t.noTransactionsFound} />
             ) : (
                 <div className="p-1 pt-6 max-lg:px-0 max-md:pt-3">
                     <Table
@@ -93,7 +96,7 @@ const Transactions = () => {
                                                         : "label-green"
                                                 }`}
                                             >
-                                                {transaction.type}
+                                                {transaction.type === "remboursé" ? t.refunded : transaction.type}
                                             </div>
                                         </div>
                                     </div>
@@ -106,7 +109,7 @@ const Transactions = () => {
                                                 : "label-green"
                                         }`}
                                     >
-                                        {transaction.type}
+                                        {transaction.type === "remboursé" ? t.refunded : transaction.type}
                                     </div>
                                 </td>
                                 <td className="max-md:hidden">

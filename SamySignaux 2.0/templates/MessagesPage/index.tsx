@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useMedia } from "react-use";
+import { useLanguage } from "@/context/LanguageContext";
 import Layout from "@/components/Layout";
 import Search from "@/components/Search";
 import Button from "@/components/Button";
@@ -11,6 +12,7 @@ import Details from "./Details";
 import { messages } from "@/mocks/messages";
 
 const MessagesPage = () => {
+    const { t } = useLanguage();
     const [search, setSearch] = useState("");
     const [mounted, setMounted] = useState(false);
     const isMobile = useMedia("(max-width: 767px)");
@@ -26,7 +28,7 @@ const MessagesPage = () => {
     if (!mounted) return null;
 
     return (
-        <Layout title="Messages">
+        <Layout title={t.messages}>
             <div className="max-w-[1200px] mx-auto card p-0 overflow-hidden">
                 <div className="flex max-md:block max-md:p-3">
                     <div
@@ -40,7 +42,7 @@ const MessagesPage = () => {
                             className="mb-3"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            placeholder="Rechercher un message"
+                            placeholder={t.searchMessage}
                             isGray
                         />
                         {search === "" ? (
@@ -59,14 +61,14 @@ const MessagesPage = () => {
                         ) : (
                             <div className="pt-16 text-center max-md:pb-24">
                                 <div className="mb-6 text-h5">
-                                    Aucun résultat trouvé
+                                    {t.noResultFound}
                                 </div>
                                 <Button
                                     isStroke
                                     as="link"
                                     href="/explore-creators"
                                 >
-                                    Explorer les créateurs
+                                    {t.exploreCreators}
                                 </Button>
                             </div>
                         )}

@@ -3,8 +3,10 @@ import { RemoveScroll } from "react-remove-scroll";
 import ThemeButton from "@/components/ThemeButton";
 import NavLink from "@/components/NavLink";
 import Button from "@/components/Button";
+import Select from "@/components/Select";
 import Dropdown from "./Dropdown";
 import { useLanguage } from "@/context/LanguageContext";
+import { SelectOption } from "@/types/select";
 
 import { navigation } from "@/contstants/navigation";
 
@@ -19,7 +21,18 @@ const Sidebar = ({
     hideSidebar,
     onCloseSidebar,
 }: SidebarProps) => {
-    const { t } = useLanguage();
+    const { t, language, setLanguage } = useLanguage();
+
+    const languageOptions: SelectOption[] = [
+        { id: 'fr', name: 'Français' },
+        { id: 'en', name: 'English' },
+    ];
+
+    const currentLanguage = languageOptions.find(opt => opt.id === language) || languageOptions[0];
+
+    const handleLanguageChange = (option: SelectOption) => {
+        setLanguage(option.id as any);
+    };
 
     return (
     <div
@@ -78,9 +91,20 @@ const Sidebar = ({
                 </div>
             </Button>
             
-            <ThemeButton
-                className={`${hideSidebar ? "hidden max-lg:block" : ""}`}
-            />
+            {!hideSidebar && (
+                <div className="flex flex-col gap-3 p-3 bg-b-surface2 rounded-xl border border-s-border">
+                    <Select
+                        value={currentLanguage}
+                        onChange={handleLanguageChange}
+                        options={languageOptions}
+                        classButton="!h-10 !bg-b-surface1 !border-s-border !text-body-2"
+                    />
+                    <div className="flex items-center justify-between px-1">
+                        <span className="text-body-2 font-medium text-t-secondary">{t.theme}</span>
+                        <ThemeButton />
+                    </div>
+                </div>
+            )}
         </div>
     </div>
 )};

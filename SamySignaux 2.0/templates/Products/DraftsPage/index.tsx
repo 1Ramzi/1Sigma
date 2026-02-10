@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import Layout from "@/components/Layout";
 import Search from "@/components/Search";
 import Tabs from "@/components/Tabs";
@@ -15,12 +16,14 @@ import { useSelection } from "@/hooks/useSelection";
 
 import { draftsProducts } from "@/mocks/products";
 
-const views: TabsOption[] = [
-    { id: 1, name: "grille" },
-    { id: 2, name: "liste" },
-];
-
 const DraftsPage = () => {
+    const { t } = useLanguage();
+
+    const views: TabsOption[] = [
+        { id: 1, name: t.grid },
+        { id: 2, name: t.list },
+    ];
+
     const [search, setSearch] = useState("");
     const [view, setView] = useState<TabsOption>(views[1]);
     const {
@@ -32,18 +35,18 @@ const DraftsPage = () => {
     } = useSelection<ProductDraft>(draftsProducts);
 
     return (
-        <Layout title="Brouillons">
+        <Layout title={t.drafts}>
             <div className="max-w-[1200px] mx-auto card">
                 {selectedRows.length === 0 ? (
                     <div className="flex items-center">
                         <div className="pl-5 text-h6 max-lg:pl-3 max-md:mr-auto">
-                            Produits
+                            {t.products}
                         </div>
                         <Search
                             className="w-70 ml-6 mr-auto max-md:hidden"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            placeholder="Rechercher des produits"
+                            placeholder={t.searchProducts}
                             isGray
                         />
                         {search === "" && (
@@ -58,14 +61,14 @@ const DraftsPage = () => {
                 ) : (
                     <div className="flex items-center">
                         <div className="mr-6 pl-5 text-h6">
-                            {selectedRows.length} produit{selectedRows.length !== 1 ? "s" : ""} sélectionné{selectedRows.length !== 1 ? "s" : ""}
+                            {selectedRows.length} produit{selectedRows.length !== 1 ? "s" : ""} {t.selected}
                         </div>
                         <Button
                             className="mr-auto"
                             isStroke
                             onClick={handleDeselect}
                         >
-                            Désélectionner
+                            {t.deselect}
                         </Button>
                         <DeleteItems
                             counter={selectedRows.length}
@@ -73,12 +76,12 @@ const DraftsPage = () => {
                             isLargeButton
                         />
                         <Button className="ml-2" isBlack>
-                            Publier
+                            {t.publish}
                         </Button>
                     </div>
                 )}
                 {search !== "" ? (
-                    <NoFound title="Aucun produit trouvé" />
+                    <NoFound title={t.noProductFound} />
                 ) : (
                     <div className="p-1 pt-3 max-lg:px-0">
                         {view.id === 1 ? (

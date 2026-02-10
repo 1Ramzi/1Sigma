@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import Card from "@/components/Card";
 import Button from "@/components/Button";
 import NewCustomers from "@/components/NewCustomers";
@@ -8,18 +9,20 @@ import { SelectOption } from "@/types/select";
 
 import { overview } from "@/mocks/customers";
 
-const durations: SelectOption[] = [
-    { id: 1, name: "7 derniers jours" },
-    { id: 2, name: "14 derniers jours" },
-    { id: 3, name: "28 derniers jours" },
-];
-
 const Overview = ({}) => {
+    const { t } = useLanguage();
+
+    const durations: SelectOption[] = [
+        { id: 1, name: t.last7Days },
+        { id: 2, name: "14 " + t.last7Days.split(" ")[1] + " " + t.last7Days.split(" ")[2] },
+        { id: 3, name: "28 " + t.last7Days.split(" ")[1] + " " + t.last7Days.split(" ")[2] },
+    ];
+
     const [duration, setDuration] = useState<SelectOption>(durations[2]);
 
     return (
         <Card
-            title="Aperçu"
+            title={t.overview}
             selectValue={duration}
             selectOnChange={setDuration}
             selectOptions={durations}

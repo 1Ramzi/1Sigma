@@ -10,7 +10,7 @@ import { useLanguage } from "@/context/LanguageContext";
 
 const Payment = ({}) => {
     const { user } = useUserStore();
-    const { language } = useLanguage();
+    const { t } = useLanguage();
     const [paypalEmail, setPaypalEmail] = useState(user?.email || "");
 
     useEffect(() => {
@@ -20,12 +20,12 @@ const Payment = ({}) => {
     }, [user]);
 
     return (
-        <Card title="Paiement">
+        <Card title={t.payment}>
             <div className="p-5 pt-0 max-lg:px-3">
                 <Field
                     classInput="pl-14"
-                    label="Email PayPal"
-                    placeholder="Entrez votre email PayPal"
+                    label={t.paypalEmail}
+                    placeholder={t.enterPaypalEmail}
                     value={paypalEmail}
                     onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setPaypalEmail(e.target.value)}
                     required
@@ -47,7 +47,7 @@ const Payment = ({}) => {
                         height={28}
                         alt="Stripe"
                     />
-                    Connecter compte Stripe
+                    {t.connectStripe}
                 </Button>
             </div>
         </Card>

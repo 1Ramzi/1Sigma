@@ -8,7 +8,10 @@ import Button from "@/components/Button";
 import Icon from "@/components/Icon";
 import Field from "@/components/Field";
 import Checkbox from "@/components/Checkbox";
+import Badge from "@/components/Badge";
 import { useLanguage } from "@/context/LanguageContext";
+import { useUserStore } from "@/stores/userStore";
+import Faq from "./Faq";
 
 const AXI_URL = 'https://www.axi.com/';
 const PUPRIME_URL = 'https://www.puprime.com/';
@@ -17,6 +20,7 @@ type BrokerStep = 'AXI_QUESTION' | 'AXI_FORM' | 'PUPRIME_QUESTION' | 'PUPRIME_FO
 
 const BrokerPage = () => {
     const { t } = useLanguage();
+    const { user } = useUserStore();
     const [step, setStep] = useState<BrokerStep>('AXI_QUESTION');
     const [brokerId, setBrokerId] = useState('');
     const [depositConfirmed, setDepositConfirmed] = useState(false);
@@ -31,6 +35,27 @@ const BrokerPage = () => {
         await new Promise(r => setTimeout(r, 1500));
         setConnecting(false);
         setSubmitted(true);
+    };
+
+    const getStatusBadge = () => {
+        const role = user?.role || 'member';
+        let color: "gray" | "green" | "blue" | "yellow" | "red" = "gray";
+        let label = t.statusFree;
+
+        if (role === 'vip' || role === 'trader' || role === 'admin') {
+             color = "green";
+             label = t.statusSubscriber;
+        } else if (role === 'moderator') { // Using as partner for example
+             color = "yellow";
+             label = t.statusPartner;
+        }
+        
+        if (submitted) {
+             color = "blue";
+             label = t.statusLinked;
+        }
+
+        return <Badge color={color}>{label}</Badge>;
     };
 
     const renderContent = () => {
@@ -224,20 +249,73 @@ const BrokerPage = () => {
 
     return (
         <Layout title={t.broker}>
-            <div className="max-w-[800px] mx-auto min-h-[60vh] flex items-center justify-center">
-                <Card className="w-full !p-8 shadow-xl" title="">
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={step + (submitted ? '_submitted' : '')}
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -10 }}
-                            transition={{ duration: 0.2 }}
-                        >
-                            {renderContent()}
-                        </motion.div>
-                    </AnimatePresence>
-                </Card>
+            <div className="max-w-[1200px] mx-auto space-y-8">
+                {/* Header Section */}
+                <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                    <div>
+                        <h1 className="text-h3 font-bold text-t-primary">{t.brokerHeroTitle}</h1>
+                        <p className="text-body-1 text-t-secondary mt-2 max-w-2xl">{t.brokerHeroDesc}</p>
+                    </div>
+                    <div className="flex items-center gap-3 bg-b-surface1 p-3 rounded-2xl border border-s-border">
+                        <span className="text-body-2 font-medium text-t-secondary">{t.accountStatus}:</span>
+                        {getStatusBadge()}
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    {/* Left Column - Main Interaction */}
+                    <div className="lg:col-span-2">
+                        <Card className="w-full !p-8 shadow-xl min-h-[500px] flex flex-col justify-center" title="">
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={step + (submitted ? '_submitted' : '')}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -10 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="w-full"
+                                >
+                                    {renderContent()}
+                                </motion.div>
+                            </AnimatePresence>
+                        </Card>
+                    </div>
+
+                    {/* Right Column - Explanations */}
+                    <div className="space-y-6">
+                        <Card title={t.transparencyTitle} className="!p-6 bg-primary-01/5 border border-primary-01/10">
+                            <div className="flex items-start gap-4">
+                                <div className="w-10 h-10 rounded-full bg-primary-01/10 flex items-center justify-center shrink-0">
+                                    <Icon name="info-circle" className="!size-5 fill-primary-01" />
+                                </div>
+                                <p className="text-body-2 text-t-secondary leading-relaxed">
+                                    {t.transparencyDesc}
+                                </p>
+                            </div>
+                        </Card>
+
+                        <div className="bg-b-surface1 rounded-2xl p-6 border border-s-border">
+                            <h3 className="text-h6 font-bold text-t-primary mb-4">{t.whyBroker}</h3>
+                            <ul className="space-y-4">
+                                <li className="flex gap-3">
+                                    <Icon name="check-circle" className="!size-5 fill-secondary-04 shrink-0" />
+                                    <span className="text-body-2 text-t-secondary">{t.faqBroker1A}</span>
+                                </li>
+                                <li className="flex gap-3">
+                                    <Icon name="check-circle" className="!size-5 fill-secondary-04 shrink-0" />
+                                    <span className="text-body-2 text-t-secondary">{t.faqBroker2A}</span>
+                                </li>
+                                <li className="flex gap-3">
+                                    <Icon name="check-circle" className="!size-5 fill-secondary-04 shrink-0" />
+                                    <span className="text-body-2 text-t-secondary">{t.faqBroker3A}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                {/* FAQ Section */}
+                <Faq />
             </div>
         </Layout>
     );

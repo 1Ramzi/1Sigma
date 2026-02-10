@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import Layout from "@/components/Layout";
 import Tabs from "@/components/Tabs";
 import Button from "@/components/Button";
@@ -11,17 +12,19 @@ import { TabsOption } from "@/types/tabs";
 
 import { allNotifications } from "@/mocks/notifications";
 
-const categories: TabsOption[] = [
-    { id: 1, name: "Récent" },
-    { id: 2, name: "Plus tôt" },
-];
-
 const NotificationsPage = () => {
+    const { t } = useLanguage();
+
+    const categories: TabsOption[] = [
+        { id: 1, name: t.recent },
+        { id: 2, name: t.earlier },
+    ];
+
     const [category, setCategory] = useState<TabsOption>(categories[0]);
     const [isOpen, setIsOpen] = useState(false);
     return (
         <>
-            <Layout title="Notifications">
+            <Layout title={t.notifications}>
                 <div className="max-w-[1200px] mx-auto flex items-start">
                     <div className="col-left card mb-0 pb-8">
                         <div className="flex mb-6">
@@ -31,7 +34,7 @@ const NotificationsPage = () => {
                                 setValue={setCategory}
                             />
                             <Button className="ml-auto max-md:!hidden" isBlack>
-                                Tout marquer comme lu
+                                {t.markAllAsRead}
                             </Button>
                             <Button
                                 className="!hidden ml-3 max-lg:!flex max-md:ml-auto"

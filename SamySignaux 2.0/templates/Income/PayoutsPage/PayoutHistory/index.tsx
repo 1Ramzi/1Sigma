@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import { NumericFormat } from "react-number-format";
 import Search from "@/components/Search";
 import Tabs from "@/components/Tabs";
@@ -13,23 +14,25 @@ import { TabsOption } from "@/types/tabs";
 
 import { payoutHistory } from "@/mocks/payouts";
 
-const sortOptions: TabsOption[] = [
-    { id: 1, name: "Tout" },
-    { id: 2, name: "En attente" },
-    { id: 3, name: "Payé" },
-];
-
-const tableHead = [
-    "Date",
-    "Statut",
-    "Méthode",
-    "ID Transaction",
-    "Montant",
-    "Frais",
-    "Net",
-];
-
 const PayoutHistory = () => {
+    const { t } = useLanguage();
+
+    const sortOptions: TabsOption[] = [
+        { id: 1, name: t.all },
+        { id: 2, name: t.pending },
+        { id: 3, name: t.paid },
+    ];
+
+    const tableHead = [
+        t.date,
+        t.status,
+        t.method,
+        t.transactionId,
+        t.amount,
+        t.fee,
+        t.net,
+    ];
+
     const [search, setSearch] = useState("");
     const [sort, setSort] = useState<TabsOption>(sortOptions[0]);
 
@@ -37,13 +40,13 @@ const PayoutHistory = () => {
         <div className="card">
             <div className="flex items-center max-md:h-12">
                 <div className="pl-5 text-h6 max-lg:pl-3 max-md:mr-auto">
-                    Historique des paiements
+                    {t.payoutHistory}
                 </div>
                 <Search
                     className="w-70 ml-6 mr-auto max-lg:w-64 max-lg:ml-4 max-md:hidden"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    placeholder="Rechercher..."
+                    placeholder={t.searchAnything}
                     isGray
                 />
                 {search === "" && (
@@ -64,7 +67,7 @@ const PayoutHistory = () => {
                 )}
             </div>
             {search !== "" ? (
-                <NoFound title="Aucun paiement trouvé" />
+                <NoFound title={t.noTransactionsFound} />
             ) : (
                 <div className="p-1 pt-6 max-md:pt-3 max-lg:px-0">
                     <Table
@@ -91,7 +94,9 @@ const PayoutHistory = () => {
                                                 : "label-green"
                                         }`}
                                     >
-                                        {transaction.status
+                                        {transaction.status === "en cours" ? t.pending : 
+                                         transaction.status === "payé" ? t.paid :
+                                         transaction.status
                                             .charAt(0)
                                             .toUpperCase() +
                                             transaction.status.slice(1)}

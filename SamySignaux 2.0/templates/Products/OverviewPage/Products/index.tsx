@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import Search from "@/components/Search";
 import Tabs from "@/components/Tabs";
 import NoFound from "@/components/NoFound";
@@ -20,13 +21,15 @@ import {
     productsViewers,
 } from "@/mocks/products";
 
-const categories: TabsOption[] = [
-    { id: 1, name: "Marché" },
-    { id: 2, name: "Sources de trafic" },
-    { id: 3, name: "Spectateurs" },
-];
-
 const Products = ({}) => {
+    const { t } = useLanguage();
+
+    const categories: TabsOption[] = [
+        { id: 1, name: t.market },
+        { id: 2, name: t.trafficSources },
+        { id: 3, name: t.viewers },
+    ];
+
     const [search, setSearch] = useState("");
     const [category, setCategory] = useState<TabsOption>(categories[0]);
     const [visibleSearch, setVisibleSearch] = useState(false);
@@ -43,7 +46,7 @@ const Products = ({}) => {
             {selectedRows.length === 0 ? (
                 <div className="flex items-center max-lg:flex-wrap">
                     <div className="flex items-center min-h-12 pl-5 text-h6 max-lg:mr-6 max-lg:pl-3 max-md:mr-auto">
-                        Produits
+                        {t.products}
                     </div>
                     <Button
                         className="!hidden mr-auto max-lg:!flex max-md:mr-4 max-md:size-6 max-md:border-none"
@@ -58,7 +61,7 @@ const Products = ({}) => {
                         }`}
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
-                        placeholder="Rechercher des produits"
+                        placeholder={t.searchProducts}
                         isGray
                     />
                     <Dropdown
@@ -80,14 +83,14 @@ const Products = ({}) => {
                 <div className="flex items-center max-md:hidden">
                     <div className="mr-6 pl-5 text-h6">
                         {selectedRows.length} produit
-                        {selectedRows.length !== 1 ? "s" : ""} sélectionné{selectedRows.length !== 1 ? "s" : ""}
+                        {selectedRows.length !== 1 ? "s" : ""} {t.selected}
                     </div>
                     <Button
                         className="mr-auto"
                         isStroke
                         onClick={handleDeselect}
                     >
-                        Désélectionner
+                        {t.deselect}
                     </Button>
                     <DeleteItems
                         counter={selectedRows.length}
@@ -98,7 +101,7 @@ const Products = ({}) => {
                 </div>
             )}
             {search !== "" ? (
-                <NoFound title="Aucun produit trouvé" />
+                <NoFound title={t.noProductFound} />
             ) : (
                 <div className="pt-3 px-1 pb-5 max-lg:px-0 max-lg:pb-0">
                     {category.id === 1 && (

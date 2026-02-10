@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import { NumericFormat } from "react-number-format";
 import Icon from "@/components/Icon";
 import Modal from "@/components/Modal";
@@ -23,6 +24,7 @@ const ShareProduct = ({
     price,
     reSchedule,
 }: ShareProductProps) => {
+    const { t } = useLanguage();
     const [open, setOpen] = useState(false);
     const [startDate, setStartDate] = useState(new Date());
     const [startTime, setStartTime] = useState(new Date());
@@ -31,7 +33,7 @@ const ShareProduct = ({
         <>
             <button className="action" onClick={() => setOpen(true)}>
                 <Icon name="calendar" />
-                {reSchedule ? "Reschedule" : "Schedule"}
+                {reSchedule ? t.reschedule : t.schedule}
             </button>
             <Modal
                 classWrapper="relative !max-w-120 !p-3"
@@ -72,11 +74,10 @@ const ShareProduct = ({
                 </div>
                 <div className="p-5 max-md:p-3">
                     <div className="mb-2 text-h4 max-md:text-h5">
-                        {reSchedule ? "Reschedule" : "Schedule"} product
+                        {reSchedule ? t.reschedule : t.schedule} {t.products.toLowerCase().slice(0, -1)} {/* Hacky: "produit" vs "products" */}
                     </div>
                     <div className="mb-8 text-t-tertiary max-md:mb-4">
-                        Choose a day and time in the future you want your
-                        product to be published.
+                        {t.scheduleProductDesc}
                     </div>
                     <DateAndTime
                         startDate={startDate}
@@ -90,10 +91,10 @@ const ShareProduct = ({
                             isStroke
                             onClick={() => setOpen(false)}
                         >
-                            Cancel
+                            {t.cancel}
                         </Button>
                         <Button className="max-md:flex-1" isBlack>
-                            {reSchedule ? "Reschedule" : "Schedule"}
+                            {reSchedule ? t.reschedule : t.schedule}
                         </Button>
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import { NumericFormat } from "react-number-format";
 import Card from "@/components/Card";
 import Tabs from "@/components/Tabs";
@@ -8,12 +9,6 @@ import Icon from "@/components/Icon";
 import { TabsOption } from "@/types/tabs";
 
 import { interactions } from "@/mocks/promote";
-
-const sortOptions: TabsOption[] = [
-    { id: 1, name: "Tous" },
-    { id: 2, name: "Abonnés" },
-    { id: 3, name: "Non-abonnés" },
-];
 
 type InteractionItemProps = {
     id: number;
@@ -83,10 +78,18 @@ const InteractionItem = ({
 };
 
 const Interactions = () => {
+    const { t } = useLanguage();
+
+    const sortOptions: TabsOption[] = [
+        { id: 1, name: t.all },
+        { id: 2, name: t.followers },
+        { id: 3, name: t.nonFollowers },
+    ];
+
     const [sort, setSort] = useState<TabsOption>(sortOptions[0]);
 
     return (
-        <Card classHead="!pl-3" title="Interactions">
+        <Card classHead="!pl-3" title={t.interactions}>
             <div className="px-3 pb-3 max-2xl:pt-3 max-md:pt-1">
                 <Tabs
                     className="mb-6 max-3xl:!gap-0 max-2xl:hidden"

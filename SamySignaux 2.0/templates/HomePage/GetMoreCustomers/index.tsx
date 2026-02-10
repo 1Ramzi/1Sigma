@@ -1,3 +1,4 @@
+import { useLanguage } from "@/context/LanguageContext";
 import Card from "@/components/Card";
 import Button from "@/components/Button";
 
@@ -21,12 +22,11 @@ const socials = [
 ];
 
 const GetMoreCustomers = ({}) => {
+    const { t } = useLanguage();
+
     return (
-        <Card title="Obtenez plus de clients">
-            <div className="mb-6 px-5 text-body-2 text-t-secondary max-lg:px-3">
-                Cinquante pour cent des nouveaux clients explorent les produits car
-                l'auteur partage son travail sur les réseaux sociaux. <br></br>Commencez à gagner
-                maintenant ! 🔥
+        <Card title={t.getMoreCustomers}>
+            <div className="mb-6 px-5 text-body-2 text-t-secondary max-lg:px-3" dangerouslySetInnerHTML={{ __html: t.getMoreCustomersDesc }}>
             </div>
             <div className="flex gap-3">
                 {socials.map((social, index) => (

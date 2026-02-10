@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import {
     ComposedChart,
     Bar,
@@ -17,13 +18,15 @@ import { SelectOption } from "@/types/select";
 
 import { recentEarningsChartData } from "@/mocks/charts";
 
-const durations: SelectOption[] = [
-    { id: 1, name: "Last 7 days" },
-    { id: 2, name: "Last month" },
-    { id: 3, name: "Last year" },
-];
-
 const RecentEarnings = ({}) => {
+    const { t } = useLanguage();
+
+    const durations: SelectOption[] = [
+        { id: 1, name: t.last7Days },
+        { id: 2, name: t.lastMonth },
+        { id: 3, name: t.lastYear },
+    ];
+
     const [duration, setDuration] = useState<SelectOption>(durations[0]);
 
     const CustomTooltip = ({
@@ -54,7 +57,7 @@ const RecentEarnings = ({}) => {
 
     return (
         <Card
-            title="Recent earnings"
+            title={t.recentEarnings}
             selectValue={duration}
             selectOnChange={setDuration}
             selectOptions={durations}
@@ -201,7 +204,7 @@ const RecentEarnings = ({}) => {
                     </div>
                     <Percentage className="ml-3" value={36.8} />
                     <div className="ml-2 text-body-2 text-t-tertiary">
-                        vs last month
+                        {t.vsLastMonth}
                     </div>
                 </div>
             </div>

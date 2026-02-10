@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import {
     BarChart,
     Bar,
@@ -15,13 +16,15 @@ import { SelectOption } from "@/types/select";
 
 import { trafficСhannelChartData } from "@/mocks/charts";
 
-const durations: SelectOption[] = [
-    { id: 1, name: "7 derniers jours" },
-    { id: 2, name: "Dernier mois" },
-    { id: 3, name: "Dernière année" },
-];
-
 const TrafficСhannel = ({}) => {
+    const { t } = useLanguage();
+
+    const durations: SelectOption[] = [
+        { id: 1, name: t.last7Days },
+        { id: 2, name: t.lastMonth },
+        { id: 3, name: t.lastYear },
+    ];
+
     const [duration, setDuration] = useState<SelectOption>(durations[0]);
 
     const formatterYAxis = (value: number) => {
@@ -69,9 +72,9 @@ const TrafficСhannel = ({}) => {
                 <div className="chart-tooltip">
                     <div className="mb-1 text-caption opacity-80">{label}</div>
                     <div className="flex flex-col gap-0.5">
-                        <LabelTooltip label="Direct" value={payload[0].value} />
-                        <LabelTooltip label="Recherche" value={payload[1].value} />
-                        <LabelTooltip label="Autre" value={payload[2].value} />
+                        <LabelTooltip label={t.direct} value={payload[0].value} />
+                        <LabelTooltip label={t.searchSource} value={payload[1].value} />
+                        <LabelTooltip label={t.other} value={payload[2].value} />
                     </div>
                 </div>
             );
@@ -81,7 +84,7 @@ const TrafficСhannel = ({}) => {
 
     return (
         <Card
-            title="Canal de trafic"
+            title={t.trafficChannel}
             selectValue={duration}
             selectOnChange={setDuration}
             selectOptions={durations}
@@ -229,7 +232,7 @@ const TrafficСhannel = ({}) => {
                 <div className="flex gap-10 mt-4 max-md:justify-center">
                     <div className="flex items-center gap-1.5">
                         <div className="shrink-0 w-3.5 h-3.5 rounded bg-shade-07/40"></div>
-                        <div className="text-caption opacity-80">Direct</div>
+                        <div className="text-caption opacity-80">{t.direct}</div>
                     </div>
                     <div className="flex items-center gap-1.5">
                         <div className="shrink-0 w-3.5 h-3.5 rounded overflow-hidden">
@@ -260,7 +263,7 @@ const TrafficСhannel = ({}) => {
                                 />
                             </svg>
                         </div>
-                        <div className="text-caption opacity-80">Recherche</div>
+                        <div className="text-caption opacity-80">{t.searchSource}</div>
                     </div>
                     <div className="flex items-center gap-1.5">
                         <div className="shrink-0 w-3.5 h-3.5 rounded overflow-hidden">
@@ -290,7 +293,7 @@ const TrafficСhannel = ({}) => {
                                 />
                             </svg>
                         </div>
-                        <div className="text-caption opacity-80">Autre</div>
+                        <div className="text-caption opacity-80">{t.other}</div>
                     </div>
                 </div>
             </div>

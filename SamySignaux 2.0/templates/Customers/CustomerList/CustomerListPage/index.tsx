@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import Layout from "@/components/Layout";
 import Search from "@/components/Search";
 import Tabs from "@/components/Tabs";
@@ -15,12 +16,14 @@ import { useSelection } from "@/hooks/useSelection";
 
 import { customers } from "@/mocks/customers";
 
-const views: TabsOption[] = [
-    { id: 1, name: "Actifs" },
-    { id: 2, name: "Nouveaux" },
-];
-
 const CustomerListPage = () => {
+    const { t } = useLanguage();
+
+    const views: TabsOption[] = [
+        { id: 1, name: t.activeCustomers },
+        { id: 2, name: t.newCustomers },
+    ];
+
     const [search, setSearch] = useState("");
     const [view, setView] = useState<TabsOption>(views[0]);
     const {
@@ -32,18 +35,18 @@ const CustomerListPage = () => {
     } = useSelection<Customer>(customers);
 
     return (
-        <Layout title="Liste des clients">
+        <Layout title={t.customerList}>
             <div className="max-w-[1200px] mx-auto card">
                 {selectedRows.length === 0 ? (
                     <div className="flex items-center min-h-12">
                         <div className="pl-5 text-h6 max-lg:pl-3 max-md:mr-auto">
-                            Clients
+                            {t.clients}
                         </div>
                         <Search
                             className="w-70 ml-6 mr-auto max-md:hidden"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            placeholder="Rechercher par nom ou email"
+                            placeholder={t.searchCustomer}
                             isGray
                         />
                         {search === "" && (
@@ -66,14 +69,14 @@ const CustomerListPage = () => {
                 ) : (
                     <div className="flex items-center">
                         <div className="mr-6 pl-5 text-h6">
-                            {selectedRows.length} client{selectedRows.length !== 1 ? "s" : ""} sélectionné{selectedRows.length !== 1 ? "s" : ""}
+                            {selectedRows.length} client{selectedRows.length !== 1 ? "s" : ""} {t.selected}
                         </div>
                         <Button
                             className="mr-auto"
                             isStroke
                             onClick={handleDeselect}
                         >
-                            Désélectionner
+                            {t.deselect}
                         </Button>
                         <DeleteItems
                             counter={selectedRows.length}
@@ -83,7 +86,7 @@ const CustomerListPage = () => {
                     </div>
                 )}
                 {search !== "" ? (
-                    <NoFound title="Aucun client trouvé" />
+                    <NoFound title={t.noCustomerFound} />
                 ) : (
                     <div className="p-1 pt-3 max-lg:px-0">
                         <List

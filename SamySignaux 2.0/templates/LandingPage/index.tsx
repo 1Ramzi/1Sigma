@@ -15,25 +15,25 @@ const features = [
 ];
 
 const testimonials = [
-    { name: 'Lucas M.', role: 'Trader Crypto', rating: 5, avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lucas' },
-    { name: 'Sophie D.', role: 'Trader Forex', rating: 5, avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=sophied' },
-    { name: 'Thomas R.', role: 'Investisseur', rating: 4, avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=thomasr' },
+    { name: 'Lucas M.', roleKey: 'traderCrypto', rating: 5, avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lucas' },
+    { name: 'Sophie D.', roleKey: 'traderForex', rating: 5, avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=sophied' },
+    { name: 'Thomas R.', roleKey: 'investor', rating: 4, avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=thomasr' },
 ];
 
 const LandingPage = () => {
-    const { language } = useLanguage();
+    const { t } = useLanguage();
 
     const featureTexts = [
-        { title: 'Signaux IA en temps réel', desc: 'Recevez des signaux de trading précis alimentés par notre intelligence artificielle avancée.' },
-        { title: 'Taux de réussite de 78%+', desc: 'Nos signaux affichent un taux de réussite supérieur à 78% sur les 12 derniers mois.' },
-        { title: 'Sécurité maximale', desc: 'Vos fonds restent sur votre broker. Nous n\'avons jamais accès à votre argent.' },
-        { title: 'Communauté active', desc: 'Rejoignez +3000 traders qui partagent analyses, stratégies et résultats.' },
+        { title: t.realTimeAiSignals, desc: t.realTimeAiSignalsDesc },
+        { title: t.winRateLabel + ' 78%+', desc: t.winRateDesc },
+        { title: t.maxSecurity, desc: t.maxSecurityDesc },
+        { title: t.activeCommunity, desc: t.activeCommunityDesc },
     ];
 
     const testimonialTexts = [
-        'Les signaux sont incroyablement précis. J\'ai doublé mon compte en 3 mois.',
-        'La communauté est top, on apprend vraiment beaucoup. Les alertes flash sont un game changer.',
-        'Interface propre, signaux fiables. Exactement ce que je cherchais pour du copy trading.',
+        t.testimonial1,
+        t.testimonial2,
+        t.testimonial3,
     ];
 
     return (
@@ -49,21 +49,21 @@ const LandingPage = () => {
                     </div>
                     <div className="hidden md:flex items-center gap-8">
                         <a href="#features" className="text-sm font-medium text-t-secondary hover:text-t-primary transition-colors">
-                            Fonctionnalités
+                            {t.features}
                         </a>
                         <a href="#stats" className="text-sm font-medium text-t-secondary hover:text-t-primary transition-colors">
-                            Résultats
+                            {t.results}
                         </a>
                         <a href="#testimonials" className="text-sm font-medium text-t-secondary hover:text-t-primary transition-colors">
-                            Avis
+                            {t.reviews}
                         </a>
                     </div>
                     <div className="flex items-center gap-3">
                         <Link href="/login" className="text-sm font-medium text-t-primary hover:text-primary-01 transition-colors">
-                            Se connecter
+                            {t.signIn}
                         </Link>
                         <Link href="/register" className="text-sm font-medium bg-primary-01 text-white px-4 py-2 rounded-lg hover:bg-primary-02 transition-colors">
-                            S'inscrire
+                            {t.signUp}
                         </Link>
                     </div>
                 </div>
@@ -80,25 +80,23 @@ const LandingPage = () => {
                         <div className="inline-flex items-center gap-2 bg-primary-01/10 border border-primary-01/20 rounded-full px-4 py-1.5 mb-6">
                             <span className="w-2 h-2 bg-secondary-01 rounded-full animate-pulse" />
                             <span className="text-sm font-medium text-primary-01">
-                                Signaux en direct maintenant
+                                {t.liveSignalsNow}
                             </span>
                         </div>
 
-                        <h1 className="text-4xl md:text-6xl font-extrabold text-t-primary leading-tight tracking-tight">
-                            Tradez avec les <span className="text-primary-01">meilleurs signaux</span> du marché
-                        </h1>
+                        <h1 className="text-4xl md:text-6xl font-extrabold text-t-primary leading-tight tracking-tight" dangerouslySetInnerHTML={{ __html: t.tradeWithBest }} />
 
                         <p className="mt-6 text-lg text-t-secondary max-w-2xl mx-auto leading-relaxed">
-                            Recevez des signaux de trading en temps réel, alimentés par l'IA. Rejoignez une communauté de traders qui gagnent ensemble.
+                            {t.heroDesc}
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
                             <Link href="/register" className="flex items-center gap-2 bg-primary-01 text-white px-8 py-3.5 rounded-xl font-semibold text-base hover:bg-primary-02 transition-colors shadow-lg shadow-primary-01/25">
-                                S'inscrire maintenant
+                                {t.signUpNow}
                                 <Icon name="arrow-right" className="w-5 h-5 fill-current" />
                             </Link>
                             <a href="#features" className="flex items-center gap-2 text-t-primary font-medium hover:text-primary-01 transition-colors">
-                                Découvrir les fonctionnalités
+                                {t.discoverFeatures}
                                 <Icon name="chevron-right" className="w-4 h-4 fill-current" />
                             </a>
                         </div>
@@ -114,8 +112,8 @@ const LandingPage = () => {
                         {/* Placeholder for video/image */}
                         <div className="w-full h-full bg-shade-02 opacity-60"></div> 
                         <div className="absolute bottom-6 left-6 text-white text-left">
-                            <p className="font-bold text-lg">Démo de la plateforme</p>
-                            <p className="text-sm text-white/80">Regardez comment suivre nos signaux</p>
+                            <p className="font-bold text-lg">{t.platformDemo}</p>
+                            <p className="text-sm text-white/80">{t.watchDemo}</p>
                         </div>
                     </div>
 
@@ -134,15 +132,15 @@ const LandingPage = () => {
                                 </div>
                                 <span className="text-xs font-bold text-primary-01">87%</span>
                             </div>
-                            <p className="text-[10px] text-t-tertiary mt-1">Confiance IA</p>
+                            <p className="text-[10px] text-t-tertiary mt-1">{t.aiConfidence}</p>
                         </div>
 
                         <div className="bg-b-surface1 rounded-xl shadow-lg border border-s-stroke2 p-5">
                             <p className="text-xs font-semibold text-t-tertiary uppercase tracking-wider mb-2">
-                                Performance
+                                {t.performance}
                             </p>
                             <p className="text-3xl font-extrabold text-secondary-01 font-mono">+78.5%</p>
-                            <p className="text-sm text-t-secondary mt-1">Taux de réussite</p>
+                            <p className="text-sm text-t-secondary mt-1">{t.winRateLabel}</p>
                             <div className="mt-3 h-12 flex items-end gap-0.5">
                                 {[40, 55, 35, 65, 50, 75, 60, 80, 70, 85, 75, 90].map((h, i) => (
                                     <div key={i} className="flex-1 bg-secondary-01/20 rounded-t-sm" style={{ height: `${h}%` }} />
@@ -152,10 +150,10 @@ const LandingPage = () => {
 
                         <div className="bg-b-surface1 rounded-xl shadow-lg border border-s-stroke2 p-5">
                             <p className="text-xs font-semibold text-t-tertiary uppercase tracking-wider mb-2">
-                                Communauté
+                                {t.community}
                             </p>
                             <p className="text-3xl font-extrabold text-t-primary">{stats.members.toLocaleString()}+</p>
-                            <p className="text-sm text-t-secondary mt-1">Traders actifs</p>
+                            <p className="text-sm text-t-secondary mt-1">{t.activeTraders}</p>
                             <div className="flex -space-x-2 mt-3">
                                 {['samy', 'marie', 'luc', 'sophie', 'thomas'].map((s, i) => (
                                     <img key={i} src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${s}`} alt="" className="w-8 h-8 rounded-full border-2 border-b-surface1" />
@@ -171,10 +169,10 @@ const LandingPage = () => {
             <section id="stats" className="bg-shade-01 py-12">
                 <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                     {[
-                        { value: `${stats.totalSignals}+`, label: 'Signaux envoyés' },
-                        { value: `${stats.winRate}%`, label: 'Taux de réussite' },
-                        { value: `${stats.members}+`, label: 'Membres actifs' },
-                        { value: `+${stats.avgProfit}%`, label: 'Profit moyen/mois' },
+                        { value: `${stats.totalSignals}+`, label: t.signalsSent },
+                        { value: `${stats.winRate}%`, label: t.winRateLabel },
+                        { value: `${stats.members}+`, label: t.activeMembers },
+                        { value: `+${stats.avgProfit}%`, label: t.avgProfitMonth },
                     ].map((s, i) => (
                         <div key={i}>
                             <p className="text-3xl md:text-4xl font-extrabold text-white">{s.value}</p>
@@ -189,10 +187,10 @@ const LandingPage = () => {
                 <div className="max-w-6xl mx-auto px-6">
                     <div className="text-center mb-14">
                         <h2 className="text-3xl md:text-4xl font-extrabold text-t-primary">
-                            Tout ce dont vous avez besoin
+                            {t.everythingYouNeed}
                         </h2>
                         <p className="text-t-secondary mt-3 max-w-xl mx-auto">
-                            Une plateforme complète pour trader avec confiance et intelligence.
+                            {t.platformDesc}
                         </p>
                     </div>
 
@@ -219,15 +217,15 @@ const LandingPage = () => {
                 <div className="max-w-6xl mx-auto px-6">
                     <div className="text-center mb-14">
                         <h2 className="text-3xl md:text-4xl font-extrabold text-t-primary">
-                            Comment ça marche ?
+                            {t.howItWorks}
                         </h2>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[
-                            { step: '01', title: 'Créez votre compte', desc: 'Inscription gratuite en 30 secondes. Aucune carte bancaire requise.' },
-                            { step: '02', title: 'Connectez votre broker', desc: 'Liez votre compte PuPrime pour exécuter les signaux automatiquement.' },
-                            { step: '03', title: 'Recevez les signaux', desc: 'Recevez des alertes flash et suivez les signaux en temps réel.' },
+                            { step: '01', title: t.step1Title, desc: t.step1HomeDesc },
+                            { step: '02', title: t.step2Title, desc: t.step2HomeDesc },
+                            { step: '03', title: t.step3Title, desc: t.step3HomeDesc },
                         ].map((item, i) => (
                             <div key={i} className="text-center">
                                 <div className="w-16 h-16 mx-auto rounded-2xl bg-primary-01 flex items-center justify-center mb-4">
@@ -246,7 +244,7 @@ const LandingPage = () => {
                 <div className="max-w-6xl mx-auto px-6">
                     <div className="text-center mb-14">
                         <h2 className="text-3xl md:text-4xl font-extrabold text-t-primary">
-                            Ce que disent nos traders
+                            {t.whatTradersSay}
                         </h2>
                     </div>
 
@@ -263,7 +261,10 @@ const LandingPage = () => {
                                     <img src={person.avatar} alt="" className="w-10 h-10 rounded-full" />
                                     <div>
                                         <p className="text-sm font-semibold text-t-primary">{person.name}</p>
-                                        <p className="text-xs text-t-tertiary">{person.role}</p>
+                                        <p className="text-xs text-t-tertiary">
+                                            {/* @ts-ignore */}
+                                            {t[person.roleKey]}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -276,24 +277,24 @@ const LandingPage = () => {
             <section className="py-20 bg-linear-to-br from-primary-01 to-primary-02">
                 <div className="max-w-3xl mx-auto px-6 text-center">
                     <h2 className="text-3xl md:text-4xl font-extrabold text-white">
-                        Prêt à trader comme un pro ?
+                        {t.readyToTrade}
                     </h2>
                     <p className="text-white/80 mt-4 text-lg">
-                        Rejoignez des milliers de traders et commencez à recevoir des signaux dès maintenant.
+                        {t.joinThousands}
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
                         <Link href="/register" className="flex items-center gap-2 bg-white text-primary-01 px-8 py-3.5 rounded-xl font-semibold text-base hover:bg-white/90 transition-colors">
-                            Créer un compte gratuit
+                            {t.createFreeAccount}
                             <Icon name="arrow-right" className="w-5 h-5 fill-current" />
                         </Link>
                         <Link href="/login" className="text-white/80 font-medium hover:text-white transition-colors">
-                            Déjà membre ? Se connecter
+                            {t.alreadyMember}
                         </Link>
                     </div>
                     <div className="flex items-center justify-center gap-6 mt-8 text-sm text-white/70">
-                        <span className="flex items-center gap-1.5"><Icon name="check-circle" className="w-4 h-4 fill-current" /> Gratuit</span>
-                        <span className="flex items-center gap-1.5"><Icon name="check-circle" className="w-4 h-4 fill-current" /> Sans engagement</span>
-                        <span className="flex items-center gap-1.5"><Icon name="check-circle" className="w-4 h-4 fill-current" /> Signaux IA</span>
+                        <span className="flex items-center gap-1.5"><Icon name="check-circle" className="w-4 h-4 fill-current" /> {t.free}</span>
+                        <span className="flex items-center gap-1.5"><Icon name="check-circle" className="w-4 h-4 fill-current" /> {t.noCommitment}</span>
+                        <span className="flex items-center gap-1.5"><Icon name="check-circle" className="w-4 h-4 fill-current" /> {t.aiSignals}</span>
                     </div>
                 </div>
             </section>
@@ -309,16 +310,16 @@ const LandingPage = () => {
                             <span className="font-bold text-white">SamySignaux</span>
                         </div>
                         <div className="flex items-center gap-6 text-sm text-shade-03">
-                            <a href="#features" className="hover:text-white transition-colors">Fonctionnalités</a>
-                            <a href="#stats" className="hover:text-white transition-colors">Résultats</a>
-                            <a href="#testimonials" className="hover:text-white transition-colors">Avis</a>
+                            <a href="#features" className="hover:text-white transition-colors">{t.features}</a>
+                            <a href="#stats" className="hover:text-white transition-colors">{t.results}</a>
+                            <a href="#testimonials" className="hover:text-white transition-colors">{t.reviews}</a>
                             <Link href="/login" className="hover:text-white transition-colors">
-                                Se connecter
+                                {t.signIn}
                             </Link>
                         </div>
                     </div>
                     <div className="border-t border-shade-02 mt-8 pt-8 text-center text-xs text-shade-03">
-                        © 2026 SamySignaux. Tous droits réservés.
+                        {t.copyright}
                     </div>
                 </div>
             </footer>

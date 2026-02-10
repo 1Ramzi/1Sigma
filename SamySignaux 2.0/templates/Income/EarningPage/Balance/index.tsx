@@ -1,25 +1,28 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import Card from "@/components/Card";
 import Item from "./Item";
 import { SelectOption } from "@/types/select";
 
 import { balanceEarnings } from "@/mocks/income";
 
-const durations: SelectOption[] = [
-    { id: 1, name: "This month" },
-    { id: 2, name: "This year" },
-    { id: 3, name: "All time" },
-];
-
 const Balance = ({}) => {
+    const { t } = useLanguage();
+
+    const durations: SelectOption[] = [
+        { id: 1, name: t.thisMonth },
+        { id: 2, name: t.thisYear },
+        { id: 3, name: t.allTime },
+    ];
+
     const [duration, setDuration] = useState<SelectOption>(durations[1]);
 
     return (
         <Card
             className="max-md:overflow-hidden"
-            title="Balance"
+            title={t.balance}
             selectValue={duration}
             selectOnChange={setDuration}
             selectOptions={durations}

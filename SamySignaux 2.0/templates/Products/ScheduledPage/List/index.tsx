@@ -1,3 +1,4 @@
+import { useLanguage } from "@/context/LanguageContext";
 import Table from "@/components/Table";
 import TableRow from "@/components/TableRow";
 import TableProductCell from "@/components/TableProductCell";
@@ -5,8 +6,6 @@ import Icon from "@/components/Icon";
 import DeleteItems from "@/components/DeleteItems";
 import ScheduleProduct from "@/components/ScheduleProduct";
 import { ProductDraft } from "@/types/product";
-
-const tableHead = ["Produit", "Prix", "Dernière modif."];
 
 type ListProps = {
     items: ProductDraft[];
@@ -23,6 +22,10 @@ const List = ({
     onSelectAll,
     items,
 }: ListProps) => {
+    const { t } = useLanguage();
+
+    const tableHead = [t.product, t.price, t.lastModified];
+
     return (
         <Table
             selectAll={selectAll}

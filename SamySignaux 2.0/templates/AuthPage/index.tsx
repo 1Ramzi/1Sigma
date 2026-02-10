@@ -11,7 +11,7 @@ type AuthPageProps = {
 };
 
 const AuthPage = ({ initialView = "signIn" }: AuthPageProps) => {
-    const { language } = useLanguage();
+    const { t, language } = useLanguage();
 
     return (
         <div className="min-h-screen flex bg-b-surface1 text-t-primary font-sans">
@@ -25,10 +25,10 @@ const AuthPage = ({ initialView = "signIn" }: AuthPageProps) => {
                     {/* Preview card 1 - Chart */}
                     <div className="bg-b-surface1 rounded-xl shadow-lg border border-s-stroke2 p-5">
                         <div className="flex items-center justify-between mb-3">
-                            <span className="text-button font-semibold text-t-primary">Bot Profit, USDT</span>
+                            <span className="text-button font-semibold text-t-primary">{t.botProfit}, USDT</span>
                             <Icon name="bar-chart-3" className="size-4 fill-t-tertiary" />
                         </div>
-                        <p className="text-caption text-t-secondary mb-1">Avg. daily profit</p>
+                        <p className="text-caption text-t-secondary mb-1">{t.avgDailyProfit}</p>
                         <p className="text-secondary-04 text-button font-semibold">+12.4%</p>
                         <div className="mt-3 h-16 flex items-end gap-1">
                             {[40, 25, 35, 55, 30, 45, 60, 35, 50, 70, 55, 80].map((h, i) => (
@@ -47,10 +47,10 @@ const AuthPage = ({ initialView = "signIn" }: AuthPageProps) => {
                                 <span className="text-caption text-t-secondary">PNL</span>
                             </div>
                             <p className="text-h6 font-bold text-t-primary font-mono">$5,647</p>
-                            <p className="text-caption text-secondary-04 mt-1">↗ +10% from last week</p>
+                            <p className="text-caption text-secondary-04 mt-1">↗ +10% {t.fromLastWeek}</p>
                         </div>
                         <div className="flex-1 bg-b-surface1 rounded-xl shadow-lg border border-s-stroke2 p-4">
-                            <p className="text-caption text-t-secondary mb-1">Reward Rate</p>
+                            <p className="text-caption text-t-secondary mb-1">{t.rewardRate}</p>
                             <p className="text-h6 font-bold text-t-primary font-mono">37.42%</p>
                             <div className="flex items-center gap-2 mt-1">
                                 <span className="size-2 rounded-full bg-secondary-04" />
@@ -62,14 +62,10 @@ const AuthPage = ({ initialView = "signIn" }: AuthPageProps) => {
                     {/* Tagline */}
                     <div className="text-center pt-4">
                         <h2 className="text-h4 font-bold text-t-primary">
-                            {language === 'fr' 
-                                ? "Rejoignez l'élite du trading" 
-                                : "Join the trading elite"}
+                            {t.joinElite}
                         </h2>
                         <p className="text-t-secondary mt-2 text-body-2">
-                            {language === 'fr'
-                                ? "Accédez à des signaux premium et automatisez vos gains avec notre IA."
-                                : "Access premium signals and automate your gains with our AI."}
+                            {t.joinEliteDesc}
                         </p>
                     </div>
                 </div>

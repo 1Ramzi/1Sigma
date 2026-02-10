@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import TagsInput from "react-tagsinput";
+import { useLanguage } from "@/context/LanguageContext";
 import Card from "@/components/Card";
 import Select from "@/components/Select";
 import Tooltip from "@/components/Tooltip";
@@ -10,23 +11,24 @@ import { SelectOption } from "@/types/select";
 
 import "react-tagsinput/react-tagsinput.css";
 
-const categories: SelectOption[] = [
-    { id: 1, name: "Illustrations" },
-    { id: 2, name: "Icônes" },
-    { id: 3, name: "Logos" },
-];
-
 const CategoryAndAttributes = () => {
+    const { t } = useLanguage();
+    const categories: SelectOption[] = [
+        { id: 1, name: t.illustrations },
+        { id: 2, name: t.icons },
+        { id: 3, name: t.logos },
+    ];
+
     const [category, setCategory] = useState<SelectOption | null>(null);
     const [tags, setTags] = useState<string[]>([]);
 
     return (
-        <Card title="Catégorie & attributs">
+        <Card title={t.categoryAndAttributes}>
             <div className="flex flex-col gap-8 px-5 pb-5 max-lg:px-3 max-lg:pb-3">
                 <Select
-                    label="Catégorie"
-                    tooltip="Maximum 100 caractères. Pas de HTML ou d'emoji autorisé"
-                    placeholder="Sélectionner une catégorie"
+                    label={t.category}
+                    tooltip={t.filterTooltip}
+                    placeholder={t.selectCategory}
                     value={category}
                     onChange={setCategory}
                     options={categories}
@@ -34,10 +36,10 @@ const CategoryAndAttributes = () => {
                 <Compatibility classItemName="w-[calc(25%-0.75rem)] max-2xl:w-[calc(33.333%-0.75rem)] max-md:w-[calc(50%-0.75rem)]" />
                 <div>
                     <div className="flex items-center mb-4">
-                        <div className="text-button">Tags</div>
+                        <div className="text-button">{t.tags}</div>
                         <Tooltip
                             className="ml-1.5"
-                            content="Maximum 100 caractères. Pas de HTML ou d'emoji autorisé"
+                            content={t.filterTooltip}
                         />
                     </div>
                     <div className="">
@@ -46,7 +48,7 @@ const CategoryAndAttributes = () => {
                             inputProps={{
                                 className:
                                     "mt-1.5 h-8 pl-4.5 text-body-2 outline-none placeholder:text-t-secondary/50",
-                                placeholder: "ex. Dashboard, Light",
+                                placeholder: t.tagsPlaceholder,
                             }}
                             tagProps={{
                                 className:

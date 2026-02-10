@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 import { NumericFormat } from "react-number-format";
 import Table from "@/components/Table";
 import TableRow from "@/components/TableRow";
@@ -6,8 +7,6 @@ import TableProductCell from "@/components/TableProductCell";
 import Icon from "@/components/Icon";
 import Image from "@/components/Image";
 import { Refund } from "@/types/refund";
-
-const tableHead = ["Produit", "Statut", "Prix", "Date", "Client"];
 
 type ListProps = {
     items: Refund[];
@@ -24,6 +23,10 @@ const List = ({
     onSelectAll,
     items,
 }: ListProps) => {
+    const { t } = useLanguage();
+
+    const tableHead = [t.product, t.status, t.price, t.date, t.customerList]; // Assuming "Client" maps to customerList or new key
+
     return (
         <Table
             selectAll={selectAll}
@@ -50,15 +53,15 @@ const List = ({
                     >
                         <Link className="action" href="/income/refunds/details">
                             <Icon name="edit" />
-                            Détail
+                            {t.preview} {/* Or 'Detail' if key exists, using preview for now or add detail key */}
                         </Link>
                         <button className="action">
                             <Icon name="trash" />
-                            Rembourser
+                            {t.refund}
                         </button>
                         <button className="action">
                             <Icon name="chain" />
-                            Refuser
+                            {t.decline}
                         </button>
                     </TableProductCell>
                     <td className="max-md:hidden">
@@ -71,8 +74,9 @@ const List = ({
                                     : "label-green"
                             }`}
                         >
-                            {item.status.charAt(0).toUpperCase() +
-                                item.status.slice(1)}
+                            {item.status === "en cours" ? t.pending : 
+                             item.status === "fermé" ? t.closedRequests.split(" ")[1] : // "fermées"
+                             item.status.charAt(0).toUpperCase() + item.status.slice(1)}
                         </div>
                     </td>
                     <td className="max-md:hidden">

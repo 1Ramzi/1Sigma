@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import Card from "@/components/Card";
 import FieldImage from "@/components/FieldImage";
 import Image from "@/components/Image";
 import Icon from "@/components/Icon";
 
 const CoverImage = () => {
+    const { t } = useLanguage();
     const [images, setImages] = useState<File[]>([]);
 
     const handleChange = (file: File) => {
@@ -14,7 +16,7 @@ const CoverImage = () => {
     return (
         <Card
             classHead="!px-3"
-            title="Image de couverture"
+            title={t.coverImage}
             headContent={
                 <button className="group text-0">
                     <Icon
@@ -42,7 +44,7 @@ const CoverImage = () => {
                                 />
                             </div>
                             <div className="text-body-2 text-t-secondary">
-                                par&nbsp;
+                                {t.by}&nbsp;
                                 <span className="text-button text-t-primary">
                                     Hortense
                                 </span>

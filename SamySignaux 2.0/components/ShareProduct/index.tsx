@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import Icon from "@/components/Icon";
 import Modal from "@/components/Modal";
 import Image from "@/components/Image";
@@ -32,17 +33,18 @@ type ShareProductProps = {
 };
 
 const ShareProduct = ({ title, details, image }: ShareProductProps) => {
+    const { t } = useLanguage();
     const [open, setOpen] = useState(false);
 
     return (
         <>
             <button className="action" onClick={() => setOpen(true)}>
                 <Icon name="link" />
-                Share
+                {t.share}
             </button>
             <Modal open={open} onClose={() => setOpen(false)}>
                 <div className="mb-8 text-h4 max-md:text-h5">
-                    Share this product
+                    {t.shareProduct}
                 </div>
                 <div className="flex items-center mb-8">
                     <div className="shrink-0">
@@ -76,7 +78,7 @@ const ShareProduct = ({ title, details, image }: ShareProductProps) => {
                     ))}
                 </div>
                 <Button className="w-full mt-3" isBlack>
-                    Copy link
+                    {t.copyLink}
                 </Button>
             </Modal>
         </>

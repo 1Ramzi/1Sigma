@@ -1,5 +1,6 @@
 "use client";
 
+import { useLanguage } from "@/context/LanguageContext";
 import Layout from "@/components/Layout";
 import Image from "@/components/Image";
 import Button from "@/components/Button";
@@ -9,6 +10,8 @@ import Comments from "./Comments";
 import Populars from "./Populars";
 
 const ShopPage = () => {
+    const { t } = useLanguage();
+
     return (
         <Layout hideSidebar>
             <div className="flex flex-col gap-22 max-w-[1200px] mx-auto py-10 max-xl:gap-16 max-lg:py-6 max-md:py-3 max-md:gap-8 max-md:px-1">
@@ -38,10 +41,10 @@ const ShopPage = () => {
                                 className="max-lg:hidden max-md:flex max-md:flex-1"
                                 isStroke
                             >
-                                Aperçu
+                                {t.preview}
                             </Button>
                             <Button className="max-md:flex-1" isBlack>
-                                Acheter<span className="ml-2">$98</span>
+                                {t.buy}<span className="ml-2">$98</span>
                             </Button>
                         </div>
                     </div>
