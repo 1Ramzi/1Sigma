@@ -21,8 +21,22 @@ export const navigation = [
     },
     {
         title: "academy",
-        icon: "desktop", // Closest to educational content in available icons
-        href: "/academy",
+        icon: "desktop",
+        list: [
+            {
+                title: "formation",
+                href: "/academy",
+            },
+            {
+                title: "live",
+                href: "/academy/live",
+            },
+        ],
+    },
+    {
+        title: "subscription",
+        icon: "diamond",
+        href: "/subscription",
     },
     {
         title: "broker",
@@ -30,9 +44,9 @@ export const navigation = [
         href: "/broker",
     },
     {
-        title: "community",
-        icon: "chat-think",
-        href: "/community",
+        title: "support",
+        icon: "chat",
+        href: "/support",
     },
 ];
 
