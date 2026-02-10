@@ -12,6 +12,7 @@ const BrokerCard = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
+            data-onboarding="broker"
             className="card !p-6 !bg-shade-01 text-shade-10 shadow-xl relative overflow-hidden border border-transparent dark:border-s-border"
         >
             <div className="absolute top-0 right-0 p-32 bg-primary-04/20 rounded-full blur-3xl -mr-16 -mt-16" />

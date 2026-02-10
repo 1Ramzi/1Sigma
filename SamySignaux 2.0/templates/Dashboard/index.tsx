@@ -6,6 +6,7 @@ import VideoWidget from "./VideoWidget";
 import StatsWidget from "./Stats";
 import BrokerCard from "./BrokerCard";
 import QuickActions from "./QuickActions";
+import Onboarding from "@/components/Onboarding";
 import { useDemoActivity } from "@/hooks/useDemoActivity";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -15,6 +16,7 @@ const Dashboard = () => {
 
     return (
         <Layout title={t.dashboard}>
+            <Onboarding />
             <div className="max-w-[1200px] mx-auto">
                 <WelcomeWidget />
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
