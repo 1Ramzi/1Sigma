@@ -16,24 +16,24 @@ export default function SectionTwo() {
 					</div>
 					<div className="col-lg-6 d-flex align-items-center">
 						<div className="zuzu-default-content dark large font-cabin">
-							<h2>Manage your crypto only when you need</h2>
+							<h2>True Trading Education. No Gimmicks.</h2>
 							<p>
-								Related to the points just made, rather than keeping coins on exchanges or brokerages
-								with crypto card, it's far safer to custody your own assets.
+								Forget the "get rich quick" schemes. We teach you the pillars of successful trading:
+								Technical Analysis, Risk Management, and Psychology.
 							</p>
 							<div className="zuzu-icon-list dark">
 								<ul>
 									<li>
 										<img src="/images/svg/check2.svg" alt="" />
-										The easiest way to spend crypto worldwide
+										Master Technical Analysis & Market Structure
 									</li>
 									<li>
 										<img src="/images/svg/check2.svg" alt="" />
-										World-class security to keep your crypto safe
+										Develop Iron-Clad Risk Management
 									</li>
 									<li>
 										<img src="/images/svg/check2.svg" alt="" />
-										Easily choose which crypto you spend
+										Understand Trader Psychology & Discipline
 									</li>
 								</ul>
 							</div>

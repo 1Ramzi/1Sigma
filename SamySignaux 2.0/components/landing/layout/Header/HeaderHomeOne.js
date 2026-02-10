@@ -19,7 +19,7 @@ export default function HeaderHomeOne() {
 					</div>
 
 					<div className="header-btn header-btn-l1 ms-auto d-inline-flex">
-						<Link href={"contact"} legacyBehavior>
+						<Link href={"/register"} legacyBehavior>
 							<a className="zuzu-btn zuzu-header-btn rounded-pill black">Get Started</a>
 						</Link>
 					</div>

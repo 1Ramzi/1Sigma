@@ -17,17 +17,17 @@ export default function HeroSection() {
 						<div className="col-lg-6 d-flex align-items-center">
 							<div className="zuzu-hero-content zuzu-dark-content font-cabin">
 								<h1 className="wow fadeInUpX" data-wow-delay="0s">
-									The world's most advanced virtual crypto card
+									Master the Markets with Professional Guidance
 								</h1>
 								<p className="wow fadeInUpX" data-wow-delay="0.25s">
-									Crypto credit cards allow cardholders to earn rewards in bitcoin, ether, and other
-									cryptocurrencies rather than traditional points, & up to 12% cryptocurrency rewards
-									on all spending.
+									We are building a community of disciplined traders. Access premium signals,
+									comprehensive training, and daily mentorship for free—supported by our partner
+									broker.
 								</p>
 								<div className="zuzu-hero-btn-wrap">
-									<Link href={"contact-light"} legacyBehavior>
+									<Link href={"/register"} legacyBehavior>
 										<a className="zuzu-btn btn-white pill wow fadeInUpX" data-wow-delay="0.40s">
-											Get started now
+											Join the Community
 										</a>
 									</Link>
 									<Link href={"#"} legacyBehavior>
@@ -36,7 +36,7 @@ export default function HeroSection() {
 											<div className="waves wave-1" />
 											<div className="waves wave-2" />
 											<div className="waves wave-3" />
-											How it works
+											Our Philosophy
 										</a>
 									</Link>
 								</div>

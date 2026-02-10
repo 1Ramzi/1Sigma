@@ -55,12 +55,12 @@ export default function CardSliderOne() {
 				<div className="zuzu-section-title">
 					<div className="zuzu-default-content dark large font-cabin">
 						<h2>
-							Crypto card users <br />
-							share their experiences
+							Real traders <br />
+							share their journey
 						</h2>
 						<p>
-							5% of American adults, an estimated 13 million people, currently have a credit card that
-							allows them to earn cryptocurrency through eligible.
+							Join thousands of students who have transformed their understanding of the markets
+							through our academy and signals.
 						</p>
 					</div>
 				</div>
@@ -68,11 +68,10 @@ export default function CardSliderOne() {
 			<div className="zuzu-testimonial-slider">
 				<Slider {...settings}>
 					<div className="zuzu-testimonial-card">
-						<h4>Great experience and great cashback</h4>
+						<h4>Finally profitable after years</h4>
 						<p>
-							Great experience with it so far, nice app to use and some really good return rates on your
-							crypto. I've been using the card for about a month now and I’m definitely recommend to
-							crypto beginners like me!
+							I tried so many signal groups, but this is different. They actually teach you WHY they are taking a trade.
+							My risk management has never been better. Highly recommended!
 						</p>
 						<div className="zuzu-testimonial-author">
 							<div className="zuzu-testimonial-author-wrap">
@@ -85,17 +84,16 @@ export default function CardSliderOne() {
 								</div>
 								<div className="zuzu-testimonial-author-data">
 									<h5>Leslie Alexander</h5>
-									<span>Head of finance @ company</span>
+									<span>Student Trader</span>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div className="zuzu-testimonial-card">
-						<h4>Best crypto-wallet I've ever used. Love it</h4>
+						<h4>Best community ever</h4>
 						<p>
-							Crypto wallet with a cool credit card for all purposes without fees on the contrary, Zuzu
-							crypto card on your mobile phone top for free transfers! Tried a few crypto exchanges and
-							wallets.
+							The community support is insane. Whenever I have a question about a chart, a mentor or another student
+							helps me out within minutes. No toxicity, just pure growth.
 						</p>
 						<div className="zuzu-testimonial-author">
 							<div className="zuzu-testimonial-author-wrap">
@@ -108,17 +106,16 @@ export default function CardSliderOne() {
 								</div>
 								<div className="zuzu-testimonial-author-data">
 									<h5>Marcel Gafam</h5>
-									<span>Lead accountant @ XYZ.com</span>
+									<span>Forex Trader</span>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div className="zuzu-testimonial-card">
-						<h4>Best exchange for crypto currency I’ve…</h4>
+						<h4>Transparency is key</h4>
 						<p>
-							The best crypto card provider out there and with cro about to flip bitcoin and be the king
-							this is new best crypto out there on the planet. better now with all the updates and the
-							debit card is great too!
+							I love their business model. They are open about being paid by the broker, which means I get
+							amazing value for free. No hidden upsells, just great education.
 						</p>
 						<div className="zuzu-testimonial-author">
 							<div className="zuzu-testimonial-author-wrap">
@@ -131,17 +128,16 @@ export default function CardSliderOne() {
 								</div>
 								<div className="zuzu-testimonial-author-data">
 									<h5>Albert Flores</h5>
-									<span>Investor @ company </span>
+									<span>Crypto Enthusiast</span>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div className="zuzu-testimonial-card">
-						<h4>Great experience and great cashback</h4>
+						<h4>Finally profitable after years</h4>
 						<p>
-							Great experience with it so far, nice app to use and some really good return rates on your
-							crypto. I've been using the card for about a month now and I’m definitely recommend to
-							crypto beginners like me!
+							I tried so many signal groups, but this is different. They actually teach you WHY they are taking a trade.
+							My risk management has never been better. Highly recommended!
 						</p>
 						<div className="zuzu-testimonial-author">
 							<div className="zuzu-testimonial-author-wrap">
@@ -154,17 +150,16 @@ export default function CardSliderOne() {
 								</div>
 								<div className="zuzu-testimonial-author-data">
 									<h5>Leslie Alexander</h5>
-									<span>Head of finance @ company</span>
+									<span>Student Trader</span>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div className="zuzu-testimonial-card">
-						<h4>Best crypto-wallet I've ever used. Love it</h4>
+						<h4>Best community ever</h4>
 						<p>
-							Crypto wallet with a cool credit card for all purposes without fees on the contrary, Zuzu
-							crypto card on your mobile phone top for free transfers! Tried a few crypto exchanges and
-							wallets.
+							The community support is insane. Whenever I have a question about a chart, a mentor or another student
+							helps me out within minutes. No toxicity, just pure growth.
 						</p>
 						<div className="zuzu-testimonial-author">
 							<div className="zuzu-testimonial-author-wrap">
@@ -177,7 +172,7 @@ export default function CardSliderOne() {
 								</div>
 								<div className="zuzu-testimonial-author-data">
 									<h5>Jenny Wilson</h5>
-									<span>Lead accountant @ XYZ.com</span>
+									<span>Full-time Trader</span>
 								</div>
 							</div>
 						</div>

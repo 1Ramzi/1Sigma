@@ -9,20 +9,15 @@ export default function CtaSection() {
 					<div className="row">
 						<div className="col-xl-7 order-xl-2">
 							<div className="zuzu-default-content dark large font-cabin">
-								<h2>Download and enjoy free card experience</h2>
+								<h2>Ready to Start Your Trading Journey?</h2>
 								<p>
-									Download & install crypto cards now to learn the safest, easiest and smartest way to
-									buy, store, exchange, and spend cryptocurrencies.
+									Join thousands of traders who have stopped gambling and started building real wealth through discipline and strategy.
+									Access all our premium content for free today.
 								</p>
 								<div className="zuzu-cta-btn-wrap">
-									<Link href={"contact-light"} legacyBehavior>
-										<a className="zuzu-app-btn">
-											<img src="/images/all-img/v1/app-store.svg" alt="" />
-										</a>
-									</Link>
-									<Link href={"contact-light"} legacyBehavior>
-										<a className="zuzu-app-btn">
-											<img src="/images/all-img/v1/play-store.svg" alt="" />
+									<Link href={"/register"} legacyBehavior>
+										<a className="zuzu-btn btn-white pill">
+											Join Academy Now
 										</a>
 									</Link>
 								</div>

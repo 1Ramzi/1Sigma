@@ -10,38 +10,38 @@ export default function CounterOne({ light }) {
 					<div className="zuzu-counter-data wow fadeInUpX" data-wow-delay="0s">
 						<h2>
 							<span className="zuzu-counter">
-								<CountUp start={0} end={600} />
+								<CountUp start={0} end={5} />
 							</span>
-							<strong>K</strong>
+							<strong>K+</strong>
 						</h2>
-						<p>Users worldwide</p>
+						<p>Active Traders</p>
 					</div>
 					<div className="zuzu-counter-data wow fadeInUpX" data-wow-delay="0.10s">
 						<h2>
 							<span className="zuzu-counter">
-								<CountUp start={0} end={15} />
+								<CountUp start={0} end={92} />
 							</span>
-							<strong>B+</strong>
+							<strong>%</strong>
 						</h2>
-						<p>Payments are processed annually</p>
+						<p>Win Rate</p>
 					</div>
 					<div className="zuzu-counter-data wow fadeInUpX" data-wow-delay="0.20s">
 						<h2>
 							<span className="zuzu-counter">
-								<CountUp end={120} />
+								<CountUp end={24} />
 							</span>
-							<strong>+</strong>
+							<strong>/7</strong>
 						</h2>
-						<p>Countries are supported</p>
+						<p>Support & Mentorship</p>
 					</div>
 					<div className="zuzu-counter-data wow fadeInUpX" data-wow-delay="0.30s">
 						<h2>
 							<span className="zuzu-counter">
-								<CountUp end={78} />
+								<CountUp end={100} />
 							</span>
 							<strong>+</strong>
 						</h2>
-						<p>Currencies supported</p>
+						<p>Daily Signals</p>
 					</div>
 				</div>
 			</div>

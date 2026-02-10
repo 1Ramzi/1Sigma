@@ -5,10 +5,10 @@ export default function SectionThree() {
 			<div className="container">
 				<div className="zuzu-section-title">
 					<div className="zuzu-default-content dark large font-cabin">
-						<h2>Secure solutions for your digital assets and money</h2>
+						<h2>A Community That Grows Together</h2>
 						<p>
-							With Zuzu Card, you can buy, sell and trade 40+ crypto assets at competitive prices and
-							store them securely in one convenient place.
+							Trading can be a lonely journey. Join a vibrant community of like-minded individuals.
+							We don't just give you signals; we explain the 'why' behind every trade so you learn continuously.
 						</p>
 					</div>
 				</div>
@@ -19,7 +19,7 @@ export default function SectionThree() {
 								<img src="/images/all-img/v1/icon1.png" alt="" />
 							</div>
 							<div className="zuzu-iconbox-data5">
-								<h5>Free currency exchange transactions per month</h5>
+								<h5>Daily Market Analysis & Live Sessions</h5>
 							</div>
 						</div>
 					</div>
@@ -29,7 +29,7 @@ export default function SectionThree() {
 								<img src="/images/all-img/v1/icon2.png" alt="" />
 							</div>
 							<div className="zuzu-iconbox-data5">
-								<h5>Buy and sell digital currencies domestically & internationally</h5>
+								<h5>Active Discord Community of Traders</h5>
 							</div>
 						</div>
 					</div>
@@ -39,7 +39,7 @@ export default function SectionThree() {
 								<img src="/images/all-img/v1/icon3.png" alt="" />
 							</div>
 							<div className="zuzu-iconbox-data5">
-								<h5>unlimited spending and no monthly maintenance fees.</h5>
+								<h5>Direct Access to Experienced Mentors</h5>
 							</div>
 						</div>
 					</div>

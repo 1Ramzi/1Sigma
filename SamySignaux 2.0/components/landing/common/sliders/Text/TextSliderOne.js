@@ -32,19 +32,19 @@ export default function TextSliderOne() {
 						<div className="zuzu-text-slider-icon">
 							<img src="/images/all-img/v1/dollar.png" alt="" />
 						</div>
-						<h3>BUY, SELL, & Spend crypto anywhere BUY, for Spend</h3>
+						<h3>DISCIPLINE • STRATEGY • PATIENCE • RISK MANAGEMENT</h3>
 					</div>
 					<div className="zuzu-text-slider-data">
 						<div className="zuzu-text-slider-icon">
 							<img src="/images/all-img/v1/dollar.png" alt="" />
 						</div>
-						<h3>BUY, SELL, & Spend crypto anywhere BUY, for Spend</h3>
+						<h3>PSYCHOLOGY • CONSISTENCY • COMMUNITY • GROWTH</h3>
 					</div>
 					<div className="zuzu-text-slider-data">
 						<div className="zuzu-text-slider-icon">
 							<img src="/images/all-img/v1/dollar.png" alt="" />
 						</div>
-						<h3>BUY, SELL, & Spend crypto anywhere BUY, for Spend</h3>
+						<h3>REAL TRADING • REAL RESULTS • NO HYPE • PURE VALUE</h3>
 					</div>
 				</Slider>
 			</div>

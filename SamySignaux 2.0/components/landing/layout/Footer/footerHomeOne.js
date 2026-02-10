@@ -16,8 +16,8 @@ export default function FooterHomeOne() {
 									<img src="/images/logo/logo-white.svg" alt="" className="light-version-logo" />
 								</div>
 								<p>
-									Discover NFTs by category, track the latest drops, and follow the collections you
-									love to enjoy it!
+									Empowering traders with professional education, signals, and community. 
+									Trade smarter, not harder.
 								</p>
 								<SocialIcon />
 							</div>

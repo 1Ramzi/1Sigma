@@ -13,19 +13,18 @@ export default function SectionFour() {
 					</div>
 					<div className="col-lg-6 d-flex align-items-center">
 						<div className="zuzu-default-content dark large font-cabin m_right">
-							<h2>This card supports multiple currencies</h2>
+							<h2>Partnered with the Best for Your Safety</h2>
 							<p>
-								Zuzu allows users to store more than 1,400 cryptocurrencies, and it also provides
-								options for people who want to buy, exchange, or stake digital assets directly from
-								their wallets.
+								We only work with regulated, highly reliable brokers. We have selected partners that offer
+								low spreads, fast execution, and top-tier security for your funds.
 							</p>
 							<p>
-								Unlike some of its competitors, Atomic Wallet doesn't have the option of directly
-								connecting your holdings to cold storage.
+								Your trading environment matters. By using our recommended broker, you ensure you are
+								trading on a level playing field, while supporting our community to keep it free for everyone.
 							</p>
 							<div className="zuzu-btn-wrap">
-								<Link href={"contact-light"} legacyBehavior>
-									<a className="zuzu-btn pill btn-blue">See all currencies</a>
+								<Link href={"/register"} legacyBehavior>
+									<a className="zuzu-btn pill btn-blue">Join Broker Now</a>
 								</Link>
 							</div>
 						</div>
