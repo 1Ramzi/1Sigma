@@ -28,7 +28,6 @@ type CreatorProps = {
 const Creator = ({ value }: CreatorProps) => {
     const [visible, setVisible] = useState(false);
     const [activeId, setActiveId] = useState<number | null>(null);
-    console.log(activeId);
 
     return (
         <div

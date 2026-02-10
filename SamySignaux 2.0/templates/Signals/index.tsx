@@ -5,27 +5,30 @@ import Layout from "@/components/Layout";
 import Search from "@/components/Search";
 import Tabs from "@/components/Tabs";
 import SignalCard from "@/components/SignalCard";
+import Card from "@/components/Card";
+import Icon from "@/components/Icon";
+import SideNotification from "@/components/SideNotification";
 import { useSignalStore } from "@/stores/signalStore";
 import { useLanguage } from "@/context/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
-import Icon from "@/components/Icon";
 import { TabsOption } from "@/types/tabs";
+import { mockSignals } from "@/data/mockData";
 
 const marketOptions: TabsOption[] = [
-    { id: 'all', name: 'All Markets' },
+    { id: 'all', name: 'Tous les marchés' },
     { id: 'Crypto', name: 'Crypto' },
     { id: 'Forex', name: 'Forex' },
     { id: 'Indices', name: 'Indices' },
-    { id: 'Commodities', name: 'Commodities' },
+    { id: 'Commodities', name: 'Matières 1ères' },
 ];
 
 const viewOptions = [
-    { id: 'active', name: 'Active' },
-    { id: 'history', name: 'History' },
+    { id: 'active', name: 'En cours' },
+    { id: 'history', name: 'Historique' },
 ];
 
 const SignalsPage = () => {
-    const { filteredSignals, setFilter, vote, filters } = useSignalStore();
+    const { filteredSignals, setFilter, vote } = useSignalStore();
     const { language } = useLanguage();
     const [search, setSearch] = useState('');
     const [view, setView] = useState(viewOptions[0]);
@@ -49,66 +52,97 @@ const SignalsPage = () => {
     };
 
     const signals = filteredSignals().filter(s => {
-        const matchesView = view.id === 'active' ? s.status === 'active' : s.status !== 'active';
-        return matchesView;
+        if (view.id === 'active') return s.status === 'active';
+        return s.status === 'won' || s.status === 'lost';
     });
 
+    const totalWon = mockSignals.filter(s => s.status === 'won').length;
+    const totalLost = mockSignals.filter(s => s.status === 'lost').length;
+    const winRate = totalWon + totalLost > 0 ? (totalWon / (totalWon + totalLost) * 100).toFixed(1) : 0;
+
     return (
-        <Layout title="Signals">
-            <div className="max-w-[1200px] mx-auto space-y-6">
-                {/* Header & Controls */}
-                <div className="flex flex-col gap-6">
-                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                        <div>
-                            <h1 className="text-h3 font-bold text-t-primary">
-                                {language === 'fr' ? 'Signaux de Trading' : 'Trading Signals'}
-                            </h1>
-                            <p className="text-body-1 text-t-secondary mt-1">
-                                {language === 'fr' 
-                                ? 'Opportunités de trading en temps réel avec analyse détaillée' 
-                                : 'Real-time trading opportunities with detailed analysis'}
-                            </p>
+        <Layout title="Signaux">
+            <SideNotification />
+            <div className="max-w-[1200px] mx-auto space-y-8">
+                
+                {/* Top Recap Stats */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <Card title="" className="!p-5 border border-transparent dark:border-s-border">
+                        <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 rounded-full bg-primary-02/10 flex items-center justify-center">
+                                <Icon name="check-circle-fill" className="!size-6 fill-primary-02" />
+                            </div>
+                            <div>
+                                <p className="text-body-2 text-t-secondary">Gagnés (Total)</p>
+                                <p className="text-h4 font-bold text-t-primary">{totalWon}</p>
+                            </div>
                         </div>
-                        <div className="bg-b-surface2 p-1 rounded-2xl self-start md:self-auto flex gap-1">
+                    </Card>
+                    <Card title="" className="!p-5 border border-transparent dark:border-s-border">
+                        <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 rounded-full bg-primary-03/10 flex items-center justify-center">
+                                <Icon name="close-circle-fill" className="!size-6 fill-primary-03" />
+                            </div>
+                            <div>
+                                <p className="text-body-2 text-t-secondary">Perdus (Total)</p>
+                                <p className="text-h4 font-bold text-t-primary">{totalLost}</p>
+                            </div>
+                        </div>
+                    </Card>
+                    <Card title="" className="!p-5 border border-transparent dark:border-s-border">
+                        <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 rounded-full bg-primary-04/10 flex items-center justify-center">
+                                <Icon name="chart" className="!size-6 fill-primary-04" />
+                            </div>
+                            <div>
+                                <p className="text-body-2 text-t-secondary">Taux de réussite</p>
+                                <p className="text-h4 font-bold text-t-primary">{winRate}%</p>
+                            </div>
+                        </div>
+                    </Card>
+                </div>
+
+                {/* Filters Stripe */}
+                <div className="sticky top-22 z-10 bg-b-surface1/95 backdrop-blur-sm border-y border-s-border py-4 -mx-4 px-4 md:mx-0 md:px-0 md:border-y-0 md:bg-transparent md:static">
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div className="flex bg-b-surface2 p-1 rounded-xl self-start">
                             {viewOptions.map((option) => (
                                 <button
                                     key={option.id}
                                     onClick={() => handleViewChange(option)}
-                                    className={`px-4 py-2 rounded-xl text-button font-medium transition-all ${
+                                    className={`px-6 py-2.5 rounded-lg text-button font-medium transition-all ${
                                         view.id === option.id
                                             ? 'bg-b-surface1 text-t-primary shadow-sm'
                                             : 'text-t-secondary hover:text-t-primary'
                                     }`}
                                 >
-                                    {language === 'fr' && option.id === 'active' ? 'En cours' : 
-                                     language === 'fr' && option.id === 'history' ? 'Historique' : 
-                                     option.name}
+                                    {option.name}
                                 </button>
                             ))}
                         </div>
-                    </div>
 
-                    <div className="flex flex-col md:flex-row gap-4">
-                        <div className="flex-1">
-                            <Search 
-                                value={search}
-                                onChange={handleSearch}
-                                placeholder={language === 'fr' ? 'Rechercher une paire...' : 'Search pair...'}
-                                isGray
-                            />
-                        </div>
-                        <div className="overflow-x-auto pb-2 md:pb-0 scrollbar-none">
-                            <Tabs 
-                                items={marketOptions}
-                                value={market}
-                                setValue={handleMarketChange}
-                            />
+                        <div className="flex flex-col md:flex-row gap-4 flex-1 justify-end">
+                            <div className="overflow-x-auto pb-2 md:pb-0 scrollbar-none">
+                                <Tabs 
+                                    items={marketOptions}
+                                    value={market}
+                                    setValue={handleMarketChange}
+                                />
+                            </div>
+                            <div className="w-full md:w-64">
+                                <Search 
+                                    value={search}
+                                    onChange={handleSearch}
+                                    placeholder="Rechercher une paire..."
+                                    isGray
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 {/* Signals List */}
-                <div className="grid gap-4">
+                <div className="grid gap-6">
                     <AnimatePresence mode="popLayout">
                         {signals.map((signal, i) => (
                             <motion.div
@@ -124,15 +158,15 @@ const SignalsPage = () => {
                     </AnimatePresence>
 
                     {signals.length === 0 && (
-                        <div className="text-center py-12">
-                            <div className="w-16 h-16 bg-b-surface2 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <Icon name="search" className="w-8 h-8 fill-t-tertiary" />
+                        <div className="text-center py-20 bg-b-surface2/50 rounded-2xl border-2 border-dashed border-s-border">
+                            <div className="w-20 h-20 bg-b-surface2 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <Icon name="search" className="w-10 h-10 fill-t-tertiary" />
                             </div>
-                            <h3 className="text-h6 font-medium text-t-primary">
-                                {language === 'fr' ? 'Aucun signal trouvé' : 'No signals found'}
+                            <h3 className="text-h5 font-medium text-t-primary mb-2">
+                                Aucun signal trouvé
                             </h3>
-                            <p className="text-t-secondary mt-1">
-                                {language === 'fr' ? 'Essayez de modifier vos filtres' : 'Try adjusting your filters'}
+                            <p className="text-t-secondary max-w-md mx-auto">
+                                Essayez de modifier vos filtres ou revenez plus tard pour de nouvelles opportunités de trading.
                             </p>
                         </div>
                     )}
