@@ -11,7 +11,7 @@ const StatsWidget = () => {
     const winRate = 78.5;
 
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div data-onboarding="stats" className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -40,7 +40,7 @@ const StatsWidget = () => {
             >
                 <div className="flex items-center gap-3 mb-2">
                     <div className="p-2 rounded-lg bg-secondary-04/20">
-                        <Icon name="activity" className="fill-primary-02" />
+                        <Icon name="check-circle" className="fill-primary-02" />
                     </div>
                     <span className="text-t-secondary text-body-2 font-medium">
                         {t.winRate}
@@ -62,7 +62,7 @@ const StatsWidget = () => {
             >
                 <div className="flex items-center gap-3 mb-2">
                     <div className="p-2 rounded-lg bg-secondary-05/20">
-                        <Icon name="bar-chart-3" className="fill-primary-05" />
+                        <Icon name="trending-up" className="fill-primary-02" />
                     </div>
                     <span className="text-t-secondary text-body-2 font-medium">
                         {t.monthlyProfit}
@@ -70,7 +70,9 @@ const StatsWidget = () => {
                 </div>
                 <div className="flex items-baseline gap-2">
                     <span className="text-h3 font-bold text-t-primary">+12.4%</span>
-                    <span className="text-body-2 text-primary-02 font-medium">{t.goal} 15%</span>
+                    <span className="text-body-2 text-primary-02 font-medium flex items-center gap-0.5">
+                        <Icon name="trending-up" className="!size-3 fill-primary-02" /> +2.1%
+                    </span>
                 </div>
             </motion.div>
         </div>
