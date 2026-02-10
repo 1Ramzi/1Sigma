@@ -244,6 +244,13 @@ export const translations = {
     fillFields: 'Please fill all fields.',
     leftTitle: "You're with the best trader",
     leftSubtitle: 'Thousands of other traders already joined our mission to change the way the world trades.',
+    resetPasswordTitle: 'Reset password',
+    signInToSamySignaux: 'Sign in to SamySignaux',
+    createAccountTitle: 'Create an account',
+    signInWithGoogle: 'Sign in with Google',
+    signUpWithGoogle: 'Sign up with Google',
+    orSignInWithEmail: 'Or sign in with email',
+    orUseYourEmail: 'Or use your email',
     
     // Register
     registerTitle: 'Create your account',

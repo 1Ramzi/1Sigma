@@ -11,16 +11,16 @@ import { useLanguage } from "@/context/LanguageContext";
 const Login = ({ initialView = "signIn" }: { initialView?: "signIn" | "signUp" }) => {
     const [isSignIn, setIsSignIn] = useState(initialView === "signIn");
     const [isResetPassword, setIsResetPassword] = useState(false);
-    const { language } = useLanguage();
+    const { t } = useLanguage();
 
     return (
         <div className="">
             <div className="mb-10 text-h4 text-center max-md:mb-6 max-md:text-h5">
                 {isResetPassword
-                    ? (language === 'fr' ? "Réinitialiser le mot de passe" : "Reset password")
+                    ? t.resetPasswordTitle
                     : isSignIn
-                    ? (language === 'fr' ? "Connexion à SamySignaux" : "Sign in to SamySignaux")
-                    : (language === 'fr' ? "Créer un compte" : "Create an account")}
+                    ? t.signInToSamySignaux
+                    : t.createAccountTitle}
             </div>
             {isResetPassword ? (
                 <ResetPassword
@@ -39,15 +39,12 @@ const Login = ({ initialView = "signIn" }: { initialView?: "signIn" | "signUp" }
                             height={24}
                             alt="Google"
                         />
-                        {language === 'fr' 
-                            ? (isSignIn ? "Se connecter avec Google" : "S'inscrire avec Google")
-                            : (isSignIn ? "Sign in with Google" : "Sign up with Google")
-                        }
+                        {isSignIn ? t.signInWithGoogle : t.signUpWithGoogle}
                     </Button>
                     <div className="mt-6 text-center text-caption text-t-tertiary">
                         {isSignIn
-                            ? (language === 'fr' ? "Ou se connecter avec un email" : "Or sign in with email")
-                            : (language === 'fr' ? "Ou utiliser votre email" : "Or use your email")}
+                            ? t.orSignInWithEmail
+                            : t.orUseYourEmail}
                     </div>
                     {isSignIn ? (
                         <SignIn
