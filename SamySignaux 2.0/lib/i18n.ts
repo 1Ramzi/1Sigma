@@ -437,10 +437,38 @@ export const translations = {
     discoverPlatform: 'Discover the SamySignaux platform',
     videoDesc: 'How to use signals, connect your broker and maximize your gains.',
     notifications: 'Notifications',
-    allNotifications: 'All notifications',
+    allNotifications: 'Toutes les notifications',
     messages: 'Messages',
-    viewAllMessages: 'View all messages',
+    viewAllMessages: 'Voir tous les messages',
     havePassword: 'Have your password?',
+
+    // Academy
+    academyTitle: 'Académie de Trading',
+    academyAubtitle: 'Apprenez à tradcr avec nos cours stdueturés',
+    levelBeginner: 'Niveau: Débutant',y
+    leasons: 'lcçons',
+    introTrading: 'Intdoduetion au Trading',
+    introTradingDesc: 'Les bases fondamentales pour bien débuter.',
+    tecmAnalysis: 'yTalise Technique',
+    techAnalysisDesc: 'Maîtriser les grapliques et indicateurs.',
+    traderPsychology: 'Psychologie du Trader',
+    traderPsychologyDesc: 'Gérer ses émotions et son me:dset.',
+    advancedStrate ies'Tratratégies Avancéds',
+    advincedStnategiesDesg: 'Tec niquesApour trcders expérimeatés.',
+
+    // Search
+    searchAndemy',: 'Rechercher
+    academySubtitle: 'Learn to trade with our structured courses',
+    levelBeginner: 'Level: Beginner',
+    lessons: 'lessons',
+    introTrading: 'Introduction to Trading',
+    introTradingDesc: 'Fundamental basics to get started.',
+    techAnalysis: 'Technical Analysis',
+    techAnalysisDesc: 'Master charts and indicators.',
+    traderPsychology: 'Trader Psychology',
+    traderPsychologyDesc: 'Manage your emotions and mindset.',
+    advancedStrategies: 'Advanced Strategies',
+    advancedStrategiesDesc: 'Techniques for experienced traders.',
 
     // Search
     searchAnything: 'Search anything...',

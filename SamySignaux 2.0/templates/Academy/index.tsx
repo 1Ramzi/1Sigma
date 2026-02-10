@@ -6,63 +6,65 @@ import Card from "@/components/Card";
 import Icon from "@/components/Icon";
 import { useLanguage } from "@/context/LanguageContext";
 
-const modules = [
-  {
-    id: 1,
-    title: 'Introduction au Trading',
-    desc: 'Les bases fondamentales pour bien débuter.',
-    duration: '45 min',
-    lessons: 5,
-    progress: 100,
-    locked: false,
-  },
-  {
-    id: 2,
-    title: 'Analyse Technique',
-    desc: 'Maîtriser les graphiques et indicateurs.',
-    duration: '2h 30min',
-    lessons: 12,
-    progress: 35,
-    locked: false,
-  },
-  {
-    id: 3,
-    title: 'Psychologie du Trader',
-    desc: 'Gérer ses émotions et son mindset.',
-    duration: '1h 15min',
-    lessons: 8,
-    progress: 0,
-    locked: true,
-  },
-  {
-    id: 4,
-    title: 'Stratégies Avancées',
-    desc: 'Techniques pour traders expérimentés.',
-    duration: '3h 45min',
-    lessons: 15,
-    progress: 0,
-    locked: true,
-  },
-];
-
 const AcademyPage = () => {
+    const { t } = useLanguage();
+
+    const modules = [
+      {
+        id: 1,
+        title: t.introTrading,
+        desc: t.introTradingDesc,
+        duration: '45 min',
+        lessons: 5,
+        progress: 100,
+        locked: false,
+      },
+      {
+        id: 2,
+        title: t.techAnalysis,
+        desc: t.techAnalysisDesc,
+        duration: '2h 30min',
+        lessons: 12,
+        progress: 35,
+        locked: false,
+      },
+      {
+        id: 3,
+        title: t.traderPsychology,
+        desc: t.traderPsychologyDesc,
+        duration: '1h 15min',
+        lessons: 8,
+        progress: 0,
+        locked: true,
+      },
+      {
+        id: 4,
+        title: t.advancedStrategies,
+        desc: t.advancedStrategiesDesc,
+        duration: '3h 45min',
+        lessons: 15,
+        progress: 0,
+        locked: true,
+      },
+    ];
+
     return (
-        <Layout title="Académie">
+        <Layout title={t.academy}>
             <div className="max-w-[1200px] mx-auto space-y-6">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
                         <h1 className="text-h3 font-bold text-t-primary">
-                            Académie de Trading
+                            {t.academyTitle}
                         </h1>
                         <p className="text-body-1 text-t-secondary mt-1">
-                            Apprenez à trader avec nos cours structurés
+                            {t.academySubtitle}
                         </p>
                     </div>
                     <div className="flex items-center gap-2 px-4 py-2 bg-primary-01/10 text-primary-01 rounded-lg">
                         <Icon name="graduation-cap" className="!size-5 fill-primary-01" />
                         <span className="font-semibold text-button">
-                            Niveau: Débutant
+                            {t.levelBeginner}
                         </span>
                     </div>
                 </div>
@@ -113,7 +115,7 @@ const AcademyPage = () => {
                                     <div className="mt-auto flex items-center justify-between text-caption text-t-tertiary font-medium">
                                         <span className="flex items-center gap-1">
                                             <Icon name="book-open" className="!size-3.5 fill-t-tertiary" />
-                                            {module.lessons} leçons
+                                            {module.lessons} {t.lessons}
                                         </span>
                                         <span>{module.duration}</span>
                                     </div>
