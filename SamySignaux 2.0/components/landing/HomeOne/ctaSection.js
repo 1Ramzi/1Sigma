@@ -15,7 +15,7 @@ export default function CtaSection() {
 									Access all our premium content for free today.
 								</p>
 								<div className="zuzu-cta-btn-wrap">
-									<Link href={"/register"} legacyBehavior>
+									<Link href={"/login"} legacyBehavior>
 										<a className="zuzu-btn btn-white pill">
 											Join Academy Now
 										</a>

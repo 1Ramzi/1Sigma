@@ -25,7 +25,7 @@ export default function HeroSection() {
 									broker.
 								</p>
 								<div className="zuzu-hero-btn-wrap">
-									<Link href={"/register"} legacyBehavior>
+									<Link href={"/login"} legacyBehavior>
 										<a className="zuzu-btn btn-white pill wow fadeInUpX" data-wow-delay="0.40s">
 											Join the Community
 										</a>
