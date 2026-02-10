@@ -11,6 +11,7 @@ import Notifications from "./Notifications";
 import Messages from "./Messages";
 import { SelectOption } from "@/types/select";
 import { useLanguage } from "@/context/LanguageContext";
+import { useUserStore } from "@/stores/userStore";
 
 type HeaderProps = {
     className?: string;
@@ -28,6 +29,15 @@ const Header = ({
     onToggleSidebar,
 }: HeaderProps) => {
     const { t } = useLanguage();
+    const { user } = useUserStore();
+
+    const getUserStatusBadge = () => {
+        const role = user?.role || 'member';
+        if (role === 'vip' || role === 'trader' || role === 'admin' || role === 'moderator') {
+            return { label: t.statusBadgePartner, color: 'text-primary-02 bg-primary-02/10 border-primary-02/20' };
+        }
+        return { label: t.statusBadgeFree, color: 'text-t-secondary bg-b-surface2 border-s-border' };
+    };
     
     const times: SelectOption[] = [
         { id: 1, name: t.publishNow },
@@ -125,23 +135,20 @@ const Header = ({
                     >
                         <Icon name="search" />
                     </Button>
-                    {/* Broker CTA */}
-                    <div className="hidden md:block">
-                        <Button 
-                            as="link" 
-                            href="/broker"
-                            className="bg-shade-02 hover:bg-shade-04 text-shade-10 !h-10 rounded-lg flex items-center gap-2 text-button font-semibold transition-colors px-4"
-                        >
-                            <div className="w-5 h-5 rounded-full bg-primary-01/20 flex items-center justify-center">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    {/* Status Badge */}
+                    {(() => {
+                        const badge = getUserStatusBadge();
+                        return (
+                            <div className={`hidden md:flex items-center gap-2 h-10 px-4 rounded-xl text-button font-semibold border ${badge.color}`}>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                                     <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                                     <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                                 </svg>
+                                <span>{badge.label}</span>
                             </div>
-                            <span>{t.broker}</span>
-                        </Button>
-                    </div>
+                        );
+                    })()}
                     <Notifications />
                     <Messages />
                     <User />

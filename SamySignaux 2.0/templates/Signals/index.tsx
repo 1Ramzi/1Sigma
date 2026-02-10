@@ -13,8 +13,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { TabsOption } from "@/types/tabs";
 import { mockSignals } from "@/data/mockData";
-import Advancement from "./Advancement";
-import Explanation from "./Explanation";
+import RecentEarnings from "@/templates/Income/EarningPage/RecentEarnings";
 
 const SignalsPage = () => {
     const { filteredSignals, setFilter, vote } = useSignalStore();
@@ -78,45 +77,23 @@ const SignalsPage = () => {
     return (
         <Layout title={t.tradingSignals}>
             <div className="max-w-[1200px] mx-auto space-y-8">
-                {/* New Modules: Advancement & Explanation */}
-                <Advancement />
-                <Explanation />
-
-                {/* Top Recap Stats */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <Card title="" className="!p-5 border border-transparent dark:border-s-border">
-                        <div className="flex items-center gap-4">
-                            <div className="w-12 h-12 rounded-full bg-primary-02/10 flex items-center justify-center">
-                                <Icon name="check-circle-fill" className="!size-6 fill-primary-02" />
-                            </div>
-                            <div>
-                                <p className="text-body-2 text-t-secondary">{t.wonTotal}</p>
-                                <p className="text-h4 font-bold text-t-primary">{totalWon}</p>
-                            </div>
-                        </div>
-                    </Card>
-                    <Card title="" className="!p-5 border border-transparent dark:border-s-border">
-                        <div className="flex items-center gap-4">
-                            <div className="w-12 h-12 rounded-full bg-primary-03/10 flex items-center justify-center">
-                                <Icon name="close-circle-fill" className="!size-6 fill-primary-03" />
-                            </div>
-                            <div>
-                                <p className="text-body-2 text-t-secondary">{t.lostTotal}</p>
-                                <p className="text-h4 font-bold text-t-primary">{totalLost}</p>
-                            </div>
-                        </div>
-                    </Card>
-                    <Card title="" className="!p-5 border border-transparent dark:border-s-border">
-                        <div className="flex items-center gap-4">
-                            <div className="w-12 h-12 rounded-full bg-primary-04/10 flex items-center justify-center">
-                                <Icon name="chart" className="!size-6 fill-primary-04" />
-                            </div>
-                            <div>
-                                <p className="text-body-2 text-t-secondary">{t.winRate}</p>
-                                <p className="text-h4 font-bold text-t-primary">{winRate}%</p>
-                            </div>
-                        </div>
-                    </Card>
+                {/* Compact Recap Stats */}
+                <div className="flex flex-wrap items-center gap-3">
+                    <div className="flex items-center gap-2 px-4 py-2 bg-b-surface2 rounded-xl border border-transparent dark:border-s-border">
+                        <Icon name="check-circle-fill" className="!size-4 fill-primary-02" />
+                        <span className="text-body-2 text-t-secondary">{t.wonTotal}</span>
+                        <span className="text-h6 font-bold text-t-primary">{totalWon}</span>
+                    </div>
+                    <div className="flex items-center gap-2 px-4 py-2 bg-b-surface2 rounded-xl border border-transparent dark:border-s-border">
+                        <Icon name="close-circle-fill" className="!size-4 fill-primary-03" />
+                        <span className="text-body-2 text-t-secondary">{t.lostTotal}</span>
+                        <span className="text-h6 font-bold text-t-primary">{totalLost}</span>
+                    </div>
+                    <div className="flex items-center gap-2 px-4 py-2 bg-b-surface2 rounded-xl border border-transparent dark:border-s-border">
+                        <Icon name="chart" className="!size-4 fill-primary-04" />
+                        <span className="text-body-2 text-t-secondary">{t.winRate}</span>
+                        <span className="text-h6 font-bold text-t-primary">{winRate}%</span>
+                    </div>
                 </div>
 
                 {/* Filters Stripe */}
@@ -157,6 +134,11 @@ const SignalsPage = () => {
                         </div>
                     </div>
                 </div>
+
+                {/* Recent Earnings chart - shown only in History view */}
+                {view.id === 'history' && (
+                    <RecentEarnings />
+                )}
 
                 {/* Signals List */}
                 <div className="grid gap-6">

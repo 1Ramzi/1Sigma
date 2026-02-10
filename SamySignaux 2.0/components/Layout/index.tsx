@@ -69,7 +69,7 @@ const Layout = ({ title, children, newProduct, hideSidebar }: LayoutProps) => {
                 }}
             />
             <div
-                className={`pt-22 pb-5 max-md:pt-18 ${
+                className={`pt-28 pb-5 max-md:pt-22 ${
                     newProduct ? "max-md:!pt-33" : ""
                 }`}
             >

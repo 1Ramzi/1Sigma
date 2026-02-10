@@ -1,13 +1,13 @@
 import Logo from "@/components/Logo";
 import { RemoveScroll } from "react-remove-scroll";
 import { useTheme } from "next-themes";
-import ThemeButton from "@/components/ThemeButton";
 import NavLink from "@/components/NavLink";
 import Button from "@/components/Button";
 import Select from "@/components/Select";
 import Dropdown from "./Dropdown";
 import { useLanguage } from "@/context/LanguageContext";
 import { SelectOption } from "@/types/select";
+import { useUserStore } from "@/stores/userStore";
 
 import { navigation } from "@/contstants/navigation";
 
@@ -24,6 +24,26 @@ const Sidebar = ({
 }: SidebarProps) => {
     const { t, language, setLanguage } = useLanguage();
     const { theme, setTheme } = useTheme();
+    const { user } = useUserStore();
+
+    const themeOptions: SelectOption[] = [
+        { id: 'light', name: t.light },
+        { id: 'dark', name: t.dark },
+    ];
+
+    const currentTheme = themeOptions.find(opt => opt.id === theme) || themeOptions[0];
+
+    const handleThemeChange = (option: SelectOption) => {
+        setTheme(option.id as string);
+    };
+
+    const getUserStatusBadge = () => {
+        const role = user?.role || 'member';
+        if (role === 'vip' || role === 'trader' || role === 'admin' || role === 'moderator') {
+            return { label: t.statusBadgePartner, color: 'text-primary-02 bg-primary-02/10' };
+        }
+        return { label: t.statusBadgeFree, color: 'text-t-secondary bg-b-surface2' };
+    };
 
     const languageOptions: SelectOption[] = [
         { id: 'fr', name: 'Français' },
@@ -75,23 +95,22 @@ const Sidebar = ({
             )}
         </RemoveScroll>
         <div className="mt-auto pt-6 max-md:pt-4 space-y-4">
-            <Button
-                as="link"
-                href="/broker"
-                className={`w-full !px-0 gap-3 ${hideSidebar ? "!w-12 !h-12 !rounded-full !justify-center" : ""}`}
-                isBlack
-            >
-                <div className={`flex items-center gap-3 ${hideSidebar ? "justify-center" : ""}`}>
-                    <div className="w-6 h-6 rounded-full bg-primary-01/20 flex items-center justify-center">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                            <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                            <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
+            {/* Status Badge */}
+            {(() => {
+                const badge = getUserStatusBadge();
+                return (
+                    <div className={`flex items-center justify-center gap-2 h-10 rounded-xl text-button font-semibold ${badge.color} ${hideSidebar ? "!w-10 !h-10 !rounded-full !p-0" : ""}`}>
+                        {hideSidebar ? (
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 15l-2 5L9 18H6l3-3z" fill="currentColor"/>
+                                <path d="M18 18h-3l-1 2-2-5 7-7-1-1-7 7-5-2 2-1V8l5-3L12 2l-1 3L8 8v3l-5 2 2 1 7-7 1 1-7 7 2 5 1-2h3l3 5 3-5z" fill="currentColor"/>
+                            </svg>
+                        ) : (
+                            <span>{badge.label}</span>
+                        )}
                     </div>
-                    {!hideSidebar && <span>{t.connectBroker}</span>}
-                </div>
-            </Button>
+                );
+            })()}
             
             {!hideSidebar && (
                 <div className="p-3 bg-b-surface2 rounded-xl border border-s-border space-y-3">
@@ -103,14 +122,13 @@ const Sidebar = ({
                         classButton="!h-10 !bg-b-surface1 !border-s-border !text-body-2 hover:!border-primary-01/50 transition-colors"
                     />
                     
-                    {/* Theme Toggle - Full Width Button Style */}
-                    <div 
-                        className="flex items-center justify-between h-10 px-3 bg-b-surface1 rounded-lg border border-s-border cursor-pointer hover:border-primary-01/50 transition-all group"
-                        onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-                    >
-                        <span className="text-body-2 font-medium text-t-secondary group-hover:text-t-primary transition-colors">{t.theme}</span>
-                        <ThemeButton className="!bg-transparent !p-0 !w-auto !shadow-none pointer-events-none" />
-                    </div>
+                    {/* Theme Selector */}
+                    <Select
+                        value={currentTheme}
+                        onChange={handleThemeChange}
+                        options={themeOptions}
+                        classButton="!h-10 !bg-b-surface1 !border-s-border !text-body-2 hover:!border-primary-01/50 transition-colors"
+                    />
                 </div>
             )}
         </div>
