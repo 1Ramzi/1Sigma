@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Icon from "@/components/Icon";
 import { useLanguage } from "@/context/LanguageContext";
 
-const ONBOARDING_KEY = "samy_onboarding_v4";
+const ONBOARDING_KEY = "samy_onboarding_v5";
 const TOOLTIP_W = 340;
 const TOOLTIP_H_EST = 260;
 const EDGE_MARGIN = 16;
@@ -68,7 +68,7 @@ const Onboarding = () => {
         let mounted = true;
         try {
             // Clean old onboarding keys
-            ["samy_onboarding_done", "samy_onboarding_v2", "samy_onboarding_v3"].forEach(k => {
+            ["samy_onboarding_done", "samy_onboarding_v2", "samy_onboarding_v3", "samy_onboarding_v4"].forEach(k => {
                 try { localStorage.removeItem(k); } catch {}
             });
             const done = localStorage.getItem(ONBOARDING_KEY);
