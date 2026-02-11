@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import Button from "@/components/Button";
 import Select from "@/components/Select";
 import Logo from "@/components/Logo";
-import Icon from "@/components/Icon";
 import OnlineUsers from "./OnlineUsers";
 import User from "./User";
 import Notifications from "./Notifications";

@@ -34,7 +34,7 @@ const Sidebar = ({
         return { label: t.statusBadgeFree, color: 'text-t-secondary bg-b-surface2' };
     };
 
-    const toggleLanguage = () => setLanguage(language === 'fr' ? 'en' : 'fr' as any);
+    const toggleLanguage = () => setLanguage(language === 'fr' ? 'en' : 'fr');
     const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
 
     return (
