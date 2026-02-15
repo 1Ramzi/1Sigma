@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import { Plus_Jakarta_Sans } from "next/font/google";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-import "slick-carousel/slick/slick.css";
-import "@/styles/landing/slick.css";
-import "react-modal-video/css/modal-video.min.css";
-import "@/styles/landing/main.css";
-import "@/styles/landing/app.min.css";
+import "../globals.css";
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+    subsets: ["latin"],
+    display: "swap",
+});
 
 export const metadata: Metadata = {
-    title: "SamySignaux - Accueil",
-    description: "SamySignaux",
+    title: "SamySignaux 2.0 | Landing",
+    description:
+        "SamySignaux 2.0 - signaux trading, mentorat et exécution guidée pour traders ambitieux.",
 };
 
 export default function LandingLayout({
@@ -18,11 +20,7 @@ export default function LandingLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <div className="light">
-            <link
-                href="https://fonts.googleapis.com/css2?family=Cabin:wght@600;700&family=Inter:wght@400;500;600;700&family=Public+Sans:wght@600;700;800&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700;800&display=swap"
-                rel="stylesheet"
-            />
+        <div className={`${plusJakartaSans.className} bg-b-surface1 text-t-primary`}>
             {children}
         </div>
     );
