@@ -26,8 +26,8 @@ export const getLiveAlertsMuted = () => globalMuted;
 
 const LiveAlertStack = () => {
     const router = useRouter();
-    const { accountType } = useUserStore();
-    const isFree = accountType === 'free';
+    const { accountType, role } = useUserStore();
+    const isFree = accountType === 'free' && role === 'user';
     const [alerts, setAlerts] = useState<LiveAlert[]>([]);
     const poolIndex = useRef(0);
     const alertIdCounter = useRef(0);
