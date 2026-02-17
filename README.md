@@ -2,6 +2,48 @@
 
 Plateforme complète de trading avec dashboard utilisateur, panel administrateur, panel trader et landing page.
 
+## 🌐 URLs de Déploiement
+
+### Tradexa - Application Principale
+**URL Production:** `https://tradexa.vercel.app`
+
+#### Routes Utilisateur (Dashboard)
+- 🏠 **Dashboard:** `https://tradexa.vercel.app/dashboard`
+- 📊 **Signaux:** `https://tradexa.vercel.app/signals`
+- 🎓 **Académie:** `https://tradexa.vercel.app/academy`
+- 💼 **Broker:** `https://tradexa.vercel.app/broker`
+- 💳 **Abonnement:** `https://tradexa.vercel.app/subscription`
+- 👤 **Profil:** `https://tradexa.vercel.app/profile`
+
+#### Routes Admin
+- 🔧 **Dashboard Admin:** `https://tradexa.vercel.app/panel/admin`
+- 👥 **Gestion Utilisateurs:** `https://tradexa.vercel.app/panel/admin/users`
+- 📈 **Gestion Traders:** `https://tradexa.vercel.app/panel/admin/traders`
+- 💼 **Gestion Brokers:** `https://tradexa.vercel.app/panel/admin/broker`
+- 📚 **Gestion Formations:** `https://tradexa.vercel.app/panel/admin/formations`
+- 💰 **Revenus:** `https://tradexa.vercel.app/panel/admin/revenue`
+- ➕ **Créer Trader:** `https://tradexa.vercel.app/panel/admin/create-trader`
+
+#### Routes Trader
+- 📊 **Dashboard Trader:** `https://tradexa.vercel.app/panel/trader`
+- 📡 **Signaux Trader:** `https://tradexa.vercel.app/panel/trader/signals`
+- 💬 **Feedback:** `https://tradexa.vercel.app/panel/trader/feedback`
+- 💵 **Earnings:** `https://tradexa.vercel.app/panel/trader/earnings`
+- 👤 **Profil Trader:** `https://tradexa.vercel.app/panel/trader/profile`
+
+### Tradexa-Landing - Site Vitrine
+**URL Production:** `https://tradexa-landing.vercel.app`
+
+- 🏠 **Accueil:** `https://tradexa-landing.vercel.app`
+- ℹ️ **À propos:** `https://tradexa-landing.vercel.app/about`
+- 🛠️ **Services:** `https://tradexa-landing.vercel.app/services`
+- 💡 **Solutions:** `https://tradexa-landing.vercel.app/solution`
+- 📝 **Blog:** `https://tradexa-landing.vercel.app/blog`
+- ❓ **FAQ:** `https://tradexa-landing.vercel.app/faq`
+- 📧 **Contact:** `https://tradexa-landing.vercel.app/contact`
+
+---
+
 ## 📁 Structure du Projet
 
 ```
