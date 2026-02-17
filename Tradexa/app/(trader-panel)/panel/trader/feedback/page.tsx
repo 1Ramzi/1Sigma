@@ -71,6 +71,7 @@ export default function FeedbackPage() {
                                 <p className="text-body-2 text-t-primary">
                                     <span className="font-semibold text-t-secondary">{fb.odUserId}</span>{" "}
                                     {getLabel(fb.type)} sur <span className="font-semibold">{fb.signalPair}</span>
+                                    <span className="text-[10px] text-t-tertiary ml-2 font-mono">#{fb.id.slice(-6).toUpperCase()}</span>
                                 </p>
                                 {fb.comment && (
                                     <p className="text-body-2 text-t-secondary mt-1 italic">&quot;{fb.comment}&quot;</p>
