@@ -5,3 +5,13 @@ dist
 coverage
 .vscode
 Main-File/
+
+# Next.js
+.next/
+out/
+build/
+*.tsbuildinfo
+
+# Cache
+.cache/
+*.log
