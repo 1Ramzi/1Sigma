@@ -16,12 +16,12 @@ import Faq from "./Faq";
 const AXI_URL = 'https://www.axi.com/';
 const PUPRIME_URL = 'https://www.puprime.com/';
 
-type Step = 'ask-axi' | 'axi-form' | 'ask-puprime' | 'puprime-form' | 'not-eligible' | 'pending' | 'validated';
+type Step = 'choose' | 'axi-form' | 'ask-puprime' | 'puprime-form' | 'not-eligible' | 'pending' | 'validated';
 
 const BrokerPage = () => {
     const { t } = useLanguage();
     const { user } = useUserStore();
-    const [step, setStep] = useState<Step>('ask-axi');
+    const [step, setStep] = useState<Step>('choose');
     const [brokerId, setBrokerId] = useState('');
     const [depositConfirmed, setDepositConfirmed] = useState(false);
     const [connecting, setConnecting] = useState(false);
@@ -57,29 +57,47 @@ const BrokerPage = () => {
 
     const renderStep = () => {
         switch (step) {
-            case 'ask-axi':
+            case 'choose':
                 return (
-                    <motion.div key="ask-axi" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} className="space-y-6">
-                        <div className="flex items-center gap-4">
-                            <div className="w-12 h-12 rounded-xl bg-white dark:bg-shade-02 flex items-center justify-center shadow-sm border border-s-border">
-                                <span className="font-bold text-h6 text-primary-04">AXI</span>
-                            </div>
-                            <div>
-                                <h3 className="text-h5 font-bold text-t-primary">{t.haveAxiAccount}</h3>
-                                <p className="text-caption text-t-secondary">{t.exclusiveAxiOffer} — {t.freeSignalsLifetime}</p>
-                            </div>
+                    <motion.div key="choose" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} className="space-y-6">
+                        <div>
+                            <h3 className="text-h5 font-bold text-t-primary mb-2">Validez votre inscription broker</h3>
+                            <p className="text-body-2 text-t-secondary">Vous pouvez ouvrir un compte Premium gratuitement via notre broker partenaire. Choisissez votre broker ci-dessous.</p>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <button onClick={() => { setActiveBroker('axi'); setStep('axi-form'); }} className="p-5 rounded-xl border border-s-border bg-b-surface1 hover:border-primary-04/30 hover:bg-primary-04/5 transition-all text-left group">
+                                <div className="flex items-center gap-3 mb-3">
+                                    <div className="w-10 h-10 rounded-xl bg-white dark:bg-shade-02 flex items-center justify-center border border-s-border"><span className="font-bold text-button text-primary-04">AXI</span></div>
+                                    <div><p className="text-body-2 font-bold text-t-primary group-hover:text-primary-04 transition-colors">Axi</p><p className="text-[11px] text-t-tertiary">{t.exclusiveAxiOffer}</p></div>
+                                </div>
+                                <ul className="space-y-1.5">
+                                    <li className="flex items-center gap-2 text-caption text-t-secondary"><Icon name="check" className="!size-3.5 fill-primary-02" /> {t.freeSignalsLifetime}</li>
+                                    <li className="flex items-center gap-2 text-caption text-t-secondary"><Icon name="check" className="!size-3.5 fill-primary-02" /> {t.immediateVipAccess}</li>
+                                    <li className="flex items-center gap-2 text-caption text-t-secondary"><Icon name="check" className="!size-3.5 fill-primary-02" /> {t.minDeposit300}</li>
+                                </ul>
+                            </button>
+                            <button onClick={() => { setActiveBroker('puprime'); setStep('puprime-form'); }} className="p-5 rounded-xl border border-s-border bg-b-surface1 hover:border-primary-01/30 hover:bg-primary-01/5 transition-all text-left group">
+                                <div className="flex items-center gap-3 mb-3">
+                                    <div className="w-10 h-10 rounded-xl bg-primary-01/10 flex items-center justify-center border border-s-border"><span className="font-bold text-[11px] text-primary-01">PuPrime</span></div>
+                                    <div><p className="text-body-2 font-bold text-t-primary group-hover:text-primary-01 transition-colors">PuPrime</p><p className="text-[11px] text-t-tertiary">{t.puPrimeOfferDesc}</p></div>
+                                </div>
+                                <ul className="space-y-1.5">
+                                    <li className="flex items-center gap-2 text-caption text-t-secondary"><Icon name="check" className="!size-3.5 fill-primary-01" /> {t.reducedSpreads}</li>
+                                    <li className="flex items-center gap-2 text-caption text-t-secondary"><Icon name="check" className="!size-3.5 fill-primary-01" /> {t.dedicatedSupport}</li>
+                                </ul>
+                            </button>
                         </div>
                         <div className="flex items-start gap-4 p-4 bg-primary-02/5 border border-primary-02/20 rounded-xl">
                             <Icon name="wallet" className="!size-5 fill-primary-02 shrink-0 mt-0.5" />
                             <p className="text-caption text-t-secondary leading-relaxed">{t.brokerSavingsExplanation}</p>
                         </div>
-                        <div className="flex gap-4">
-                            <Button onClick={() => { setActiveBroker('axi'); setStep('axi-form'); }} isBlack className="flex-1">
-                                {t.yes}
-                            </Button>
-                            <Button onClick={() => setStep('ask-puprime')} isStroke className="flex-1">
-                                {t.no}
-                            </Button>
+                        <div className="flex items-center gap-3 p-4 bg-primary-04/5 border border-primary-04/20 rounded-xl">
+                            <Icon name="star-fill" className="!size-5 fill-primary-04" />
+                            <div>
+                                <p className="text-caption text-t-secondary">Pas encore de compte ? Utilisez le code promo :</p>
+                                <p className="text-h6 font-bold text-primary-04 font-mono mt-0.5">TRADEXA10</p>
+                                <p className="text-[11px] text-t-tertiary">-10% sur l&apos;abonnement Premium si vous préférez payer</p>
+                            </div>
                         </div>
                     </motion.div>
                 );
@@ -118,7 +136,7 @@ const BrokerPage = () => {
                             <Button onClick={handleValidate} disabled={!brokerId || !depositConfirmed || connecting} isBlack>
                                 {connecting ? t.verifying : t.validateAccount}
                             </Button>
-                            <button onClick={() => { resetForm(); setStep('ask-axi'); }} className="text-caption text-t-secondary hover:underline">{t.back}</button>
+                            <button onClick={() => { resetForm(); setStep('choose'); }} className="text-caption text-t-secondary hover:underline">{t.back}</button>
                         </div>
                         <p className="text-[11px] text-t-tertiary">{t.depositDisclaimer}</p>
                     </motion.div>
@@ -151,7 +169,7 @@ const BrokerPage = () => {
                                 {t.no}
                             </Button>
                         </div>
-                        <button onClick={() => setStep('ask-axi')} className="text-caption text-t-secondary hover:underline">{t.back}</button>
+                        <button onClick={() => setStep('choose')} className="text-caption text-t-secondary hover:underline">{t.back}</button>
                     </motion.div>
                 );
             case 'puprime-form':
@@ -204,7 +222,7 @@ const BrokerPage = () => {
                         </div>
                         <div className="flex gap-4">
                             <Button href="/subscription" as="link" isBlack>{t.subscription}</Button>
-                            <button onClick={() => setStep('ask-axi')} className="text-caption text-t-secondary hover:underline">{t.back}</button>
+                            <button onClick={() => setStep('choose')} className="text-caption text-t-secondary hover:underline">{t.back}</button>
                         </div>
                     </motion.div>
                 );
