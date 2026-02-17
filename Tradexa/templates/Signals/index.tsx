@@ -7,7 +7,9 @@ import Search from "@/components/Search";
 import Tabs from "@/components/Tabs";
 import SignalCard from "@/components/SignalCard";
 import Icon from "@/components/Icon";
+import Button from "@/components/Button";
 import { useSignalStore } from "@/stores/signalStore";
+import { useUserStore } from "@/stores/userStore";
 import { useLanguage } from "@/context/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { TabsOption } from "@/types/tabs";
@@ -15,8 +17,10 @@ import RecentEarnings from "@/templates/Income/EarningPage/RecentEarnings";
 
 const SignalsPage = () => {
     const { filteredSignals, setFilter, vote } = useSignalStore();
+    const { accountType } = useUserStore();
     const { t } = useLanguage();
     const searchParams = useSearchParams();
+    const isFree = accountType === 'free';
     
     const marketOptions: TabsOption[] = [
         { id: 'all', name: t.allMarketsTab },
@@ -79,6 +83,23 @@ const SignalsPage = () => {
                     <RecentEarnings />
                 )}
 
+                {/* Free account upgrade banner */}
+                {isFree && !isHistory && (
+                    <div className="relative rounded-2xl border-2 border-amber-500/20 bg-amber-500/5 p-6 text-center">
+                        <div className="flex flex-col items-center gap-3">
+                            <div className="w-14 h-14 rounded-full bg-amber-500/10 flex items-center justify-center">
+                                <Icon name="lock" className="!size-7 fill-amber-500" />
+                            </div>
+                            <h3 className="text-h5 font-bold text-t-primary">Signaux en temps réel réservés aux membres</h3>
+                            <p className="text-body-2 text-t-secondary max-w-lg">Les signaux actifs sont floutés pour les comptes gratuits. Passez en Premium ou ouvrez un compte broker partenaire pour accéder aux signaux en temps réel.</p>
+                            <div className="flex gap-3 mt-2">
+                                <Button href="/subscription" as="link" isBlack>Voir les offres</Button>
+                                <Button href="/broker" as="link" isStroke>Compte broker gratuit</Button>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
                 {/* Signals List */}
                 <div className="grid gap-6">
                     <AnimatePresence mode="popLayout">
@@ -89,8 +110,23 @@ const SignalsPage = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.95 }}
                                 transition={{ delay: i * 0.05 }}
+                                className="relative"
                             >
-                                <SignalCard signal={signal} vote={vote} />
+                                {isFree && !isHistory ? (
+                                    <div className="relative">
+                                        <div className="blur-[6px] pointer-events-none select-none">
+                                            <SignalCard signal={signal} vote={vote} />
+                                        </div>
+                                        <div className="absolute inset-0 flex items-center justify-center bg-b-surface1/30 backdrop-blur-[2px] rounded-2xl">
+                                            <div className="text-center">
+                                                <Icon name="lock" className="!size-8 fill-t-tertiary mx-auto mb-2" />
+                                                <p className="text-body-2 font-semibold text-t-secondary">Signal réservé aux membres</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <SignalCard signal={signal} vote={vote} />
+                                )}
                             </motion.div>
                         ))}
                     </AnimatePresence>
