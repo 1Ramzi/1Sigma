@@ -5,11 +5,15 @@ import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
 import Card from "@/components/Card";
 import Icon from "@/components/Icon";
+import Button from "@/components/Button";
 import { useLanguage } from "@/context/LanguageContext";
+import { useUserStore } from "@/stores/userStore";
 import { setLiveAlertsMuted } from "@/components/LiveAlertStack";
 
 const AcademyPage = () => {
     const { t } = useLanguage();
+    const { accountType } = useUserStore();
+    const isFree = accountType === 'free';
 
     const modules = useMemo(() => [
       {
@@ -119,6 +123,23 @@ const AcademyPage = () => {
     return (
         <Layout title={t.academy}>
             <div className="max-w-[1200px] mx-auto space-y-6">
+                {/* Free account banner */}
+                {isFree && (
+                    <div className="relative rounded-2xl border-2 border-amber-500/20 bg-amber-500/5 p-6 text-center">
+                        <div className="flex flex-col items-center gap-3">
+                            <div className="w-14 h-14 rounded-full bg-amber-500/10 flex items-center justify-center">
+                                <Icon name="lock" className="!size-7 fill-amber-500" />
+                            </div>
+                            <h3 className="text-h5 font-bold text-t-primary">Académie réservée aux membres</h3>
+                            <p className="text-body-2 text-t-secondary max-w-lg">L&apos;accès complet à l&apos;académie et aux modules de formation est réservé aux comptes Premium et Partenaire. Seuls les modules de base sont accessibles en compte gratuit.</p>
+                            <div className="flex gap-3 mt-2">
+                                <Button href="/subscription" as="link" isBlack>Voir les offres</Button>
+                                <Button href="/broker" as="link" isStroke>Compte broker gratuit</Button>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
                 {/* Header */}
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
@@ -145,7 +166,16 @@ const AcademyPage = () => {
                 </div>
 
                 {/* Video Player + Module Selector Side-by-Side */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div className={`grid grid-cols-1 lg:grid-cols-3 gap-6 ${isFree ? 'relative' : ''}`}>
+                    {isFree && (
+                        <div className="absolute inset-0 z-10 flex items-center justify-center bg-b-surface1/40 backdrop-blur-[3px] rounded-2xl">
+                            <div className="text-center p-6">
+                                <Icon name="lock" className="!size-10 fill-t-tertiary mx-auto mb-3" />
+                                <p className="text-h6 font-bold text-t-primary mb-1">Contenu réservé aux membres</p>
+                                <p className="text-body-2 text-t-secondary max-w-sm">Passez en Premium ou ouvrez un compte broker partenaire pour accéder aux vidéos de formation.</p>
+                            </div>
+                        </div>
+                    )}
                     {/* Video Player — 2/3 */}
                     <div className="lg:col-span-2 space-y-4">
                         <Card className="!p-0 overflow-hidden" title="">
