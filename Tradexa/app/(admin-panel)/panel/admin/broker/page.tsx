@@ -41,6 +41,8 @@ export default function AdminBrokerPage() {
     const [filter, setFilter] = useState<"all" | "pending" | "approved" | "rejected">("all");
     const [search, setSearch] = useState("");
     const [detailId, setDetailId] = useState<string | null>(null);
+    const [rejectId, setRejectId] = useState<string | null>(null);
+    const [rejectReason, setRejectReason] = useState("");
 
     const handleAction = (id: string, action: "approved" | "rejected", note?: string) => {
         setAdhesions((prev) => prev.map((a) => a.id === id ? { ...a, status: action, note } : a));
@@ -61,8 +63,15 @@ export default function AdminBrokerPage() {
         return { text: "Refusé", cls: "bg-red-500/10 text-red-500" };
     };
 
-    const exportCSV = (type: "pending" | "approved") => {
-        const items = adhesions.filter((a) => a.status === type);
+    const handleReject = (id: string) => {
+        if (!rejectReason.trim()) return;
+        handleAction(id, "rejected", rejectReason);
+        setRejectId(null);
+        setRejectReason("");
+    };
+
+    const exportCSV = (type: "pending" | "approved" | "all") => {
+        const items = type === "all" ? adhesions : adhesions.filter((a) => a.status === type);
         const header = "Nom,Email,Téléphone,Broker,ID Compte,Type,Dépôt,Statut,Date,Note";
         const rows = items.map((a) =>
             `"${a.fullName}","${a.email}","${a.phone}","${a.broker}","${a.accountId}","${a.accountType}","${a.depositAmount}","${statusLabel(a.status).text}","${a.submittedAt}","${a.note || ""}"`
@@ -100,13 +109,17 @@ export default function AdminBrokerPage() {
             </div>
 
             <div className="flex flex-wrap gap-2 mb-6">
+                <button onClick={() => exportCSV("all")}
+                    className="h-9 px-4 rounded-lg text-caption border border-red-500/30 bg-red-500/10 text-red-500 hover:bg-red-500/20 transition-colors flex items-center gap-1.5">
+                    <Download className="w-3.5 h-3.5" /> Tout exporter ({adhesions.length})
+                </button>
                 <button onClick={() => exportCSV("pending")}
                     className="h-9 px-4 rounded-lg text-caption border border-amber-500/30 bg-amber-500/10 text-amber-500 hover:bg-amber-500/20 transition-colors flex items-center gap-1.5">
-                    <Download className="w-3.5 h-3.5" /> Exporter en attente ({pendingCount})
+                    <Download className="w-3.5 h-3.5" /> En attente ({pendingCount})
                 </button>
                 <button onClick={() => exportCSV("approved")}
                     className="h-9 px-4 rounded-lg text-caption border border-emerald-500/30 bg-emerald-500/10 text-emerald-500 hover:bg-emerald-500/20 transition-colors flex items-center gap-1.5">
-                    <Download className="w-3.5 h-3.5" /> Exporter confirmés ({approvedCount})
+                    <Download className="w-3.5 h-3.5" /> Confirmés ({approvedCount})
                 </button>
             </div>
 
@@ -148,7 +161,7 @@ export default function AdminBrokerPage() {
                                                         <button onClick={() => handleAction(a.id, "approved", "Vérifié OK")} className="h-7 px-2 rounded-md bg-emerald-500 text-white text-[10px] font-semibold hover:bg-emerald-600 transition-colors flex items-center gap-0.5" title="Confirmer">
                                                             <Check className="w-3 h-3" /> OK
                                                         </button>
-                                                        <button onClick={() => handleAction(a.id, "rejected", "Non conforme")} className="h-7 px-2 rounded-md bg-red-500/10 text-red-500 text-[10px] font-semibold hover:bg-red-500/20 transition-colors flex items-center gap-0.5" title="Refuser">
+                                                        <button onClick={() => setRejectId(a.id)} className="h-7 px-2 rounded-md bg-red-500/10 text-red-500 text-[10px] font-semibold hover:bg-red-500/20 transition-colors flex items-center gap-0.5" title="Refuser">
                                                             <X className="w-3 h-3" />
                                                         </button>
                                                     </>
@@ -215,6 +228,25 @@ export default function AdminBrokerPage() {
                         ) : (
                             <button onClick={() => setDetailId(null)} className="w-full h-11 rounded-xl bg-b-surface2 border border-s-border text-button text-t-secondary transition-colors">Fermer</button>
                         )}
+                    </div>
+                </div>
+            )}
+            {rejectId && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4" onClick={() => { setRejectId(null); setRejectReason(""); }}>
+                    <div className="card !p-6 w-full max-w-sm" onClick={(e) => e.stopPropagation()}>
+                        <h3 className="text-h6 font-semibold text-red-500 mb-2">Raison du refus</h3>
+                        <p className="text-body-2 text-t-secondary mb-4">Veuillez indiquer la raison du refus de cette adhésion.</p>
+                        <textarea value={rejectReason} onChange={(e) => setRejectReason(e.target.value)} maxLength={200}
+                            className="w-full h-20 px-4 py-3 rounded-xl bg-b-surface1 border border-s-border text-body-2 text-t-primary focus:border-red-500 outline-none resize-none mb-4"
+                            placeholder="Ex: ID compte invalide, dépôt non vérifié..." />
+                        <div className="flex gap-3">
+                            <button onClick={() => { setRejectId(null); setRejectReason(""); }}
+                                className="flex-1 h-11 rounded-xl bg-b-surface2 border border-s-border text-button text-t-secondary transition-colors">Annuler</button>
+                            <button onClick={() => handleReject(rejectId)} disabled={!rejectReason.trim()}
+                                className="flex-1 h-11 rounded-xl bg-red-500 text-white text-button font-semibold hover:bg-red-600 transition-colors disabled:opacity-50 flex items-center justify-center gap-1.5">
+                                <X className="w-4 h-4" /> Refuser
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}
