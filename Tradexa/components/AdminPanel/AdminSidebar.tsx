@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import {
     LayoutDashboard, Users, Signal, UserCheck, Settings, X, Sun, Moon, Shield, ArrowLeft,
-    Briefcase, HeadphonesIcon, MessageSquareWarning, EyeOff,
+    Briefcase, HeadphonesIcon, MessageSquareWarning, EyeOff, GraduationCap,
 } from "lucide-react";
 
 type NavItem = { title: string; icon: React.ElementType; href: string; section?: string };
@@ -19,6 +19,7 @@ const navigation: NavItem[] = [
     { title: "Tickets support", icon: HeadphonesIcon, href: "/panel/admin/tickets" },
     { title: "Alertes traders", icon: MessageSquareWarning, href: "/panel/admin/alerts" },
     { title: "Adhésions broker", icon: Briefcase, href: "/panel/admin/broker", section: "Business" },
+    { title: "Formations", icon: GraduationCap, href: "/panel/admin/formations", section: "Contenu" },
     { title: "Paramètres", icon: Settings, href: "/panel/admin/settings" },
 ];
 
