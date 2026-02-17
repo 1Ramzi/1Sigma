@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Icon from "@/components/Icon";
 import { liveAlertPool, LiveAlert, LiveAlertType } from "@/mocks/notifications";
+import { useUserStore } from "@/stores/userStore";
 
 const ALERT_DURATION = 6000;
 const ALERT_INTERVAL_MIN = 8000;
@@ -25,6 +26,8 @@ export const getLiveAlertsMuted = () => globalMuted;
 
 const LiveAlertStack = () => {
     const router = useRouter();
+    const { accountType } = useUserStore();
+    const isFree = accountType === 'free';
     const [alerts, setAlerts] = useState<LiveAlert[]>([]);
     const poolIndex = useRef(0);
     const alertIdCounter = useRef(0);
@@ -116,7 +119,12 @@ const LiveAlertStack = () => {
                                     </div>
                                     <p className="text-caption font-medium text-t-primary">{alert.message}</p>
                                     {alert.detail && (
-                                        <p className="text-[11px] text-t-secondary mt-0.5 truncate">{alert.detail}</p>
+                                        <p className="text-[11px] text-t-secondary mt-0.5 truncate">
+                                            {isFree ? alert.detail.replace(/[\d.,]+/g, '****') : alert.detail}
+                                        </p>
+                                    )}
+                                    {isFree && (
+                                        <p className="text-[9px] text-amber-500 mt-0.5 font-medium">Passez en Premium pour voir les détails</p>
                                     )}
                                 </div>
                             </div>
