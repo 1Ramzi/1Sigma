@@ -6,6 +6,7 @@ import Button from "@/components/Button";
 import Icon from "@/components/Icon";
 import Modal from "@/components/Modal";
 import { useLanguage } from "@/context/LanguageContext";
+import { useUserStore } from "@/stores/userStore";
 import { setLiveAlertsMuted, getLiveAlertsMuted } from "@/components/LiveAlertStack";
 
 import { allNotifications } from "@/mocks/notifications";
@@ -23,6 +24,8 @@ const Notifications = ({}) => {
     const [dismissed, setDismissed] = useState<number[]>([]);
     const [muted, setMuted] = useState(false);
     const { t } = useLanguage();
+    const { accountType } = useUserStore();
+    const isFree = accountType === 'free';
 
     useEffect(() => {
         setMuted(getLiveAlertsMuted());
@@ -69,7 +72,7 @@ const Notifications = ({}) => {
                                     key={notification.id}
                                 >
                                     <Link
-                                        href={config.href}
+                                        href={isFree ? '/subscription' : config.href}
                                         className="relative z-2 flex items-center flex-1 min-w-0"
                                         onClick={() => setIsOpen(false)}
                                     >

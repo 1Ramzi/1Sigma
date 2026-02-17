@@ -1,88 +1,59 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useMedia } from "react-use";
-import { useLanguage } from "@/context/LanguageContext";
 import Layout from "@/components/Layout";
-import Search from "@/components/Search";
+import Icon from "@/components/Icon";
 import Button from "@/components/Button";
-import Message from "./Message";
-import Details from "./Details";
-
-import { messages } from "@/mocks/messages";
+import { useLanguage } from "@/context/LanguageContext";
 
 const MessagesPage = () => {
     const { t } = useLanguage();
-    const [search, setSearch] = useState("");
-    const [mounted, setMounted] = useState(false);
-    const isMobile = useMedia("(max-width: 767px)");
 
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-
-    const [activeMessage, setActiveMessage] = useState<number | null>(
-        isMobile ? null : 1
-    );
-
-    if (!mounted) return null;
+    const channels = [
+        { name: "Signaux VIP", desc: "Échangez en direct avec nos traders certifiés sur les signaux en cours", icon: "trending-up", color: "fill-primary-02" },
+        { name: "Analyse Premium", desc: "Accédez aux analyses approfondies et posez vos questions aux experts", icon: "chart", color: "fill-primary-04" },
+        { name: "Communauté", desc: "Rejoignez la communauté Tradexa et partagez vos stratégies", icon: "users", color: "fill-primary-01" },
+    ];
 
     return (
         <Layout title={t.messages}>
-            <div className="max-w-[1200px] mx-auto card p-0 overflow-hidden">
-                <div className="flex max-md:block max-md:p-3">
-                    <div
-                        className={`shrink-0 w-126 max-4xl:w-106 max-3xl:w-96 p-3 pb-0 max-2xl:w-76 max-md:w-full max-md:p-0 ${
-                            activeMessage === null
-                                ? "max-md:block"
-                                : "max-md:hidden"
-                        }`}
-                    >
-                        <Search
-                            className="mb-3"
-                            value={search}
-                            onChange={(e) => setSearch(e.target.value)}
-                            placeholder={t.searchMessage}
-                            isGray
-                        />
-                        {search === "" ? (
-                            <div className="flex flex-col gap-1 h-[calc(100svh-11.25rem)] pb-3 overflow-y-auto scrollbar-none max-md:h-auto max-lg:gap-0">
-                                {messages.map((message) => (
-                                    <Message
-                                        key={message.id}
-                                        value={message}
-                                        isActive={activeMessage === message.id}
-                                        onClick={() =>
-                                            setActiveMessage(message.id)
-                                        }
-                                    />
-                                ))}
+            <div className="max-w-2xl mx-auto py-12 text-center">
+                <div className="w-20 h-20 rounded-2xl bg-primary-01/10 flex items-center justify-center mx-auto mb-6">
+                    <Icon name="chat" className="!size-10 fill-primary-01" />
+                </div>
+                <h2 className="text-h3 font-bold text-t-primary mb-3">Messagerie</h2>
+                <p className="text-body-1 text-t-secondary mb-2">Bientôt disponible</p>
+                <p className="text-body-2 text-t-tertiary mb-10 max-w-md mx-auto">
+                    Communiquez directement avec nos traders professionnels dans des canaux dédiés par niveau d&apos;abonnement. Posez vos questions, recevez des conseils personnalisés et échangez en temps réel.
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+                    {channels.map((ch) => (
+                        <div key={ch.name} className="card p-5 text-left">
+                            <div className="w-10 h-10 rounded-xl bg-b-surface2 flex items-center justify-center mb-3">
+                                <Icon name={ch.icon} className={`!size-5 ${ch.color}`} />
                             </div>
-                        ) : (
-                            <div className="pt-16 text-center max-md:pb-24">
-                                <div className="mb-6 text-h5">
-                                    {t.noResultFound}
-                                </div>
-                                <Button
-                                    isStroke
-                                    as="link"
-                                    href="/explore-creators"
-                                >
-                                    {t.exploreCreators}
-                                </Button>
-                            </div>
-                        )}
+                            <h3 className="text-sub-title-1 font-semibold text-t-primary mb-1">{ch.name}</h3>
+                            <p className="text-caption text-t-tertiary">{ch.desc}</p>
+                        </div>
+                    ))}
+                </div>
+
+                <div className="card p-6 max-w-md mx-auto mb-8">
+                    <div className="flex items-center gap-3 mb-3">
+                        <div className="w-3 h-3 rounded-full bg-primary-04 animate-pulse" />
+                        <span className="text-body-2 font-semibold text-t-primary">En cours de développement</span>
                     </div>
-                    <div
-                        className={`flex flex-col w-[calc(100%-31.5rem)] p-3 pl-6 max-4xl:w-[calc(100%-26.5rem)] max-3xl:w-[calc(100%-24rem)] h-[calc(100svh-6.75rem)] py-3 overflow-y-auto scrollbar-none max-2xl:w-[calc(100%-19rem)] max-lg:pl-3 max-md:block max-md:w-full max-md:h-auto max-md:p-0 ${
-                            activeMessage !== null
-                                ? "max-md:block"
-                                : "max-md:hidden"
-                        }`}
-                    >
-                        <Details />
+                    <p className="text-caption text-t-tertiary mb-4">Les canaux VIP et Premium seront accessibles selon votre abonnement. Chaque trader aura son propre canal de discussion.</p>
+                    <div className="flex flex-wrap gap-2">
+                        <span className="text-[10px] px-3 py-1.5 rounded-full bg-primary-02/10 text-primary-02 font-medium">Chat en direct</span>
+                        <span className="text-[10px] px-3 py-1.5 rounded-full bg-primary-04/10 text-primary-04 font-medium">Canaux VIP</span>
+                        <span className="text-[10px] px-3 py-1.5 rounded-full bg-primary-01/10 text-primary-01 font-medium">Notifications</span>
                     </div>
                 </div>
+
+                <Button isBlack as="link" href="/subscription">
+                    Voir les abonnements
+                </Button>
             </div>
         </Layout>
     );

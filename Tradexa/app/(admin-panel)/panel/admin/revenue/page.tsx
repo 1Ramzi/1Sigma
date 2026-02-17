@@ -148,8 +148,24 @@ export default function AdminRevenuePage() {
 
             <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
                 <h3 className="text-h6 font-semibold">Contrats CPA ({activeContracts.length})</h3>
-                <div className="flex gap-2">
-                    <button onClick={exportAll} className="h-9 px-4 rounded-lg bg-blue-500/10 text-blue-500 text-caption font-semibold hover:bg-blue-500/20 transition-colors flex items-center gap-1.5"><Download className="w-3.5 h-3.5" /> Tout exporter</button>
+                <div className="flex flex-wrap gap-2">
+                    <div className="relative">
+                        <select
+                            onChange={(e) => {
+                                const val = e.target.value;
+                                if (val === "__all__") exportAll();
+                                else { const c = activeContracts.find((x) => x.id === val); if (c) exportContract(c); }
+                                e.target.value = "";
+                            }}
+                            defaultValue=""
+                            className="h-9 pl-3 pr-8 rounded-lg bg-blue-500/10 text-blue-500 text-caption font-semibold border-0 outline-none cursor-pointer appearance-none"
+                        >
+                            <option value="" disabled>Exporter...</option>
+                            <option value="__all__">Tout exporter</option>
+                            {activeContracts.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
+                        </select>
+                        <Download className="absolute right-2 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-blue-500 pointer-events-none" />
+                    </div>
                     <button onClick={() => setShowExports(!showExports)} className="h-9 px-4 rounded-lg bg-b-surface2 border border-s-border text-caption text-t-secondary hover:text-t-primary transition-colors flex items-center gap-1.5">{showExports ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />} Historique ({exports.length})</button>
                     <button onClick={() => setShowAdd(!showAdd)} className="h-9 px-4 rounded-lg bg-red-500 text-white text-caption font-semibold hover:bg-red-600 transition-colors flex items-center gap-1.5"><PlusCircle className="w-3.5 h-3.5" /> Ajouter</button>
                 </div>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import AdminSidebar from "./AdminSidebar";
 import AdminHeader from "./AdminHeader";
+import LiveAlertStack from "@/components/LiveAlertStack";
 
 type Props = { title?: string; children: React.ReactNode };
 
@@ -15,6 +16,7 @@ export default function AdminLayout({ title, children }: Props) {
             <div className="pt-20 pb-5">
                 <div className="w-full mx-auto px-5 max-md:px-3">{children}</div>
             </div>
+            <LiveAlertStack />
         </div>
     );
 }

@@ -20,7 +20,7 @@ const navigation: NavItem[] = [
     { title: "Alertes traders", icon: MessageSquareWarning, href: "/panel/admin/alerts" },
     { title: "Adhésions broker", icon: Briefcase, href: "/panel/admin/broker", section: "Business" },
     { title: "Revenus CPA", icon: DollarSign, href: "/panel/admin/revenue" },
-    { title: "Créer un trader", icon: UserPlus, href: "/panel/admin/create-trader" },
+    { title: "Gestion traders", icon: UserPlus, href: "/panel/admin/create-trader" },
     { title: "Formations", icon: GraduationCap, href: "/panel/admin/formations", section: "Contenu" },
     { title: "Paramètres", icon: Settings, href: "/panel/admin/settings" },
 ];

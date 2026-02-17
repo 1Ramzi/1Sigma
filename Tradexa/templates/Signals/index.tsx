@@ -113,14 +113,25 @@ const SignalsPage = () => {
                                 className="relative"
                             >
                                 {isFree && !isHistory ? (
-                                    <div className="relative">
-                                        <div className="blur-[6px] pointer-events-none select-none">
-                                            <SignalCard signal={signal} vote={vote} />
+                                    <div className="relative rounded-2xl border border-s-border bg-b-surface2 p-6">
+                                        <div className="flex items-center gap-4 mb-4">
+                                            <div className="w-10 h-10 rounded-full bg-b-surface1 animate-pulse" />
+                                            <div className="flex-1 space-y-2">
+                                                <div className="h-4 w-32 bg-b-surface1 rounded animate-pulse" />
+                                                <div className="h-3 w-48 bg-b-surface1 rounded animate-pulse" />
+                                            </div>
+                                            <div className="h-8 w-20 bg-b-surface1 rounded-lg animate-pulse" />
                                         </div>
-                                        <div className="absolute inset-0 flex items-center justify-center bg-b-surface1/30 backdrop-blur-[2px] rounded-2xl">
+                                        <div className="grid grid-cols-3 gap-3 mb-4">
+                                            <div className="h-16 bg-b-surface1 rounded-xl animate-pulse" />
+                                            <div className="h-16 bg-b-surface1 rounded-xl animate-pulse" />
+                                            <div className="h-16 bg-b-surface1 rounded-xl animate-pulse" />
+                                        </div>
+                                        <div className="absolute inset-0 flex items-center justify-center rounded-2xl bg-b-surface2/80">
                                             <div className="text-center">
                                                 <Icon name="lock" className="!size-8 fill-t-tertiary mx-auto mb-2" />
                                                 <p className="text-body-2 font-semibold text-t-secondary">Signal réservé aux membres</p>
+                                                <p className="text-caption text-t-tertiary mt-1">Aucune donnée n&apos;est transmise</p>
                                             </div>
                                         </div>
                                     </div>

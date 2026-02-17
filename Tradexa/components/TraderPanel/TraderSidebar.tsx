@@ -17,7 +17,6 @@ const navigation: NavItem[] = [
     { title: "Notifications", icon: Bell, href: "/panel/trader/notifications", section: "Communication" },
     { title: "Alertes", icon: Megaphone, href: "/panel/trader/alerts" },
     { title: "Feedbacks", icon: MessageSquare, href: "/panel/trader/feedback" },
-    { title: "Revenus", icon: Wallet, href: "/panel/trader/earnings", section: "Finance" },
     { title: "Lives", icon: Video, href: "/panel/trader/lives", disabled: true, badge: "Bientôt", section: "Contenu" },
     { title: "Mon Profil", icon: User, href: "/panel/trader/profile", section: "Compte" },
 ];

@@ -6,9 +6,12 @@ import Card from "@/components/Card";
 import Icon from "@/components/Icon";
 import AnimateHeight from "react-animate-height";
 import { useLanguage } from "@/context/LanguageContext";
+import { useUserStore } from "@/stores/userStore";
 
 const LivePage = () => {
     const { t } = useLanguage();
+    const { accountType } = useUserStore();
+    const isFree = accountType === 'free';
     const [chatMessage, setChatMessage] = useState('');
     const [showPlanning, setShowPlanning] = useState(false);
     const [chatMessages, setChatMessages] = useState([
@@ -169,23 +172,31 @@ const LivePage = () => {
 
                             {/* Chat Input */}
                             <div className="px-3 py-3 border-t border-s-border">
-                                <div className="flex items-center gap-2">
-                                    <input
-                                        type="text"
-                                        value={chatMessage}
-                                        onChange={(e) => setChatMessage(e.target.value)}
-                                        onKeyDown={(e) => e.key === 'Enter' && handleSendChat()}
-                                        placeholder={t.messagePlaceholder || 'Message...'}
-                                        className="flex-1 h-9 px-3 bg-b-surface2 border border-s-border rounded-lg text-caption text-t-primary placeholder:text-t-tertiary focus:outline-none focus:border-primary-01 transition-colors"
-                                    />
-                                    <button
-                                        onClick={handleSendChat}
-                                        disabled={!chatMessage.trim()}
-                                        className="w-9 h-9 rounded-lg bg-shade-01 dark:bg-shade-07 flex items-center justify-center shrink-0 hover:opacity-90 transition-opacity disabled:opacity-40"
-                                    >
-                                        <Icon name="send" className="!size-4 fill-shade-07 dark:fill-shade-01" />
-                                    </button>
-                                </div>
+                                {isFree ? (
+                                    <div className="flex items-center gap-2 p-2 rounded-lg bg-amber-500/5 border border-amber-500/20">
+                                        <Icon name="lock" className="!size-4 fill-amber-500 shrink-0" />
+                                        <p className="text-[11px] text-amber-500 font-medium">Abonnez-vous pour participer au chat en direct</p>
+                                    </div>
+                                ) : (
+                                    <div className="flex items-center gap-2">
+                                        <input
+                                            type="text"
+                                            value={chatMessage}
+                                            onChange={(e) => setChatMessage(e.target.value)}
+                                            onKeyDown={(e) => e.key === 'Enter' && handleSendChat()}
+                                            placeholder={t.messagePlaceholder || 'Message...'}
+                                            className="flex-1 h-9 px-3 bg-b-surface2 border border-s-border rounded-lg text-caption text-t-primary placeholder:text-t-tertiary focus:outline-none focus:border-primary-01 transition-colors"
+                                        />
+                                        <button
+                                            onClick={handleSendChat}
+                                            disabled={!chatMessage.trim()}
+                                            className="w-9 h-9 rounded-lg bg-shade-01 dark:bg-shade-07 flex items-center justify-center shrink-0 hover:opacity-90 transition-opacity disabled:opacity-40"
+                                            title="Envoyer"
+                                        >
+                                            <Icon name="send" className="!size-4 fill-shade-07 dark:fill-shade-01" />
+                                        </button>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>

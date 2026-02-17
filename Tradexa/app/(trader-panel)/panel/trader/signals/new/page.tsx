@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import TraderLayout from "@/components/TraderPanel/TraderLayout";
 import { useTraderStore } from "@/stores/traderStore";
 import { Market, Direction, Confidence, Timeframe, TraderSignalView } from "@/types/trader";
-import { ArrowLeft, ArrowRight, Check, TrendingUp, TrendingDown, AlertTriangle, Sparkles, Loader2, Gift, Crown, Zap } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, TrendingUp, TrendingDown, AlertTriangle, Sparkles, Loader2, Crown, Zap, Users, CheckCircle } from "lucide-react";
 
 const PAIRS: Record<Market, string[]> = {
     forex: ["EUR/USD", "GBP/USD", "USD/JPY", "GBP/JPY", "USD/CHF", "AUD/USD", "EUR/GBP", "NZD/USD"],
@@ -23,7 +23,7 @@ export default function NewSignalPage() {
         pair: "", market: "forex" as Market, direction: "buy" as Direction,
         entryPrice: "", stopLoss: "", takeProfit1: "", takeProfit2: "", takeProfit3: "", takeProfit4: "", takeProfit5: "",
         confidence: "medium" as Confidence, timeframe: "4h" as Timeframe,
-        analysis: "", notifyFollowers: true, visibility: "free" as "free" | "vip" | "premium",
+        analysis: "", visibility: ["free"] as ("free" | "vip" | "premium")[], aiAutoEnrich: false,
     });
     const [errors, setErrors] = useState<Record<string, string>>({});
     const [aiLoading, setAiLoading] = useState(false);
@@ -48,7 +48,8 @@ export default function NewSignalPage() {
         }, 2000);
     };
 
-    const set = (key: string, val: string | boolean) => setForm((f) => ({ ...f, [key]: val }));
+    const [flashMsg, setFlashMsg] = useState("");
+    const set = (key: string, val: unknown) => setForm((f) => ({ ...f, [key]: val }));
 
     const validateStep1 = () => {
         const e: Record<string, string> = {};
@@ -108,7 +109,8 @@ export default function NewSignalPage() {
             followersCount: 0, upvotes: 0, downvotes: 0, currentPL: 0, tpsHit: [], updates: [],
         };
         addSignal(newSig);
-        router.push("/panel/trader/signals");
+        setFlashMsg("Signal publié avec succès !");
+        setTimeout(() => router.push("/panel/trader/signals"), 1800);
     };
 
     return (
@@ -207,11 +209,22 @@ export default function NewSignalPage() {
                 {step === 3 && (
                     <div className="card !p-6 space-y-5">
                         <h2 className="text-h6 font-semibold">Analyse & Options</h2>
+                        <label className="flex items-start gap-3 p-4 rounded-xl border border-purple-500/20 bg-purple-500/5 cursor-pointer hover:bg-purple-500/10 transition-colors">
+                            <input type="checkbox" checked={form.aiAutoEnrich} onChange={(e) => set("aiAutoEnrich", e.target.checked)}
+                                className="w-5 h-5 rounded accent-purple-500 mt-0.5 shrink-0" />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-0.5">
+                                    <Sparkles className="w-4 h-4 text-purple-500" />
+                                    <span className="text-body-2 font-semibold text-purple-500">Enrichissement IA</span>
+                                </div>
+                                <p className="text-caption text-t-secondary">L&apos;IA ajoutera automatiquement des éléments d&apos;analyse au fur et à mesure qu&apos;elle en identifie (niveaux clés, patterns, confluences).</p>
+                            </div>
+                        </label>
                         <button onClick={runAiAnalysis} disabled={aiLoading}
-                            className={`w-full h-12 rounded-xl text-button font-semibold flex items-center justify-center gap-2 transition-all border ${aiDone ? "bg-purple-500/10 border-purple-500/30 text-purple-500" : "bg-gradient-to-r from-purple-500/10 to-blue-500/10 border-purple-500/20 text-purple-400 hover:from-purple-500/15 hover:to-blue-500/15"} disabled:opacity-50`}>
+                            className={`w-full h-12 rounded-xl text-button font-semibold flex items-center justify-center gap-2 transition-all border ${aiDone ? "bg-purple-500/10 border-purple-500/30 text-purple-500" : "bg-purple-500/10 border-purple-500/20 text-purple-400 hover:bg-purple-500/15"} disabled:opacity-50`}>
                             {aiLoading ? <><Loader2 className="w-4 h-4 animate-spin" /> Analyse IA en cours...</>
                                 : aiDone ? <><Sparkles className="w-4 h-4" /> IA a rempli les champs — Vous pouvez modifier</>
-                                : <><Sparkles className="w-4 h-4" /> Laisser l&apos;IA compléter (confiance, timeframe, analyse)</>}
+                                : <><Sparkles className="w-4 h-4" /> Lancer l&apos;analyse IA maintenant</>}
                         </button>
                         {aiDone && <p className="text-caption text-purple-400/70 text-center -mt-2">L&apos;IA a pré-rempli les champs ci-dessous. Ajustez si nécessaire.</p>}
                         <div>
@@ -249,27 +262,27 @@ export default function NewSignalPage() {
                         </div>
                         <div>
                             <label className="text-caption text-t-secondary mb-1.5 block">Visibilité — Qui reçoit ce signal ?</label>
+                            <p className="text-[11px] text-t-tertiary mb-2">&quot;Tous les utilisateurs&quot; est toujours inclus. Sélectionnez des niveaux additionnels.</p>
                             <div className="grid grid-cols-3 gap-2">
                                 {(["free", "vip", "premium"] as const).map((v) => {
-                                    const cfg = { free: { label: "Gratuit", desc: "Tous les utilisateurs", icon: Gift, color: "blue" }, vip: { label: "VIP", desc: "Abonnés VIP uniquement", icon: Crown, color: "amber" }, premium: { label: "Premium", desc: "Abonnés Premium", icon: Zap, color: "purple" } }[v];
-                                    const Icon = cfg.icon;
-                                    const isActive = form.visibility === v;
+                                    const cfg = { free: { label: "Tous", desc: "Tous les utilisateurs", icon: Users, color: "blue" }, vip: { label: "VIP", desc: "Abonnés VIP", icon: Crown, color: "amber" }, premium: { label: "Premium", desc: "Abonnés Premium", icon: Zap, color: "purple" } }[v];
+                                    const Ic = cfg.icon;
+                                    const isActive = form.visibility.includes(v);
+                                    const toggle = () => {
+                                        if (v === "free") return;
+                                        setForm((f) => ({ ...f, visibility: isActive ? f.visibility.filter((x) => x !== v) : [...f.visibility, v] }));
+                                    };
                                     return (
-                                        <button key={v} onClick={() => set("visibility", v)}
-                                            className={`p-3 rounded-xl border text-left transition-all ${isActive ? `bg-${cfg.color}-500/10 border-${cfg.color}-500/30` : "bg-b-surface1 border-s-border hover:border-t-tertiary"}`}>
-                                            <Icon className={`w-5 h-5 mb-1.5 ${isActive ? `text-${cfg.color}-500` : "text-t-tertiary"}`} />
-                                            <p className={`text-button font-semibold ${isActive ? `text-${cfg.color}-500` : "text-t-primary"}`}>{cfg.label}</p>
+                                        <button key={v} onClick={toggle} disabled={v === "free"}
+                                            className={`p-3 rounded-xl border text-left transition-all ${v === "free" ? "bg-blue-500/10 border-blue-500/30 cursor-default" : isActive ? `bg-${cfg.color}-500/10 border-${cfg.color}-500/30` : "bg-b-surface1 border-s-border hover:border-t-tertiary"}`}>
+                                            <Ic className={`w-5 h-5 mb-1.5 ${isActive || v === "free" ? `text-${cfg.color}-500` : "text-t-tertiary"}`} />
+                                            <p className={`text-button font-semibold ${isActive || v === "free" ? `text-${cfg.color}-500` : "text-t-primary"}`}>{cfg.label}</p>
                                             <p className="text-[10px] text-t-tertiary mt-0.5">{cfg.desc}</p>
                                         </button>
                                     );
                                 })}
                             </div>
                         </div>
-                        <label className="flex items-center gap-3 cursor-pointer">
-                            <input type="checkbox" checked={form.notifyFollowers} onChange={(e) => set("notifyFollowers", e.target.checked)}
-                                className="w-5 h-5 rounded accent-emerald-500" />
-                            <span className="text-body-2 text-t-primary">Notifier les followers</span>
-                        </label>
                     </div>
                 )}
 
@@ -287,7 +300,7 @@ export default function NewSignalPage() {
                             <div className="p-3 rounded-xl bg-b-surface1"><p className="text-caption text-t-tertiary">Confiance</p><p className="text-sub-title-1">{form.confidence === "low" ? "Faible" : form.confidence === "medium" ? "Moyenne" : "Haute"}</p></div>
                             <div className="p-3 rounded-xl bg-b-surface1"><p className="text-caption text-t-tertiary">Timeframe</p><p className="text-sub-title-1">{form.timeframe}</p></div>
                             {rrRatio() && <div className="p-3 rounded-xl bg-b-surface1"><p className="text-caption text-t-tertiary">R:R</p><p className="text-sub-title-1 text-emerald-500 font-bold">1:{rrRatio()}</p></div>}
-                            <div className="p-3 rounded-xl bg-b-surface1"><p className="text-caption text-t-tertiary">Visibilité</p><p className={`text-sub-title-1 font-semibold ${form.visibility === "free" ? "text-blue-500" : form.visibility === "vip" ? "text-amber-500" : "text-purple-500"}`}>{form.visibility === "free" ? "Gratuit" : form.visibility === "vip" ? "VIP" : "Premium"}</p></div>
+                            <div className="p-3 rounded-xl bg-b-surface1"><p className="text-caption text-t-tertiary">Visibilité</p><p className="text-sub-title-1 font-semibold">{form.visibility.map((v) => v === "free" ? "Tous" : v.toUpperCase()).join(" + ")}</p></div>
                         </div>
                         {form.analysis && <div className="p-3 rounded-xl bg-b-surface1"><p className="text-caption text-t-tertiary mb-1">Analyse</p><p className="text-body-2">{form.analysis}</p></div>}
                     </div>
@@ -312,6 +325,12 @@ export default function NewSignalPage() {
                     </div>
                 </div>
             </div>
+            {flashMsg && (
+                <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3 px-5 py-3.5 rounded-xl bg-emerald-500 text-white shadow-lg animate-in slide-in-from-bottom-4">
+                    <CheckCircle className="w-5 h-5 shrink-0" />
+                    <span className="text-body-2 font-semibold">{flashMsg}</span>
+                </div>
+            )}
         </TraderLayout>
     );
 }
