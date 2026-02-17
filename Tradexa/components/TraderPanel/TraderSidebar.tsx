@@ -8,18 +8,18 @@ import {
     Bell, Megaphone, Video,
 } from "lucide-react";
 
-type NavItem = { title: string; icon: React.ElementType; href: string; disabled?: boolean; badge?: string };
+type NavItem = { title: string; icon: React.ElementType; href: string; disabled?: boolean; badge?: string; section?: string };
 
 const navigation: NavItem[] = [
     { title: "Dashboard", icon: LayoutDashboard, href: "/panel/trader" },
-    { title: "Nouveau Signal", icon: PlusCircle, href: "/panel/trader/signals/new" },
+    { title: "Nouveau Signal", icon: PlusCircle, href: "/panel/trader/signals/new", section: "Signaux" },
     { title: "Mes Signaux", icon: List, href: "/panel/trader/signals" },
-    { title: "Notifications", icon: Bell, href: "/panel/trader/notifications" },
+    { title: "Notifications", icon: Bell, href: "/panel/trader/notifications", section: "Communication" },
     { title: "Alertes", icon: Megaphone, href: "/panel/trader/alerts" },
     { title: "Feedbacks", icon: MessageSquare, href: "/panel/trader/feedback" },
-    { title: "Revenus", icon: Wallet, href: "/panel/trader/earnings" },
-    { title: "Lives", icon: Video, href: "/panel/trader/lives", disabled: true, badge: "Bientôt" },
-    { title: "Mon Profil", icon: User, href: "/panel/trader/profile" },
+    { title: "Revenus", icon: Wallet, href: "/panel/trader/earnings", section: "Finance" },
+    { title: "Lives", icon: Video, href: "/panel/trader/lives", disabled: true, badge: "Bientôt", section: "Contenu" },
+    { title: "Mon Profil", icon: User, href: "/panel/trader/profile", section: "Compte" },
 ];
 
 function getActiveHref(pathname: string): string {
@@ -59,24 +59,28 @@ export default function TraderSidebar({ visible, onClose }: Props) {
                         <X className="w-5 h-5 text-t-secondary" />
                     </button>
                 </div>
-                <nav className="flex-1 space-y-1 overflow-auto">
-                    {navigation.map((item) => {
+                <nav className="flex-1 space-y-0.5 overflow-auto">
+                    {navigation.map((item, i) => {
                         const isActive = activeHref === item.href;
-                        if (item.disabled) {
-                            return (
-                                <div key={item.href} className="flex items-center gap-3 h-11 px-3 rounded-xl text-button text-t-tertiary/50 cursor-not-allowed select-none">
-                                    <item.icon className="w-5 h-5" />
-                                    <span>{item.title}</span>
-                                    {item.badge && <span className="ml-auto text-[10px] bg-b-surface1 text-t-tertiary px-2 py-0.5 rounded-full">{item.badge}</span>}
-                                </div>
-                            );
-                        }
                         return (
-                            <Link key={item.href} href={item.href} onClick={onClose}
-                                className={`flex items-center gap-3 h-11 px-3 rounded-xl text-button transition-all ${isActive ? "bg-[#10B981]/10 text-[#10B981]" : "text-t-secondary hover:text-t-primary hover:bg-b-surface1"}`}>
-                                <item.icon className={`w-5 h-5 ${isActive ? "text-[#10B981]" : ""}`} />
-                                <span>{item.title}</span>
-                            </Link>
+                            <div key={item.href}>
+                                {item.section && (
+                                    <p className={`text-[10px] uppercase tracking-wider text-t-tertiary/60 font-semibold px-3 ${i > 0 ? "mt-4" : ""} mb-1.5`}>{item.section}</p>
+                                )}
+                                {item.disabled ? (
+                                    <div className="flex items-center gap-3 h-10 px-3 rounded-xl text-button text-t-tertiary/50 cursor-not-allowed select-none">
+                                        <item.icon className="w-[18px] h-[18px]" />
+                                        <span className="text-[13px]">{item.title}</span>
+                                        {item.badge && <span className="ml-auto text-[10px] bg-b-surface1 text-t-tertiary px-2 py-0.5 rounded-full">{item.badge}</span>}
+                                    </div>
+                                ) : (
+                                    <Link href={item.href} onClick={onClose}
+                                        className={`flex items-center gap-3 h-10 px-3 rounded-xl text-button transition-all ${isActive ? "bg-[#10B981]/10 text-[#10B981]" : "text-t-secondary hover:text-t-primary hover:bg-b-surface1"}`}>
+                                        <item.icon className={`w-[18px] h-[18px] ${isActive ? "text-[#10B981]" : ""}`} />
+                                        <span className="text-[13px]">{item.title}</span>
+                                    </Link>
+                                )}
+                            </div>
                         );
                     })}
                 </nav>
