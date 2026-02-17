@@ -262,21 +262,22 @@ export default function NewSignalPage() {
                         </div>
                         <div>
                             <label className="text-caption text-t-secondary mb-1.5 block">Visibilité — Qui reçoit ce signal ?</label>
-                            <p className="text-[11px] text-t-tertiary mb-2">&quot;Tous les utilisateurs&quot; est toujours inclus. Sélectionnez des niveaux additionnels.</p>
+                            <p className="text-[11px] text-t-tertiary mb-2">Sélectionnez qui peut voir ce signal. Au moins un niveau requis.</p>
                             <div className="grid grid-cols-3 gap-2">
                                 {(["free", "vip", "premium"] as const).map((v) => {
                                     const cfg = { free: { label: "Tous", desc: "Tous les utilisateurs", icon: Users, color: "blue" }, vip: { label: "VIP", desc: "Abonnés VIP", icon: Crown, color: "amber" }, premium: { label: "Premium", desc: "Abonnés Premium", icon: Zap, color: "purple" } }[v];
                                     const Ic = cfg.icon;
                                     const isActive = form.visibility.includes(v);
+                                    const isOnlyOne = form.visibility.length === 1 && isActive;
                                     const toggle = () => {
-                                        if (v === "free") return;
+                                        if (isOnlyOne) return;
                                         setForm((f) => ({ ...f, visibility: isActive ? f.visibility.filter((x) => x !== v) : [...f.visibility, v] }));
                                     };
                                     return (
-                                        <button key={v} onClick={toggle} disabled={v === "free"}
-                                            className={`p-3 rounded-xl border text-left transition-all ${v === "free" ? "bg-blue-500/10 border-blue-500/30 cursor-default" : isActive ? `bg-${cfg.color}-500/10 border-${cfg.color}-500/30` : "bg-b-surface1 border-s-border hover:border-t-tertiary"}`}>
-                                            <Ic className={`w-5 h-5 mb-1.5 ${isActive || v === "free" ? `text-${cfg.color}-500` : "text-t-tertiary"}`} />
-                                            <p className={`text-button font-semibold ${isActive || v === "free" ? `text-${cfg.color}-500` : "text-t-primary"}`}>{cfg.label}</p>
+                                        <button key={v} onClick={toggle} disabled={isOnlyOne}
+                                            className={`p-3 rounded-xl border text-left transition-all ${isActive ? `bg-${cfg.color}-500/10 border-${cfg.color}-500/30` : "bg-b-surface1 border-s-border hover:border-t-tertiary"} ${isOnlyOne ? "opacity-70 cursor-default" : ""}`}>
+                                            <Ic className={`w-5 h-5 mb-1.5 ${isActive ? `text-${cfg.color}-500` : "text-t-tertiary"}`} />
+                                            <p className={`text-button font-semibold ${isActive ? `text-${cfg.color}-500` : "text-t-primary"}`}>{cfg.label}</p>
                                             <p className="text-[10px] text-t-tertiary mt-0.5">{cfg.desc}</p>
                                         </button>
                                     );
