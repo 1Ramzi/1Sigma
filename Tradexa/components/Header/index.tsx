@@ -30,18 +30,11 @@ const Header = ({
     onToggleSidebar,
 }: HeaderProps) => {
     const { t } = useLanguage();
-    const { user } = useUserStore();
+    const { user, accountType, setAccountType } = useUserStore();
     const [showStatusMenu, setShowStatusMenu] = useState(false);
     const statusRef = useRef<HTMLDivElement>(null);
 
-    const getUserStatus = () => {
-        const role = user?.role || 'member';
-        if (role === 'vip' || role === 'trader' || role === 'admin') return 'partner';
-        if (role === 'moderator') return 'subscriber';
-        return 'free';
-    };
-
-    const userStatus = getUserStatus();
+    const userStatus = accountType;
 
     // Close dropdown on outside click
     useEffect(() => {
@@ -137,7 +130,7 @@ const Header = ({
                             }`}
                         />
                     )}
-                    {/* Status badge with dropdown */}
+                    {/* Account type switcher (temporary demo) */}
                     <div className="hidden md:block relative" ref={statusRef}>
                         <button
                             onClick={() => setShowStatusMenu(!showStatusMenu)}
@@ -150,7 +143,7 @@ const Header = ({
                                     </svg>
                                     <span className="text-amber-500">{t.statusBadgePartner}</span>
                                 </>
-                            ) : userStatus === 'subscriber' ? (
+                            ) : userStatus === 'premium' ? (
                                 <>
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M6 3L12 1L18 3L20 9L16 15H8L4 9L6 3Z" fill="#3B82F6" stroke="#3B82F6" strokeWidth="1.5"/>
@@ -190,39 +183,55 @@ const Header = ({
                                     animate={{ opacity: 1, y: 0, scale: 1 }}
                                     exit={{ opacity: 0, y: 8, scale: 0.95 }}
                                     transition={{ duration: 0.15 }}
-                                    className="absolute top-full right-0 mt-2 w-64 bg-b-surface1 border border-s-border rounded-xl shadow-depth p-2 z-30"
+                                    className="absolute top-full right-0 mt-2 w-72 bg-b-surface1 border border-s-border rounded-xl shadow-depth p-2 z-30"
                                 >
-                                    <Link
-                                        href="/subscription"
-                                        onClick={() => setShowStatusMenu(false)}
-                                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-b-surface2 transition-colors"
+                                    <p className="px-3 py-1.5 text-[10px] text-t-tertiary uppercase tracking-wider font-semibold">Choisir un type de compte (démo)</p>
+                                    <button
+                                        onClick={() => { setAccountType('free'); setShowStatusMenu(false); }}
+                                        className={`w-full flex items-center gap-3 p-3 rounded-lg transition-colors ${userStatus === 'free' ? 'bg-b-surface2 ring-1 ring-t-tertiary/20' : 'hover:bg-b-surface2'}`}
+                                    >
+                                        <div className="w-9 h-9 rounded-lg bg-shade-07/10 flex items-center justify-center">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                            </svg>
+                                        </div>
+                                        <div className="text-left">
+                                            <p className="text-body-2 font-semibold text-t-secondary">{t.statusBadgeFree}</p>
+                                            <p className="text-[11px] text-t-tertiary">Signaux floutés, alertes masquées</p>
+                                        </div>
+                                        {userStatus === 'free' && <span className="ml-auto text-[10px] bg-t-tertiary/10 text-t-secondary px-2 py-0.5 rounded-full">Actif</span>}
+                                    </button>
+                                    <button
+                                        onClick={() => { setAccountType('premium'); setShowStatusMenu(false); }}
+                                        className={`w-full flex items-center gap-3 p-3 rounded-lg transition-colors ${userStatus === 'premium' ? 'bg-blue-500/5 ring-1 ring-blue-500/20' : 'hover:bg-b-surface2'}`}
                                     >
                                         <div className="w-9 h-9 rounded-lg bg-blue-500/10 flex items-center justify-center">
-                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M6 3L12 1L18 3L20 9L16 15H8L4 9L6 3Z" fill="#3B82F6" stroke="#3B82F6" strokeWidth="1.5"/>
                                                 <path d="M12 5L14 9L12 15L10 9L12 5Z" fill="#60A5FA"/>
                                             </svg>
                                         </div>
-                                        <div>
+                                        <div className="text-left">
                                             <p className="text-body-2 font-semibold text-blue-500">{t.statusBadgeSubscriber}</p>
-                                            <p className="text-caption text-t-tertiary">{t.subscriberDesc}</p>
+                                            <p className="text-[11px] text-t-tertiary">Accès complet par abonnement</p>
                                         </div>
-                                    </Link>
-                                    <Link
-                                        href="/broker"
-                                        onClick={() => setShowStatusMenu(false)}
-                                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-b-surface2 transition-colors"
+                                        {userStatus === 'premium' && <span className="ml-auto text-[10px] bg-blue-500/10 text-blue-500 px-2 py-0.5 rounded-full">Actif</span>}
+                                    </button>
+                                    <button
+                                        onClick={() => { setAccountType('partner'); setShowStatusMenu(false); }}
+                                        className={`w-full flex items-center gap-3 p-3 rounded-lg transition-colors ${userStatus === 'partner' ? 'bg-amber-500/5 ring-1 ring-amber-500/20' : 'hover:bg-b-surface2'}`}
                                     >
                                         <div className="w-9 h-9 rounded-lg bg-amber-500/10 flex items-center justify-center">
-                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#F59E0B" stroke="#F59E0B" strokeWidth="1.5"/>
                                             </svg>
                                         </div>
-                                        <div>
+                                        <div className="text-left">
                                             <p className="text-body-2 font-semibold text-amber-500">{t.statusBadgePartner}</p>
-                                            <p className="text-caption text-t-tertiary">{t.partnerDesc}</p>
+                                            <p className="text-[11px] text-t-tertiary">Via broker, accès gratuit à vie</p>
                                         </div>
-                                    </Link>
+                                        {userStatus === 'partner' && <span className="ml-auto text-[10px] bg-amber-500/10 text-amber-500 px-2 py-0.5 rounded-full">Actif</span>}
+                                    </button>
                                 </motion.div>
                             )}
                         </AnimatePresence>
