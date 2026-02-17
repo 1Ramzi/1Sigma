@@ -33,6 +33,8 @@ const SubscriptionPage = () => {
                 t.planFreeFeature1,
                 t.planFreeFeature2,
                 t.planFreeFeature3,
+                "Historique des signaux passés",
+                "Accès communauté Discord",
             ],
             cta: t.planFreeCta,
             current: true,
@@ -56,9 +58,11 @@ const SubscriptionPage = () => {
                 t.planSubFeature2,
                 t.planSubFeature3,
                 t.planSubFeature4,
+                "Copier les prix en 1 clic",
+                "Alertes push en temps réel",
+                "Statistiques détaillées",
             ],
             cta: t.planSubCta,
-            popular: true,
         },
         {
             id: 'partner' as PlanId,
@@ -78,9 +82,14 @@ const SubscriptionPage = () => {
                 t.planPartnerFeature2,
                 t.planPartnerFeature3,
                 t.planPartnerFeature4,
+                "Pas d'abonnement mensuel",
+                "Votre dépôt reste le vôtre",
+                "Conditions de trading optimisées",
+                "Support prioritaire dédié",
             ],
             cta: t.planPartnerCta,
             isBroker: true,
+            popular: true,
         },
     ];
 
@@ -136,7 +145,7 @@ const SubscriptionPage = () => {
                                 title=""
                             >
                                 {plan.popular && (
-                                    <div className="bg-blue-500 text-white text-center py-2 text-caption font-bold tracking-wide uppercase">
+                                    <div className={`${plan.id === 'partner' ? 'bg-amber-500' : 'bg-blue-500'} text-white text-center py-2 text-caption font-bold tracking-wide uppercase`}>
                                         {t.planMostPopular}
                                     </div>
                                 )}
