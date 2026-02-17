@@ -9,7 +9,6 @@ import Logo from "@/components/Logo";
 import OnlineUsers from "./OnlineUsers";
 import User from "./User";
 import Notifications from "./Notifications";
-import Messages from "./Messages";
 import { SelectOption } from "@/types/select";
 import { useLanguage } from "@/context/LanguageContext";
 import { useUserStore } from "@/stores/userStore";
@@ -30,7 +29,7 @@ const Header = ({
     onToggleSidebar,
 }: HeaderProps) => {
     const { t } = useLanguage();
-    const { user, accountType, setAccountType } = useUserStore();
+    const { user, accountType, setAccountType, role, setRole } = useUserStore();
     const [showStatusMenu, setShowStatusMenu] = useState(false);
     const statusRef = useRef<HTMLDivElement>(null);
 
@@ -232,12 +231,52 @@ const Header = ({
                                         </div>
                                         {userStatus === 'partner' && <span className="ml-auto text-[10px] bg-amber-500/10 text-amber-500 px-2 py-0.5 rounded-full">Actif</span>}
                                     </button>
+                                    <div className="my-1 border-t border-s-border" />
+                                    <p className="px-3 py-1.5 text-[10px] text-t-tertiary uppercase tracking-wider font-semibold">Rôle (démo)</p>
+                                    <button
+                                        onClick={() => { setRole('user'); setShowStatusMenu(false); }}
+                                        className={`w-full flex items-center gap-3 p-3 rounded-lg transition-colors ${role === 'user' ? 'bg-b-surface2 ring-1 ring-t-tertiary/20' : 'hover:bg-b-surface2'}`}
+                                    >
+                                        <div className="w-9 h-9 rounded-lg bg-shade-07/10 flex items-center justify-center">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="1.5"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
+                                        </div>
+                                        <div className="text-left">
+                                            <p className="text-body-2 font-semibold text-t-secondary">Utilisateur</p>
+                                            <p className="text-[11px] text-t-tertiary">Signaux selon abonnement</p>
+                                        </div>
+                                        {role === 'user' && <span className="ml-auto text-[10px] bg-t-tertiary/10 text-t-secondary px-2 py-0.5 rounded-full">Actif</span>}
+                                    </button>
+                                    <button
+                                        onClick={() => { setRole('trader'); setShowStatusMenu(false); }}
+                                        className={`w-full flex items-center gap-3 p-3 rounded-lg transition-colors ${role === 'trader' ? 'bg-emerald-500/5 ring-1 ring-emerald-500/20' : 'hover:bg-b-surface2'}`}
+                                    >
+                                        <div className="w-9 h-9 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 17l4-8 4 4 4-6 4 4" stroke="#10B981" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                                        </div>
+                                        <div className="text-left">
+                                            <p className="text-body-2 font-semibold text-emerald-500">Trader</p>
+                                            <p className="text-[11px] text-t-tertiary">Accès complet aux signaux</p>
+                                        </div>
+                                        {role === 'trader' && <span className="ml-auto text-[10px] bg-emerald-500/10 text-emerald-500 px-2 py-0.5 rounded-full">Actif</span>}
+                                    </button>
+                                    <button
+                                        onClick={() => { setRole('admin'); setShowStatusMenu(false); }}
+                                        className={`w-full flex items-center gap-3 p-3 rounded-lg transition-colors ${role === 'admin' ? 'bg-red-500/5 ring-1 ring-red-500/20' : 'hover:bg-b-surface2'}`}
+                                    >
+                                        <div className="w-9 h-9 rounded-lg bg-red-500/10 flex items-center justify-center">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z" fill="#EF4444" stroke="#EF4444" strokeWidth="1"/></svg>
+                                        </div>
+                                        <div className="text-left">
+                                            <p className="text-body-2 font-semibold text-red-500">Admin</p>
+                                            <p className="text-[11px] text-t-tertiary">Accès complet aux signaux</p>
+                                        </div>
+                                        {role === 'admin' && <span className="ml-auto text-[10px] bg-red-500/10 text-red-500 px-2 py-0.5 rounded-full">Actif</span>}
+                                    </button>
                                 </motion.div>
                             )}
                         </AnimatePresence>
                     </div>
                     <Notifications />
-                    <Messages />
                     <User />
                 </div>
                 {newProduct && (

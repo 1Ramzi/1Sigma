@@ -17,10 +17,10 @@ import RecentEarnings from "@/templates/Income/EarningPage/RecentEarnings";
 
 const SignalsPage = () => {
     const { filteredSignals, setFilter, vote } = useSignalStore();
-    const { accountType } = useUserStore();
+    const { accountType, role } = useUserStore();
     const { t } = useLanguage();
     const searchParams = useSearchParams();
-    const isFree = accountType === 'free';
+    const isFree = accountType === 'free' && role === 'user';
     
     const marketOptions: TabsOption[] = [
         { id: 'all', name: t.allMarketsTab },
