@@ -14,7 +14,7 @@ type SelectProps = {
     classButton?: string;
     label?: string;
     tooltip?: string;
-    value: SelectOption | null;
+    value: SelectOption | undefined;
     onChange: (value: SelectOption) => void;
     options: SelectOption[];
     isBlack?: boolean;
@@ -26,7 +26,7 @@ const Select = ({
     classButton,
     label,
     tooltip,
-    value = null,
+    value = undefined,
     onChange,
     options,
     isBlack,

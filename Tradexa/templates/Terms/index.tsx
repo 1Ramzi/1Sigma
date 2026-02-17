@@ -14,27 +14,27 @@ const TermsPage = () => {
         {
             id: 1,
             title: "Conditions d'utilisation",
-            content: "En utilisant la plateforme Tradexa, vous acceptez les prÃ©sentes conditions. Le service fournit des signaux de trading Ã  titre informatif. Toute dÃ©cision d'investissement est prise sous votre propre responsabilitÃ©.",
+            content: "En utilisant la plateforme Tradexa, vous acceptez les présentes conditions. Le service fournit des signaux de trading à titre informatif. Toute décision d'investissement est prise sous votre propre responsabilité.",
         },
         {
             id: 2,
-            title: "Politique de confidentialitÃ©",
-            content: "Nous collectons uniquement les donnÃ©es nÃ©cessaires au fonctionnement du service (email, identifiant broker). Vos donnÃ©es ne sont jamais partagÃ©es avec des tiers sans votre consentement explicite.",
+            title: "Politique de confidentialité",
+            content: "Nous collectons uniquement les données nécessaires au fonctionnement du service (email, identifiant broker). Vos données ne sont jamais partagées avec des tiers sans votre consentement explicite.",
         },
         {
             id: 3,
             title: "Avertissement sur les risques",
-            content: "Le trading comporte des risques significatifs. Les performances passÃ©es ne garantissent pas les rÃ©sultats futurs. Nos signaux sont des conseils et non des garanties de profit. N'investissez que ce que vous pouvez vous permettre de perdre.",
+            content: "Le trading comporte des risques significatifs. Les performances passées ne garantissent pas les résultats futurs. Nos signaux sont des conseils et non des garanties de profit. N'investissez que ce que vous pouvez vous permettre de perdre.",
         },
         {
             id: 4,
             title: "Politique de remboursement",
-            content: "Les abonnements peuvent Ãªtre annulÃ©s Ã  tout moment. Les remboursements sont traitÃ©s au cas par cas. Contactez le support pour toute demande de remboursement dans les 14 jours suivant l'achat.",
+            content: "Les abonnements peuvent être annulés à tout moment. Les remboursements sont traités au cas par cas. Contactez le support pour toute demande de remboursement dans les 14 jours suivant l'achat.",
         },
         {
             id: 5,
-            title: "PropriÃ©tÃ© intellectuelle",
-            content: "Tout le contenu de la plateforme (signaux, formations, analyses) est protÃ©gÃ© par le droit d'auteur. Toute reproduction ou distribution non autorisÃ©e est strictement interdite.",
+            title: "Propriété intellectuelle",
+            content: "Tout le contenu de la plateforme (signaux, formations, analyses) est protégé par le droit d'auteur. Toute reproduction ou distribution non autorisée est strictement interdite.",
         },
     ];
 
@@ -42,11 +42,11 @@ const TermsPage = () => {
         <Layout title="Terms">
             <div className="max-w-[800px] mx-auto space-y-6">
                 <div>
-                    <h1 className="text-h3 font-bold text-t-primary">Mentions lÃ©gales</h1>
+                    <h1 className="text-h3 font-bold text-t-primary">Mentions légales</h1>
                     <p className="text-body-1 text-t-secondary mt-1">Informations juridiques et conditions d&apos;utilisation de la plateforme.</p>
                 </div>
 
-                <Card title="Documents lÃ©gaux" className="!p-0 overflow-hidden">
+                <Card title="Documents légaux" className="!p-0 overflow-hidden">
                     <div className="p-6">
                         {sections.map((section) => (
                             <div key={section.id} className="py-3 border-b border-s-subtle last:border-0">

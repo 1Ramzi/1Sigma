@@ -47,10 +47,10 @@ export const mockSignals: Signal[] = [
 ];
 
 export const portfolioAssets = [
-  { symbol: 'ETH', name: 'Ethereum', amount: 32, value: 32430, change: 4.5, icon: 'âŸ ' },
-  { symbol: 'LTC', name: 'Litecoin', amount: 19, value: 1352, change: -3.6, icon: 'Å' },
-  { symbol: 'ADA', name: 'Cardano', amount: 14, value: 4213, change: -2.5, icon: 'â‚³' },
-  { symbol: 'BTC', name: 'Bitcoin', amount: 26, value: 23142, change: -6.7, icon: 'â‚¿' },
+  { symbol: 'ETH', name: 'Ethereum', amount: 32, value: 32430, change: 4.5, icon: '⟠' },
+  { symbol: 'LTC', name: 'Litecoin', amount: 19, value: 1352, change: -3.6, icon: 'Ł' },
+  { symbol: 'ADA', name: 'Cardano', amount: 14, value: 4213, change: -2.5, icon: '₳' },
+  { symbol: 'BTC', name: 'Bitcoin', amount: 26, value: 23142, change: -6.7, icon: '₿' },
 ];
 
 export const portfolioItems = [
@@ -60,20 +60,20 @@ export const portfolioItems = [
 ];
 
 export const chatChannels: ChatChannel[] = [
-  { id:'ch1', name:'gÃ©nÃ©ral', icon:'ðŸ’¬', unread:3 },
-  { id:'ch2', name:'signaux-live', icon:'ðŸ“Š', unread:7 },
-  { id:'ch3', name:'crypto', icon:'â‚¿', unread:0 },
-  { id:'ch4', name:'forex', icon:'ðŸ’±', unread:2 },
-  { id:'ch5', name:'aide', icon:'â“', unread:1 },
+  { id:'ch1', name:'général', icon:'💬', unread:3 },
+  { id:'ch2', name:'signaux-live', icon:'📊', unread:7 },
+  { id:'ch3', name:'crypto', icon:'₿', unread:0 },
+  { id:'ch4', name:'forex', icon:'💱', unread:2 },
+  { id:'ch5', name:'aide', icon:'❓', unread:1 },
 ];
 
 export const chatMessages: ChatMessage[] = [
-  { id:'m1', channelId:'ch1', userId:'u1', content:'Bienvenue Ã  tous ! Belle journÃ©e ðŸ”¥', createdAt:ago(2), reactions:[{emoji:'ðŸ”¥',count:12}] },
-  { id:'m2', channelId:'ch1', userId:'u3', content:'Le signal BTC est en bonne voie, +2.6% dÃ©jÃ ', createdAt:ago(1.5), reactions:[{emoji:'ðŸ’°',count:5}] },
+  { id:'m1', channelId:'ch1', userId:'u1', content:'Bienvenue à tous ! Belle journée 🔥', createdAt:ago(2), reactions:[{emoji:'🔥',count:12}] },
+  { id:'m2', channelId:'ch1', userId:'u3', content:'Le signal BTC est en bonne voie, +2.6% déjà', createdAt:ago(1.5), reactions:[{emoji:'💰',count:5}] },
   { id:'m3', channelId:'ch1', userId:'u2', content:'Quelqu\'un a vu le mouvement sur ETH ?', createdAt:ago(1), reactions:[] },
-  { id:'m4', channelId:'ch1', userId:'u5', content:'Oui, belle progression ! Le TP1 est touchÃ©', createdAt:ago(0.8), reactions:[{emoji:'âœ…',count:3}] },
-  { id:'m5', channelId:'ch1', userId:'u7', content:'Je viens de rejoindre, cette plateforme est top ðŸ™Œ', createdAt:ago(0.5), reactions:[{emoji:'â¤ï¸',count:6}] },
-  { id:'m6', channelId:'ch1', userId:'u4', content:'N\'oubliez pas le money management !', createdAt:ago(0.3), reactions:[{emoji:'ðŸ‘',count:9}] },
+  { id:'m4', channelId:'ch1', userId:'u5', content:'Oui, belle progression ! Le TP1 est touché', createdAt:ago(0.8), reactions:[{emoji:'✅',count:3}] },
+  { id:'m5', channelId:'ch1', userId:'u7', content:'Je viens de rejoindre, cette plateforme est top 🙌', createdAt:ago(0.5), reactions:[{emoji:'❤️',count:6}] },
+  { id:'m6', channelId:'ch1', userId:'u4', content:'N\'oubliez pas le money management !', createdAt:ago(0.3), reactions:[{emoji:'👍',count:9}] },
 ];
 
 export const weeklyChartData = [

@@ -5,7 +5,7 @@
         value: "2,569",
         icon: "product-think",
         percentage: 36.8,
-        tooltip: "Maximum 100 caractÃ¨res. Pas de HTML ou d'emoji autorisÃ©",
+        tooltip: "Maximum 100 caractères. Pas de HTML ou d'emoji autorisé",
         dataChart: [
             {
                 name: "Lundi",
@@ -43,7 +43,7 @@
         value: "1,552",
         icon: "bag",
         percentage: -24.2,
-        tooltip: "Maximum 100 caractÃ¨res. Pas de HTML ou d'emoji autorisÃ©",
+        tooltip: "Maximum 100 caractères. Pas de HTML ou d'emoji autorisé",
         dataChart: [
             {
                 name: "Lundi",
@@ -81,7 +81,7 @@
         value: "256k",
         icon: "chart",
         percentage: 16.9,
-        tooltip: "Maximum 100 caractÃ¨res. Pas de HTML ou d'emoji autorisÃ©",
+        tooltip: "Maximum 100 caractères. Pas de HTML ou d'emoji autorisé",
         dataChart: [
             {
                 name: "Lundi",
@@ -118,7 +118,7 @@
 export const campaignEarningItems = [
     {
         id: 1,
-        title: "Faites vite : -50% sur tout ce que vous aimez ! â¤ï¸",
+        title: "Faites vite : -50% sur tout ce que vous aimez ! ❤️",
         image: "/images/products/11.png",
         socials: [
             {
@@ -150,7 +150,7 @@ export const campaignEarningItems = [
     },
     {
         id: 2,
-        title: "L'heure des Ã©conomies : -50% sur toute la boutique ! ðŸŒŸ",
+        title: "L'heure des économies : -50% sur toute la boutique ! 🌟",
         image: "/images/products/12.png",
         socials: [
             {
@@ -182,7 +182,7 @@ export const campaignEarningItems = [
     },
     {
         id: 3,
-        title: "Alerte Grosses Ã‰conomies : -50% sur tous les articles ! ðŸŽˆ",
+        title: "Alerte Grosses Économies : -50% sur tous les articles ! 🎈",
         image: "/images/products/13.png",
         socials: [
             {
@@ -214,7 +214,7 @@ export const campaignEarningItems = [
     },
     {
         id: 4,
-        title: "Ne manquez pas Ã§a : Tout est Ã  moitiÃ© prix ! ðŸ”¥",
+        title: "Ne manquez pas ça : Tout est à moitié prix ! 🔥",
         image: "/images/products/14.png",
         socials: [
             {
@@ -246,7 +246,7 @@ export const campaignEarningItems = [
     },
     {
         id: 5,
-        title: "Vente Flash ! Ã‰conomisez 30% ! âš¡",
+        title: "Vente Flash ! Économisez 30% ! ⚡",
         image: "/images/products/15.png",
         socials: [
             {
@@ -278,7 +278,7 @@ export const campaignEarningItems = [
     },
     {
         id: 6,
-        title: "SpÃ©cial Week-end ! -25% supplÃ©mentaires ! ðŸ·ï¸",
+        title: "Spécial Week-end ! -25% supplémentaires ! 🏷️",
         image: "/images/products/16.png",
         socials: [
             {
@@ -310,7 +310,7 @@ export const campaignEarningItems = [
     },
     {
         id: 7,
-        title: "DÃ©pÃªchez-vous ! -50% sur tout ! ðŸ”¥",
+        title: "Dépêchez-vous ! -50% sur tout ! 🔥",
         image: "/images/products/17.png",
         socials: [
             {
@@ -342,7 +342,7 @@ export const campaignEarningItems = [
     },
     {
         id: 8,
-        title: "-20% pour les nouveaux ! ðŸŽ",
+        title: "-20% pour les nouveaux ! 🎁",
         image: "/images/products/18.png",
         socials: [
             {
@@ -374,7 +374,7 @@ export const campaignEarningItems = [
     },
     {
         id: 9,
-        title: "Soldes saisonniÃ¨res ! -35% sur une sÃ©lection ! ðŸŒŸ",
+        title: "Soldes saisonnières ! -35% sur une sélection ! 🌟",
         image: "/images/products/19.png",
         socials: [
             {

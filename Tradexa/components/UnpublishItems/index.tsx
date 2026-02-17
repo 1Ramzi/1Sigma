@@ -67,10 +67,10 @@ const UnpublishItems = ({
                     )}
                 </div>
                 <div className="mb-4 text-h4 max-md:text-h5">
-                    {t.unpublishTitle.replace('{{count}}', items.length.toString())}
+                    {(t.unpublishTitle || 'Unpublish {{count}} product(s)!').replace('{{count}}', items.length.toString())}
                 </div>
                 <div className="mb-8 text-body-2 font-medium text-t-tertiary">
-                    {t.unpublishDesc.replace('{{count}}', items.length.toString())}
+                    {(t.unpublishDesc || 'You are unpublishing {{count}} product(s).').replace('{{count}}', items.length.toString())}
                 </div>
                 <div className="flex justify-end gap-3 mt-8">
                     <Button

@@ -68,7 +68,7 @@ export const messages = [
         login: "davidwilson",
         avatar: "/images/avatars/6.png",
         content:
-            "Whatâ€™s the timeline for the coded version of Tradexa 2.0?",
+            "What’s the timeline for the coded version of Tradexa 2.0?",
         time: "4h",
         new: false,
     },
@@ -77,7 +77,7 @@ export const messages = [
         login: "laurawhite",
         avatar: "/images/avatars/7.png",
         content:
-            "Whenâ€™s the coded version of Tradexa 2.0 coming out?",
+            "When’s the coded version of Tradexa 2.0 coming out?",
         time: "6h",
         new: false,
     },
@@ -139,7 +139,7 @@ export const messages = [
         login: "davidwilson",
         avatar: "/images/avatars/6.png",
         content:
-            "Whatâ€™s the timeline for the coded version of Tradexa 2.0?",
+            "What’s the timeline for the coded version of Tradexa 2.0?",
         time: "4d",
         new: false,
     },
@@ -173,7 +173,7 @@ export const chat = [
         content: (
             <>
                 <p>
-                    Hi @orval, thanks for contacting.<br></br>Yes, Iâ€™m working
+                    Hi @orval, thanks for contacting.<br></br>Yes, I’m working
                     on it. It would be released next 2 weeks. You could check
                     the progress here:
                     <a href="tradexa.com" target="_blank" rel="noreferrer">
@@ -181,7 +181,7 @@ export const chat = [
                     </a>
                 </p>
                 <p>
-                    Thanks for your patience and understanding. ðŸ™Œ<br></br>
+                    Thanks for your patience and understanding. 🙌<br></br>
                     Regards,
                 </p>
                 <p>Br</p>

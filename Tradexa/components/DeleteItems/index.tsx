@@ -48,7 +48,7 @@ const DeleteItems = ({
                 <div className="mb-4 text-h4 max-md:text-h5">{t.areYouSure}</div>
                 <div className="mb-8 text-body-2 font-medium text-t-tertiary">
                     {content ||
-                        t.deleteConfirmation.replace('{{count}}', counter.toString())}
+                        (t.deleteConfirmation || 'This will delete {{count}} product(s).').replace('{{count}}', counter.toString())}
                 </div>
                 <div className="flex justify-end gap-3 mt-8">
                     <Button

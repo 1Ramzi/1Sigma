@@ -61,7 +61,7 @@ const ShareProducts = ({}) => {
                 </div>
             </div>
             <div className="mb-6 px-5 text-body-2 text-t-secondary max-lg:px-3 max-md:text-caption">
-                Cinquante pour cent des nouveaux clients explorent les produits car l'auteur partage son travail sur les rÃ©seaux sociaux. <br></br>Commencez Ã  gagner maintenant ! ðŸ”¥
+                Cinquante pour cent des nouveaux clients explorent les produits car l'auteur partage son travail sur les réseaux sociaux. <br></br>Commencez à gagner maintenant ! 🔥
             </div>
             <div className="flex gap-3">
                 {socials.map((social, index) => (

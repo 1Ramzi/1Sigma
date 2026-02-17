@@ -80,7 +80,7 @@ const RefundsPage = () => {
                         </Button>
                         <DeleteItems
                             counter={selectedRows.length}
-                            content={t.refundDeleteConfirmation.replace('{{count}}', selectedRows.length.toString())}
+                            content={(t.refundDeleteConfirmation || 'This will delete {{count}} refund(s).').replace('{{count}}', selectedRows.length.toString())}
                             onDelete={() => {}}
                             isLargeButton
                         />

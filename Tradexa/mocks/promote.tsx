@@ -34,7 +34,7 @@
 export const publishedItems = [
     {
         id: 1,
-        title: "Hurry! 50% off everything! ðŸ”¥",
+        title: "Hurry! 50% off everything! 🔥",
         image: "/images/products/11.png",
         socials: [
             {
@@ -66,7 +66,7 @@ export const publishedItems = [
     },
     {
         id: 2,
-        title: "Last chance! 60% off clearance! ðŸ›’",
+        title: "Last chance! 60% off clearance! 🛒",
         image: "/images/products/12.png",
         socials: [
             {
@@ -98,7 +98,7 @@ export const publishedItems = [
     },
     {
         id: 3,
-        title: "Exclusive! Buy one, get one free! ðŸŽ‰",
+        title: "Exclusive! Buy one, get one free! 🎉",
         image: "/images/products/13.png",
         socials: [
             {
@@ -130,7 +130,7 @@ export const publishedItems = [
     },
     {
         id: 4,
-        title: "Limited offer! 40% off sitewide! ðŸŽˆ",
+        title: "Limited offer! 40% off sitewide! 🎈",
         image: "/images/products/14.png",
         socials: [
             {
@@ -162,7 +162,7 @@ export const publishedItems = [
     },
     {
         id: 5,
-        title: "Flash sale! Save 30%! âš¡",
+        title: "Flash sale! Save 30%! ⚡",
         image: "/images/products/15.png",
         socials: [
             {
@@ -194,7 +194,7 @@ export const publishedItems = [
     },
     {
         id: 6,
-        title: "Weekend special! Extra 25% off! ðŸ·ï¸",
+        title: "Weekend special! Extra 25% off! 🏷️",
         image: "/images/products/16.png",
         socials: [
             {
@@ -226,7 +226,7 @@ export const publishedItems = [
     },
     {
         id: 7,
-        title: "Hurry! 50% off everything! ðŸ”¥",
+        title: "Hurry! 50% off everything! 🔥",
         image: "/images/products/17.png",
         socials: [
             {
@@ -258,7 +258,7 @@ export const publishedItems = [
     },
     {
         id: 8,
-        title: "20% off for newbies! ðŸŽ",
+        title: "20% off for newbies! 🎁",
         image: "/images/products/18.png",
         socials: [
             {
@@ -290,7 +290,7 @@ export const publishedItems = [
     },
     {
         id: 9,
-        title: "Seasonal sale! 35% off select items! ðŸŒŸ",
+        title: "Seasonal sale! 35% off select items! 🌟",
         image: "/images/products/19.png",
         socials: [
             {

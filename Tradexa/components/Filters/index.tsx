@@ -104,7 +104,7 @@ const Filters = ({}) => {
                             {t.reset}
                         </Button>
                         <Button className="max-md:flex-1 max-md:px-2" isBlack>
-                            {t.showResults.replace('{{count}}', '80')}
+                            {(t.showResults || 'Show {{count}} results').replace('{{count}}', '80')}
                         </Button>
                     </div>
                 </div>

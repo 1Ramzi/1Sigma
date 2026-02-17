@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.bg-text {
+  /* background: linear-gradient(90deg, #FFF 14.46%, #84868A 85.77%); */
+  background: linear-gradient(90deg, #000000 14.46%, #e7e7e7 175.77%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-text-dark {
+  /* background: linear-gradient(90deg, #FFF 14.46%, #84868A 85.77%); */
+  background: linear-gradient(90deg, #ffffff 14.46%, #000000 175.77%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-hero {
+  background: radial-gradient(
+    34.1% 26.5% at 50.7% 44.5%,
+    rgba(132, 134, 138, 0.25) 0%,
+    rgba(0, 2, 18, 0) 100%
+  );
+}
+
+.navbg {
+  background: linear-gradient(266deg, #dbdbdbbf 16.02%, #fff 107.42%);
+  box-shadow: 13px 12px 23px 0px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+}
+
+.rails {
+  background-image: url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='20' height='20' patternTransform='scale(3) rotate(0)'><rect x='0' y='0' width='100%' height='100%' fill='hsla(0, 0%, 100%, 0)'/><path d='M 10,-2.55e-7 V 20 Z M -1.1677362e-8,10 H 20 Z'  stroke-width='0.5' class='stroke:black dark:stroke:white' stroke='hsla(259, 0%, 0%, 0.79)' fill='none'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(%23a)'/></svg>");
+}
+
+.faded {
+  background: linear-gradient(
+    90deg,
+    #ffffff,
+    #121212 20%,
+    transparent 80%,
+    #121212
+  );
+}
+
+.bg-rails {
+  background: linear-gradient(91deg, #ffffff 14.46%, #efebeb 145.77%);
+}
+
+.bg-left-rails {
+  background: linear-gradient(264deg, #ffffff 14.46%, #efebeb 145.77%);
+}
+
+.glowbg {
+  border-radius: 32px;
+  background: linear-gradient(
+    170deg,
+    rgb(180 9 236 / 20%) 38.95%,
+    rgb(54 9 236 / 20%) 92.27%
+  );
+  /* background: linear-gradient(170deg, rgb(180 9 236 / 20%) 38.95%, rgba(236, 9, 9, 0.20) 92.27%); */
+  /* background: linear-gradient(170deg, rgba(236, 58, 9, 0.20) 38.95%, rgba(236, 9, 9, 0.20) 92.27%); */
+  filter: blur(95px);
+}
+
+.hamburger {
+  cursor: pointer;
+}
+
+.hamburger .inputToogle {
+  display: none;
+}
+
+.hamburger .svgg {
+  height: 2.5em;
+  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line {
+  fill: none;
+  /* stroke: white; */
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+  transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+              stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line-top-bottom {
+  /* stroke-dasharray: 12 63; */
+  stroke-dasharray: 15 80;
+
+}
+.hamburger .inputToogle:checked + .svgg {
+  transform: rotate(-45deg);
+}
+
+.hamburger .inputToogle:checked + .svgg .line-top-bottom {
+  stroke-dasharray: 20 300;
+  stroke-dashoffset: -32.42;
+}
+
+.btn {
+  --x: 0;
+  --y: 0;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  right: 0;
+  bottom: 0;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background: rgb(212 212 212);
+  border-radius: 50%;
+  transition: 0.5s;
+}
+
+.btn:hover::before {
+  width: 150px;
+  height: 150px;
+}
+
+.btn span {
+  z-index: 10;
+}

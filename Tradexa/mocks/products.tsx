@@ -58,7 +58,7 @@ export const overview = [
         id: 1,
         title: "Gains",
         icon: "wallet",
-        tooltip: "Maximum 100 caractÃ¨res. Pas de HTML ou d'emoji autorisÃ©",
+        tooltip: "Maximum 100 caractères. Pas de HTML ou d'emoji autorisé",
         counter: "128k",
         percentage: 36.8,
         dataChart: [
@@ -79,7 +79,7 @@ export const overview = [
                 amt: 4300,
             },
             {
-                name: "AoÃ»t",
+                name: "Août",
                 amt: 6400,
             },
             {
@@ -96,7 +96,7 @@ export const overview = [
         id: 2,
         title: "Clients",
         icon: "profile",
-        tooltip: "Maximum 100 caractÃ¨res. Pas de HTML ou d'emoji autorisÃ©",
+        tooltip: "Maximum 100 caractères. Pas de HTML ou d'emoji autorisé",
         counter: "512",
         percentage: -24.2,
         dataChart: [
@@ -117,7 +117,7 @@ export const overview = [
                 amt: 4400,
             },
             {
-                name: "AoÃ»t",
+                name: "Août",
                 amt: 2200,
             },
             {
@@ -134,7 +134,7 @@ export const overview = [
         id: 3,
         title: "Ventes",
         icon: "product-think",
-        tooltip: "Maximum 100 caractÃ¨res. Pas de HTML ou d'emoji autorisÃ©",
+        tooltip: "Maximum 100 caractères. Pas de HTML ou d'emoji autorisé",
         counter: "6812",
         percentage: 12.5,
         dataChart: [
@@ -155,7 +155,7 @@ export const overview = [
                 amt: 2500,
             },
             {
-                name: "AoÃ»t",
+                name: "Août",
                 amt: 4400,
             },
             {
@@ -172,7 +172,7 @@ export const overview = [
         id: 4,
         title: "Paiements",
         icon: "arrow",
-        tooltip: "Maximum 100 caractÃ¨res. Pas de HTML ou d'emoji autorisÃ©",
+        tooltip: "Maximum 100 caractères. Pas de HTML ou d'emoji autorisé",
         counter: "256k",
         percentage: 41.5,
         dataChart: [
@@ -193,7 +193,7 @@ export const overview = [
                 amt: 3500,
             },
             {
-                name: "AoÃ»t",
+                name: "Août",
                 amt: 2400,
             },
             {
@@ -211,7 +211,7 @@ export const overview = [
 export const productActivity = [
     {
         id: 1,
-        week: "27 Jan - 03 FÃ©v",
+        week: "27 Jan - 03 Fév",
         products: {
             counter: "24k",
             percentage: 36.8,
@@ -231,7 +231,7 @@ export const productActivity = [
     },
     {
         id: 2,
-        week: "03 FÃ©v - 10 FÃ©v",
+        week: "03 Fév - 10 Fév",
         products: {
             counter: "40k",
         },
@@ -272,7 +272,7 @@ export const products = [
     },
     {
         id: 2,
-        title: "Cryper â€“ NFT UI Design Kit",
+        title: "Cryper – NFT UI Design Kit",
         image: "/images/products/2.png",
         details: "Illustrations",
         active: true,
@@ -332,7 +332,7 @@ export const products = [
     },
     {
         id: 5,
-        title: "Cryper â€“ NFT UI Design Kit",
+        title: "Cryper – NFT UI Design Kit",
         image: "/images/products/5.png",
         details: "Kit UI Design",
         active: true,
@@ -392,7 +392,7 @@ export const products = [
     },
     {
         id: 8,
-        title: "Cryper â€“ NFT UI Design Kit",
+        title: "Cryper – NFT UI Design Kit",
         image: "/images/products/8.png",
         details: "Illustrations",
         active: true,
@@ -463,7 +463,7 @@ export const productsTrafficSources = [
         traffic: 85,
         trafficSource: [
             {
-                title: "RÃ©seaux sociaux",
+                title: "Réseaux sociaux",
                 value: 340123,
             },
             {
@@ -478,7 +478,7 @@ export const productsTrafficSources = [
     },
     {
         id: 2,
-        title: "Cryper â€“ NFT UI Design Kit",
+        title: "Cryper – NFT UI Design Kit",
         image: "/images/products/9.png",
         details: "18 Sep - 25 Sep",
         value: 4500,
@@ -486,7 +486,7 @@ export const productsTrafficSources = [
         traffic: 75,
         trafficSource: [
             {
-                title: "RÃ©seaux sociaux",
+                title: "Réseaux sociaux",
                 value: 240123,
             },
             {
@@ -509,7 +509,7 @@ export const productsTrafficSources = [
         traffic: 95,
         trafficSource: [
             {
-                title: "RÃ©seaux sociaux",
+                title: "Réseaux sociaux",
                 value: 340123,
             },
             {
@@ -524,7 +524,7 @@ export const productsTrafficSources = [
     },
     {
         id: 4,
-        title: "Cryper â€“ NFT UI Design Kit",
+        title: "Cryper – NFT UI Design Kit",
         image: "/images/products/7.png",
         details: "18 Sep - 25 Sep",
         value: 4500,
@@ -532,7 +532,7 @@ export const productsTrafficSources = [
         traffic: 65,
         trafficSource: [
             {
-                title: "RÃ©seaux sociaux",
+                title: "Réseaux sociaux",
                 value: 440123,
             },
             {
@@ -555,7 +555,7 @@ export const productsTrafficSources = [
         traffic: 85,
         trafficSource: [
             {
-                title: "RÃ©seaux sociaux",
+                title: "Réseaux sociaux",
                 value: 340123,
             },
             {
@@ -570,7 +570,7 @@ export const productsTrafficSources = [
     },
     {
         id: 6,
-        title: "Cryper â€“ NFT UI Design Kit",
+        title: "Cryper – NFT UI Design Kit",
         image: "/images/products/5.png",
         details: "18 Sep - 25 Sep",
         value: 4500,
@@ -578,7 +578,7 @@ export const productsTrafficSources = [
         traffic: 60,
         trafficSource: [
             {
-                title: "RÃ©seaux sociaux",
+                title: "Réseaux sociaux",
                 value: 140123,
             },
             {
@@ -601,7 +601,7 @@ export const productsTrafficSources = [
         traffic: 95,
         trafficSource: [
             {
-                title: "RÃ©seaux sociaux",
+                title: "Réseaux sociaux",
                 value: 340123,
             },
             {
@@ -616,7 +616,7 @@ export const productsTrafficSources = [
     },
     {
         id: 8,
-        title: "Cryper â€“ NFT UI Design Kit",
+        title: "Cryper – NFT UI Design Kit",
         image: "/images/products/3.png",
         details: "18 Sep - 25 Sep",
         value: 4500,
@@ -624,7 +624,7 @@ export const productsTrafficSources = [
         traffic: 65,
         trafficSource: [
             {
-                title: "RÃ©seaux sociaux",
+                title: "Réseaux sociaux",
                 value: 240123,
             },
             {
@@ -647,7 +647,7 @@ export const productsTrafficSources = [
         traffic: 85,
         trafficSource: [
             {
-                title: "RÃ©seaux sociaux",
+                title: "Réseaux sociaux",
                 value: 340123,
             },
             {
@@ -662,7 +662,7 @@ export const productsTrafficSources = [
     },
     {
         id: 10,
-        title: "Cryper â€“ NFT UI Design Kit",
+        title: "Cryper – NFT UI Design Kit",
         image: "/images/products/1.png",
         details: "18 Sep - 25 Sep",
         value: 4500,
@@ -670,7 +670,7 @@ export const productsTrafficSources = [
         traffic: 70,
         trafficSource: [
             {
-                title: "RÃ©seaux sociaux",
+                title: "Réseaux sociaux",
                 value: 240123,
             },
             {
@@ -696,7 +696,7 @@ export const productsViewers = [
         traffic: 75,
         trafficSource: [
             {
-                title: "AbonnÃ©s",
+                title: "Abonnés",
                 value: 232132,
             },
             {
@@ -707,7 +707,7 @@ export const productsViewers = [
     },
     {
         id: 2,
-        title: "Cryper â€“ NFT UI Design Kit",
+        title: "Cryper – NFT UI Design Kit",
         image: "/images/products/9.png",
         details: "18 Sep - 25 Sep",
         value: 758000,
@@ -715,7 +715,7 @@ export const productsViewers = [
         traffic: 65,
         trafficSource: [
             {
-                title: "AbonnÃ©s",
+                title: "Abonnés",
                 value: 332132,
             },
             {
@@ -734,7 +734,7 @@ export const productsViewers = [
         traffic: 95,
         trafficSource: [
             {
-                title: "AbonnÃ©s",
+                title: "Abonnés",
                 value: 432132,
             },
             {
@@ -745,7 +745,7 @@ export const productsViewers = [
     },
     {
         id: 4,
-        title: "Cryper â€“ NFT UI Design Kit",
+        title: "Cryper – NFT UI Design Kit",
         image: "/images/products/7.png",
         details: "18 Sep - 25 Sep",
         value: 797020,
@@ -753,7 +753,7 @@ export const productsViewers = [
         traffic: 75,
         trafficSource: [
             {
-                title: "AbonnÃ©s",
+                title: "Abonnés",
                 value: 532132,
             },
             {
@@ -772,7 +772,7 @@ export const productsViewers = [
         traffic: 55,
         trafficSource: [
             {
-                title: "AbonnÃ©s",
+                title: "Abonnés",
                 value: 232132,
             },
             {
@@ -783,7 +783,7 @@ export const productsViewers = [
     },
     {
         id: 6,
-        title: "Cryper â€“ NFT UI Design Kit",
+        title: "Cryper – NFT UI Design Kit",
         image: "/images/products/5.png",
         details: "18 Sep - 25 Sep",
         value: 1234000,
@@ -791,7 +791,7 @@ export const productsViewers = [
         traffic: 90,
         trafficSource: [
             {
-                title: "AbonnÃ©s",
+                title: "Abonnés",
                 value: 232132,
             },
             {
@@ -810,7 +810,7 @@ export const productsViewers = [
         traffic: 95,
         trafficSource: [
             {
-                title: "AbonnÃ©s",
+                title: "Abonnés",
                 value: 232132,
             },
             {
@@ -821,7 +821,7 @@ export const productsViewers = [
     },
     {
         id: 8,
-        title: "Cryper â€“ NFT UI Design Kit",
+        title: "Cryper – NFT UI Design Kit",
         image: "/images/products/3.png",
         details: "18 Sep - 25 Sep",
         value: 323000,
@@ -829,7 +829,7 @@ export const productsViewers = [
         traffic: 75,
         trafficSource: [
             {
-                title: "AbonnÃ©s",
+                title: "Abonnés",
                 value: 332132,
             },
             {
@@ -848,7 +848,7 @@ export const productsViewers = [
         traffic: 85,
         trafficSource: [
             {
-                title: "AbonnÃ©s",
+                title: "Abonnés",
                 value: 232132,
             },
             {
@@ -859,7 +859,7 @@ export const productsViewers = [
     },
     {
         id: 10,
-        title: "Cryper â€“ NFT UI Design Kit",
+        title: "Cryper – NFT UI Design Kit",
         image: "/images/products/1.png",
         details: "18 Sep - 25 Sep",
         value: 128000,
@@ -867,7 +867,7 @@ export const productsViewers = [
         traffic: 70,
         trafficSource: [
             {
-                title: "AbonnÃ©s",
+                title: "Abonnés",
                 value: 332132,
             },
             {
@@ -886,16 +886,16 @@ export const draftsProducts = [
         details: "tradexa.com/product/product-link",
         category: "Polices",
         price: 98,
-        date: "29 Avr, 2025 Ã  15:55",
+        date: "29 Avr, 2025 à 15:55",
     },
     {
         id: 2,
         title: "Bento Design System",
         image: "/images/products/lg-2.png",
         details: "tradexa.com/product/product-link",
-        category: "Templates codÃ©s",
+        category: "Templates codés",
         price: 122,
-        date: "27 Avr, 2025 Ã  14:44",
+        date: "27 Avr, 2025 à 14:44",
     },
     {
         id: 3,
@@ -904,16 +904,16 @@ export const draftsProducts = [
         details: "tradexa.com/product/product-link",
         category: "Illustrations",
         price: 0,
-        date: "25 Avr, 2025 Ã  15:12",
+        date: "25 Avr, 2025 à 15:12",
     },
     {
         id: 4,
-        title: "Fleet â€“ Travel UI Kit",
+        title: "Fleet – Travel UI Kit",
         image: "/images/products/lg-4.png",
         details: "tradexa.com/product/product-link",
         category: "Assets 3D",
         price: 55,
-        date: "22 Avr, 2025 Ã  17:01",
+        date: "22 Avr, 2025 à 17:01",
     },
     {
         id: 5,
@@ -922,7 +922,7 @@ export const draftsProducts = [
         details: "tradexa.com/product/product-link",
         category: "Kit UI Design",
         price: 108,
-        date: "19 Avr, 2025 Ã  18:25",
+        date: "19 Avr, 2025 à 18:25",
     },
     {
         id: 6,
@@ -931,16 +931,16 @@ export const draftsProducts = [
         details: "tradexa.com/product/product-link",
         category: "Polices",
         price: 0,
-        date: "14 Avr, 2025 Ã  15:55",
+        date: "14 Avr, 2025 à 15:55",
     },
     {
         id: 7,
         title: "Bento Design System",
         image: "/images/products/lg-7.png",
         details: "tradexa.com/product/product-link",
-        category: "Templates codÃ©s",
+        category: "Templates codés",
         price: 155,
-        date: "10 Avr, 2025 Ã  17:44",
+        date: "10 Avr, 2025 à 17:44",
     },
     {
         id: 8,
@@ -949,16 +949,16 @@ export const draftsProducts = [
         details: "tradexa.com/product/product-link",
         category: "Polices",
         price: 98,
-        date: "9 Mar, 2025 Ã  15:55",
+        date: "9 Mar, 2025 à 15:55",
     },
     {
         id: 9,
         title: "Bento Design System",
         image: "/images/products/lg-9.png",
         details: "tradexa.com/product/product-link",
-        category: "Templates codÃ©s",
+        category: "Templates codés",
         price: 122,
-        date: "7 Mar, 2025 Ã  15:55",
+        date: "7 Mar, 2025 à 15:55",
     },
     {
         id: 10,
@@ -967,7 +967,7 @@ export const draftsProducts = [
         details: "tradexa.com/product/product-link",
         category: "Illustrations",
         price: 0,
-        date: "2 Mar, 2025 Ã  15:55",
+        date: "2 Mar, 2025 à 15:55",
     },
 ];
 
@@ -994,7 +994,7 @@ export const releasedProducts = [
     },
     {
         id: 2,
-        title: "Fleet â€“ Travel UI Kit",
+        title: "Fleet – Travel UI Kit",
         image: "/images/products/lg-9.png",
         details: "Illustrations",
         active: false,
@@ -1154,7 +1154,7 @@ export const releasedProducts = [
     },
     {
         id: 10,
-        title: "Fleet â€“ Travel UI Kit",
+        title: "Fleet – Travel UI Kit",
         image: "/images/products/lg-1.png",
         details: "Kit UI Design",
         active: false,
@@ -1184,7 +1184,7 @@ export const productsShare = [
     },
     {
         id: 2,
-        title: "Cryper â€“ NFT UI Design Kit",
+        title: "Cryper – NFT UI Design Kit",
         image: "/images/products/2.png",
         category: "Illustrations",
         price: 134,
@@ -1209,7 +1209,7 @@ export const productsPurchaseHistory = [
     },
     {
         id: 2,
-        title: "Cryper â€“ NFT UI Design Kit",
+        title: "Cryper – NFT UI Design Kit",
         category: "Illustrations",
         image: "/images/products/2.png",
         sales: 134,

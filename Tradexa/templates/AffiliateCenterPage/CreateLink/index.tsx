@@ -63,7 +63,7 @@ const CreateLink = ({}) => {
                 <div className="flex flex-col gap-4 mb-6">
                     <Select
                         label={t.getLink}
-                        tooltip="Maximum 100 caractÃ¨res. Pas de HTML ou d'emoji autorisÃ©"
+                        tooltip="Maximum 100 caractères. Pas de HTML ou d'emoji autorisé"
                         value={project}
                         onChange={setProject}
                         options={projects}
@@ -86,7 +86,7 @@ const CreateLink = ({}) => {
                             <div className="text-button">{t.orPostOn}</div>
                             <Tooltip
                                 className="ml-1.5"
-                                content="Maximum 100 caractÃ¨res. Pas de HTML ou d'emoji autorisÃ©"
+                                content="Maximum 100 caractères. Pas de HTML ou d'emoji autorisé"
                             />
                         </div>
                         <div className="flex flex-wrap -mt-3 -mx-1.5">

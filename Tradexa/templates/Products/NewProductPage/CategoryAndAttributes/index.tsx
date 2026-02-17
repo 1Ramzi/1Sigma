@@ -19,7 +19,7 @@ const CategoryAndAttributes = () => {
         { id: 3, name: t.logos },
     ];
 
-    const [category, setCategory] = useState<SelectOption | null>(null);
+    const [category, setCategory] = useState<SelectOption | undefined>(undefined);
     const [tags, setTags] = useState<string[]>([]);
 
     return (
