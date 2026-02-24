@@ -39,8 +39,8 @@ const Navbar = () => {
         `w-full transition-all duration-300 mx-auto bg-[#ffffffd0] dark:bg-[#000000d0]  max-w-[1500px]  border-b-[1px] border-neutral-300 dark:border-neutral-800 py-5 px-5 2xl:rounded-3xl  lg:px-10 fixed top-0 z-[99]`
       )}
     >
-      <div className="flex flex-row justify-between items-center">
-        <div className="flex  z-[999] items-start justify-start">
+      <div className="flex flex-row justify-between items-center w-full">
+        <div className="flex z-[999] items-start justify-start w-[20%]">
           <Link
             href="/"
             className="group relative w-auto flex justify-start items-start"
@@ -55,7 +55,7 @@ const Navbar = () => {
             </h1>
           </Link>
         </div>
-        <div className="lg:flex hidden justify-center gap-10 items-center w-full">
+        <div className="lg:flex hidden justify-center gap-10 items-center flex-1">
           {NavigationItem.map((item, index) => (
             <Link
               href={item.src}
@@ -83,7 +83,7 @@ const Navbar = () => {
           <NavMobile open={open} handleOpen={handleOpen} close={close} />
         </div>
 
-        <div className="lg:flex hidden w-[35%] items-center justify-end">
+        <div className="lg:flex hidden w-[20%] items-center justify-end">
           <div className="px-2">
             <DarkmodeSwitch />
           </div>
