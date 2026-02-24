@@ -11,14 +11,13 @@ export default function TraderProfilePage() {
             </div>
 
             {/* Avatar + name */}
-            <div className="bg-b-surface2 rounded-[24px] p-6 shadow-sm border border-s-stroke2 flex flex-col items-center mb-6 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 blur-3xl rounded-full"></div>
-                <div className="relative z-10 w-24 h-24 rounded-full bg-b-surface1 border-4 border-b-surface2 shadow-md flex items-center justify-center mb-4">
+            <div className="bg-b-surface2 rounded-[24px] p-6 shadow-sm border border-s-stroke2 flex flex-col items-center mb-6">
+                <div className="w-24 h-24 rounded-full bg-b-surface1 border-4 border-b-surface2 shadow-sm flex items-center justify-center mb-4">
                     <User className="w-10 h-10 text-emerald-500" />
                 </div>
-                <h2 className="text-h4 font-bold text-t-primary relative z-10">TraderPro</h2>
-                <p className="text-body-2 text-t-secondary mt-1.5 text-center relative z-10 px-4">Trader Forex & Crypto depuis 5 ans. Spécialisé en swing trading.</p>
-                <div className="flex flex-wrap justify-center gap-2 mt-4 relative z-10">
+                <h2 className="text-h4 font-bold text-t-primary">TraderPro</h2>
+                <p className="text-body-2 text-t-secondary mt-1.5 text-center px-4">Trader Forex & Crypto depuis 5 ans. Spécialisé en swing trading.</p>
+                <div className="flex flex-wrap justify-center gap-2 mt-4">
                     <span className="text-[11px] px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-500 font-bold tracking-wide">Swing Trading</span>
                     <span className="text-[11px] px-3 py-1.5 rounded-full bg-blue-500/10 text-blue-500 font-bold tracking-wide">Forex</span>
                     <span className="text-[11px] px-3 py-1.5 rounded-full bg-purple-500/10 text-purple-500 font-bold tracking-wide">Crypto</span>

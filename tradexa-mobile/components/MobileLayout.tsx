@@ -79,8 +79,8 @@ export default function MobileLayout({ title, children, mode }: Props) {
             <NotificationsToast />
 
             {/* Header */}
-            <header className="fixed top-0 left-0 right-0 z-30 bg-b-surface2 border-b border-s-border safe-top">
-                <div className="flex items-center h-14 px-4">
+            <header className="fixed top-0 left-0 right-0 z-30 bg-b-surface2 border-b border-s-stroke2 safe-top shadow-sm">
+                <div className="flex items-center h-16 px-4">
                     <button onClick={() => setMenuOpen(true)} className="w-10 h-10 -ml-2 flex items-center justify-center rounded-xl text-t-secondary">
                         <Menu className="w-5 h-5" />
                     </button>
@@ -143,13 +143,13 @@ export default function MobileLayout({ title, children, mode }: Props) {
             </aside>
 
             {/* Content */}
-            <main className="pt-14 px-4 py-4">
+            <main className="pt-20 px-4 pb-24">
                 {children}
             </main>
 
             {/* Bottom tab bar */}
-            <nav className="fixed bottom-0 left-0 right-0 z-30 bg-b-surface2 border-t border-s-border safe-bottom">
-                <div className="flex items-center justify-around h-16">
+            <nav className="fixed bottom-0 left-0 right-0 z-30 bg-b-surface2 border-t border-s-stroke2 safe-bottom shadow-[0_-4px_24px_rgba(0,0,0,0.02)]">
+                <div className="flex items-center justify-around h-[72px]">
                     {tabs.map((tab) => {
                         const active = isActive(pathname, tab.href, tab.href === rootHref);
                         return (

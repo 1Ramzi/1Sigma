@@ -27,18 +27,17 @@ export default function TraderDashboard() {
                 <h2 className="text-h4 font-bold text-t-primary">Aperçu</h2>
             </div>
 
-            <div className="grid grid-cols-2 gap-3 mb-4">
+            <div className="grid grid-cols-2 gap-3 mb-6">
                 {stats.map((s) => (
-                    <div key={s.title} className="bg-b-surface2 rounded-2xl p-4 shadow-sm border border-s-stroke2 relative overflow-hidden">
-                        <div className={`absolute -right-4 -bottom-4 w-16 h-16 rounded-full ${s.bg} blur-2xl opacity-50 pointer-events-none`}></div>
-                        <div className="flex items-center gap-2 mb-3 relative z-10">
+                    <div key={s.title} className="bg-b-surface2 rounded-2xl p-4 shadow-sm border border-s-stroke2">
+                        <div className="flex items-center gap-2 mb-3">
                             <div className={`w-8 h-8 rounded-xl ${s.bg} flex items-center justify-center shadow-sm`}>
                                 <s.icon className={`w-4 h-4 ${s.color}`} />
                             </div>
                         </div>
-                        <p className="text-h4 font-bold text-t-primary relative z-10">{s.value}</p>
-                        <p className="text-caption text-t-tertiary mt-1 relative z-10 font-medium">{s.title}</p>
-                        {s.sub && <p className="text-[10px] text-t-secondary/60 mt-0.5 relative z-10">{s.sub}</p>}
+                        <p className="text-h4 font-bold text-t-primary">{s.value}</p>
+                        <p className="text-caption text-t-tertiary mt-1 font-medium">{s.title}</p>
+                        {s.sub && <p className="text-[10px] text-t-secondary/60 mt-0.5">{s.sub}</p>}
                     </div>
                 ))}
             </div>

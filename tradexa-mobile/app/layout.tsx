@@ -39,7 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="fr" suppressHydrationWarning>
             <body className={`${interDisplay.variable} bg-b-surface1 font-inter text-body-1 text-t-primary antialiased`}>
-                <ThemeProvider attribute="data-theme" defaultTheme="dark" disableTransitionOnChange>
+                <ThemeProvider attribute="data-theme" defaultTheme="light" disableTransitionOnChange>
                     {children}
                 </ThemeProvider>
             </body>
