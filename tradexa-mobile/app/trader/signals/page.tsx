@@ -24,27 +24,27 @@ export default function TraderSignalsPage() {
 
     return (
         <MobileLayout title="Mes Signaux" mode="trader">
-            <div className="flex items-center justify-between mb-4 px-1">
+            <div className="flex items-center justify-between mb-6 px-2 mt-2">
                 <h2 className="text-h4 font-bold text-t-primary">Signaux</h2>
             </div>
             
             <Link href="/trader/signals/new"
-                className="flex items-center justify-center gap-2 w-full h-11 mb-4 bg-emerald-500 text-white rounded-xl text-button font-semibold active:bg-emerald-600 transition-colors">
-                <PlusCircle className="w-4 h-4" /> Nouveau Signal
+                className="flex items-center justify-center gap-2 w-full h-14 mb-6 bg-emerald-500 text-white rounded-2xl text-sub-title-1 font-bold active:scale-[0.98] transition-all shadow-lg shadow-emerald-500/25">
+                <PlusCircle className="w-5 h-5" /> Nouveau Signal
             </Link>
 
-            <div className="flex items-center gap-2 mb-3">
-                <Filter className="w-4 h-4 text-t-tertiary shrink-0" />
-                <div className="flex gap-2 overflow-x-auto pb-1">
+            <div className="flex items-center gap-3 mb-4">
+                <Filter className="w-5 h-5 text-t-tertiary shrink-0 ml-1" />
+                <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
                     <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}
-                        className="h-8 px-2 rounded-lg bg-b-surface2 border border-s-border text-caption text-t-primary">
-                        <option value="all">Tous</option>
+                        className="h-10 px-4 rounded-xl bg-b-surface2 border border-s-stroke2 text-body-2 font-medium text-t-primary outline-none focus:border-emerald-500">
+                        <option value="all">Tous les statuts</option>
                         <option value="active">Actifs</option>
                         <option value="closed">Fermés</option>
                     </select>
                     <select value={marketFilter} onChange={(e) => setMarketFilter(e.target.value)}
-                        className="h-8 px-2 rounded-lg bg-b-surface2 border border-s-border text-caption text-t-primary">
-                        <option value="all">Marché</option>
+                        className="h-10 px-4 rounded-xl bg-b-surface2 border border-s-stroke2 text-body-2 font-medium text-t-primary outline-none focus:border-emerald-500">
+                        <option value="all">Tous les marchés</option>
                         <option value="forex">Forex</option>
                         <option value="crypto">Crypto</option>
                         <option value="commodities">Matières</option>
@@ -52,50 +52,50 @@ export default function TraderSignalsPage() {
                 </div>
             </div>
 
-            <p className="text-[11px] text-t-tertiary mb-2">{filtered.length} signal{filtered.length > 1 ? "s" : ""}</p>
+            <p className="text-caption font-medium text-t-tertiary mb-3 ml-2">{filtered.length} signal{filtered.length > 1 ? "x" : ""}</p>
 
-            <div className="space-y-2">
+            <div className="space-y-3 mb-8">
                 {filtered.length === 0 && (
-                    <div className="card !p-8 text-center">
-                        <p className="text-body-2 text-t-secondary">Aucun signal trouvé.</p>
+                    <div className="bg-b-surface2 rounded-[24px] p-8 text-center border border-s-stroke2">
+                        <p className="text-body-1 font-medium text-t-secondary">Aucun signal trouvé.</p>
                     </div>
                 )}
                 {filtered.map((sig) => (
-                    <div key={sig.id} className="card !p-3">
-                        <div className="flex items-center gap-3">
-                            <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
+                    <div key={sig.id} className="bg-b-surface2 rounded-[24px] p-4 shadow-sm border border-s-stroke2">
+                        <div className="flex items-center gap-4">
+                            <div className={`w-12 h-12 rounded-[16px] flex items-center justify-center shrink-0 ${
                                 sig.direction === "buy" ? "bg-emerald-500/10" : "bg-red-500/10"
                             }`}>
-                                <TrendingUp className={`w-4 h-4 ${
+                                <TrendingUp className={`w-5 h-5 ${
                                     sig.direction === "buy" ? "text-emerald-500" : "text-red-500 rotate-180"
                                 }`} />
                             </div>
                             <div className="flex-1 min-w-0">
-                                <div className="flex items-center gap-1.5 flex-wrap">
-                                    <span className="text-body-2 font-bold text-t-primary">{sig.pair}</span>
-                                    <span className={`text-[9px] px-1.5 py-0.5 rounded font-semibold ${
+                                <div className="flex items-center gap-2 flex-wrap mb-1">
+                                    <span className="text-sub-title-1 font-bold text-t-primary">{sig.pair}</span>
+                                    <span className={`text-[10px] px-2 py-0.5 rounded-md font-bold tracking-wide ${
                                         sig.direction === "buy" ? "bg-emerald-500/10 text-emerald-500" : "bg-red-500/10 text-red-500"
                                     }`}>{sig.direction.toUpperCase()}</span>
-                                    <span className={`text-[9px] px-1.5 py-0.5 rounded font-semibold ${
+                                    <span className={`text-[10px] px-2 py-0.5 rounded-md font-bold tracking-wide ${
                                         sig.status === "active" ? "bg-blue-500/10 text-blue-500" :
                                         sig.result === "win" ? "bg-emerald-500/10 text-emerald-500" : "bg-red-500/10 text-red-500"
                                     }`}>{sig.status === "active" ? "Actif" : sig.result === "win" ? "Win" : "Loss"}</span>
                                 </div>
-                                <p className="text-[10px] text-t-tertiary mt-0.5">
-                                    {sig.market} • {sig.timeframe} • E: {sig.entryPrice} • SL: {sig.stopLoss}
+                                <p className="text-caption font-medium text-t-tertiary">
+                                    {sig.market} • {sig.timeframe} • E: <span className="text-t-secondary">{sig.entryPrice}</span> • SL: <span className="text-t-secondary">{sig.stopLoss}</span>
                                 </p>
                             </div>
                             <div className="text-right shrink-0">
-                                <p className={`text-caption font-mono font-semibold ${sig.pl >= 0 ? "text-emerald-500" : "text-red-500"}`}>
+                                <p className={`text-body-2 font-mono font-bold ${sig.pl >= 0 ? "text-emerald-500" : "text-red-500"}`}>
                                     {sig.pl >= 0 ? "+" : ""}{sig.pl} pips
                                 </p>
-                                <p className="text-[10px] text-t-tertiary">{sig.followers} foll.</p>
+                                <p className="text-[11px] font-medium text-t-tertiary mt-0.5">{sig.followers} foll.</p>
                             </div>
                         </div>
                         {sig.tpsHit.length > 0 && (
-                            <div className="flex gap-1.5 mt-2 ml-13">
+                            <div className="flex gap-2 mt-3 ml-16">
                                 {sig.tpsHit.map((tp) => (
-                                    <span key={tp} className="text-[9px] px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-500 font-semibold">TP{tp} ✓</span>
+                                    <span key={tp} className="text-[10px] px-2 py-1 rounded-md bg-emerald-500/10 text-emerald-500 font-bold tracking-wide">TP{tp} ✓</span>
                                 ))}
                             </div>
                         )}

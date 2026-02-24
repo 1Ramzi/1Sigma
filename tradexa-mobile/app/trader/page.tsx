@@ -23,7 +23,7 @@ const activeSignals = [
 export default function TraderDashboard() {
     return (
         <MobileLayout title="Dashboard" mode="trader">
-            <div className="flex items-center justify-between mb-4 px-1">
+            <div className="flex items-center justify-between mb-6 px-2 mt-2">
                 <h2 className="text-h4 font-bold text-t-primary">Aperçu</h2>
             </div>
 
@@ -42,32 +42,31 @@ export default function TraderDashboard() {
                     </div>
                 ))}
             </div>
-            {/* Active signals */}
-            <div className="card !p-4">
-                <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-body-2 font-semibold">Signaux Actifs</h3>
-                    <Link href="/trader/signals" className="text-caption text-emerald-500">Voir tout</Link>
+            <div className="bg-b-surface2 rounded-[24px] p-5 shadow-sm border border-s-stroke2 mb-8">
+                <div className="flex items-center justify-between mb-4 px-1">
+                    <h3 className="text-sub-title-1 font-bold">Signaux Actifs</h3>
+                    <Link href="/trader/signals" className="text-caption font-bold text-emerald-500 hover:text-emerald-600 transition-colors">Voir tout</Link>
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-3">
                     {activeSignals.map((sig) => (
-                        <div key={sig.id} className="flex items-center gap-3 p-2.5 rounded-xl bg-b-surface1">
-                            <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
+                        <div key={sig.id} className="flex items-center gap-4 p-3 rounded-2xl bg-b-surface1">
+                            <div className={`w-12 h-12 rounded-[16px] flex items-center justify-center shrink-0 ${
                                 sig.direction === "buy" ? "bg-emerald-500/10" : "bg-red-500/10"
                             }`}>
-                                <TrendingUp className={`w-4 h-4 ${
+                                <TrendingUp className={`w-5 h-5 ${
                                     sig.direction === "buy" ? "text-emerald-500" : "text-red-500 rotate-180"
                                 }`} />
                             </div>
                             <div className="flex-1 min-w-0">
-                                <div className="flex items-center gap-1.5">
-                                    <span className="text-body-2 font-bold text-t-primary">{sig.pair}</span>
-                                    <span className={`text-[9px] px-1.5 py-0.5 rounded font-semibold ${
+                                <div className="flex items-center gap-2 mb-1">
+                                    <span className="text-sub-title-1 font-bold text-t-primary">{sig.pair}</span>
+                                    <span className={`text-[10px] px-2 py-0.5 rounded-md font-bold tracking-wide ${
                                         sig.direction === "buy" ? "bg-emerald-500/10 text-emerald-500" : "bg-red-500/10 text-red-500"
                                     }`}>{sig.direction.toUpperCase()}</span>
                                 </div>
-                                <p className="text-[10px] text-t-tertiary">{sig.market} • {sig.followers} followers</p>
+                                <p className="text-caption font-medium text-t-tertiary">{sig.market} • <span className="text-t-secondary">{sig.followers}</span> followers</p>
                             </div>
-                            <p className={`text-caption font-mono font-semibold ${sig.pl >= 0 ? "text-emerald-500" : "text-red-500"}`}>
+                            <p className={`text-body-2 font-mono font-bold ${sig.pl >= 0 ? "text-emerald-500" : "text-red-500"}`}>
                                 {sig.pl >= 0 ? "+" : ""}{sig.pl} pips
                             </p>
                         </div>
