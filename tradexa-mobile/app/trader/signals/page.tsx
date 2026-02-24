@@ -24,6 +24,10 @@ export default function TraderSignalsPage() {
 
     return (
         <MobileLayout title="Mes Signaux" mode="trader">
+            <div className="flex items-center justify-between mb-4 px-1">
+                <h2 className="text-h4 font-bold text-t-primary">Signaux</h2>
+            </div>
+            
             <Link href="/trader/signals/new"
                 className="flex items-center justify-center gap-2 w-full h-11 mb-4 bg-emerald-500 text-white rounded-xl text-button font-semibold active:bg-emerald-600 transition-colors">
                 <PlusCircle className="w-4 h-4" /> Nouveau Signal

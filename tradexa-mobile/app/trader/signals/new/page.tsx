@@ -3,18 +3,28 @@
 import { useState } from "react";
 import MobileLayout from "@/components/MobileLayout";
 import { useRouter } from "next/navigation";
+import { useNotificationStore } from "@/stores/notificationStore";
 
 export default function NewSignalPage() {
     const router = useRouter();
+    const { addNotification } = useNotificationStore();
     const [form, setForm] = useState({ pair: "", direction: "buy", market: "forex", timeframe: "H4", entry: "", sl: "", tp1: "", tp2: "", tp3: "", note: "" });
 
     const handleSubmit = () => {
-        alert("Signal créé (mock) : " + form.pair);
+        addNotification({
+            title: "Signal publié",
+            message: `Le signal ${form.pair} a été publié avec succès.`,
+            type: "success"
+        });
         router.push("/trader/signals");
     };
 
     return (
         <MobileLayout title="Nouveau Signal" mode="trader">
+            <div className="flex items-center justify-between mb-4 px-1">
+                <h2 className="text-h4 font-bold text-t-primary">Nouveau Signal</h2>
+            </div>
+            
             <div className="space-y-3">
                 <div>
                     <label className="text-caption text-t-secondary mb-1 block">Paire</label>

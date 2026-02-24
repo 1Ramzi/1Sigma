@@ -6,6 +6,10 @@ import { User, TrendingUp, Signal, Users, Target, MessageSquare } from "lucide-r
 export default function TraderProfilePage() {
     return (
         <MobileLayout title="Mon Profil" mode="trader">
+            <div className="flex items-center justify-between mb-4 px-1">
+                <h2 className="text-h4 font-bold text-t-primary">Profil</h2>
+            </div>
+
             {/* Avatar + name */}
             <div className="card !p-5 flex flex-col items-center mb-4">
                 <div className="w-20 h-20 rounded-full bg-emerald-500/10 flex items-center justify-center mb-3">
@@ -52,10 +56,10 @@ export default function TraderProfilePage() {
                         { pair: "ETH/USD", result: "win", pips: "+45" },
                     ].map((t, i) => (
                         <div key={i} className="flex items-center gap-3 p-2.5 rounded-xl bg-b-surface1">
-                            <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
+                            <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
                                 t.result === "win" ? "bg-emerald-500/10" : "bg-red-500/10"
                             }`}>
-                                <TrendingUp className={`w-3.5 h-3.5 ${
+                                <TrendingUp className={`w-4 h-4 ${
                                     t.result === "win" ? "text-emerald-500" : "text-red-500 rotate-180"
                                 }`} />
                             </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import NotificationsToast from "./ui/NotificationsToast";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
@@ -75,6 +76,8 @@ export default function MobileLayout({ title, children, mode }: Props) {
 
     return (
         <div className="min-h-screen bg-b-surface1 pb-20">
+            <NotificationsToast />
+
             {/* Header */}
             <header className="fixed top-0 left-0 right-0 z-30 bg-b-surface2 border-b border-s-border safe-top">
                 <div className="flex items-center h-14 px-4">

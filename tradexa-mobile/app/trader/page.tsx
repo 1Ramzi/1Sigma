@@ -23,22 +23,25 @@ const activeSignals = [
 export default function TraderDashboard() {
     return (
         <MobileLayout title="Dashboard" mode="trader">
-            {/* Stats grid */}
-            <div className="grid grid-cols-2 gap-2 mb-4">
+            <div className="flex items-center justify-between mb-4 px-1">
+                <h2 className="text-h4 font-bold text-t-primary">Aperçu</h2>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3 mb-4">
                 {stats.map((s) => (
-                    <div key={s.title} className="card !p-3">
-                        <div className="flex items-center gap-2 mb-2">
-                            <div className={`w-8 h-8 rounded-lg ${s.bg} flex items-center justify-center`}>
+                    <div key={s.title} className="bg-b-surface2 rounded-2xl p-4 shadow-sm border border-s-stroke2 relative overflow-hidden">
+                        <div className={`absolute -right-4 -bottom-4 w-16 h-16 rounded-full ${s.bg} blur-2xl opacity-50 pointer-events-none`}></div>
+                        <div className="flex items-center gap-2 mb-3 relative z-10">
+                            <div className={`w-8 h-8 rounded-xl ${s.bg} flex items-center justify-center shadow-sm`}>
                                 <s.icon className={`w-4 h-4 ${s.color}`} />
                             </div>
                         </div>
-                        <p className="text-h5 font-bold text-t-primary">{s.value}</p>
-                        <p className="text-[11px] text-t-tertiary mt-0.5">{s.title}</p>
-                        {s.sub && <p className="text-[10px] text-t-secondary">{s.sub}</p>}
+                        <p className="text-h4 font-bold text-t-primary relative z-10">{s.value}</p>
+                        <p className="text-caption text-t-tertiary mt-1 relative z-10 font-medium">{s.title}</p>
+                        {s.sub && <p className="text-[10px] text-t-secondary/60 mt-0.5 relative z-10">{s.sub}</p>}
                     </div>
                 ))}
             </div>
-
             {/* Active signals */}
             <div className="card !p-4">
                 <div className="flex items-center justify-between mb-3">
@@ -48,7 +51,7 @@ export default function TraderDashboard() {
                 <div className="space-y-2">
                     {activeSignals.map((sig) => (
                         <div key={sig.id} className="flex items-center gap-3 p-2.5 rounded-xl bg-b-surface1">
-                            <div className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${
+                            <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
                                 sig.direction === "buy" ? "bg-emerald-500/10" : "bg-red-500/10"
                             }`}>
                                 <TrendingUp className={`w-4 h-4 ${
