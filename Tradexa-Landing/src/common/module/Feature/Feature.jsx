@@ -18,10 +18,10 @@ export default function Feature() {
         className="flex justify-center items-center flex-col"
       >
         <h1 className="text-3xl md:text-5xl py-5 text-center bg-clip-text dark:bg-gradient-to-r from-white from-50% to-[#8f8f8f]  bg-text md:w-[50%] text-transparent font-bold">
-          Tout ce dont vous avez besoin pour trader avec confiance et performance.
+          Tout ce dont vous avez besoin pour suivre des traders compétents et confirmés.
         </h1>
         <p className="text-base md:text-2xl text-center text-neutral-500 dark:text-neutral-300">
-          Des outils puissants pour chaque étape de votre parcours de trader.
+          Des outils professionnels et une équipe d&apos;experts à chaque étape de votre parcours.
         </p>
       </ComponentTransition>
       <Card Content={ServiceItem} />

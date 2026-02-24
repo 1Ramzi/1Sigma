@@ -40,9 +40,14 @@ export default function AdminBrokerPage() {
     const [adhesions, setAdhesions] = useState(mockAdhesions);
     const [filter, setFilter] = useState<"all" | "pending" | "approved" | "rejected">("all");
     const [search, setSearch] = useState("");
+    const [brokerFilter, setBrokerFilter] = useState<string>("all");
+    const [accountTypeFilter, setAccountTypeFilter] = useState<string>("all");
     const [detailId, setDetailId] = useState<string | null>(null);
     const [rejectId, setRejectId] = useState<string | null>(null);
     const [rejectReason, setRejectReason] = useState("");
+
+    const uniqueBrokers = Array.from(new Set(adhesions.map((a) => a.broker)));
+    const uniqueAccountTypes = Array.from(new Set(adhesions.map((a) => a.accountType)));
 
     const handleAction = (id: string, action: "approved" | "rejected", note?: string) => {
         setAdhesions((prev) => prev.map((a) => a.id === id ? { ...a, status: action, note } : a));
@@ -51,6 +56,8 @@ export default function AdminBrokerPage() {
 
     const filtered = adhesions
         .filter((a) => filter === "all" || a.status === filter)
+        .filter((a) => brokerFilter === "all" || a.broker === brokerFilter)
+        .filter((a) => accountTypeFilter === "all" || a.accountType === accountTypeFilter)
         .filter((a) => !search || a.fullName.toLowerCase().includes(search.toLowerCase()) || a.email.toLowerCase().includes(search.toLowerCase()) || a.accountId.toLowerCase().includes(search.toLowerCase()));
 
     const detail = detailId ? adhesions.find((a) => a.id === detailId) : null;
@@ -106,6 +113,32 @@ export default function AdminBrokerPage() {
                         </button>
                     ))}
                 </div>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3 mb-4">
+                <div className="flex items-center gap-2">
+                    <span className="text-caption text-t-tertiary font-medium">Broker:</span>
+                    <select value={brokerFilter} onChange={(e) => setBrokerFilter(e.target.value)}
+                        className="h-9 pl-3 pr-8 rounded-lg bg-b-surface1 border border-s-border text-caption text-t-primary outline-none cursor-pointer appearance-none focus:border-red-500">
+                        <option value="all">Tous les brokers</option>
+                        {uniqueBrokers.map((b) => <option key={b} value={b}>{b}</option>)}
+                    </select>
+                </div>
+                <div className="flex items-center gap-2">
+                    <span className="text-caption text-t-tertiary font-medium">Type compte:</span>
+                    <select value={accountTypeFilter} onChange={(e) => setAccountTypeFilter(e.target.value)}
+                        className="h-9 pl-3 pr-8 rounded-lg bg-b-surface1 border border-s-border text-caption text-t-primary outline-none cursor-pointer appearance-none focus:border-red-500">
+                        <option value="all">Tous les types</option>
+                        {uniqueAccountTypes.map((t) => <option key={t} value={t}>{t}</option>)}
+                    </select>
+                </div>
+                {(brokerFilter !== "all" || accountTypeFilter !== "all") && (
+                    <button onClick={() => { setBrokerFilter("all"); setAccountTypeFilter("all"); }}
+                        className="h-9 px-3 rounded-lg text-caption text-red-500 hover:bg-red-500/10 transition-colors">
+                        Réinitialiser filtres
+                    </button>
+                )}
+                <span className="text-caption text-t-tertiary ml-auto">{filtered.length} résultat{filtered.length > 1 ? "s" : ""}</span>
             </div>
 
             <div className="flex flex-wrap gap-2 mb-6">

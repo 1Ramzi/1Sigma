@@ -62,7 +62,7 @@ const Footer = () => {
         <div className="flex flex-col">
           <h1 className="text-sm">© 2026 Tradexa. Tous droits réservés.</h1>
           <h1 className="text-sm">
-            Plateforme de signaux de trading propulsée par l&apos;IA.
+            Plateforme de signaux de trading par des traders certifiés.
           </h1>
         </div>
       </div>

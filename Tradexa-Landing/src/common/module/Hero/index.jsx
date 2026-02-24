@@ -55,16 +55,15 @@ const Hero = () => {
       <div className="flex flex-col justify-center md:top-0 mt-28 lg:mt-36  items-center">
         <div className="flex flex-col items-center justify-center">
           <div className="border-[1px] rounded-full border-[#5515df] py-2 px-5">
-            <h1>Signaux de Trading IA 📊</h1>
+            <h1>Signaux de Trading Professionnels 📊</h1>
           </div>
           <H1
             className=" xl:w-[80%] 2xl:w-[80%] !leading-[0.85em] items-center flex overflow-hidden dark:bg-gradient-to-r from-white from-50% to-[#9c9c9c] bg-text bg-clip-text text-transparent text-center text-4xl sm:text-5xl md:text-7xl w-full  font-bold pb-1"
-            title="Tradexa : Signaux de Trading en Temps Réel propulsés par l'IA"
+            title="Tradexa : Des Signaux de Trading Fiables émis par des Experts Confirmés"
           />
 
           <p className="lg:w-[70%] text-center  lg:text-2xl mt-2 dark:text-neutral-300 text-neutral-700">
-            Recevez des signaux de trading précis sur Crypto, Forex et Indices.
-            Rejoignez +3000 traders et obtenez un taux de réussite de 78%+.
+            Des traders compétents et confirmés, équipés d&apos;outils à la pointe de la technologie, vous fournissent des signaux de qualité sur Crypto, Forex et Indices. Fini Telegram et les faux traders — place à une vraie application certifiée.
           </p>
 
           <motion.div className="flex max-md:flex-col w-full items-center justify-center gap-5 py-5">

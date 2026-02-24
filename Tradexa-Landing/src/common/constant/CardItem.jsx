@@ -3,48 +3,48 @@
 export const CardItem = [
     {
         img: '/img1.png',
-        title: "Signaux en Temps Réel",
-        content: "Recevez des signaux de trading instantanés avec prix d'entrée, stop loss et take profits. Ne manquez plus aucune opportunité."
+        title: "Signaux de Traders Confirmés",
+        content: "Recevez des signaux de trading précis émis par des professionnels expérimentés, avec prix d'entrée, stop loss et take profits clairement définis."
     },
     {
         img: '/img.png',
-        title: "Analyse IA Avancée",
-        content: "Notre intelligence artificielle analyse des millions de données pour vous fournir des prédictions avec un taux de réussite de 78%+."
+        title: "Outils d'Analyse à la Pointe",
+        content: "Nos traders s'appuient sur des outils technologiques avancés pour analyser les marchés et vous fournir des signaux de qualité sur Crypto, Forex et Indices."
     },
     {
         img: '/solution.png',
-        title: "Accessibilité 24/7",
-        content: "Accédez à vos signaux à tout moment, sur tous vos appareils. Notifications instantanées pour ne rien rater."
+        title: "Application Disponible 24/7",
+        content: "Accédez à vos signaux à tout moment, sur tous vos appareils. Notifications instantanées pour ne manquer aucune opportunité."
     },
     {
         img: '/solution1.png',
-        title: "Interface Intuitive",
-        content: "Un dashboard conçu pour les traders, avec des graphiques clairs et une navigation fluide."
+        title: "Interface Professionnelle",
+        content: "Un dashboard conçu par des traders pour des traders : graphiques clairs, suivi de performances et navigation fluide."
     },
     {
         img: '/Abs.jpg',
-        title: "Académie de Trading",
-        content: "Apprenez à trader avec nos modules de formation : analyse technique, psychologie du trader, stratégies avancées."
+        title: "Académie de Trading Gratuite",
+        content: "Apprenez à trader grâce à nos vidéos de formation gratuites : analyse technique, psychologie du trader, stratégies éprouvées."
     },
     {
         img: '/Abs2.jpg',
-        title: "Communauté Active",
-        content: "Rejoignez +3000 traders et échangez en temps réel dans notre chat communautaire."
+        title: "Fini les Faux Traders",
+        content: "Tradexa est une entreprise certifiée, pas un groupe Telegram anonyme. Transparence totale sur l'historique et les résultats de chaque trader."
     },
     {
         img: '/Abs3.jpg',
-        title: "Gestion des Risques",
-        content: "Chaque signal inclut un stop loss et jusqu'à 5 take profits pour protéger votre capital."
+        title: "Gestion des Risques Intégrée",
+        content: "Chaque signal inclut un stop loss et jusqu'à 5 take profits calculés pour protéger votre capital et optimiser vos gains."
     },
     {
         img: '/Abs5.jpg',
-        title: "Performance Vérifiée",
-        content: "Suivez nos résultats en toute transparence : historique complet, taux de réussite, profits mensuels."
+        title: "Historique Transparent et Vérifiable",
+        content: "Consultez l'historique complet de chaque trader : taux de réussite, nombre de signaux et performances mensuelles vérifiables."
     },
     {
         img: '/Abs7.jpg',
-        title: "Sécurité Maximale",
-        content: "Vos fonds restent sur votre compte broker. Nous ne touchons jamais à votre argent. Vous passez vos ordres vous-même."
+        title: "Sécurité de Vos Fonds",
+        content: "Vos fonds restent sur votre compte broker. Nous ne gérons pas votre argent. Vous passez vos ordres vous-même en toute autonomie."
     },
 
 ]
@@ -52,42 +52,42 @@ export const SolutionAllItem = [
     {
         img: '/img1.png',
         title: "Signaux Multi-Marchés",
-        content: "Crypto, Forex, Indices, Matières premières : nos signaux couvrent tous les marchés pour diversifier vos trades."
+        content: "Crypto, Forex, Indices, Matières premières : nos traders confirmés couvrent tous les marchés pour diversifier vos opportunités."
     },
     {
         img: '/img.png',
-        title: "Copy Trading Intelligent",
-        content: "Suivez nos signaux et reproduisez les trades de nos analystes experts en quelques clics."
+        title: "Suivez les Meilleurs Traders",
+        content: "Reproduisez les trades de nos analystes experts en quelques clics. Des professionnels vérifiés, pas des inconnus sur Telegram."
     },
     {
         img: '/solution.png',
         title: "Alertes Instantanées",
-        content: "Recevez des notifications push dès qu'un nouveau signal est publié. Ne manquez plus aucune opportunité."
+        content: "Recevez des notifications push dès qu'un nouveau signal est publié par nos traders. Réactivité maximale garantie."
     },
     {
         img: '/solution1.png',
-        title: "Dashboard Pro",
-        content: "Visualisez vos performances, suivez vos trades ouverts et analysez vos résultats en un coup d'œil."
+        title: "Dashboard Professionnel",
+        content: "Visualisez vos performances, suivez vos trades ouverts et analysez vos résultats en un coup d'œil sur notre application."
     },
     {
         img: '/Abs.jpg',
         title: "Tradexa Connect",
-        content: "Connectez votre compte broker en quelques minutes et commencez à recevoir des signaux immédiatement."
+        content: "Créez un compte chez notre broker partenaire en quelques minutes et accédez gratuitement à tous les signaux — 0 € d'abonnement."
     },
     {
         img: '/Abs2.jpg',
         title: "Tradexa Academy",
-        content: "Des modules de formation structurés pour passer de débutant à trader confirmé, avec suivi de progression."
+        content: "Des modules de formation structurés pour progresser à votre rythme : du débutant au trader confirmé, avec suivi de progression."
     },
     {
         img: '/Abs3.jpg',
         title: "Tradexa Community",
-        content: "Un chat en temps réel pour échanger avec d'autres traders, partager des analyses et apprendre ensemble."
+        content: "Échangez en temps réel avec d'autres traders vérifiés, partagez vos analyses et apprenez auprès de professionnels."
     },
     {
         img: '/Abs4.jpg',
         title: "Tradexa VIP",
-        content: "Accès exclusif aux signaux premium, analyses approfondies et support prioritaire pour les membres VIP."
+        content: "Accès exclusif aux signaux premium, analyses approfondies, lives et support prioritaire pour les membres VIP."
     },
     {
         img: '/Abs5.jpg',
@@ -97,7 +97,7 @@ export const SolutionAllItem = [
     {
         img: '/Abs8.jpg',
         title: "Tradexa Broker",
-        content: "Ouvrez un compte via notre broker partenaire et accédez gratuitement à tous nos signaux à vie."
+        content: "Ouvrez un compte via notre broker partenaire et accédez à tous nos signaux, lives et analyses sans débourser un centime."
     },
 
 ]

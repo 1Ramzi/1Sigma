@@ -9,7 +9,7 @@ export const BlogContent = [
     content: (
       <>
         <h1 className="text-3xl py-3 font-bold mt-3">Les fondamentaux</h1>
-        <p className="pb-5 leading-relaxed">L&apos;analyse technique repose sur l&apos;étude des graphiques de prix et des volumes pour anticiper les mouvements futurs du marché. Supports, résistances, RSI, MACD et moyennes mobiles sont les outils clés utilisés par nos analystes IA chez Tradexa.</p>
+        <p className="pb-5 leading-relaxed">L&apos;analyse technique repose sur l&apos;étude des graphiques de prix et des volumes pour anticiper les mouvements futurs du marché. Supports, résistances, RSI, MACD et moyennes mobiles sont les outils clés utilisés par nos traders confirmés chez Tradexa.</p>
         <h1 className="text-3xl font-bold py-3">Les chandeliers japonais</h1>
         <p className="pb-5 leading-relaxed">Les patterns de chandeliers comme le Doji, le Marteau et l&apos;Englobante sont des signaux puissants. Apprenez à les reconnaître dans notre Académie Tradexa.</p>
       </>
@@ -59,7 +59,7 @@ export const BlogContent = [
         <h1 className="text-3xl py-3 font-bold mt-3">Le marché crypto</h1>
         <p className="pb-5 leading-relaxed">Le marché crypto fonctionne 24h/24, 7j/7. Bitcoin, Ethereum, Solana créent un écosystème dynamique avec des mouvements de 5 à 10% par jour.</p>
         <h1 className="text-3xl font-bold py-3">Les signaux crypto Tradexa</h1>
-        <p className="pb-5 leading-relaxed">Notre IA analyse en permanence les marchés pour détecter les meilleures opportunités. Chaque signal inclut paire, direction, prix d&apos;entrée, stop loss et take profits.</p>
+        <p className="pb-5 leading-relaxed">Nos traders expérimentés analysent en permanence les marchés à l&apos;aide d&apos;outils avancés pour détecter les meilleures opportunités. Chaque signal inclut paire, direction, prix d&apos;entrée, stop loss et take profits.</p>
       </>
     ),
   },

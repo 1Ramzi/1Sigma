@@ -1,7 +1,7 @@
 "use client";
 
 import AdminLayout from "@/components/AdminPanel/AdminLayout";
-import { Users, Signal, UserCheck, DollarSign, TrendingUp, AlertTriangle } from "lucide-react";
+import { Users, Signal, UserCheck, TrendingUp, AlertTriangle } from "lucide-react";
 
 function StatCard({ title, value, subtitle, icon: Icon, color }: {
     title: string; value: string | number; subtitle?: string;
@@ -30,7 +30,6 @@ export default function AdminDashboardPage() {
                 <StatCard title="Utilisateurs Total" value="3,247" subtitle="+124 ce mois" icon={Users} color="bg-blue-500/10 text-blue-500" />
                 <StatCard title="Traders Actifs" value="12" subtitle="8 en ligne" icon={UserCheck} color="bg-[#10B981]/10 text-[#10B981]" />
                 <StatCard title="Signaux Actifs" value="34" subtitle="156 ce mois" icon={Signal} color="bg-purple-500/10 text-purple-500" />
-                <StatCard title="Revenus Plateforme" value="42,580€" subtitle="+18% vs mois dernier" icon={DollarSign} color="bg-amber-500/10 text-amber-500" />
                 <StatCard title="Taux de Win Global" value="76.3%" icon={TrendingUp} color="bg-[#10B981]/10 text-[#10B981]" />
                 <StatCard title="Signalements" value="3" subtitle="2 en attente" icon={AlertTriangle} color="bg-red-500/10 text-red-500" />
             </div>
@@ -67,10 +66,10 @@ export default function AdminDashboardPage() {
                     <h3 className="text-h6 font-semibold mb-4">Traders Performance</h3>
                     <div className="space-y-3">
                         {[
-                            { name: "TraderPro", signals: 156, winRate: 78.5, followers: 1247, revenue: "3,420€" },
-                            { name: "CryptoKing", signals: 89, winRate: 72.1, followers: 834, revenue: "2,180€" },
-                            { name: "ForexMaster", signals: 203, winRate: 81.2, followers: 1523, revenue: "4,750€" },
-                            { name: "GoldTrader", signals: 67, winRate: 69.8, followers: 456, revenue: "1,340€" },
+                            { name: "TraderPro", signals: 156, winRate: 78.5, followers: 1247 },
+                            { name: "CryptoKing", signals: 89, winRate: 72.1, followers: 834 },
+                            { name: "ForexMaster", signals: 203, winRate: 81.2, followers: 1523 },
+                            { name: "GoldTrader", signals: 67, winRate: 69.8, followers: 456 },
                         ].map((t, i) => (
                             <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-b-surface1">
                                 <div className="w-9 h-9 rounded-full bg-[#10B981]/10 flex items-center justify-center text-[#10B981] text-caption font-bold">
@@ -82,7 +81,6 @@ export default function AdminDashboardPage() {
                                 </div>
                                 <div className="text-right hidden sm:block">
                                     <p className="text-body-2 font-semibold text-[#10B981]">{t.winRate}%</p>
-                                    <p className="text-caption text-t-tertiary">{t.revenue}/mois</p>
                                 </div>
                             </div>
                         ))}

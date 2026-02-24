@@ -24,7 +24,7 @@ export const FooterItem = [
             href: 'https://tradexa-dashboard.vercel.app',
         },
         child_2: {
-            title: 'Analyse technique IA',
+            title: 'Analyses et signaux',
             href: 'https://tradexa-dashboard.vercel.app',
         },
         child_3: {

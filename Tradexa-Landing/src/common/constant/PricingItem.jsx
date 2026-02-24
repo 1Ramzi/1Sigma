@@ -3,37 +3,37 @@
 
 export const PricingItem = [
     {
-        plan: 'Starter',
-        desc: 'Pour les traders débutants',
-        price: '29€',
-        payTime: ' / mois',
-        benefit: {
-            1: '5 signaux par jour',
-            2: "Crypto & Forex",
-            3: 'Support par email',
-        }
-    },
-    {
-        plan: 'Pro',
-        desc: 'Pour les traders actifs',
-        price: '79€',
-        recommended: 'Populaire',
-        payTime: ' / mois',
-        benefit: {
-            1: 'Signaux illimités',
-            2: "Tous les marchés",
-            3: 'Support prioritaire 24/7',
-        }
-    },
-    {
-        plan: 'Partenaire',
-        desc: 'Signaux gratuits à vie via broker',
+        plan: 'Gratuit',
+        desc: 'Découvrez Tradexa sans engagement',
         price: '0€',
-        payTime: ' / à vie',
+        payTime: '',
         benefit: {
-            1: 'Tous les signaux gratuits',
-            2: "Accès VIP exclusif",
-            3: 'Conditions de trading optimisées',
+            1: 'Vidéos de l\'Académie gratuites',
+            2: "Historique complet des traders",
+            3: 'Preuve de compétence et résultats vérifiables',
+        }
+    },
+    {
+        plan: 'Broker Partenaire',
+        desc: 'Accès complet — 0 € en créant un compte broker',
+        price: '0€',
+        recommended: 'Recommandé',
+        payTime: ' / sans frais',
+        benefit: {
+            1: 'Tous les signaux en temps réel',
+            2: "Académie, lives et analyses inclus",
+            3: 'Support prioritaire et communauté VIP',
+        }
+    },
+    {
+        plan: 'Premium',
+        desc: 'Abonnement mensuel pour un accès complet',
+        price: '79.99€',
+        payTime: ' / mois',
+        benefit: {
+            1: 'Signaux illimités + lives + analyses',
+            2: "Académie complète et support 24/7",
+            3: 'Accès intégral sans compte broker',
         }
     },
 ]

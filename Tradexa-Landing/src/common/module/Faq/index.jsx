@@ -18,7 +18,7 @@ const Faq = () => {
           Questions Fréquentes
         </h1>
         <p className="text-base md:text-2xl text-neutral-500 dark:text-neutral-300 md:w-[50%] text-center">
-          Tout ce que vous devez savoir sur Tradexa et nos signaux de trading.
+          Tout ce que vous devez savoir sur Tradexa, nos traders et nos offres.
         </p>
       </ComponentTransition>
       <CardFaq />

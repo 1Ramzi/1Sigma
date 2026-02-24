@@ -2,7 +2,7 @@
 
 import TraderLayout from "@/components/TraderPanel/TraderLayout";
 import { useTraderStore } from "@/stores/traderStore";
-import { TrendingUp, BarChart3, Users, Wallet, Signal, Target } from "lucide-react";
+import { TrendingUp, BarChart3, Users, Signal, Target } from "lucide-react";
 import Link from "next/link";
 import {
     LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area,
@@ -55,12 +55,6 @@ export default function DashboardPage() {
                     subtitle={`~${stats.avgFollowersPerSignal} par signal`}
                     icon={Users}
                     color="bg-purple-500/10 text-purple-500"
-                />
-                <StatsCard
-                    title="Revenus du mois"
-                    value={`${stats.monthlyEarnings.toLocaleString()}€`}
-                    icon={Wallet}
-                    color="bg-amber-500/10 text-amber-500"
                 />
                 <StatsCard
                     title="Signaux Actifs"

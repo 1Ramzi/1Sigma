@@ -17,10 +17,10 @@ export default function Pricing() {
       className="flex justify-center items-center flex-col"
     >
       <h1 className="text-3xl md:text-5xl py-5 text-center bg-clip-text dark:bg-gradient-to-r from-white from-50% to-[#8f8f8f]  bg-text md:w-[50%] text-transparent font-bold">
-      Choisissez votre Plan
+      Choisissez votre Formule
       </h1>
       <p className="text-base md:text-2xl text-center text-neutral-500 dark:text-neutral-300">
-      Sélectionnez l&apos;offre qui correspond à vos objectifs de trading.
+      Gratuit, via broker partenaire ou premium : trouvez la formule adaptée à vos besoins.
       </p>
     </ComponentTransition>
 

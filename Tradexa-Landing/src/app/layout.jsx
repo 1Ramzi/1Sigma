@@ -8,14 +8,14 @@ import { Providers } from '@/common/component/element/Providers'
 const plus_Jakarta_Sans = Plus_Jakarta_Sans({subsets: ['latin']});
 
 export const metadata = {
-  title: 'Tradexa - Signaux de Trading IA en Temps Réel',
-  description: 'Recevez des signaux de trading précis sur Crypto, Forex et Indices. Rejoignez +3000 traders avec un taux de réussite de 78%+.',
+  title: 'Tradexa - Signaux de Trading Professionnels | Crypto, Forex & Indices',
+  description: 'Recevez des signaux de trading fiables émis par des traders confirmés et expérimentés. Accédez gratuitement aux signaux en ouvrant un compte chez notre broker partenaire. Fini Telegram et les faux traders, place à une vraie application certifiée.',
   
 }
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="fr" suppressHydrationWarning>
       <body className={`${plus_Jakarta_Sans.className} dark:bg-black`}>
         <Providers>
         <div className='flex justify-center items-center'>

@@ -11,14 +11,14 @@ const Card = () => {
       <ComponentTransition className="w-full overflow-hidden px-10 py-5 md:basis-[30%] h-[300px] bg-neutral-100 dark:bg-neutral-950/50 backdrop-blur-sm border-[1px] border-neutral-300 dark:border-neutral-700 rounded-3xl">
         <WiDayCloudy size={50} />
         <h1 className="text-2xl font-bold py-2 text-neutral-800 dark:text-neutral-100">
-          Signaux Intelligents
+          Signaux Professionnels
         </h1>
         <h2 className="text-sm text-neutral-800 dark:text-neutral-300">
           Boostez vos trades avec Tradexa !
         </h2>
         <p className="text-base text-neutral-700 dark:text-neutral-400 mt-5 md:line-clamp-2 lg:line-clamp-4 line-clamp-3">
-          Des signaux de trading en temps réel propulsés par notre IA,
-          avec un taux de réussite vérifié de 78%+.
+          Des signaux de trading en temps réel émis par des traders confirmés,
+          avec un historique de performances vérifié et transparent.
         </p>
       </ComponentTransition>
       <ComponentTransition
@@ -53,13 +53,13 @@ const Card = () => {
       >
         <FaCode size={40} />
         <h1 className="text-xl font-bold py-2 text-neutral-800 dark:text-neutral-100">
-          Analyse IA
+          Analyse Experte
         </h1>
         <h2 className="text-sm text-neutral-700 dark:text-neutral-300">
-          Votre passerelle vers le trading intelligent
+          Votre accès à des analyses de qualité
         </h2>
         <p className="text-sm text-neutral-700 line-clamp-2 dark:text-neutral-400 mt-3">
-          Notre IA analyse des millions de données pour générer des signaux précis sur tous les marchés financiers.
+          Nos traders expérimentés utilisent des outils avancés pour analyser les marchés et émettre des signaux précis sur Crypto, Forex et Indices.
         </p>
       </ComponentTransition>
 

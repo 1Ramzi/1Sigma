@@ -18,7 +18,7 @@ export const Services = [
       />
     ),
     title: "Y a-t-il un essai gratuit ?",
-    desc: "Oui ! En ouvrant un compte via notre broker partenaire, vous accédez gratuitement à tous nos signaux de trading à vie. Aucun engagement, aucun frais caché.",
+    desc: "Oui ! En créant simplement un compte chez notre broker partenaire, vous accédez gratuitement à tous nos signaux de trading sans limite de durée. 0 €, aucun engagement, aucun frais caché.",
   },
   {
     icon: (
@@ -28,7 +28,7 @@ export const Services = [
       />
     ),
     title: "Puis-je changer de plan plus tard ?",
-    desc: "Absolument. Vous pouvez passer d'un plan Starter au Pro à tout moment. Le changement est immédiat et vous ne perdez aucun signal en cours.",
+    desc: "Absolument. Vous pouvez passer du plan Gratuit au Premium à tout moment. Le changement est immédiat et vous ne perdez aucun signal en cours.",
   },
   {
     icon: (
@@ -44,8 +44,9 @@ export const Services = [
 
 export const ServiceItem = [
   {
-    title: 'Signaux IA en Temps Réel',
-    desc: 'Recevez des signaux de trading instantanés basés sur notre analyse algorithmique avancée des marchés financiers.',
+    title: 'Signaux Professionnels en Temps Réel',
+    desc: 'Recevez des signaux de trading précis émis par des traders confirmés qui analysent les marchés financiers avec des outils à la pointe de la technologie.',
+
     icon : <FaPager className="h-12 w-12 mb-4 dark:text-white text-black " />
   },
   {
@@ -54,13 +55,15 @@ export const ServiceItem = [
     icon : <ImProfile className="h-12 w-12 mb-4 dark:text-white text-black " />
   },
   {
-    title: 'Taux de Réussite 78%+',
-    desc: 'Notre IA analyse des millions de données en temps réel pour des prédictions précises sur Crypto, Forex et Indices.',
+    title: 'Taux de Réussite Vérifié',
+    desc: 'Nos traders expérimentés affichent un historique transparent et vérifiable. Consultez leurs performances réelles sur Crypto, Forex et Indices.',
+
     icon : <IoDiamondOutline className="h-12 w-12 mb-4 dark:text-white text-black " />
   },
   {
-    title: 'Communauté de +3000 Traders',
-    desc: 'Rejoignez une communauté active de traders. Partagez vos analyses et apprenez des meilleurs.',
+    title: 'Communauté de Traders Vérifiés',
+    desc: 'Rejoignez une communauté encadrée par de vrais professionnels. Échangez, apprenez et progressez aux côtés de traders certifiés.',
+
     icon : <CiShop className="h-12 w-12 mb-4 dark:text-white text-black " />
   },
   {
@@ -69,8 +72,9 @@ export const ServiceItem = [
     icon : <IoIosSchool className="h-12 w-12 mb-4 dark:text-white text-black " />
   },
   {
-    title: 'Broker Partenaire de Confiance',
-    desc: 'Tradez avec notre broker partenaire pour bénéficier de conditions optimales et de signaux gratuits à vie.',
+    title: '0 € via Broker Partenaire',
+    desc: 'Créez un compte chez notre broker partenaire et accédez à tous nos signaux gratuitement, sans aucun frais. Conditions de trading optimales incluses.',
+
     icon : <FaPiedPiper className="h-12 w-12 mb-4 dark:text-white text-black " />
   },
 
